@@ -1,0 +1,56 @@
+/************************************************************
+*                        Menu Arriba                        *
+*************************************************************/
+
+#navbar-peludets img {
+    width: 245px;
+    height: 60px;
+}
+
+#navbar-peludets a {
+    color: rgb(64, 49, 114);
+    text-shadow: 0.5px 0.7px #E4F0C4;
+    text-transform: uppercase;
+}
+
+#navbar-peludets :nth-child(1) a {
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+    font-weight: bold;
+}
+
+#navbar-peludets :nth-child(1) li:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+#navbar-peludets :nth-child(1) li:hover:after {
+    width: 100%;
+    border-bottom: #ffffff solid 2px;
+}
+
+/* Parte derecha (Usuario) */
+
+#navbar-peludets-derecha img {
+    width: 60px;
+    height: 60px;
+}
+
+#fotoDesplegable {
+    width: 75px !important;
+    height: 75px !important;
+}
+
+#navbar-peludets-derecha span {
+    text-align: center;
+}
+
+#navbar-peludets-derecha .btn-danger-peludets {
+    color: #ffffff;
+    font-weight: bold;
+}

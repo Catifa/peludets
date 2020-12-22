@@ -1,0 +1,23 @@
+/************************************************************
+*                           Footer                          *
+*************************************************************/
+
+/* Redes Sociales */
+
+.redes-sociales a {
+    color: #4E4868;
+}
+
+.redes-sociales a:hover {
+    color: #453e64;
+}
+
+.redes-sociales i {
+    font-size: 2em;
+}
+
+/* Copyright */
+
+.footer-copyright {
+    background-color: #F2E7C9;
+}

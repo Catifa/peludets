@@ -1,0 +1,109 @@
+/************************************************************
+*                          Modal Fix                        *
+*************************************************************/
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    overflow: auto;
+    height: 100%;
+}
+
+.modal-open {
+    overflow: auto;
+}
+
+/************************************************************
+  *                     Estilos Peludets                      *
+  *************************************************************/
+
+/* Backgrounds colors */
+
+.bg-azul-peludets {
+    background-color: rgb(155, 207, 194);
+}
+
+.bg-lila-peludets {
+    background-color: #4E4868;
+}
+
+.bg-crema-peludets {
+    background-color: #F2E7C9;
+}
+
+/* Colores */
+
+.lila-peludets {
+    color: #4E4868;
+}
+
+.azul-peludets {
+    color: #7ca7b9;
+}
+
+.verde-peludets {
+    color: #7ac05c;
+}
+
+.crema-peludets {
+    color: #ecba90;
+}
+
+/* Colores botones peludets */
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn-lila-peludets {
+    color: #ffffff;
+    text-shadow: 1px 1px gray;
+    background-color: #4E4868;
+}
+
+.btn-lila-peludets:hover {
+    color: #ffffff;
+    background-color: #453e64;
+}
+
+.btn-azul-peludets {
+    color: #ffffff;
+    text-shadow: 1px 1px gray;
+    background-color: #7ca7b9;
+}
+
+.btn-azul-peludets:hover {
+    color: #ffffff;
+    background-color: #60a0bb;
+}
+
+.btn-verde-peludets {
+    color: #ffffff;
+    text-shadow: 1px 1px gray;
+    background-color: #7ac05c;
+}
+
+.btn-verde-peludets:hover {
+    color: #ffffff;
+    background-color: #65a34b;
+}
+
+.btn-crema-peludets {
+    background-color: #eecbaf;
+}
+
+.btn-crema-peludets:hover {
+    background-color: rgb(226, 178, 140);
+}
+
+.btn-danger-peludets {
+    color: #ffffff;
+    background-color: #e65c5c;
+}
+
+.btn-danger-peludets:hover {
+    background-color: #ca3d3d;
+}
