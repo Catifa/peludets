@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mascotas;
+use App\Models\Mascota;
 use Illuminate\Http\Request;
 
 class MascotasController extends Controller
@@ -14,7 +14,8 @@ class MascotasController extends Controller
      */
     public function index()
     {
-        //
+        $mascotas = Mascota::all()->toArray();
+        return array_reverse($mascotas);
     }
 
     /**
@@ -44,7 +45,7 @@ class MascotasController extends Controller
      * @param  \App\Models\Mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function show(Mascotas $mascotas)
+    public function show(Mascota $mascotas)
     {
         //
     }
@@ -55,7 +56,7 @@ class MascotasController extends Controller
      * @param  \App\Models\Mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mascotas $mascotas)
+    public function edit(Mascota $mascotas)
     {
         //
     }
@@ -67,7 +68,7 @@ class MascotasController extends Controller
      * @param  \App\Models\Mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mascotas $mascotas)
+    public function update(Request $request, Mascota $mascotas)
     {
         //
     }
@@ -78,7 +79,7 @@ class MascotasController extends Controller
      * @param  \App\Models\Mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mascotas $mascotas)
+    public function destroy(Mascota $mascotas)
     {
         //
     }
