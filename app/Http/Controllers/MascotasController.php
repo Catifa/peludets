@@ -23,9 +23,16 @@ class MascotasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add(Request $request)
     {
-        //
+        $mascota = new Mascota([
+            'nombre' => $request->input('nombre'),
+            'especie' => $request->input('especie'),
+            'raza' => $request->input('raza'),
+            'edad' => $request->input('edad'),
+            'peso' => $request->input('peso')
+        ]);
+        $mascota->save();
     }
 
     /**

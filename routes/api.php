@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MascotasController;
+//use App\Http\Controllers\MascotasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('mascotas', [MascotasController::class, 'index']);
+Route::get('mascotas', 'MascotasController@index');
+
+Route::post('add', 'MascotasController@add');

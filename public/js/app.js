@@ -2075,40 +2075,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      mascotas: []
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    this.axios.get('http://localhost:80/api/mascotas').then(function (response) {
-      _this.mascotas = response.data;
-    });
-  }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -38789,54 +38756,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("Explorador (Prueba Mostrar mascotas)")]),
-    _vm._v(" "),
-    _c("table", { staticClass: "table table-bordered" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.mascotas, function(mascota) {
-          return _c("tr", { key: mascota.id }, [
-            _c("td", [_vm._v(_vm._s(mascota.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(mascota.nombre))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(mascota.especie))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(mascota.raza))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(mascota.edad))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(mascota.peso))])
-          ])
-        }),
-        0
-      )
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Especie")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Raza")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Edad")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Peso")])
-      ])
-    ])
+    return _c("div", [_c("div", { staticClass: "row" })])
   }
 ]
 render._withStripped = true
