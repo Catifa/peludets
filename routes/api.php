@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\MascotasController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('mascotas', 'MascotasController@index');
 
-Route::post('add', 'MascotasController@add');
+Route::group(['prefix' => 'mascota'], function() {
+    Route::post('add', 'MascotasController@add');
+});
+
+Route::group(['prefix' => 'usuario'], function() {
+    Route::post('add', [RegisterController::class, 'add']);
+});
+

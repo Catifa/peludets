@@ -6,6 +6,11 @@
  
 <template>
   <div class="container-fluid">
+
+    <!--Formulario registro -->
+    <form_registro></form_registro>
+    <!--Formulario inicio sesion -->
+    <form_inicio_sesion></form_inicio_sesion>
     <!-- Menu Nav -->
     <div class="row">
       <nav
@@ -145,5 +150,8 @@
 </template>
 
 <script>
-export default {};
+
+export default {
+  
+};
 </script>
