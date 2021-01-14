@@ -9,10 +9,13 @@ use Illuminate\Notifications\Notifiable;
 
 class Usuario extends Authenticatable
 {
+    // Tabla donde se guarda el objeto Usuario
+    protected $table = 'usuarios';
+    
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Atributos que se asignan a la tabla.
      *
      * @var array
      */
@@ -25,7 +28,7 @@ class Usuario extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Atributos que se ocultaran en el array.
      *
      * @var array
      */
