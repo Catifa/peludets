@@ -6,20 +6,108 @@
  
 <template>
   <div class="container-fluid">
-
-    <!--Formulario registro -->
-    <form_registro></form_registro>
-    <!--Formulario inicio sesion -->
-    <form_inicio_sesion></form_inicio_sesion>
-    <!-- Menu Nav -->
-    <div class="row">
+    <div v-if="!session()">
+      <!-- Sin sesion -->
+      <!--Formulario registro -->
+      <form_registro></form_registro>
+      <!--Formulario inicio sesion -->
+      <form_inicio_sesion></form_inicio_sesion>
+      <!-- Menu Nav -->
+      <div class="row">
+        <nav
+          id="navbar-peludets"
+          class="container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets"
+        >
+          <router-link to="/" class="navbar-brand"
+            ><img src="../img/logo/logo.png" alt="Peludets!" />
+          </router-link>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <router-link to="/explorador" class="nav-link"
+                  >Explorador</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link to="/profesionales" class="nav-link"
+                  >Profesionales</router-link
+                >
+              </li>
+              <li class="nav-item d-md-none mx-auto">
+                <button
+                  id="inicio-sesion"
+                  type="button"
+                  class="btn btn-lila-peludets btn-sm mr-2"
+                  data-toggle="modal"
+                  data-target="#form-inicioSesion"
+                >
+                  Iniciar sesión
+                </button>
+                <button
+                  id="registro"
+                  type="button"
+                  class="btn btn-lila-peludets btn-sm"
+                  data-toggle="modal"
+                  data-target="#form-registro"
+                >
+                  Registrate!
+                </button>
+              </li>
+            </ul>
+            <router-link to="/login" class="navbar-brand">
+            <ul class="navbar-nav navbar-right">
+              
+              <li class="nav-item">
+                
+                  <button
+                    id="inicio-sesion"
+                    type="button"
+                    class="btn btn-lila-peludets btn-sm mr-2"
+                    data-toggle="modal"
+                    data-target="#form-inicioSesion"
+                  >
+                    Iniciar sesión
+                  </button>
+              </li>
+              <li class="nav-item">
+                  <button
+                    id="registro"
+                    type="button"
+                    class="btn btn-lila-peludets btn-sm"
+                    data-toggle="modal"
+                    data-target="#form-registro"
+                  >
+                    Registrate!
+                  </button>
+                
+              </li>
+              
+            </ul>
+            </router-link>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div v-else>
+      <!-- Con sesion -->
       <nav
         id="navbar-peludets"
         class="container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets"
       >
-        <router-link to="/" class="navbar-brand"
-          ><img src="../img/logo/logo.png" alt="Peludets!" />
-        </router-link>
+        <a href="javascript:void(0)" id="home"
+          ><img src="sources/img/logo/logo.png" alt="Peludets!"
+        /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,64 +122,96 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <router-link to="/explorador" class="nav-link"
-                >Explorador</router-link
+              <a class="nav-link" href="javascript:void(0)" id="explorador"
+                >Explorador</a
               >
             </li>
             <li class="nav-item">
-              <router-link to="/profesionales" class="nav-link"
-                >Profesionales</router-link
+              <a class="nav-link" href="javascript:void(0)" id="profesionales"
+                >Profesionales</a
               >
+            </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="?accio=Perfil">Perfil</a>
+            </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="?accio=Tareas">Tareas</a>
             </li>
             <li class="nav-item d-md-none mx-auto">
-              <button
-                id="inicio-sesion"
-                type="button"
-                class="btn btn-lila-peludets btn-sm mr-2"
-                data-toggle="modal"
-                data-target="#form-inicioSesion"
+              <span class="dropdown-item-text"
+                ><button
+                  class="btn btn-danger-peludets"
+                  id="desconectar"
+                  type="button"
+                >
+                  Desconectar
+                </button></span
               >
-                Iniciar sesión
-              </button>
-              <button
-                id="registro"
-                type="button"
-                class="btn btn-lila-peludets btn-sm"
-                data-toggle="modal"
-                data-target="#form-registro"
-              >
-                Registrate!
-              </button>
             </li>
           </ul>
-          <ul class="navbar-nav navbar-right">
-            <li class="nav-item">
-              <button
-                id="inicio-sesion"
+          <div id="navbar-peludets-derecha" class="navbar-nav navbar-right">
+            <a
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <!-- Foto de usuaio -->
+              <img
+                src="sources/img/avatar.jfif"
+                class="rounded-circle"
+                width="100%"
+              />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right text-center">
+              <span class="dropdown-item-text">
+                <img
+                  id="fotoDesplegable"
+                  src="sources/img/avatar.jfif"
+                  class="rounded"
+                  alt="Foto perfil"
+                /><span class="ml-3 font-weight-bold">{{ user.nombre }}</span>
+              </span>
+              <span class="dropdown-item-text text-right">
+                <i class="far fa-envelope mr-2"></i>
+                <a
+                  a
+                  href="javascript:void(0)"
+                  id="editaPerfil"
+                  class="fas fa-cog"
+                ></a>
+              </span>
+              <div class="dropdown-divider"></div>
+              <a
+                href="javascript:void(0)"
+                id="perfil"
+                class="dropdeown-item"
                 type="button"
-                class="btn btn-lila-peludets btn-sm mr-2"
-                data-toggle="modal"
-                data-target="#form-inicioSesion"
+                >Perfil</a
               >
-                Iniciar sesión
-              </button>
-            </li>
-            <li class="nav-item">
-              <button
-                id="registro"
+              <a
+                href="javascript:void(0)"
+                id="tareas"
+                class="dropdown-item"
                 type="button"
-                class="btn btn-lila-peludets btn-sm"
-                data-toggle="modal"
-                data-target="#form-registro"
+                >Tareas</a
               >
-                Registrate!
-              </button>
-            </li>
-          </ul>
+
+              <div class="dropdown-divider"></div>
+              <span class="dropdown-item-text"
+                ><button
+                  class="btn btn-danger-peludets"
+                  id="desconectar"
+                  type="button"
+                >
+                  Desconectar
+                </button></span
+              >
+            </div>
+          </div>
         </div>
       </nav>
     </div>
-
     <router-view></router-view>
 
     <!-- Footer -->
@@ -150,8 +270,21 @@
 </template>
 
 <script>
-
 export default {
-  
+  data: function () {
+    return {
+      user: [],
+    };
+  },
+  methods: {
+    session() {
+      if (Vue.prototype.$session.has("user")) {
+        this.user = Vue.$session.get("user");
+        Vue.cookie.set()
+        return true;
+      }
+      return false;
+    },
+  },
 };
 </script>

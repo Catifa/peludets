@@ -21,12 +21,13 @@
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
+        "vue-axios": "^3.2.2",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "leaflet": "^1.7.1",
         "sweetalert2": "^10.12.6",
-        "vue-axios": "^3.2.0",
+        "symfony": "0.0.1",
         "vue-router": "^3.4.9",
         "vue2-leaflet": "^2.6.0"
     }

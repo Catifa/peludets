@@ -1,0 +1,180 @@
+
+/************************************************************
+*                       Fomulario Perfil                    *
+*************************************************************/
+#peticionTrabajo {
+  background-color: rgba(0, 0, 0, 0.45);
+  padding: 3%;
+  color: #ffffff;
+}
+
+#peticionTrabajo legend{
+  background-color: rgba(0, 0, 0, 0.45);
+  margin-bottom: 6%;
+}
+#divFile{
+  position: relative;
+}
+
+#updateFoto{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+
+
+  
+}
+
+#divFileMascota{
+  position: relative;
+}
+
+#updateFotoMascota{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+
+
+  
+}
+
+/************************************************************
+*                   Tajetas Mascotas Perfil                 *
+*************************************************************/
+#mascota .card-body li {
+  list-style-type:none;
+}
+
+#valoraciones span {
+  margin-bottom: 5px;;
+}
+
+
+.slide {
+  margin-top: 2%;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.quadrado-trabajo {
+  border: 1px solid black;
+  width: 500px;
+  height: 300px;
+  margin-right: 2%;
+}
+
+.transparente {
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  filter: alpha(opacity=80);
+  -khtml-opacity: 0.8;
+}
+
+/* Formulario */
+
+
+
+.formulario-trabajos {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  color: white;
+  margin-left: 0 !important;
+}
+
+.justificado {
+  text-align: justify;
+}
+
+.imagen:hover {
+  transform: rotateY(180deg);
+}
+
+.quitarSubrayado {
+  text-decoration: none !important;
+  color: white;
+}
+
+.filtro-prof {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+}
+
+.fondo {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card-button, .card-button:hover, .card-button:active, .card-button:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.carta {
+  color: white;
+  transition: 0.5s;
+}
+
+.carta:hover {
+  text-decoration: none;
+  color: black;
+  background-color: whitesmoke;
+}
+
+.cartas {
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+
+input {
+   display:block;
+}
+span::after {
+    content: "\a";
+    white-space: pre;
+}
+
+#templates{
+  display:none;
+}
+
+div#cards {
+    display: -webkit-box;
+    flex-wrap: wrap;
+}
+
+
+
+.card {
+    border-style: dashed;
+    border-radius: 15px;
+    width: fit-content;
+    padding: 10px;
+    background: antiquewhite;
+    font-weight: 600;
+    margin: 15px;
+}
+
+.card_attr{
+  font-weight:500;
+}
+
+#log {
+  background:darkcyan;
+  padding:5px;
+  border-radius:5px;
+  opacity:0;
+}
