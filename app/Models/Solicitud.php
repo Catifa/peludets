@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solicitud extends Model
 {
+    // Tabla donde se guarda el objeto Solicitud
+    protected $table = 'solicitudes';
+    
     use HasFactory;
 }

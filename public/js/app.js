@@ -2059,7 +2059,144 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: []
+    };
+  },
+  methods: {
+    session: function session() {
+      if (Vue.prototype.$session.has("user")) {
+        this.user = Vue.$session.get("user");
+        Vue.cookie.set();
+        return true;
+      }
+
+      return false;
+    }
+  }
+});
 
 /***/ }),
 
@@ -2279,6 +2416,7 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.post("http://localhost:80/api/usuario/add", this.usuario).then(function (response) {
         $("#form-registro").modal("hide");
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Registro completado", "Bienvenido, " + response.data.nombre, "success");
+        Vue.cookie.set("user", JSON.stringify(response.data));
 
         _this.$router.push("/");
       })["catch"](function (error) {
@@ -56779,6 +56917,167 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/tiny-cookie/tiny-cookie.js":
+/*!*************************************************!*\
+  !*** ./node_modules/tiny-cookie/tiny-cookie.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * tiny-cookie - A tiny cookie manipulation plugin
+ * https://github.com/Alex1990/tiny-cookie
+ * Under the MIT license | (c) Alex Chao
+ */
+
+!(function(root, factory) {
+
+  // Uses CommonJS, AMD or browser global to create a jQuery plugin.
+  // See: https://github.com/umdjs/umd
+  if (true) {
+    // Expose this plugin as an AMD module. Register an anonymous module.
+    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+
+}(this, function() {
+
+  'use strict';
+
+  // The public function which can get/set/remove cookie.
+  function Cookie(key, value, opts) {
+    if (value === void 0) {
+      return Cookie.get(key);
+    } else if (value === null) {
+      Cookie.remove(key);
+    } else {
+      Cookie.set(key, value, opts);
+    }
+  }
+
+  // Check if the cookie is enabled.
+  Cookie.enabled = function() {
+    var key = '__test_key';
+    var enabled;
+
+    document.cookie = key + '=1';
+    enabled = !!document.cookie;
+
+    if (enabled) Cookie.remove(key);
+
+    return enabled;
+  };
+
+  // Get the cookie value by the key.
+  Cookie.get = function(key, raw) {
+    if (typeof key !== 'string' || !key) return null;
+
+    key = '(?:^|; )' + escapeRe(key) + '(?:=([^;]*?))?(?:;|$)';
+
+    var reKey = new RegExp(key);
+    var res = reKey.exec(document.cookie);
+
+    return res !== null ? (raw ? res[1] : decodeURIComponent(res[1])) : null;
+  };
+
+  // Get the cookie's value without decoding.
+  Cookie.getRaw = function(key) {
+    return Cookie.get(key, true);
+  };
+
+  // Set a cookie.
+  Cookie.set = function(key, value, raw, opts) {
+    if (raw !== true) {
+      opts = raw;
+      raw = false;
+    }
+    opts = opts ? convert(opts) : convert({});
+    var cookie = key + '=' + (raw ? value : encodeURIComponent(value)) + opts;
+    document.cookie = cookie;
+  };
+
+  // Set a cookie without encoding the value.
+  Cookie.setRaw = function(key, value, opts) {
+    Cookie.set(key, value, true, opts);
+  };
+
+  // Remove a cookie by the specified key.
+  Cookie.remove = function(key) {
+    Cookie.set(key, 'a', { expires: new Date() });
+  };
+
+  // Helper function
+  // ---------------
+
+  // Escape special characters.
+  function escapeRe(str) {
+    return str.replace(/[.*+?^$|[\](){}\\-]/g, '\\$&');
+  }
+
+  // Convert an object to a cookie option string.
+  function convert(opts) {
+    var res = '';
+
+    for (var p in opts) {
+      if (opts.hasOwnProperty(p)) {
+
+        if (p === 'expires') {
+          var expires = opts[p];
+          if (typeof expires !== 'object') {
+            expires += typeof expires === 'number' ? 'D' : '';
+            expires = computeExpires(expires);
+          }
+          opts[p] = expires.toUTCString();
+        }
+
+        if (p === 'secure') {
+          if (opts[p]) {
+            res += ';' + p;
+          }
+
+          continue;
+        }
+
+        res += ';' + p + '=' + opts[p];
+      }
+    }
+
+    if (!opts.hasOwnProperty('path')) {
+      res += ';path=/';
+    }
+
+    return res;
+  }
+
+  // Return a future date by the given string.
+  function computeExpires(str) {
+    var expires = new Date();
+    var lastCh = str.charAt(str.length - 1);
+    var value = parseInt(str, 10);
+
+    switch (lastCh) {
+      case 'Y': expires.setFullYear(expires.getFullYear() + value); break;
+      case 'M': expires.setMonth(expires.getMonth() + value); break;
+      case 'D': expires.setDate(expires.getDate() + value); break;
+      case 'h': expires.setHours(expires.getHours() + value); break;
+      case 'm': expires.setMinutes(expires.getMinutes() + value); break;
+      case 's': expires.setSeconds(expires.getSeconds() + value); break;
+      default: expires = new Date(str);
+    }
+
+    return expires;
+  }
+
+  return Cookie;
+
+}));
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-axios/dist/vue-axios.es5.js":
 /*!******************************************************!*\
   !*** ./node_modules/vue-axios/dist/vue-axios.es5.js ***!
@@ -56792,6 +57091,57 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //# sourceMappingURL=vue-axios.es5.js.map
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/vue-cookie/src/vue-cookie.js":
+/*!***************************************************!*\
+  !*** ./node_modules/vue-cookie/src/vue-cookie.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function () {
+    Number.isInteger = Number.isInteger || function (value) {
+        return typeof value === 'number' &&
+            isFinite(value) &&
+            Math.floor(value) === value;
+    };
+    var Cookie = __webpack_require__(/*! tiny-cookie */ "./node_modules/tiny-cookie/tiny-cookie.js");
+
+    var VueCookie = {
+
+        install: function (Vue) {
+            Vue.prototype.$cookie = this;
+            Vue.cookie = this;
+        },
+        set: function (name, value, daysOrOptions) {
+            var opts = daysOrOptions;
+            if(Number.isInteger(daysOrOptions)) {
+                opts = {expires: daysOrOptions};
+            }
+            return Cookie.set(name, value, opts);
+        },
+
+        get: function (name) {
+            return Cookie.get(name);
+        },
+
+        delete: function (name, options) {
+            var opts = {expires: -1};
+            if(options !== undefined) {
+                opts = Object.assign(options, opts);
+            }
+            this.set(name, '', opts);
+        }
+    };
+
+    if (true) {
+        module.exports = VueCookie;
+    } else {}
+
+})();
+
 
 /***/ }),
 
@@ -56814,88 +57164,247 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      _c("form_registro"),
-      _vm._v(" "),
-      _c("form_inicio_sesion"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "nav",
-          {
-            staticClass:
-              "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
-            attrs: { id: "navbar-peludets" }
-          },
-          [
+      !_vm.session()
+        ? _c(
+            "div",
+            [
+              _c("form_registro"),
+              _vm._v(" "),
+              _c("form_inicio_sesion"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "nav",
+                  {
+                    staticClass:
+                      "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
+                    attrs: { id: "navbar-peludets" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "navbar-brand", attrs: { to: "/" } },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
+                            alt: "Peludets!"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "collapse navbar-collapse",
+                        attrs: { id: "navbarNav" }
+                      },
+                      [
+                        _c("ul", { staticClass: "navbar-nav mx-auto" }, [
+                          _c(
+                            "li",
+                            { staticClass: "nav-item" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "nav-link",
+                                  attrs: { to: "/explorador" }
+                                },
+                                [_vm._v("Explorador")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            { staticClass: "nav-item" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "nav-link",
+                                  attrs: { to: "/profesionales" }
+                                },
+                                [_vm._v("Profesionales")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._m(1)
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "navbar-brand",
+                            attrs: { to: "/login" }
+                          },
+                          [
+                            _c(
+                              "ul",
+                              { staticClass: "navbar-nav navbar-right" },
+                              [
+                                _c("li", { staticClass: "nav-item" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "btn btn-lila-peludets btn-sm mr-2",
+                                      attrs: {
+                                        id: "inicio-sesion",
+                                        type: "button",
+                                        "data-toggle": "modal",
+                                        "data-target": "#form-inicioSesion"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Iniciar sesión\n                "
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("li", { staticClass: "nav-item" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "btn btn-lila-peludets btn-sm",
+                                      attrs: {
+                                        id: "registro",
+                                        type: "button",
+                                        "data-toggle": "modal",
+                                        "data-target": "#form-registro"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Registrate!\n                "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            ],
+            1
+          )
+        : _c("div", [
             _c(
-              "router-link",
-              { staticClass: "navbar-brand", attrs: { to: "/" } },
-              [
-                _c("img", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
-                    alt: "Peludets!"
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
+              "nav",
               {
-                staticClass: "collapse navbar-collapse",
-                attrs: { id: "navbarNav" }
+                staticClass:
+                  "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
+                attrs: { id: "navbar-peludets" }
               },
               [
-                _c("ul", { staticClass: "navbar-nav mx-auto" }, [
-                  _c(
-                    "li",
-                    { staticClass: "nav-item" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { to: "/explorador" }
-                        },
-                        [_vm._v("Explorador")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    { staticClass: "nav-item" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { to: "/profesionales" }
-                        },
-                        [_vm._v("Profesionales")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _vm._m(1)
-                ]),
+                _vm._m(2),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "collapse navbar-collapse",
+                    attrs: { id: "navbarNav" }
+                  },
+                  [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "navbar-nav navbar-right",
+                        attrs: { id: "navbar-peludets-derecha" }
+                      },
+                      [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "dropdown-menu dropdown-menu-right text-center"
+                          },
+                          [
+                            _c("span", { staticClass: "dropdown-item-text" }, [
+                              _c("img", {
+                                staticClass: "rounded",
+                                attrs: {
+                                  id: "fotoDesplegable",
+                                  src: "sources/img/avatar.jfif",
+                                  alt: "Foto perfil"
+                                }
+                              }),
+                              _c(
+                                "span",
+                                { staticClass: "ml-3 font-weight-bold" },
+                                [_vm._v(_vm._s(_vm.user.nombre))]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(6),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "dropdown-divider" }),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdeown-item",
+                                attrs: {
+                                  href: "javascript:void(0)",
+                                  id: "perfil",
+                                  type: "button"
+                                }
+                              },
+                              [_vm._v("Perfil")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdown-item",
+                                attrs: {
+                                  href: "javascript:void(0)",
+                                  id: "tareas",
+                                  type: "button"
+                                }
+                              },
+                              [_vm._v("Tareas")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "dropdown-divider" }),
+                            _vm._v(" "),
+                            _vm._m(7)
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
               ]
             )
-          ],
-          1
-        )
-      ]),
+          ]),
       _vm._v(" "),
       _c("router-view"),
       _vm._v(" "),
-      _vm._m(3)
+      _vm._m(8)
     ],
     1
   )
@@ -56937,7 +57446,7 @@ var staticRenderFns = [
             "data-target": "#form-inicioSesion"
           }
         },
-        [_vm._v("\n              Iniciar sesión\n            ")]
+        [_vm._v("\n                Iniciar sesión\n              ")]
       ),
       _vm._v(" "),
       _c(
@@ -56951,7 +57460,7 @@ var staticRenderFns = [
             "data-target": "#form-registro"
           }
         },
-        [_vm._v("\n              Registrate!\n            ")]
+        [_vm._v("\n                Registrate!\n              ")]
       )
     ])
   },
@@ -56959,38 +57468,133 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "navbar-nav navbar-right" }, [
+    return _c("a", { attrs: { href: "javascript:void(0)", id: "home" } }, [
+      _c("img", {
+        attrs: { src: "sources/img/logo/logo.png", alt: "Peludets!" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarNav",
+          "aria-controls": "navbarNav",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("i", { staticClass: "fas fa-bars" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "navbar-nav mx-auto" }, [
       _c("li", { staticClass: "nav-item" }, [
         _c(
-          "button",
+          "a",
           {
-            staticClass: "btn btn-lila-peludets btn-sm mr-2",
-            attrs: {
-              id: "inicio-sesion",
-              type: "button",
-              "data-toggle": "modal",
-              "data-target": "#form-inicioSesion"
-            }
+            staticClass: "nav-link",
+            attrs: { href: "javascript:void(0)", id: "explorador" }
           },
-          [_vm._v("\n              Iniciar sesión\n            ")]
+          [_vm._v("Explorador")]
         )
       ]),
       _vm._v(" "),
       _c("li", { staticClass: "nav-item" }, [
         _c(
-          "button",
+          "a",
           {
-            staticClass: "btn btn-lila-peludets btn-sm",
-            attrs: {
-              id: "registro",
-              type: "button",
-              "data-toggle": "modal",
-              "data-target": "#form-registro"
-            }
+            staticClass: "nav-link",
+            attrs: { href: "javascript:void(0)", id: "profesionales" }
           },
-          [_vm._v("\n              Registrate!\n            ")]
+          [_vm._v("Profesionales")]
         )
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item d-md-none" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "?accio=Perfil" } }, [
+          _vm._v("Perfil")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item d-md-none" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "?accio=Tareas" } }, [
+          _vm._v("Tareas")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item d-md-none mx-auto" }, [
+        _c("span", { staticClass: "dropdown-item-text" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-danger-peludets",
+              attrs: { id: "desconectar", type: "button" }
+            },
+            [_vm._v("\n                Desconectar\n              ")]
+          )
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "dropdown-toggle",
+        attrs: {
+          "data-toggle": "dropdown",
+          "aria-haspopup": "true",
+          "aria-expanded": "false"
+        }
+      },
+      [
+        _c("img", {
+          staticClass: "rounded-circle",
+          attrs: { src: "sources/img/avatar.jfif", width: "100%" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "dropdown-item-text text-right" }, [
+      _c("i", { staticClass: "far fa-envelope mr-2" }),
+      _vm._v(" "),
+      _c("a", {
+        staticClass: "fas fa-cog",
+        attrs: { a: "", href: "javascript:void(0)", id: "editaPerfil" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "dropdown-item-text" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger-peludets",
+          attrs: { id: "desconectar", type: "button" }
+        },
+        [_vm._v("\n                Desconectar\n              ")]
+      )
     ])
   },
   function() {
@@ -57864,6 +58468,903 @@ var staticRenderFns = [
             ])
           ])
         ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Perfil.vue?vue&type=template&id=2e2d5c12&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Perfil.vue?vue&type=template&id=2e2d5c12& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-4" }, [
+      _c("div", { staticClass: "col-3 mt-2" }, [
+        _c("h3", { staticClass: "crema-peludets" }, [
+          _vm._v("Peticion de contrato")
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          { staticClass: "rounded", attrs: { id: "peticionTrabajo" } },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Tabajo")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "text", id: "peticionInfoTrabajo" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Tipo de mascota")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  attrs: { id: "peticionTipoMascota" }
+                },
+                [
+                  _c("option", [_vm._v("Perro")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Gato")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Roedor")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Reptil")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Pajaro")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("label", [_vm._v("Fecha Inicio")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "peticionFechaInicio" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("label", [_vm._v("Fecha Fin")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "peticionFechaFin" }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-verde-peludets",
+                attrs: { id: "enviarPeticionTrabajo" }
+              },
+              [_vm._v("\n        Enviar\n      ")]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12 mt-2" }, [
+          _c("h3", { staticClass: "crema-peludets" }, [
+            _vm._v("Disponibilidad")
+          ]),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "calendarioDispPerfil" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-9 mt-2" }, [
+        _c(
+          "ul",
+          {
+            staticClass: "nav nav-tabs",
+            attrs: { id: "myTab", role: "tablist" }
+          },
+          [
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link active",
+                  attrs: {
+                    id: "perfilUsuario-tab",
+                    "data-toggle": "tab",
+                    href: "#perfilUsuario",
+                    role: "tab",
+                    "aria-controls": "perfilUsuario",
+                    "aria-selected": "true"
+                  }
+                },
+                [_vm._v("Perfil")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: {
+                    id: "mascota-tab",
+                    "data-toggle": "tab",
+                    href: "#mascota",
+                    role: "tab",
+                    "aria-controls": "mascota",
+                    "aria-selected": "false"
+                  }
+                },
+                [_vm._v("Mascotas")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: {
+                    id: "valoraciones-tab",
+                    "data-toggle": "tab",
+                    href: "#valoraciones",
+                    role: "tab",
+                    "aria-controls": "valoraciones",
+                    "aria-selected": "false"
+                  }
+                },
+                [_vm._v("Valoraciones")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: {
+                    id: "edita-tab",
+                    "data-toggle": "tab",
+                    href: "#editaPerfilMascota",
+                    role: "tab",
+                    "aria-controls": "editaPerfilMascota",
+                    "aria-selected": "false"
+                  }
+                },
+                [_vm._v("Edita perfil mascota")]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "tab-content", attrs: { id: "myTabContent" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade show active",
+                attrs: {
+                  id: "perfilUsuario",
+                  role: "tabpanel",
+                  "aria-labelledby": "perfilUsuario-tab"
+                }
+              },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("form", { attrs: { method: "post" } }, [
+                    _c("div", {
+                      staticClass: "col-md-12",
+                      attrs: { id: "contenidoPerfil" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-lila-peludets btn-sm mt-2",
+                    attrs: { id: "editarPerfilTiny" }
+                  },
+                  [_vm._v("\n          Editar Perfil\n        ")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade",
+                attrs: {
+                  id: "mascota",
+                  role: "tabpanel",
+                  "aria-labelledby": "mascota-tab"
+                }
+              },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-3 mt-1 mr-2" }, [
+                    _c(
+                      "div",
+                      { staticClass: "card", staticStyle: { width: "18rem" } },
+                      [
+                        _c("img", {
+                          staticClass: "card-img-top",
+                          attrs: {
+                            src: "sources/img/corgi1-z.jpg",
+                            width: "286px",
+                            height: "286px",
+                            alt: "..."
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "card-body bg-crema-peludets" },
+                          [
+                            _c("h5", { staticClass: "card-title" }, [
+                              _vm._v("Cacahuete")
+                            ]),
+                            _vm._v(" "),
+                            _c("ul", [
+                              _c("li", [
+                                _c("i", { staticClass: "fas fa-dog" })
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [_vm._v("Corgi")]),
+                              _vm._v(" "),
+                              _c("li", [_vm._v("3 Años")]),
+                              _vm._v(" "),
+                              _c("li", [_vm._v("11 Kg")])
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 mt-1" }, [
+                    _c(
+                      "div",
+                      { staticClass: "card", staticStyle: { width: "18rem" } },
+                      [
+                        _c("img", {
+                          staticClass: "card-img-top",
+                          attrs: {
+                            src:
+                              "https://img3.wikia.nocookie.net/__cb20140801151543/howtotrainyourdragon/images/9/91/Toothless_k.png",
+                            width: "286px",
+                            height: "286px",
+                            alt: "..."
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "card-body bg-crema-peludets" },
+                          [
+                            _c("h5", { staticClass: "card-title" }, [
+                              _vm._v("Toothless")
+                            ]),
+                            _vm._v(" "),
+                            _c("ul", [
+                              _c("li", [
+                                _c("i", { staticClass: "fas fa-dragon" })
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [_vm._v("Night Fury")]),
+                              _vm._v(" "),
+                              _c("li", [_vm._v("20 Años")]),
+                              _vm._v(" "),
+                              _c("li", [_vm._v("805,585 Kg")])
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 mt-1 buttonmass" }, [
+                    _c("a", {
+                      staticClass: "fas fa-plus-circle buttonmas",
+                      attrs: {
+                        href: "",
+                        "data-toggle": "modal",
+                        "data-target": "#form-registroMascota"
+                      }
+                    })
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: { id: "form-registroMascota", role: "dialog" }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "modal-dialog modal-dialog-centered" },
+                    [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _c("div", { staticClass: "modal-header" }, [
+                          _c("div", { staticClass: "container-fluid" }, [
+                            _c("div", { staticClass: "col-md-12" }, [
+                              _c("h4", { staticClass: "modal-title" }, [
+                                _vm._v("Añade a tu Mascota")
+                              ])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-body" }, [
+                          _c(
+                            "form",
+                            {
+                              attrs: {
+                                action: "",
+                                method: "post",
+                                enctype: "multipart/form-data"
+                              }
+                            },
+                            [
+                              _c("div", { staticClass: "mb-3" }, [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-label",
+                                    attrs: { for: "" }
+                                  },
+                                  [_vm._v("Nombre")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "nombreMascota",
+                                    "aria-describedby": "emailHelp"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "mb-3" }, [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-label",
+                                    attrs: { for: "" }
+                                  },
+                                  [_vm._v("Especie")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "especieMascota",
+                                    "aria-describedby": "emailHelp"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "mb-3" }, [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-label",
+                                    attrs: { for: "" }
+                                  },
+                                  [_vm._v("Raza")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "razaMascota",
+                                    "aria-describedby": "emailHelp"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "mb-3" }, [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-label",
+                                    attrs: { for: "" }
+                                  },
+                                  [_vm._v("Tamaño")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "tamanoMascota",
+                                    "aria-describedby": "emailHelp"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "mb-3" }, [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-label",
+                                    attrs: { for: "" }
+                                  },
+                                  [_vm._v("Peso")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "pesoMascota",
+                                    "aria-describedby": "emailHelp"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "mb-3 btn btn-azul-peludets",
+                                  attrs: { id: "divFileMascota" }
+                                },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { id: "textoFile", for: "" } },
+                                    [_vm._v("Añade la foto de tu mascota")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass:
+                                      "form-control btn btn-azul-peludets",
+                                    attrs: {
+                                      name: "avatarMascota",
+                                      type: "file",
+                                      id: "updateFotoMascota"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-footer" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-azul-peludets",
+                              attrs: {
+                                id: "btn-registroMascota",
+                                type: "submit"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                  Registrala!\n                "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade",
+                attrs: {
+                  id: "valoraciones",
+                  role: "tabpanel",
+                  "aria-labelledby": "valoraciones-tab"
+                }
+              },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "rounded-pill col-md-3 mt-1 mr-1 border" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-4 mt-1" }, [
+                          _c("img", {
+                            staticClass: "rounded-circle",
+                            attrs: {
+                              src: "sources/img/adiestrador.jpg",
+                              width: "75px",
+                              height: "75px"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 mt-1" }, [
+                          _c("span", [_vm._v("Muy buena gente de zooooona")]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-12 mb-2" }, [
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "far fa-star" })
+                          ])
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "rounded-pill col-md-3 mt-1 mr-1 border" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-4 mt-1" }, [
+                          _c("img", {
+                            staticClass: "rounded-circle",
+                            attrs: {
+                              src: "sources/img/adiestrador.jpg",
+                              width: "75px",
+                              height: "75px"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 mt-1" }, [
+                          _c("span", [_vm._v("Muy buena gente de zooooona")]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-12 mb-2" }, [
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "far fa-star" })
+                          ])
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "rounded-pill col-md-3 mt-1 border" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-4 mt-1" }, [
+                          _c("img", {
+                            staticClass: "rounded-circle",
+                            attrs: {
+                              src: "sources/img/adiestrador.jpg",
+                              width: "75px",
+                              height: "75px"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 mt-1" }, [
+                          _c("span", [_vm._v("Muy buena gente de zooooona")]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-12 mb-2" }, [
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "far fa-star" })
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "rounded-pill col-md-3 mt-1 mr-1 border" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-4 mt-1" }, [
+                          _c("img", {
+                            staticClass: "rounded-circle",
+                            attrs: {
+                              src: "sources/img/adiestrador.jpg",
+                              width: "75px",
+                              height: "75px"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 mt-1" }, [
+                          _c("span", [_vm._v("Muy buena gente de zooooona")]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-12 mb-2" }, [
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "far fa-star" })
+                          ])
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "rounded-pill col-md-3 mt-1 mr-1 border" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-4 mt-1" }, [
+                          _c("img", {
+                            staticClass: "rounded-circle",
+                            attrs: {
+                              src: "sources/img/adiestrador.jpg",
+                              width: "75px",
+                              height: "75px"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 mt-1" }, [
+                          _c("span", [_vm._v("Muy buena gente de zooooona")]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-12 mb-2" }, [
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "far fa-star" })
+                          ])
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "rounded-pill col-md-3 mt-1 border" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-4 mt-1" }, [
+                          _c("img", {
+                            staticClass: "rounded-circle",
+                            attrs: {
+                              src: "sources/img/adiestrador.jpg",
+                              width: "75px",
+                              height: "75px"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 mt-1" }, [
+                          _c("span", [_vm._v("Muy buena gente de zooooona")]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-12 mb-2" }, [
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-star" }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "far fa-star" })
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane fade",
+                attrs: {
+                  id: "editaPerfilMascota",
+                  role: "tabpanel",
+                  "aria-labelledby": "edita-tab"
+                }
+              },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "row mt-4" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "container-sm" }, [
+                    _c("h3", { staticClass: "crema-peludets" }, [
+                      _vm._v("Edita los datos de tu mascota")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "form",
+                      {
+                        attrs: {
+                          action: "",
+                          method: "post",
+                          enctype: "multipart/form-data"
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "mb-3" }, [
+                          _c(
+                            "label",
+                            { staticClass: "form-label", attrs: { for: "" } },
+                            [_vm._v("Nombre")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "nombreMascota",
+                              "aria-describedby": "emailHelp"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mb-3" }, [
+                          _c(
+                            "label",
+                            { staticClass: "form-label", attrs: { for: "" } },
+                            [_vm._v("Especie")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "especieMascota",
+                              "aria-describedby": "emailHelp"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mb-3" }, [
+                          _c(
+                            "label",
+                            { staticClass: "form-label", attrs: { for: "" } },
+                            [_vm._v("Raza")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "razaMascota",
+                              "aria-describedby": "emailHelp"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mb-3" }, [
+                          _c(
+                            "label",
+                            { staticClass: "form-label", attrs: { for: "" } },
+                            [_vm._v("Tamaño")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "tamanoMascota",
+                              "aria-describedby": "emailHelp"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mb-3" }, [
+                          _c(
+                            "label",
+                            { staticClass: "form-label", attrs: { for: "" } },
+                            [_vm._v("Peso")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "pesoMascota",
+                              "aria-describedby": "emailHelp"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "mb-3 btn btn-azul-peludets",
+                            attrs: { id: "divFileMascota" }
+                          },
+                          [
+                            _c(
+                              "label",
+                              { attrs: { id: "textoFile", for: "" } },
+                              [_vm._v("Añade la foto de tu mascota")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control btn btn-azul-peludets",
+                              attrs: {
+                                name: "avatarMascota",
+                                type: "file",
+                                id: "updateFotoMascota"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn btn-azul-peludets",
+                            attrs: { id: "btn-updateMascota", type: "submit" }
+                          },
+                          [_vm._v("\n                Submit\n              ")]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
       ])
     ])
   }
@@ -61561,6 +63062,116 @@ if (inBrowser && window.Vue) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (VueRouter);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-session/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/vue-session/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var VueSession = {
+    key: 'vue-session-key',
+    flash_key: 'vue-session-flash-key',
+    setAll: function(all){
+        window.sessionStorage.setItem(VueSession.key,JSON.stringify(all));
+    }
+}
+
+VueSession.install = function(Vue, options) {
+    Vue.prototype.$session = {
+        flash: {
+            parent: function(){
+                return Vue.prototype.$session;
+            },
+            get: function(key){
+                var all = this.parent().getAll();
+                var all_flash = all[VueSession.flash_key] || {};
+
+                var flash_value = all_flash[key];
+
+                this.remove(key);
+
+                return flash_value;
+            },
+            set: function(key, value){
+                var all = this.parent().getAll();
+                var all_flash = all[VueSession.flash_key] || {};
+
+                all_flash[key] = value;
+                all[VueSession.flash_key] = all_flash;
+
+                VueSession.setAll(all);
+            },
+            remove: function(key){
+                var all = this.parent().getAll();
+                var all_flash = all[VueSession.flash_key] || {};
+
+                delete all_flash[key];
+
+                all[VueSession.flash_key] = all_flash;
+                VueSession.setAll(all);
+            }
+        },
+        getAll: function(){
+            var all = JSON.parse(window.sessionStorage.getItem(VueSession.key));
+            return all || {};
+        },
+        set: function(key,value){
+            if(key == 'session-id') return false;
+            var all = this.getAll();
+
+            if(!('session-id' in all)){
+                this.start();
+                all = this.getAll();
+            }
+
+            all[key] = value;
+
+            VueSession.setAll(all);
+        },
+        get: function(key){
+            var all = this.getAll();
+            return all[key];
+        },
+        start: function(){
+            var all = this.getAll();
+            all['session-id'] = 'sess:'+Date.now();
+
+            VueSession.setAll(all);
+        },
+        exists: function(){
+            var all = this.getAll();
+            return 'session-id' in all;
+        },
+        has: function(key){
+            var all = this.getAll();
+            return key in all;
+        },
+        remove: function(key){
+            var all = this.getAll();
+            delete all[key];
+
+            VueSession.setAll(all);
+        },
+        clear: function(){
+            var all = this.getAll();
+
+            VueSession.setAll({'session-id': all['session-id']});
+        },
+        destroy: function(){
+            VueSession.setAll({});
+        },
+        id: function(){
+            return this.get('session-id');
+        }
+    }
+};
+
+module.exports = VueSession;
 
 
 /***/ }),
@@ -86280,14 +87891,15 @@ module.exports = "/images/zorro-feliz.jpg?8c3637f298cb612868d8c12ba86d288a";
 /*!******************************!*\
   !*** ./resources/js/App.vue ***!
   \******************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=f348271a& */ "./resources/js/App.vue?vue&type=template&id=f348271a&");
 /* harmony import */ var _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js& */ "./resources/js/App.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ "./resources/js/App.vue?vue&type=style&index=0&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ "./resources/js/App.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -86319,7 +87931,7 @@ component.options.__file = "resources/js/App.vue"
 /*!*******************************************************!*\
   !*** ./resources/js/App.vue?vue&type=script&lang=js& ***!
   \*******************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -86384,10 +87996,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js");
 /* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! leaflet/dist/leaflet.css */ "./node_modules/leaflet/dist/leaflet.css");
 /* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var vue_session__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-session */ "./node_modules/vue-session/index.js");
+/* harmony import */ var vue_session__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_session__WEBPACK_IMPORTED_MODULE_9__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
+var VueCookie = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
 
 
 
@@ -86396,8 +88011,15 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
+
+
+
+Vue.use(vue_session__WEBPACK_IMPORTED_MODULE_9___default.a, {
+  persist: true
+});
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]);
-Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_4___default.a, axios__WEBPACK_IMPORTED_MODULE_5___default.a); // Mapa
+Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_4___default.a, axios__WEBPACK_IMPORTED_MODULE_5___default.a);
+Vue.use(VueCookie); // Mapa
 
 Vue.component('l-map', vue2_leaflet__WEBPACK_IMPORTED_MODULE_7__["LMap"]);
 Vue.component('l-title-layer', vue2_leaflet__WEBPACK_IMPORTED_MODULE_7__["LTileLayer"]);
@@ -86415,7 +88037,9 @@ var app = new Vue({
   render: function render(h) {
     return h(_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   }
-});
+}); //Vue.cookie.set("user","hola");
+
+console.log(Vue.cookie.get("user")); //console.log(Vue.prototype.$session.get("user"));
 
 /***/ }),
 
@@ -86760,6 +88384,96 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Perfil.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Perfil.vue ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Perfil_vue_vue_type_template_id_2e2d5c12___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Perfil.vue?vue&type=template&id=2e2d5c12& */ "./resources/js/components/Perfil.vue?vue&type=template&id=2e2d5c12&");
+/* harmony import */ var _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Perfil.vue?vue&type=script&lang=js& */ "./resources/js/components/Perfil.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Perfil.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Perfil.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Perfil_vue_vue_type_template_id_2e2d5c12___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Perfil_vue_vue_type_template_id_2e2d5c12___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Perfil.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Perfil.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Perfil.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Perfil.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Perfil.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Perfil.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/Perfil.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Perfil.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Perfil.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Perfil.vue?vue&type=template&id=2e2d5c12&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Perfil.vue?vue&type=template&id=2e2d5c12& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_template_id_2e2d5c12___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Perfil.vue?vue&type=template&id=2e2d5c12& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Perfil.vue?vue&type=template&id=2e2d5c12&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_template_id_2e2d5c12___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Perfil_vue_vue_type_template_id_2e2d5c12___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Profesionales.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/Profesionales.vue ***!
@@ -86990,6 +88704,10 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [{
   name: 'home',
   path: '/',
+  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+}, {
+  name: 'login',
+  path: '/login',
   component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   name: 'explorador',
