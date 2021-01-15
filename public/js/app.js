@@ -1899,307 +1899,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/App.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/App.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      user: []
-    };
-  },
-  methods: {
-    session: function session() {
-      if (Vue.prototype.$session.has("user")) {
-        this.user = Vue.$session.get("user");
-        Vue.cookie.set();
-        return true;
-      }
-
-      return false;
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Explorador.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Explorador.vue?vue&type=script&lang=js& ***!
@@ -3008,6 +2707,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3031,6 +2733,34 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+
+function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation) {
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    var img = new Image();
+    img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+    output.appendChild(img);
+  }
+
+  ;
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  }
+
+  ;
+  output.innerHTML = "<p>Locating…</p>";
+  navigator.geolocation.getCurrentPosition(success, error);
+}
 
 /***/ }),
 
@@ -57500,148 +57230,14 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      !_vm.session()
-        ? _c(
-            "div",
-            [
-              _c("form_registro"),
-              _vm._v(" "),
-              _c("form_inicio_sesion"),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "nav",
-                  {
-                    staticClass:
-                      "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
-                    attrs: { id: "navbar-peludets" }
-                  },
-                  [
-                    _c(
-                      "router-link",
-                      { staticClass: "navbar-brand", attrs: { to: "/" } },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
-                            alt: "Peludets!"
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "collapse navbar-collapse",
-                        attrs: { id: "navbarNav" }
-                      },
-                      [
-                        _c("ul", { staticClass: "navbar-nav mx-auto" }, [
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/explorador" }
-                                },
-                                [_vm._v("Explorador")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/profesionales" }
-                                },
-                                [_vm._v("Profesionales")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _vm._m(1)
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "navbar-brand",
-                            attrs: { to: "/login" }
-                          },
-                          [
-                            _c(
-                              "ul",
-                              { staticClass: "navbar-nav navbar-right" },
-                              [
-                                _c("li", { staticClass: "nav-item" }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "btn btn-lila-peludets btn-sm mr-2",
-                                      attrs: {
-                                        id: "inicio-sesion",
-                                        type: "button",
-                                        "data-toggle": "modal",
-                                        "data-target": "#form-inicioSesion"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                  Iniciar sesión\n                "
-                                      )
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("li", { staticClass: "nav-item" }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "btn btn-lila-peludets btn-sm",
-                                      attrs: {
-                                        id: "registro",
-                                        type: "button",
-                                        "data-toggle": "modal",
-                                        "data-target": "#form-registro"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                  Registrate!\n                "
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ]
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ])
-            ],
-            1
-          )
-        : _c("div", [
+      _c(
+        "div",
+        [
+          _c("form_registro"),
+          _vm._v(" "),
+          _c("form_inicio_sesion"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
             _c(
               "nav",
               {
@@ -57650,9 +57246,20 @@ var render = function() {
                 attrs: { id: "navbar-peludets" }
               },
               [
-                _vm._m(2),
+                _c(
+                  "router-link",
+                  { staticClass: "navbar-brand", attrs: { to: "/" } },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
+                        alt: "Peludets!"
+                      }
+                    })
+                  ]
+                ),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(0),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -57661,86 +57268,104 @@ var render = function() {
                     attrs: { id: "navbarNav" }
                   },
                   [
-                    _vm._m(4),
+                    _c("ul", { staticClass: "navbar-nav mx-auto" }, [
+                      _c(
+                        "li",
+                        { staticClass: "nav-item" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "nav-link",
+                              attrs: { to: "/explorador" }
+                            },
+                            [_vm._v("Explorador")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        { staticClass: "nav-item" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "nav-link",
+                              attrs: { to: "/profesionales" }
+                            },
+                            [_vm._v("Profesionales")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm._m(1)
+                    ]),
                     _vm._v(" "),
                     _c(
-                      "div",
-                      {
-                        staticClass: "navbar-nav navbar-right",
-                        attrs: { id: "navbar-peludets-derecha" }
-                      },
+                      "router-link",
+                      { staticClass: "navbar-brand", attrs: { to: "/login" } },
                       [
-                        _vm._m(5),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "dropdown-menu dropdown-menu-right text-center"
-                          },
-                          [
-                            _c("span", { staticClass: "dropdown-item-text" }, [
-                              _c("img", {
-                                staticClass: "rounded",
-                                attrs: {
-                                  id: "fotoDesplegable",
-                                  src: "sources/img/avatar.jfif",
-                                  alt: "Foto perfil"
-                                }
-                              }),
-                              _c(
-                                "span",
-                                { staticClass: "ml-3 font-weight-bold" },
-                                [_vm._v(_vm._s(_vm.user.nombre))]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(6),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "dropdown-divider" }),
-                            _vm._v(" "),
+                        _c("ul", { staticClass: "navbar-nav navbar-right" }, [
+                          _c("li", { staticClass: "nav-item" }, [
                             _c(
-                              "a",
+                              "button",
                               {
-                                staticClass: "dropdeown-item",
+                                staticClass:
+                                  "btn btn-lila-peludets btn-sm mr-2",
                                 attrs: {
-                                  href: "javascript:void(0)",
-                                  id: "perfil",
-                                  type: "button"
+                                  id: "inicio-sesion",
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target": "#form-inicioSesion"
                                 }
                               },
-                              [_vm._v("Perfil")]
-                            ),
-                            _vm._v(" "),
+                              [
+                                _vm._v(
+                                  "\n                  Iniciar sesión\n                "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "nav-item" }, [
                             _c(
-                              "a",
+                              "button",
                               {
-                                staticClass: "dropdown-item",
+                                staticClass: "btn btn-lila-peludets btn-sm",
                                 attrs: {
-                                  href: "javascript:void(0)",
-                                  id: "tareas",
-                                  type: "button"
+                                  id: "registro",
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target": "#form-registro"
                                 }
                               },
-                              [_vm._v("Tareas")]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "dropdown-divider" }),
-                            _vm._v(" "),
-                            _vm._m(7)
-                          ]
-                        )
+                              [
+                                _vm._v(
+                                  "\n                  Registrate!\n                "
+                                )
+                              ]
+                            )
+                          ])
+                        ])
                       ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ]
+              ],
+              1
             )
-          ]),
+          ])
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("router-view"),
       _vm._v(" "),
-      _vm._m(8)
+      _vm._m(2)
     ],
     1
   )
@@ -57797,139 +57422,6 @@ var staticRenderFns = [
           }
         },
         [_vm._v("\n                Registrate!\n              ")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "javascript:void(0)", id: "home" } }, [
-      _c("img", {
-        attrs: { src: "sources/img/logo/logo.png", alt: "Peludets!" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarNav",
-          "aria-controls": "navbarNav",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("i", { staticClass: "fas fa-bars" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "navbar-nav mx-auto" }, [
-      _c("li", { staticClass: "nav-item" }, [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: { href: "javascript:void(0)", id: "explorador" }
-          },
-          [_vm._v("Explorador")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "nav-item" }, [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: { href: "javascript:void(0)", id: "profesionales" }
-          },
-          [_vm._v("Profesionales")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "nav-item d-md-none" }, [
-        _c("a", { staticClass: "nav-link", attrs: { href: "?accio=Perfil" } }, [
-          _vm._v("Perfil")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "nav-item d-md-none" }, [
-        _c("a", { staticClass: "nav-link", attrs: { href: "?accio=Tareas" } }, [
-          _vm._v("Tareas")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "nav-item d-md-none mx-auto" }, [
-        _c("span", { staticClass: "dropdown-item-text" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger-peludets",
-              attrs: { id: "desconectar", type: "button" }
-            },
-            [_vm._v("\n                Desconectar\n              ")]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-toggle",
-        attrs: {
-          "data-toggle": "dropdown",
-          "aria-haspopup": "true",
-          "aria-expanded": "false"
-        }
-      },
-      [
-        _c("img", {
-          staticClass: "rounded-circle",
-          attrs: { src: "sources/img/avatar.jfif", width: "100%" }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "dropdown-item-text text-right" }, [
-      _c("i", { staticClass: "far fa-envelope mr-2" }),
-      _vm._v(" "),
-      _c("a", {
-        staticClass: "fas fa-cog",
-        attrs: { a: "", href: "javascript:void(0)", id: "editaPerfil" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "dropdown-item-text" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-danger-peludets",
-          attrs: { id: "desconectar", type: "button" }
-        },
-        [_vm._v("\n                Desconectar\n              ")]
       )
     ])
   },
@@ -59925,6 +59417,19 @@ var staticRenderFns = [
           ]
         )
       ]),
+      _vm._v(" "),
+      _c("p", [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-block btn-lg btn-dark mt-4",
+            attrs: { onclick: "geoFindMe()" }
+          },
+          [_vm._v("Show my location")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "out" } }),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-1 col-xs-12" })
     ])
@@ -88123,19 +87628,17 @@ module.exports = "/images/zorro-feliz.jpg?8c3637f298cb612868d8c12ba86d288a";
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=f348271a& */ "./resources/js/App.vue?vue&type=template&id=f348271a&");
-/* harmony import */ var _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js& */ "./resources/js/App.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ "./resources/js/App.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ "./resources/js/App.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-
-
+var script = {}
 
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  script,
   _App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__["render"],
   _App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -88149,20 +87652,6 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/App.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/App.vue?vue&type=script&lang=js&":
-/*!*******************************************************!*\
-  !*** ./resources/js/App.vue?vue&type=script&lang=js& ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib??ref--4-0!../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/App.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
