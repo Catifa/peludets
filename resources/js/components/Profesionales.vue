@@ -62,12 +62,12 @@
 <div id="templates" name="profesionales" class="row col-md-12 col-xs-12" v-for="usuario in usuarios" :key="usuario.dni">
     <div class="card border border-dark col-md-2 mt-2 ml-2 id" mierda_Aitor="id">
     <a href="#" class="stretched-link id" >Ver Perfil </a>
-        <img class="card-img-top foto" src="sources/img/" height="100%" width="100%">
+        <img class="card-img-top foto" src="resources/img/carousel/slide1.jpg" height="50%" width="50%">
        
         <div class="card-body">                           
-                <h6 class="card_name card_attr">{{usuario.nombre}}</h6>
-                <h6 class="card_surname card_attr">{{usuario.apellido}}</h6>
-                <h6 class="card_age card_attr">{{usuario.nombre}}</h6>
+                <h6 class="card_name card_attr">erick{{usuario.nombre}}</h6>
+                <h6 class="card_surname card_attr"><p>  esta </p>{{usuario.apellido}}</h6>
+                <h6 class="card_age card_attr">aqui</h6>
         </div>
     </div>
 </div>

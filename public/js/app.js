@@ -57923,20 +57923,25 @@ var render = function() {
                 _vm._v(" "),
                 _c("img", {
                   staticClass: "card-img-top foto",
-                  attrs: { src: "sources/img/", height: "100%", width: "100%" }
+                  attrs: {
+                    src: "resources/img/carousel/slide1.jpg",
+                    height: "50%",
+                    width: "50%"
+                  }
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
                   _c("h6", { staticClass: "card_name card_attr" }, [
-                    _vm._v(_vm._s(usuario.nombre))
+                    _vm._v("erick" + _vm._s(usuario.nombre))
                   ]),
                   _vm._v(" "),
                   _c("h6", { staticClass: "card_surname card_attr" }, [
+                    _c("p", [_vm._v("  esta ")]),
                     _vm._v(_vm._s(usuario.apellido))
                   ]),
                   _vm._v(" "),
                   _c("h6", { staticClass: "card_age card_attr" }, [
-                    _vm._v(_vm._s(usuario.nombre))
+                    _vm._v("aqui")
                   ])
                 ])
               ]
