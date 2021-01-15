@@ -12,6 +12,7 @@ import {routes} from './routes';
 import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 
