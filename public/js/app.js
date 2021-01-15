@@ -1945,7 +1945,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      sitiosInteres: [{
+        nombre: 'Pinar de Badia',
+        descripcion: 'Parque guapisimo para ir con el perro',
+        primeraCoordenada: '41.50675',
+        segundaCoordenada: '2.1136'
+      }, {
+        nombre: 'Plaça 2 de Maig',
+        descripcion: 'Parque verificado por Aitor',
+        primeraCoordenada: '41.50971',
+        segundaCoordenada: '2.11469'
+      }, {
+        nombre: 'Parc Joan Aguilar',
+        descripcion: 'Parque que tiene columpios',
+        primeraCoordenada: '41.50768',
+        segundaCoordenada: '2.11526'
+      }]
+    };
+  }
+});
 
 /***/ }),
 
@@ -2815,7 +2840,6 @@ __webpack_require__.r(__webpack_exports__);
       center: Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(41.5105, 2.1158),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      parquePerros: Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(41.50670, 2.11393),
       currentZoom: 11.5,
       currentCenter: Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(41.5105, 2.1158),
       showParagraph: false,
@@ -57548,7 +57572,57 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "row" },
-    [_c("mapa-exp"), _vm._v(" "), _vm._m(0)],
+    [
+      _c("mapa-exp"),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 mt-3 mx-auto" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row mt-3" },
+          _vm._l(_vm.sitiosInteres, function(sitio) {
+            return _c("div", { key: sitio.nombre, staticClass: "card-group" }, [
+              _c("div", { staticClass: "card bg-light" }, [
+                _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: { alt: "Imagen" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(
+                      "\n              " +
+                        _vm._s(sitio.nombre) +
+                        "\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(sitio.descripcion) +
+                        "\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "cart-text" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(sitio.primeraCoordenada) +
+                        " - " +
+                        _vm._s(sitio.segundaCoordenada) +
+                        " \n            "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          }),
+          0
+        )
+      ])
+    ],
     1
   )
 }
@@ -57557,75 +57631,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 mt-3 mx-auto" }, [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-lila-peludets mr-2",
-            attrs: { id: "exploradorInteres", type: "button" }
-          },
-          [_vm._v("Sitios de interés")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-lila-peludets",
-            attrs: { id: "exploradorTrabajos", type: "button" }
-          },
-          [_vm._v("Trabajos disponibles")]
-        )
-      ]),
+    return _c("div", { staticClass: "row" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-lila-peludets mr-2",
+          attrs: { id: "exploradorInteres", type: "button" }
+        },
+        [_vm._v("Sitios de interés")]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "card-group" }, [
-          _c("div", { staticClass: "card bg-light" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { alt: "Card image cap" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card bg-light" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { alt: "Card image cap" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "This card has supporting text below as a natural lead-in to additional content."
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card bg-light" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { alt: "Card image cap" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action."
-                )
-              ])
-            ])
-          ])
-        ])
-      ])
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-lila-peludets",
+          attrs: { id: "exploradorTrabajos", type: "button" }
+        },
+        [_vm._v("Trabajos disponibles")]
+      )
     ])
   }
 ]
@@ -59651,66 +59674,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "col-md-5 mt-3 mx-auto", attrs: { id: "mapa" } },
-    [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-lila-peludets",
-          on: {
-            click: function($event) {
-              _vm.showMap = !_vm.showMap
-            }
-          }
-        },
-        [_vm._v("\n    Mostrar/Ocultar Mapa\n  ")]
-      ),
-      _vm._v(" "),
-      _vm.showMap
-        ? _c(
-            "l-map",
-            {
-              staticClass: "mt-3",
-              staticStyle: { height: "80%" },
-              attrs: {
-                zoom: _vm.zoom,
-                center: _vm.center,
-                options: _vm.mapOptions
-              },
-              on: {
-                "update:center": _vm.centerUpdate,
-                "update:zoom": _vm.zoomUpdate
-              }
-            },
-            [
-              _c("l-tile-layer", { attrs: { url: _vm.url } }),
-              _vm._v(" "),
-              _c(
-                "l-marker",
-                { attrs: { "lat-lng": _vm.parquePerros } },
-                [
-                  _c("l-popup", [
-                    _vm._v("Parque guapisimo para ir con el perro")
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
-        : _vm._e()
-    ],
-    1
-  )
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 
