@@ -3,7 +3,7 @@
 </style>
 <template>
 <div class="row">
-  <Mapa />
+  <mapa-exp></mapa-exp>
   <div class="col-md-6 mt-3 mx-auto">
         <div class="row">
             <button class="btn btn-lila-peludets mr-2" id="exploradorInteres" type="button">Sitios de interés</button>
@@ -36,11 +36,7 @@
 </template>
 
 <script>
-import Mapa from './components-subparts/Explorador_mapa.vue';
 export default {
-  name: 'App',
-  components: {
-    Mapa
-  }
+  
 };
 </script>
