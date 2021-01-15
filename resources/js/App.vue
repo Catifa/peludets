@@ -6,7 +6,7 @@
  
 <template>
   <div class="container-fluid">
-    <div v-if="!session()">
+    <div>
       <!-- Sin sesion -->
       <!--Formulario registro -->
       <form_registro></form_registro>
@@ -99,119 +99,7 @@
         </nav>
       </div>
     </div>
-    <div v-else>
-      <!-- Con sesion -->
-      <nav
-        id="navbar-peludets"
-        class="container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets"
-      >
-        <a href="javascript:void(0)" id="home"
-          ><img src="sources/img/logo/logo.png" alt="Peludets!"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)" id="explorador"
-                >Explorador</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)" id="profesionales"
-                >Profesionales</a
-              >
-            </li>
-            <li class="nav-item d-md-none">
-              <a class="nav-link" href="?accio=Perfil">Perfil</a>
-            </li>
-            <li class="nav-item d-md-none">
-              <a class="nav-link" href="?accio=Tareas">Tareas</a>
-            </li>
-            <li class="nav-item d-md-none mx-auto">
-              <span class="dropdown-item-text"
-                ><button
-                  class="btn btn-danger-peludets"
-                  id="desconectar"
-                  type="button"
-                >
-                  Desconectar
-                </button></span
-              >
-            </li>
-          </ul>
-          <div id="navbar-peludets-derecha" class="navbar-nav navbar-right">
-            <a
-              class="dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <!-- Foto de usuaio -->
-              <img
-                src="sources/img/avatar.jfif"
-                class="rounded-circle"
-                width="100%"
-              />
-            </a>
-            <div class="dropdown-menu dropdown-menu-right text-center">
-              <span class="dropdown-item-text">
-                <img
-                  id="fotoDesplegable"
-                  src="sources/img/avatar.jfif"
-                  class="rounded"
-                  alt="Foto perfil"
-                /><span class="ml-3 font-weight-bold">{{ user.nombre }}</span>
-              </span>
-              <span class="dropdown-item-text text-right">
-                <i class="far fa-envelope mr-2"></i>
-                <a
-                  a
-                  href="javascript:void(0)"
-                  id="editaPerfil"
-                  class="fas fa-cog"
-                ></a>
-              </span>
-              <div class="dropdown-divider"></div>
-              <a
-                href="javascript:void(0)"
-                id="perfil"
-                class="dropdeown-item"
-                type="button"
-                >Perfil</a
-              >
-              <a
-                href="javascript:void(0)"
-                id="tareas"
-                class="dropdown-item"
-                type="button"
-                >Tareas</a
-              >
-
-              <div class="dropdown-divider"></div>
-              <span class="dropdown-item-text"
-                ><button
-                  class="btn btn-danger-peludets"
-                  id="desconectar"
-                  type="button"
-                >
-                  Desconectar
-                </button></span
-              >
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
+    
     <router-view></router-view>
 
     <!-- Footer -->
@@ -268,23 +156,3 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data: function () {
-    return {
-      user: [],
-    };
-  },
-  methods: {
-    session() {
-      if (Vue.prototype.$session.has("user")) {
-        this.user = Vue.$session.get("user");
-        Vue.cookie.set()
-        return true;
-      }
-      return false;
-    },
-  },
-};
-</script>
