@@ -10,6 +10,11 @@ import axios from 'axios';
 import {routes} from './routes';
 import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
+import FullCalendar from 'vue-full-calendar';
+
+
+//calendario
+Vue.use(FullCalendar)
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
