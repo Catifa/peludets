@@ -4,6 +4,7 @@ window.Vue = require('vue');
 import App from './App.vue';
 import Form_Registro from './components/Form_Registro.vue';
 import Form_Inicio_Sesion from './components/Form_Inicio_Sesion.vue';
+import MapaExplorador from './components/components-subparts/Explorador_mapa.vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
@@ -11,10 +12,12 @@ import {routes} from './routes';
 import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 
-// Mapa
+// Mapa Explorador
+Vue.component('mapa-exp', MapaExplorador);
 Vue.component('l-map', LMap);
 Vue.component('l-title-layer', LTileLayer);
 Vue.component('l-maker', LMarker);
