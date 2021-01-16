@@ -80,7 +80,7 @@
             <div class="modal-footer">
                <button id="cerrarModal" type="submit" class="btn btn-danger" value="">Cerrar</button>
             </div>
-            </form>
+
          </div>
       </div>
    </div>
