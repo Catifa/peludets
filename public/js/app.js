@@ -2794,76 +2794,9 @@ function geoFindMe() {
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/components-subparts/Explorador_mapa.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
-/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "MapaExplorador",
-  components: {
-    LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMap"],
-    LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTileLayer"],
-    LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMarker"],
-    LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LPopup"],
-    LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTooltip"]
-  },
-  data: function data() {
-    return {
-      zoom: 15,
-      center: Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(41.5105, 2.1158),
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      currentZoom: 11.5,
-      currentCenter: Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(41.5105, 2.1158),
-      showParagraph: false,
-      mapOptions: {
-        zoomSnap: 0.5
-      },
-      showMap: true
-    };
-  },
-  methods: {
-    zoomUpdate: function zoomUpdate(zoom) {
-      this.currentZoom = zoom;
-    },
-    centerUpdate: function centerUpdate(center) {
-      this.currentCenter = center;
-    },
-    showLongText: function showLongText() {
-      this.showParagraph = !this.showParagraph;
-    },
-    innerClick: function innerClick() {
-      alert(this.showParagraph);
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\Documents\\Git\\peludets\\resources\\js\\components\\components-subparts\\Explorador_mapa.vue: Invalid left-hand side in assignment expression (42:6)\n\n  40 |   methods: {\n  41 |     mostrarMapa: (this) => {\n> 42 |       this = !this;\n     |       ^\n  43 |       if (this) {\n  44 |         let propTexto = { val: showMap, texto: \"Mostrar\" };\n  45 |         console.log(propTexto);\n    at Parser._raise (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:748:17)\n    at Parser.raiseWithData (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:741:17)\n    at Parser.raise (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:735:17)\n    at Parser.checkLVal (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9637:16)\n    at Parser.parseMaybeAssign (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9948:12)\n    at Parser.parseExpressionBase (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9871:23)\n    at D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9865:39\n    at Parser.allowInAnd (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11547:12)\n    at Parser.parseExpression (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9865:17)\n    at Parser.parseStatementContent (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11807:23)\n    at Parser.parseStatement (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11676:17)\n    at Parser.parseBlockOrModuleBlockBody (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12258:25)\n    at Parser.parseBlockBody (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12249:10)\n    at Parser.parseBlock (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12233:10)\n    at Parser.parseFunctionBody (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11221:24)\n    at Parser.parseArrowExpression (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11193:10)\n    at Parser.parseParenAndDistinguishExpression (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10766:12)\n    at Parser.parseExprAtom (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10470:21)\n    at Parser.parseExprSubscripts (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)\n    at Parser.parseUpdate (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10130:21)\n    at Parser.parseMaybeUnary (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10119:17)\n    at Parser.parseExprOps (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9989:23)\n    at Parser.parseMaybeConditional (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9963:23)\n    at Parser.parseMaybeAssign (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9926:21)\n    at D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9893:39\n    at Parser.allowInAnd (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11547:12)\n    at Parser.parseMaybeAssignAllowIn (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9893:17)\n    at Parser.parseObjectProperty (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11092:101)\n    at Parser.parseObjPropValue (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11117:100)\n    at Parser.parsePropertyDefinition (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11041:10)\n    at Parser.parseObjectLike (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10931:25)\n    at Parser.parseExprAtom (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10491:23)\n    at Parser.parseExprSubscripts (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)\n    at Parser.parseUpdate (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10130:21)\n    at Parser.parseMaybeUnary (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10119:17)\n    at Parser.parseExprOps (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9989:23)");
 
 /***/ }),
 
@@ -57573,7 +57506,7 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _c("mapa-exp"),
+      _c("mapa-exp", { attrs: { latitudes: "sitiosInteres" } }),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6 mt-3 mx-auto" }, [
         _vm._m(0),
@@ -59674,8 +59607,27 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "col-md-5 mt-3 mx-auto", attrs: { id: "mapa" } },
+    [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-lila-peludets",
+          on: { click: _vm.mostrarMapa }
+        },
+        [_vm._v("\n     Mapa\n  ")]
+      )
+    ]
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -88419,13 +88371,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! C:\xampp\htdocs\pldts\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\pldts\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\D\Daw\2Daw\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\D\Daw\2Daw\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> f592cdcf752f10566087c5a40d3b04a4fd1c99e0
+__webpack_require__(/*! D:\Documents\Git\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Documents\Git\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -3,7 +3,7 @@
 </style>
 <template>
   <div class="row">
-    <mapa-exp></mapa-exp>
+    <mapa-exp latitudes="sitiosInteres"></mapa-exp>
     <div class="col-md-6 mt-3 mx-auto">
       <div class="row">
         <button
