@@ -156,3 +156,27 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      usuario: {},
+    }
+  
+  },
+  methods: {
+    recuperarSession() {
+        this.axios
+        .get("http://localhost:8000/api/session/get")
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error))
+        .finally(() => (this.loading = false));
+    },
+  },
+    beforeMount(){
+      this.recuperarSession();
+    }
+};
+</script>
