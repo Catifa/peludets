@@ -2136,30 +2136,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       sitiosInteres: [{
-        nombre: 'Pinar de Badia',
-        descripcion: 'Parque guapisimo para ir con el perro',
-        primeraCoordenada: '41.50675',
-        segundaCoordenada: '2.1136'
+        nombre: "Pinar de Badia",
+        descripcion: "Parque guapisimo para ir con el perro",
+        primeraCoordenada: "41.50675",
+        segundaCoordenada: "2.1136"
       }, {
-        nombre: 'Plaça 2 de Maig',
-        descripcion: 'Parque verificado por Aitor',
-        primeraCoordenada: '41.50971',
-        segundaCoordenada: '2.11469'
+        nombre: "Plaça 2 de Maig",
+        descripcion: "Parque verificado por Aitor",
+        primeraCoordenada: "41.50971",
+        segundaCoordenada: "2.11469"
       }, {
-        nombre: 'Parc Joan Aguilar',
-        descripcion: 'Parque que tiene columpios',
-        primeraCoordenada: '41.50768',
-        segundaCoordenada: '2.11526'
+        nombre: "Parc Joan Aguilar",
+        descripcion: "Parque que tiene columpios",
+        primeraCoordenada: "41.50768",
+        segundaCoordenada: "2.11526"
       }]
     };
   }
@@ -3076,9 +3070,99 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/components-subparts/Explorador_mapa.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\Documents\\Git\\peludets\\resources\\js\\components\\components-subparts\\Explorador_mapa.vue: Invalid left-hand side in assignment expression (42:6)\n\n  40 |   methods: {\n  41 |     mostrarMapa: (this) => {\n> 42 |       this = !this;\n     |       ^\n  43 |       if (this) {\n  44 |         let propTexto = { val: showMap, texto: \"Mostrar\" };\n  45 |         console.log(propTexto);\n    at Parser._raise (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:748:17)\n    at Parser.raiseWithData (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:741:17)\n    at Parser.raise (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:735:17)\n    at Parser.checkLVal (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9637:16)\n    at Parser.parseMaybeAssign (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9948:12)\n    at Parser.parseExpressionBase (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9871:23)\n    at D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9865:39\n    at Parser.allowInAnd (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11547:12)\n    at Parser.parseExpression (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9865:17)\n    at Parser.parseStatementContent (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11807:23)\n    at Parser.parseStatement (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11676:17)\n    at Parser.parseBlockOrModuleBlockBody (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12258:25)\n    at Parser.parseBlockBody (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12249:10)\n    at Parser.parseBlock (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12233:10)\n    at Parser.parseFunctionBody (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11221:24)\n    at Parser.parseArrowExpression (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11193:10)\n    at Parser.parseParenAndDistinguishExpression (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10766:12)\n    at Parser.parseExprAtom (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10470:21)\n    at Parser.parseExprSubscripts (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)\n    at Parser.parseUpdate (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10130:21)\n    at Parser.parseMaybeUnary (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10119:17)\n    at Parser.parseExprOps (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9989:23)\n    at Parser.parseMaybeConditional (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9963:23)\n    at Parser.parseMaybeAssign (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9926:21)\n    at D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9893:39\n    at Parser.allowInAnd (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11547:12)\n    at Parser.parseMaybeAssignAllowIn (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9893:17)\n    at Parser.parseObjectProperty (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11092:101)\n    at Parser.parseObjPropValue (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11117:100)\n    at Parser.parsePropertyDefinition (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11041:10)\n    at Parser.parseObjectLike (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10931:25)\n    at Parser.parseExprAtom (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10491:23)\n    at Parser.parseExprSubscripts (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)\n    at Parser.parseUpdate (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10130:21)\n    at Parser.parseMaybeUnary (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10119:17)\n    at Parser.parseExprOps (D:\\Documents\\Git\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9989:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "MapaExplorador",
+  components: {
+    LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMap"],
+    LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTileLayer"],
+    LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMarker"],
+    LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LPopup"],
+    LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTooltip"],
+    LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LIcon"]
+  },
+  data: function data() {
+    return {
+      // Ajustes Mapa
+      zoom: 16,
+      center: [41.50546, 2.11775],
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      markers: [leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.latLng(41.50677, 2.11371), leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.latLng(41.50601, 2.12021), leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.latLng(41.50755, 2.11537), leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.latLng(41.5095, 2.11505)],
+      popups: ["Parque para perros 1", "Parque para perros 2", "Parque para perros 3", "Parque para perros 4"],
+      icon: leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.icon({
+        iconUrl: "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png",
+        iconSize: [32, 37],
+        iconAnchor: [16, 37]
+      }),
+      showMap: true
+    };
+  },
+  computed: {
+    dynamicSize: function dynamicSize() {
+      return [this.iconSize, this.iconSize * 1.15];
+    },
+    dynamicAnchor: function dynamicAnchor() {
+      return [this.iconSize / 2, this.iconSize * 1.15];
+    }
+  },
+  methods: {
+    updateZoom: function updateZoom(zoom) {
+      this.zoom = zoom;
+    },
+    updateCenter: function updateCenter(center) {
+      this.center = center;
+    },
+    mostrarMapa: function mostrarMapa(showMap) {
+      if (showMap) {
+        this.showMap = false;
+      } else if (!showMap) {
+        this.showMap = true;
+      }
+    }
+  }
+});
 
 /***/ }),
 
@@ -7639,7 +7723,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/************************************************************\r\n*                          Modal Fix                        *\r\n*************************************************************/\nhtml {\r\n    overflow: hidden;\r\n    height: 100%;\n}\nbody {\r\n    overflow: auto;\r\n    height: 100%;\n}\n.modal-open {\r\n    overflow: auto;\n}\r\n\r\n/************************************************************\r\n  *                     Estilos Peludets                      *\r\n  *************************************************************/\r\n\r\n/* Backgrounds colors */\n.bg-azul-peludets {\r\n    background-color: rgb(155, 207, 194);\n}\n.bg-lila-peludets {\r\n    background-color: #4E4868;\n}\n.bg-crema-peludets {\r\n    background-color: #F2E7C9;\n}\r\n\r\n/* Colores */\n.lila-peludets {\r\n    color: #4E4868;\n}\n.azul-peludets {\r\n    color: #7ca7b9;\n}\n.verde-peludets {\r\n    color: #7ac05c;\n}\n.crema-peludets {\r\n    color: #ecba90;\n}\r\n\r\n/* Colores botones peludets */\n.btn:focus {\r\n    box-shadow: none;\n}\n.btn-lila-peludets {\r\n    color: #ffffff;\r\n    text-shadow: 1px 1px gray;\r\n    background-color: #4E4868;\n}\n.btn-lila-peludets:hover {\r\n    color: #ffffff;\r\n    background-color: #453e64;\n}\n.btn-azul-peludets {\r\n    color: #ffffff;\r\n    text-shadow: 1px 1px gray;\r\n    background-color: #7ca7b9;\n}\n.btn-azul-peludets:hover {\r\n    color: #ffffff;\r\n    background-color: #60a0bb;\n}\n.btn-verde-peludets {\r\n    color: #ffffff;\r\n    text-shadow: 1px 1px gray;\r\n    background-color: #7ac05c;\n}\n.btn-verde-peludets:hover {\r\n    color: #ffffff;\r\n    background-color: #65a34b;\n}\n.btn-crema-peludets {\r\n    background-color: #eecbaf;\n}\n.btn-crema-peludets:hover {\r\n    background-color: rgb(226, 178, 140);\n}\n.btn-danger-peludets {\r\n    color: #ffffff;\r\n    background-color: #e65c5c;\n}\n.btn-danger-peludets:hover {\r\n    background-color: #ca3d3d;\n}", ""]);
+exports.push([module.i, "/************************************************************\r\n*                          Modal Fix                        *\r\n*************************************************************/\nhtml {\r\n    overflow: hidden;\r\n    height: 100%;\n}\nbody {\r\n    overflow: auto;\r\n    height: 100%;\n}\n.modal-open {\r\n    overflow: auto;\n}\r\n\r\n/************************************************************\r\n  *                     Estilos Peludets                      *\r\n  *************************************************************/\r\n\r\n/* Backgrounds colors */\n.bg-azul-peludets {\r\n    background-color: rgb(155, 207, 194);\n}\n.bg-lila-peludets {\r\n    background-color: #4E4868;\n}\n.bg-crema-peludets {\r\n    background-color: #F2E7C9;\n}\r\n\r\n/* Colores */\n.lila-peludets {\r\n    color: #4E4868;\n}\n.azul-peludets {\r\n    color: #7ca7b9;\n}\n.verde-peludets {\r\n    color: #7ac05c;\n}\n.crema-peludets {\r\n    color: #ecba90;\n}\r\n\r\n/* Colores botones peludets */\n.btn:focus {\r\n    box-shadow: none;\n}\n.btn-lila-peludets {\r\n    color: #ffffff;\r\n    text-shadow: 1px 1px gray;\r\n    background-color: #4E4868;\n}\n.btn-lila-peludets:hover {\r\n    color: #ffffff;\r\n    background-color: #453e64;\n}\n.btn-azul-peludets {\r\n    color: #ffffff;\r\n    text-shadow: 1px 1px gray;\r\n    background-color: #7ca7b9;\n}\n.btn-azul-peludets:hover {\r\n    color: #ffffff;\r\n    background-color: #60a0bb;\n}\n.btn-verde-peludets {\r\n    color: #ffffff;\r\n    text-shadow: 1px 1px gray;\r\n    background-color: #7ac05c;\n}\n.btn-verde-peludets:hover {\r\n    color: #ffffff;\r\n    background-color: #65a34b;\n}\n.btn-crema-peludets {\r\n    background-color: #eecbaf;\n}\n.btn-crema-peludets:hover {\r\n    background-color: rgb(226, 178, 140);\n}\n.btn-danger-peludets {\r\n    color: #ffffff;\r\n    background-color: #e65c5c;\n}\n.btn-danger-peludets:hover {\r\n    background-color: #ca3d3d;\n}\n.card {\r\n    border-style: outset !important;\n}", ""]);
 
 // exports
 
@@ -57797,42 +57881,39 @@ var render = function() {
           "div",
           { staticClass: "row mt-3" },
           _vm._l(_vm.sitiosInteres, function(sitio) {
-            return _c("div", { key: sitio.nombre, staticClass: "card-group" }, [
-              _c("div", { staticClass: "card bg-light" }, [
+            return _c(
+              "div",
+              { key: sitio.nombre, staticClass: "card bg-crema-peludets" },
+              [
                 _c("img", {
                   staticClass: "card-img-top",
                   attrs: { alt: "Imagen" }
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(
-                      "\n              " +
-                        _vm._s(sitio.nombre) +
-                        "\n            "
-                    )
+                  _c("h5", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(sitio.nombre))
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "card-text" }, [
                     _vm._v(
-                      "\n                " +
+                      "\n            " +
                         _vm._s(sitio.descripcion) +
-                        "\n            "
+                        "\n          "
                     )
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticClass: "cart-text" }, [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(sitio.primeraCoordenada) +
-                        " - " +
-                        _vm._s(sitio.segundaCoordenada) +
-                        " \n            "
-                    )
-                  ])
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-azul-peludets",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v(" Mostrar en el mapa ")]
+                  )
                 ])
-              ])
-            ])
+              ]
+            )
           }),
           0
         )
@@ -57850,19 +57931,16 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-lila-peludets mr-2",
-          attrs: { id: "exploradorInteres", type: "button" }
+          staticClass: "btn btn-azul-peludets mr-2",
+          attrs: { type: "button" }
         },
-        [_vm._v("Sitios de interés")]
+        [_vm._v("\n        Sitios de interés\n      ")]
       ),
       _vm._v(" "),
       _c(
         "button",
-        {
-          staticClass: "btn btn-lila-peludets",
-          attrs: { id: "exploradorTrabajos", type: "button" }
-        },
-        [_vm._v("Trabajos disponibles")]
+        { staticClass: "btn btn-azul-peludets", attrs: { type: "button" } },
+        [_vm._v("\n        Trabajos disponibles\n      ")]
       )
     ])
   }
@@ -59862,9 +59940,61 @@ var render = function() {
           staticClass: "btn btn-lila-peludets",
           on: { click: _vm.mostrarMapa }
         },
-        [_vm._v("\n     Mapa\n  ")]
+        [_vm._v("Mapa")]
+      ),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade", mode: "out-in" } },
+        [
+          _vm.showMap
+            ? _c(
+                "l-map",
+                {
+                  staticClass: "mt-3",
+                  staticStyle: { height: "80%" },
+                  attrs: { width: "100%", zoom: _vm.zoom, center: _vm.center },
+                  on: {
+                    "update:zoom": _vm.updateZoom,
+                    "update:center": _vm.updateCenter
+                  }
+                },
+                [
+                  _c("l-title-layer", { attrs: { url: _vm.url } }),
+                  _vm._v(" "),
+                  _vm._l(_vm.markers, function(marker, index) {
+                    return _c(
+                      "l-marker",
+                      {
+                        key: marker,
+                        attrs: { "lat-lng": marker, icon: _vm.icon }
+                      },
+                      [
+                        _c("l-icon", {
+                          attrs: {
+                            "icon-size": _vm.dynamicSize,
+                            "icon-anchor": _vm.dynamicAnchor,
+                            "icon-url":
+                              "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("l-popup", [
+                          _vm._v(" " + _vm._s(_vm.popups[index]) + " ")
+                        ])
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
+              )
+            : _vm._e()
+        ],
+        1
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -88644,13 +88774,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! D:\Documents\Git\peludets\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\Documents\Git\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\D\Daw\2Daw\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\D\Daw\2Daw\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> 93772cfbbd59284bdb3f25e726944f7c276460d8
 
 
 /***/ })

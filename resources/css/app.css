@@ -107,3 +107,7 @@ body {
 .btn-danger-peludets:hover {
     background-color: #ca3d3d;
 }
+
+.card {
+    border-style: outset !important;
+}
