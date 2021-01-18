@@ -2625,6 +2625,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_subparts_Explorador_mapa_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components-subparts/Explorador_mapa.vue */ "./resources/js/components/components-subparts/Explorador_mapa.vue");
 //
 //
 //
@@ -2714,27 +2715,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      usuarios: []
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    this.axios.get('http://localhost/api/usuario/select').then(function (response) {
-      _this.usuarios = response.data;
-    });
-  },
-  methods: {
-    usuariosFiltrados: function usuariosFiltrados(profesiones, disponibilidad, titulacion) {
-      var _this2 = this;
-
-      this.axios.get("http://localhost:8000/api/book/delete/".concat(profesiones, ", ").concat(disponibilidad, ", ").concat(titulacion)).then(function (response) {
-        _this2.usuarios = response.data;
-      });
-    }
+  name: 'App',
+  components: {
+    Mapa: _components_subparts_Explorador_mapa_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -59202,7 +59215,30 @@ var render = function() {
       _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "row mt-3 " }, [
+        _c(
+          "div",
+          { staticClass: "col-md-6 col-xs-12 mt-4", attrs: { id: "flotante" } },
+          [
+            _c("Mapa"),
+            _c("iframe", {
+              attrs: {
+                src:
+                  "https://www.google.com/maps/d/embed?mid=17xf3LHMIkTtpIPJFl85w764Is7dAkxAX",
+                width: "100%",
+                height: "480"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "row col-md-12 col-xs-12",
+          attrs: { id: "cards" }
+        }),
+        _vm._v("\r\n    \r\nñ\r\n")
+      ]),
       _vm._v(" "),
       _vm._l(_vm.usuarios, function(usuario) {
         return _c(
@@ -59234,6 +59270,10 @@ var render = function() {
                     width: "50%"
                   }
                 }),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
                   _c("h6", { staticClass: "card_name card_attr" }, [
@@ -59395,36 +59435,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-1 col-xs-12" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-3 " }, [
-      _c(
-        "div",
-        {
-          staticClass: "col-md-6 col-xs-12 mt-4",
-          staticStyle: { display: "none" },
-          attrs: { id: "flotante" }
-        },
-        [
-          _c("iframe", {
-            attrs: {
-              src:
-                "https://www.google.com/maps/d/embed?mid=17xf3LHMIkTtpIPJFl85w764Is7dAkxAX",
-              width: "100%",
-              height: "480"
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", {
-        staticClass: "row col-md-12 col-xs-12",
-        attrs: { id: "cards" }
-      })
     ])
   }
 ]
@@ -88414,8 +88424,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Adri\OneDrive\Escritorio\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Adri\OneDrive\Escritorio\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
