@@ -28,8 +28,13 @@
         "leaflet": "^1.7.1",
         "sweetalert2": "^10.12.6",
         "symfony": "0.0.1",
+        "vue-browser-geolocation": "^1.8.0",
         "vue-router": "^3.4.9",
+<<<<<<< HEAD
         "vue-session": "^1.0.0",
+=======
+        "vue2-google-maps": "^0.10.7",
+>>>>>>> f944b4db73096af33e99b06244297594681b6b98
         "vue2-leaflet": "^2.6.0"
     }
 }

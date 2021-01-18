@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-5 mt-3 mx-auto" id="mapa">
+  <div class="col-md-6 col-xs-12 mt-4 mx-auto" id="mapa">
     <button @click="showMap = !showMap" class="btn btn-lila-peludets">
       Mostrar/Ocultar Mapa
     </button>
@@ -12,10 +12,10 @@
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >
-    <l-tile-layer v-for="sitio in sitios" :key="sitio.nombre" :url="url"></l-tile-layer>
-      <!-- <l-marker :lat-lng="{{ sitio.primeraCoordenada }},{{ sitio.segundaCoordenada }}">
+    <l-tile-layer :url="url"></l-tile-layer>
+      <l-marker :lat-lng="parquePerros">
         <l-popup>Parque guapisimo para ir con el perro</l-popup>
-      </l-marker> -->
+      </l-marker>
     </l-map>
   </div>
 </template>
@@ -39,7 +39,9 @@ export default {
       zoom: 15,
       center: latLng(41.5105, 2.1158),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      parquePerros: latLng(41.50670, 2.11393),
       currentZoom: 11.5,
       currentCenter: latLng(41.5105, 2.1158),
       showParagraph: false,
@@ -64,17 +66,4 @@ export default {
     },
   },
 };
-
-/////////////////////////////////// VUE GEO
-
-this.$getLocation({
-    enableHighAccuracy: bool, //defaults to false
-    timeout: Infinity, //defaults to Infinity
-    maximumAge: int //defaults to 0
-    
-})
-  .then(coordinates => {
-    console.log(coordinates);
-  });
-
 </script>
