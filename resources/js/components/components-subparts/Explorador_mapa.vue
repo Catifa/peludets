@@ -65,16 +65,4 @@ export default {
   },
 };
 
-/////////////////////////////////// VUE GEO
-
-this.$getLocation({
-    enableHighAccuracy: bool, //defaults to false
-    timeout: Infinity, //defaults to Infinity
-    maximumAge: int //defaults to 0
-    
-})
-  .then(coordinates => {
-    console.log(coordinates);
-  });
-
 </script>
