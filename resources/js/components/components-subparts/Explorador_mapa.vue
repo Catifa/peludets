@@ -12,8 +12,8 @@
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >
-    <l-tile-layer :url="url"></l-tile-layer>
-      <l-marker :lat-lng="parquePerros">
+    <l-tile-layer v-for="sitio in sitios" :key="sitio.nombre" :url="url"></l-tile-layer>
+      <l-marker :lat-lng="{{ sitio.primeraCoordenada }},{{ sitio.segundaCoordenada }}">
         <l-popup>Parque guapisimo para ir con el perro</l-popup>
       </l-marker>
     </l-map>
@@ -39,9 +39,7 @@ export default {
       zoom: 15,
       center: latLng(41.5105, 2.1158),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      parquePerros: latLng(41.50670, 2.11393),
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       currentZoom: 11.5,
       currentCenter: latLng(41.5105, 2.1158),
       showParagraph: false,
