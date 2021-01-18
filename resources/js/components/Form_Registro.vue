@@ -82,7 +82,6 @@
 </template>
 
 <script>
-
 import Swal from "sweetalert2";
 
 export default {
@@ -93,12 +92,42 @@ export default {
   },
   methods: {
     addUser() {
+
       this.axios
         .post("http://localhost:80/api/usuario/add", this.usuario)
         .then((response) => {
           $("#form-registro").modal("hide");
-          Swal.fire("Registro completado", "Bienvenido, " + response.data.nombre, "success");
+          Swal.fire(
+            "Registro completado",
+            "Bienvenido, " + response.data.nombre,
+            "success"
+          );
+          this.setSession(this.usuario);
+          //console.log(response.data);
           this.$router.push("/");
+        })
+        .catch((error) => console.log(error))
+        .finally(() => (this.loading = false));
+    },
+    getSession() {
+      this.axios
+        .post("http://localhost/api/session/get")
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error))
+        .finally(() => (this.loading = false));
+    },
+    setSession(user) {
+      //console.log(user);
+      const params = {
+        usuario: user.nombre,
+        data: user
+      }
+      this.axios
+        .post("http://localhost/api/session/set",{params})
+        .then(() => {
+          this.getSession();
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));

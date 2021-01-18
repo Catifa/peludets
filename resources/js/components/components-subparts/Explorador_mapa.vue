@@ -13,9 +13,9 @@
       @update:zoom="zoomUpdate"
     >
     <l-tile-layer v-for="sitio in sitios" :key="sitio.nombre" :url="url"></l-tile-layer>
-      <l-marker :lat-lng="{{ sitio.primeraCoordenada }},{{ sitio.segundaCoordenada }}">
+      <!-- <l-marker :lat-lng="{{ sitio.primeraCoordenada }},{{ sitio.segundaCoordenada }}">
         <l-popup>Parque guapisimo para ir con el perro</l-popup>
-      </l-marker>
+      </l-marker> -->
     </l-map>
   </div>
 </template>
