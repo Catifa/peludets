@@ -167,7 +167,7 @@ export default {
   methods: {
     recuperarSession() {
         this.axios
-        .get("http://localhost:8000/api/session/get")
+        .post("http://localhost/api/session/get")
         .then((response) => {
           console.log(response.data);
         })

@@ -11,7 +11,8 @@ import axios from 'axios';
 import {routes} from './routes';
 import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
-
+import Vue from 'vue';
+ 
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -22,6 +23,7 @@ Vue.component('l-map', LMap);
 Vue.component('l-title-layer', LTileLayer);
 Vue.component('l-maker', LMarker);
 
+
 // Forms Usuario
 Vue.component('form_registro', Form_Registro);
 Vue.component('form_inicio_sesion', Form_Inicio_Sesion);
@@ -30,6 +32,11 @@ const router = new VueRouter({
     mode: 'history',
     routes: routes
 });
+
+/* router.beforeEach((to, from, next) => {
+    if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
+    else next()
+  }) */
 
 const app = new Vue({
     el: '#app',

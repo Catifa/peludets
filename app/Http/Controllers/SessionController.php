@@ -8,19 +8,21 @@ class SessionController extends Controller
 {
     public function getSessionData(Request $request)
     {
-        return session()->get('name');
+        //error_log("getSession");
+        return $request->session()->All();
     }
 
     public function storeSessionData(Request $request)
     {
-        $request->session()->put('name', 'Jennifer');
-        echo 'Data added';
-        return $request->session()->get('name');
+        //error_log(print_r($request));
+        $user = json_decode($request->input('data'));
+        $request->session()->put('name', $user->nombre);
+        error_log(print_r($request,true));
+        return $request;
     }
 
     public function deleteSessionData(Request $request)
     {
         $request->session()->forget('name');
-        echo 'Data delete';
     }
 }

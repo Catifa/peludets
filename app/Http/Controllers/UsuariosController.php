@@ -44,6 +44,7 @@ class UsuariosController extends Controller
                 'contrasena' => 'Contraseña incorrecta'
             ]);
         } else {
+
             // Creacion usuario en la base de datos
             return Usuario::create([
                 'nombre' => $request->input('nombre'),
