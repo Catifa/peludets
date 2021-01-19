@@ -40,20 +40,23 @@
         <button  id="tarjeta" class="btn btn-block btn-lg btn-pelu-naranja  mt-4 " value="trabajos" name="trabajos">Buscar trabajos</button>
     </div>
     <div class="col-md-2 col-xs-12 ">
+    
         <a href="javascript:Alternar(flotante);" class="quitarSubrayado"><button type="button" class="btn btn-block btn-lg btn-dark mt-4">Mostrar / Ocultar Mapa</button></a>
     </div>
-    <p><button onclick="geoFindMe()">Show my location</button></p>
+    <p><button @click = "geoFindMe">Show my location</button></p>
 <div id="out"></div>
    
 </div>
 <div class="row col-md-12 col-xs-12 mt-3 ">
-    <div class="col-md-6 col-xs-16 mt-4" id="flotante" ><iframe src="https://www.google.com/maps/d/embed?mid=17xf3LHMIkTtpIPJFl85w764Is7dAkxAX" width="100%" height="400px"></iframe></div>
+    <div class="col-md-12 col-xs-16 mt-4" id="flotante" >
+        <mapa-prof></mapa-prof>
+    </div>
     <!-- Seccion de Lugares Favoritors (recuadros) -->
     <!-- Cartas trabajos -->
     
      <div id="cards" class="row col-md-12 col-xs-12">
 </div>
-    
+        
 
 </div>
 
@@ -125,10 +128,22 @@ export default {
     Mapa
   }
 };
+
+
+
 </script>
 
 <script>
-function geoFindMe() {
+
+if ("geolocation" in navigator) {
+  /* la geolocalización está disponible */
+} else {
+  /* la geolocalización NO está disponible */
+}
+
+export default {
+    methods:{
+    geoFindMe() {
   var output = document.getElementById("out");
 
   if (!navigator.geolocation){
@@ -155,5 +170,7 @@ function geoFindMe() {
   output.innerHTML = "<p>Locating…</p>";
 
   navigator.geolocation.getCurrentPosition(success, error);
+}
+    }
 }
 </script>

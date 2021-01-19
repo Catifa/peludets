@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-6 col-xs-12 mt-4 mx-auto" id="mapa">
+  <div class="col-md-6 col-xs-6 mt-4 mx-auto" id="mapa">
     <button @click="showMap = !showMap" class="btn btn-lila-peludets">
       Mostrar/Ocultar Mapa
     </button>
@@ -8,7 +8,7 @@
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
-      style="height: 80%"
+      style="height: 100%"
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >

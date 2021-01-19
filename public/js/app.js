@@ -2876,9 +2876,11 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profesionales.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -3008,33 +3010,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-function geoFindMe() {
-  var output = document.getElementById("out");
-
-  if (!navigator.geolocation) {
-    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    return;
+//
+//
+//
+//
+//
+//
+if ("geolocation" in navigator) {
+  /* la geolocalización está disponible */
+} else {
+    /* la geolocalización NO está disponible */
   }
 
-  function success(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-    var img = new Image();
-    img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-    output.appendChild(img);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    geoFindMe: function geoFindMe() {
+      var output = document.getElementById("out");
+
+      if (!navigator.geolocation) {
+        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+        return;
+      }
+
+      function success(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+        var img = new Image();
+        img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+        output.appendChild(img);
+      }
+
+      ;
+
+      function error() {
+        output.innerHTML = "Unable to retrieve your location";
+      }
+
+      ;
+      output.innerHTML = "<p>Locating…</p>";
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
   }
-
-  ;
-
-  function error() {
-    output.innerHTML = "Unable to retrieve your location";
-  }
-
-  ;
-  output.innerHTML = "<p>Locating…</p>";
-  navigator.geolocation.getCurrentPosition(success, error);
-}
+});
 
 /***/ }),
 
@@ -59680,9 +59698,44 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "row col-md-12 col-xs-12" }, [
+        _c("div", { staticClass: "col-md-1 col-xs-12" }),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
+        _vm._m(4),
+        _vm._v(" "),
+        _vm._m(5),
+        _vm._v(" "),
+        _c("p", [
+          _c("button", { on: { click: _vm.geoFindMe } }, [
+            _vm._v("Show my location")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "out" } })
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "row col-md-12 col-xs-12 mt-3 " }, [
+        _c(
+          "div",
+          {
+            staticClass: "col-md-12 col-xs-16 mt-4",
+            attrs: { id: "flotante" }
+          },
+          [_c("mapa-prof")],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "row col-md-12 col-xs-12",
+          attrs: { id: "cards" }
+        })
+      ]),
       _vm._v(" "),
       _vm._l(_vm.usuarios, function(usuario) {
         return _c(
@@ -59767,150 +59820,128 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row col-md-12 col-xs-12" }, [
-      _c("div", { staticClass: "col-md-1 col-xs-12" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
-        _c("div", { staticClass: "form-group m-2" }, [
-          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Profesiones")
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              staticClass: "form-control",
-              attrs: { name: "selectOption", id: "selectOption" }
-            },
-            [
-              _c("option", { attrs: { value: "Psicologo" } }, [
-                _vm._v("Psicologo")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Entrenador" } }, [
-                _vm._v("Entrenador")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Peluquero" } }, [
-                _vm._v("Peluquero")
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
-        _c("div", { staticClass: "form-group m-2" }, [
-          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Disponibilidad")
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              staticClass: "form-control",
-              attrs: { name: "selectOption2", id: "exampleFormControlSelect2" }
-            },
-            [
-              _c("option", { attrs: { value: "Presencial" } }, [
-                _vm._v("Presencial")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Online" } }, [_vm._v("Online")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Presencial y Online" } }, [
-                _vm._v("Presencial y Online")
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
-        _c("div", { staticClass: "form-group m-2" }, [
-          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("¿Titulación?")
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              staticClass: "form-control",
-              attrs: { name: "selectOption3", id: "exampleFormControlSelect1" }
-            },
-            [
-              _c("option", { attrs: { value: "Si" } }, [_vm._v("Si")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "No" } }, [_vm._v("No")])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+      _c("div", { staticClass: "form-group m-2" }, [
+        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+          _vm._v("Profesiones")
+        ]),
+        _vm._v(" "),
         _c(
-          "button",
+          "select",
           {
-            staticClass: "btn btn-block btn-lg btn-pelu-naranja  mt-4 ",
-            attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" }
-          },
-          [_vm._v("Buscar trabajos")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 col-xs-12 " }, [
-        _c(
-          "a",
-          {
-            staticClass: "quitarSubrayado",
-            attrs: { href: "javascript:Alternar(flotante);" }
+            staticClass: "form-control",
+            attrs: { name: "selectOption", id: "selectOption" }
           },
           [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-block btn-lg btn-dark mt-4",
-                attrs: { type: "button" }
-              },
-              [_vm._v("Mostrar / Ocultar Mapa")]
-            )
+            _c("option", { attrs: { value: "Psicologo" } }, [
+              _vm._v("Psicologo")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Entrenador" } }, [
+              _vm._v("Entrenador")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Peluquero" } }, [
+              _vm._v("Peluquero")
+            ])
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("button", { attrs: { onclick: "geoFindMe()" } }, [
-          _vm._v("Show my location")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "out" } })
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row col-md-12 col-xs-12 mt-3 " }, [
+    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+      _c("div", { staticClass: "form-group m-2" }, [
+        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+          _vm._v("Disponibilidad")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            staticClass: "form-control",
+            attrs: { name: "selectOption2", id: "exampleFormControlSelect2" }
+          },
+          [
+            _c("option", { attrs: { value: "Presencial" } }, [
+              _vm._v("Presencial")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Online" } }, [_vm._v("Online")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Presencial y Online" } }, [
+              _vm._v("Presencial y Online")
+            ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+      _c("div", { staticClass: "form-group m-2" }, [
+        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+          _vm._v("¿Titulación?")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            staticClass: "form-control",
+            attrs: { name: "selectOption3", id: "exampleFormControlSelect1" }
+          },
+          [
+            _c("option", { attrs: { value: "Si" } }, [_vm._v("Si")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "No" } }, [_vm._v("No")])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
       _c(
-        "div",
-        { staticClass: "col-md-6 col-xs-16 mt-4", attrs: { id: "flotante" } },
+        "button",
+        {
+          staticClass: "btn btn-block btn-lg btn-pelu-naranja  mt-4 ",
+          attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" }
+        },
+        [_vm._v("Buscar trabajos")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2 col-xs-12 " }, [
+      _c(
+        "a",
+        {
+          staticClass: "quitarSubrayado",
+          attrs: { href: "javascript:Alternar(flotante);" }
+        },
         [
-          _c("iframe", {
-            attrs: {
-              src:
-                "https://www.google.com/maps/d/embed?mid=17xf3LHMIkTtpIPJFl85w764Is7dAkxAX",
-              width: "100%",
-              height: "400px"
-            }
-          })
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-block btn-lg btn-dark mt-4",
+              attrs: { type: "button" }
+            },
+            [_vm._v("Mostrar / Ocultar Mapa")]
+          )
         ]
-      ),
-      _vm._v(" "),
-      _c("div", {
-        staticClass: "row col-md-12 col-xs-12",
-        attrs: { id: "cards" }
-      })
+      )
     ])
   }
 ]
@@ -60154,7 +60185,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-md-6 col-xs-12 mt-4 mx-auto", attrs: { id: "mapa" } },
+    { staticClass: "col-md-6 col-xs-6 mt-4 mx-auto", attrs: { id: "mapa" } },
     [
       _c(
         "button",
@@ -60174,7 +60205,7 @@ var render = function() {
             "l-map",
             {
               staticClass: "mt-3",
-              staticStyle: { height: "80%" },
+              staticStyle: { height: "100%" },
               attrs: {
                 zoom: _vm.zoom,
                 center: _vm.center,
@@ -88271,6 +88302,37 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_11___default.a({
     return h(_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   }
 });
+/*************************************
+        Geolocalozacion
+*************************************/
+
+function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation) {
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    var img = new Image();
+    img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+    output.appendChild(img);
+  }
+
+  ;
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  }
+
+  ;
+  output.innerHTML = "<p>Locating…</p>";
+  navigator.geolocation.getCurrentPosition(success, error);
+}
 
 /***/ }),
 
@@ -88750,9 +88812,7 @@ component.options.__file = "resources/js/components/Profesionales.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profesionales_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Profesionales.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profesionales.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profesionales_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profesionales_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profesionales_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profesionales_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profesionales_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profesionales_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -88934,14 +88994,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************************!*\
   !*** ./resources/js/components/components-subparts/Profesionales_mapa.vue ***!
   \****************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Profesionales_mapa_vue_vue_type_template_id_51a405ed___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profesionales_mapa.vue?vue&type=template&id=51a405ed& */ "./resources/js/components/components-subparts/Profesionales_mapa.vue?vue&type=template&id=51a405ed&");
 /* harmony import */ var _Profesionales_mapa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profesionales_mapa.vue?vue&type=script&lang=js& */ "./resources/js/components/components-subparts/Profesionales_mapa.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Profesionales_mapa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Profesionales_mapa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -88971,7 +89032,7 @@ component.options.__file = "resources/js/components/components-subparts/Profesio
 /*!*****************************************************************************************************!*\
   !*** ./resources/js/components/components-subparts/Profesionales_mapa.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
