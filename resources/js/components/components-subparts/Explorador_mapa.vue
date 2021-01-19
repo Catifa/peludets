@@ -20,15 +20,8 @@
         ></l-icon>
         <l-popup>{{ popups[index] }}</l-popup>
       </l-marker>
-      <l-marker :lat-lng="marker" :icon="icon">
-        <l-icon
-          :icon-size="dynamicSize"
-          :icon-anchor="dynamicAnchor"
-          icon-url="https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
-        ></l-icon>
-        <l-popup>{{ popups[index] }}</l-popup>
-      </l-marker>
     </l-map>
+    <button @click="updateMarker">Marker</button>
   </div>
 </template>
 
@@ -54,6 +47,14 @@ export default {
     LIcon
   },
   props: ["props"],
+  watch: {
+    props: {
+      handler(val) {
+        this.updateMarker();
+      } 
+      
+    }
+  },
   data() {
     return {
       // Ajustes Mapa
@@ -80,8 +81,7 @@ export default {
       }),
       showMap: true,
       // Variables Vista
-      texto: "Ocultar Mapa",
-      markerExplorador: this.props
+      texto: "Ocultar Mapa"
     };
   },
   computed: {
@@ -105,6 +105,11 @@ export default {
         this.texto = "Ocultar Mapa";
       } else {
         this.texto = " Mostrar Mapa";
+      }
+    },
+    updateMarker() {
+      if (this.props.latLng != undefined) {
+        this.markers.push(this.props.latLng);
       }
     }
   }

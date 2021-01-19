@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     enviarMapa(obj) {
-      this.sitioMapa = obj.latLng;
+      this.sitioMapa = obj;
     }
   }
 };

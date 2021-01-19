@@ -2160,7 +2160,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     enviarMapa: function enviarMapa(obj) {
-      this.sitioMapa = obj.latLng;
+      this.sitioMapa = obj;
     }
   }
 });
@@ -3190,13 +3190,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3210,6 +3203,13 @@ __webpack_require__.r(__webpack_exports__);
     LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LIcon"]
   },
   props: ["props"],
+  watch: {
+    props: {
+      handler: function handler(val) {
+        this.updateMarker();
+      }
+    }
+  },
   data: function data() {
     return {
       // Ajustes Mapa
@@ -3225,8 +3225,7 @@ __webpack_require__.r(__webpack_exports__);
       }),
       showMap: true,
       // Variables Vista
-      texto: "Ocultar Mapa",
-      markerExplorador: this.props
+      texto: "Ocultar Mapa"
     };
   },
   computed: {
@@ -3251,6 +3250,11 @@ __webpack_require__.r(__webpack_exports__);
         this.texto = "Ocultar Mapa";
       } else {
         this.texto = " Mostrar Mapa";
+      }
+    },
+    updateMarker: function updateMarker() {
+      if (this.props.latLng != undefined) {
+        this.markers.push(this.props.latLng);
       }
     }
   }
@@ -60157,29 +60161,13 @@ var render = function() {
                   ],
                   1
                 )
-              }),
-              _vm._v(" "),
-              _c(
-                "l-marker",
-                { attrs: { "lat-lng": _vm.marker, icon: _vm.icon } },
-                [
-                  _c("l-icon", {
-                    attrs: {
-                      "icon-size": _vm.dynamicSize,
-                      "icon-anchor": _vm.dynamicAnchor,
-                      "icon-url":
-                        "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("l-popup", [_vm._v(_vm._s(_vm.popups[_vm.index]))])
-                ],
-                1
-              )
+              })
             ],
             2
           )
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.updateMarker } }, [_vm._v("Marker")])
     ],
     1
   )
