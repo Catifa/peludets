@@ -2066,6 +2066,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -57860,6 +57865,32 @@ var staticRenderFns = [
                       },
                       [_c("i", { staticClass: "fab fa-facebook-square" })]
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("img", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../img/flag/es.png */ "./resources/img/flag/es.png"),
+                        alt: "es",
+                        width: "10%"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../img/flag/ca.png */ "./resources/img/flag/ca.png"),
+                        alt: "ca",
+                        width: "10%"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../img/flag/en.png */ "./resources/img/flag/en.png"),
+                        alt: "en",
+                        width: "13%"
+                      }
+                    })
                   ])
                 ])
               ])
@@ -87868,6 +87899,39 @@ module.exports = "/images/slide3.jpg?2c390ff2d0b64215028f75600cc91b1f";
 
 /***/ }),
 
+/***/ "./resources/img/flag/ca.png":
+/*!***********************************!*\
+  !*** ./resources/img/flag/ca.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/ca.png?c7c4e490abc48ac89efc23d8332e92da";
+
+/***/ }),
+
+/***/ "./resources/img/flag/en.png":
+/*!***********************************!*\
+  !*** ./resources/img/flag/en.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/en.png?455ae637bf83005b3fdef75849853cd6";
+
+/***/ }),
+
+/***/ "./resources/img/flag/es.png":
+/*!***********************************!*\
+  !*** ./resources/img/flag/es.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/es.png?4b5a8fc852245e041e6d1aff973f63cd";
+
+/***/ }),
+
 /***/ "./resources/img/logo/logo.png":
 /*!*************************************!*\
   !*** ./resources/img/logo/logo.png ***!
@@ -88422,15 +88486,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./resources/js/components/Perfil.vue ***!
   \********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Perfil_vue_vue_type_template_id_2e2d5c12___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Perfil.vue?vue&type=template&id=2e2d5c12& */ "./resources/js/components/Perfil.vue?vue&type=template&id=2e2d5c12&");
 /* harmony import */ var _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Perfil.vue?vue&type=script&lang=js& */ "./resources/js/components/Perfil.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Perfil.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Perfil.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Perfil.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Perfil.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -88462,7 +88525,7 @@ component.options.__file = "resources/js/components/Perfil.vue"
 /*!*********************************************************************!*\
   !*** ./resources/js/components/Perfil.vue?vue&type=script&lang=js& ***!
   \*********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -88797,8 +88860,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documents\Git\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Documents\Git\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\xampp\htdocs\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

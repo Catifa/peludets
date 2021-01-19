@@ -143,6 +143,11 @@
                     ><i class="fab fa-facebook-square"></i
                   ></a>
                 </li>
+                <li>
+                  <img src="../img/flag/es.png" alt="es" width="10%">
+                  <img src="../img/flag/ca.png" alt="ca" width="10%">
+                  <img src="../img/flag/en.png" alt="en" width="13%">
+                </li>
               </ul>
             </div>
           </div>
