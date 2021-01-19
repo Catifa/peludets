@@ -26,7 +26,6 @@ import { latLng } from "leaflet";
 import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from "vue2-leaflet";
 
 export default {
-  name: "MapaExplorador",
   components: {
     LMap,
     LTileLayer,

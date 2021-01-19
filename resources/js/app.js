@@ -5,6 +5,7 @@ import App from './App.vue';
 import Form_Registro from './components/Form_Registro.vue';
 import Form_Inicio_Sesion from './components/Form_Inicio_Sesion.vue';
 import MapaExplorador from './components/components-subparts/Explorador_mapa.vue';
+import MapaProfesionales from './components/components-subparts/Profesionales_mapa.vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
@@ -17,12 +18,17 @@ import Vue from 'vue';
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 
-// Mapa Explorador
-Vue.component('mapa-exp', MapaExplorador);
+// Mapa Componente
 Vue.component('l-map', LMap);
 Vue.component('l-title-layer', LTileLayer);
 Vue.component('l-maker', LMarker);
 
+// Mapa Profesionales
+Vue.component('mapa-prof', MapaProfesionales);
+
+
+// Mapa Explorador
+Vue.component('mapa-exp', MapaExplorador);
 
 // Forms Usuario
 Vue.component('form_registro', Form_Registro);
