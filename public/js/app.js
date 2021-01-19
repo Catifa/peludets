@@ -2140,22 +2140,28 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       sitiosInteres: [{
-        nombre: "Pinar de Badia",
+        nombre: "Parc de Can grocs",
         descripcion: "Parque guapisimo para ir con el perro",
-        primeraCoordenada: "41.50675",
-        segundaCoordenada: "2.1136"
+        latLng: L.latLng(41.51076, 2.11969),
+        center: [41.51076, 2.11969]
       }, {
-        nombre: "Plaça 2 de Maig",
+        nombre: "Parc Valles Central",
         descripcion: "Parque verificado por Aitor",
-        primeraCoordenada: "41.50971",
-        segundaCoordenada: "2.11469"
+        latLng: L.latLng(41.52103, 2.1121),
+        center: [41.52103, 2.1121]
       }, {
-        nombre: "Parc Joan Aguilar",
-        descripcion: "Parque que tiene columpios",
-        primeraCoordenada: "41.50768",
-        segundaCoordenada: "2.11526"
-      }]
+        nombre: "Aiguestortes",
+        descripcion: "Esta lejos, pero mola",
+        latLng: L.latLng(42.5719, 0.9425),
+        center: [42.5719, 0.9425]
+      }],
+      sitioMapa: {}
     };
+  },
+  methods: {
+    enviarMapa: function enviarMapa(obj) {
+      this.sitioMapa = obj.latLng;
+    }
   }
 });
 
@@ -3156,6 +3162,7 @@ __webpack_require__.r(__webpack_exports__);
     LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTooltip"],
     LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LIcon"]
   },
+  props: ["props"],
   data: function data() {
     return {
       // Ajustes Mapa
@@ -3169,7 +3176,10 @@ __webpack_require__.r(__webpack_exports__);
         iconSize: [32, 37],
         iconAnchor: [16, 37]
       }),
-      showMap: true
+      showMap: true,
+      // Variables Vista
+      texto: "Ocultar Mapa",
+      markerExplorador: this.props
     };
   },
   computed: {
@@ -3187,11 +3197,13 @@ __webpack_require__.r(__webpack_exports__);
     updateCenter: function updateCenter(center) {
       this.center = center;
     },
-    mostrarMapa: function mostrarMapa(showMap) {
-      if (showMap) {
-        this.showMap = false;
-      } else if (!showMap) {
-        this.showMap = true;
+    mostrarMapa: function mostrarMapa() {
+      this.showMap = !this.showMap;
+
+      if (this.showMap) {
+        this.texto = "Ocultar Mapa";
+      } else {
+        this.texto = " Mostrar Mapa";
       }
     }
   }
@@ -57905,7 +57917,7 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _c("mapa-exp", { attrs: { latitudes: "sitiosInteres" } }),
+      _c("mapa-exp", { attrs: { props: _vm.sitioMapa } }),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6 mt-3 mx-auto" }, [
         _vm._m(0),
@@ -57940,7 +57952,12 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-azul-peludets",
-                      attrs: { type: "button" }
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.enviarMapa(sitio)
+                        }
+                      }
                     },
                     [_vm._v(" Mostrar en el mapa ")]
                   )
@@ -59957,59 +59974,65 @@ var render = function() {
           staticClass: "btn btn-lila-peludets",
           on: { click: _vm.mostrarMapa }
         },
-        [_vm._v("Mapa")]
+        [_vm._v(_vm._s(_vm.texto))]
       ),
       _vm._v(" "),
-      _c(
-        "transition",
-        { attrs: { name: "fade", mode: "out-in" } },
-        [
-          _vm.showMap
-            ? _c(
-                "l-map",
-                {
-                  staticClass: "mt-3",
-                  staticStyle: { height: "80%" },
-                  attrs: { width: "100%", zoom: _vm.zoom, center: _vm.center },
-                  on: {
-                    "update:zoom": _vm.updateZoom,
-                    "update:center": _vm.updateCenter
-                  }
-                },
+      _vm.showMap
+        ? _c(
+            "l-map",
+            {
+              staticClass: "mt-3",
+              staticStyle: { height: "80%" },
+              attrs: { width: "100%", zoom: _vm.zoom, center: _vm.center },
+              on: {
+                "update:zoom": _vm.updateZoom,
+                "update:center": _vm.updateCenter
+              }
+            },
+            [
+              _c("l-title-layer", { attrs: { url: _vm.url } }),
+              _vm._v(" "),
+              _vm._l(_vm.markers, function(marker, index) {
+                return _c(
+                  "l-marker",
+                  { key: marker, attrs: { "lat-lng": marker, icon: _vm.icon } },
+                  [
+                    _c("l-icon", {
+                      attrs: {
+                        "icon-size": _vm.dynamicSize,
+                        "icon-anchor": _vm.dynamicAnchor,
+                        "icon-url":
+                          "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("l-popup", [_vm._v(_vm._s(_vm.popups[index]))])
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "l-marker",
+                { attrs: { "lat-lng": _vm.marker, icon: _vm.icon } },
                 [
-                  _c("l-title-layer", { attrs: { url: _vm.url } }),
+                  _c("l-icon", {
+                    attrs: {
+                      "icon-size": _vm.dynamicSize,
+                      "icon-anchor": _vm.dynamicAnchor,
+                      "icon-url":
+                        "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
+                    }
+                  }),
                   _vm._v(" "),
-                  _vm._l(_vm.markers, function(marker, index) {
-                    return _c(
-                      "l-marker",
-                      {
-                        key: marker,
-                        attrs: { "lat-lng": marker, icon: _vm.icon }
-                      },
-                      [
-                        _c("l-icon", {
-                          attrs: {
-                            "icon-size": _vm.dynamicSize,
-                            "icon-anchor": _vm.dynamicAnchor,
-                            "icon-url":
-                              "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("l-popup", [
-                          _vm._v(" " + _vm._s(_vm.popups[index]) + " ")
-                        ])
-                      ],
-                      1
-                    )
-                  })
+                  _c("l-popup", [_vm._v(_vm._s(_vm.popups[_vm.index]))])
                 ],
-                2
+                1
               )
-            : _vm._e()
-        ],
-        1
-      )
+            ],
+            2
+          )
+        : _vm._e()
     ],
     1
   )
@@ -88422,15 +88445,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./resources/js/components/Perfil.vue ***!
   \********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Perfil_vue_vue_type_template_id_2e2d5c12___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Perfil.vue?vue&type=template&id=2e2d5c12& */ "./resources/js/components/Perfil.vue?vue&type=template&id=2e2d5c12&");
 /* harmony import */ var _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Perfil.vue?vue&type=script&lang=js& */ "./resources/js/components/Perfil.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Perfil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Perfil.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Perfil.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Perfil_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Perfil.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Perfil.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -88462,7 +88484,7 @@ component.options.__file = "resources/js/components/Perfil.vue"
 /*!*********************************************************************!*\
   !*** ./resources/js/components/Perfil.vue?vue&type=script&lang=js& ***!
   \*********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -88797,8 +88819,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Documents\Git\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Documents\Git\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\pldts\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\pldts\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
