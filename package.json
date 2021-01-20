@@ -25,6 +25,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@fullcalendar/daygrid": "^5.5.0",
+        "@fullcalendar/vue": "^5.5.0",
         "leaflet": "^1.7.1",
         "sweetalert2": "^10.12.6",
         "symfony": "0.0.1",
