@@ -1,4 +1,13 @@
 {
+  "app": {
+    "menuExplorador": "Explorador",
+    "menuProfesionales": "Profesionales",
+    "menuLogin": "Iniciar session",
+    "menuRegistro": "Registrate!",
+    "footerContacto": "Contacto",
+    "footerPais": "ESPAÑITA",
+    "footerRedesSociales": "Redes Sociales"
+  },
   "home": {
     "formTrabajos": "Trabajos",
     "formTipoMascotas": "Tipo de mascota",

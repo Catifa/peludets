@@ -1,23 +1,32 @@
 {
-    "home": {
-      "formTrabajos": "Treballs",
-      "formTipoMascotas": "Tipus de mascota",
-      "formBotonBuscar": "Cercador de treballs",
-      "formSelectTrabajos1": "Allotjament",
-      "formSelectTrabajos2": "Paseig",
-      "formSelectTrabajos3": "Ensinistrament",
-      "formSelectTipoMascotas1": "Gos",
-      "formSelectTipoMascotas2": "Gat",
-      "formSelectTipoMascotas3": "Fura",
-      "sliderTitulo1": "Passejades com a ell de agraden",
-      "sliderTitulo2": "¿Més d'una mascota?",
-      "sliderTitulo3": "També hi ha lloc per a tu, petitó!",
-      "sliderDesc1": "La nostra comunitat coneix les millors zones perquè la teva mascota gaudeixi d'un passeig agradable.",
-      "sliderDesc2": "Cap problema! Podem ocupar-nos de totes elles.",
-      "sliderDesc3": "Peludets! no és només per a gossos o gats. Tenim lloc per a tot tipus de mascotes.",
-      "cardBox1": "Busca un lloc on la teva mascota està agust mentre gaudeixes de les teves vacances!",
-      "cardBox2": "No només és només per a gossos i gats. La nostra comunitat pot tenir cura a qualsevol tipus de mascota.",
-      "cardBox3": "Pots demanar quants passejos i de quant de temps són necessaris.",
-      "cardBox4": "Disposem de secció de professionals per a mascotes exòtiques i amb cures especials."
-    }
+  "app": {
+    "menuExplorador": "Explorador",
+    "menuProfesionales": "Profesionals",
+    "menuLogin": "Inicia sessió",
+    "menuRegistro": "Registra't!",
+    "footerContacto": "Contacte",
+    "footerPais": "ESPANYA",
+    "footerRedesSociales": "Xarxes Socials"
+  },
+  "home": {
+    "formTrabajos": "Treballs",
+    "formTipoMascotas": "Tipus de mascota",
+    "formBotonBuscar": "Cercador de treballs",
+    "formSelectTrabajos1": "Allotjament",
+    "formSelectTrabajos2": "Paseig",
+    "formSelectTrabajos3": "Ensinistrament",
+    "formSelectTipoMascotas1": "Gos",
+    "formSelectTipoMascotas2": "Gat",
+    "formSelectTipoMascotas3": "Fura",
+    "sliderTitulo1": "Passejades com a ell de agraden",
+    "sliderTitulo2": "¿Més d'una mascota?",
+    "sliderTitulo3": "També hi ha lloc per a tu, petitó!",
+    "sliderDesc1": "La nostra comunitat coneix les millors zones perquè la teva mascota gaudeixi d'un passeig agradable.",
+    "sliderDesc2": "Cap problema! Podem ocupar-nos de totes elles.",
+    "sliderDesc3": "Peludets! no és només per a gossos o gats. Tenim lloc per a tot tipus de mascotes.",
+    "cardBox1": "Busca un lloc on la teva mascota està agust mentre gaudeixes de les teves vacances!",
+    "cardBox2": "No només és només per a gossos i gats. La nostra comunitat pot tenir cura a qualsevol tipus de mascota.",
+    "cardBox3": "Pots demanar quants passejos i de quant de temps són necessaris.",
+    "cardBox4": "Disposem de secció de professionals per a mascotes exòtiques i amb cures especials."
   }
+}

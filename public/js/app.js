@@ -1904,9 +1904,210 @@ module.exports = {
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/App.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\xampp\\htdocs\\peludets\\package.json: Error while parsing JSON - Unexpected token < in JSON at position 3\n    at JSON.parse (<anonymous>)\n    at D:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\core\\lib\\config\\files\\package.js:57:20\n    at D:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\core\\lib\\config\\files\\utils.js:36:12\n    at Generator.next (<anonymous>)\n    at Function.<anonymous> (D:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\core\\lib\\gensync-utils\\async.js:26:3)\n    at Generator.next (<anonymous>)\n    at step (D:\\xampp\\htdocs\\peludets\\node_modules\\gensync\\index.js:261:32)\n    at D:\\xampp\\htdocs\\peludets\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (D:\\xampp\\htdocs\\peludets\\node_modules\\gensync\\index.js:223:11)\n    at D:\\xampp\\htdocs\\peludets\\node_modules\\gensync\\index.js:189:28\n    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:63:3)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'local-changer',
+  data: function data() {
+    return {
+      usuario: {},
+      langs: ["es", "ca", "en"]
+    };
+  },
+  methods: {
+    recuperarSession: function recuperarSession() {
+      var _this = this;
+
+      this.axios.post("http://localhost/api/session/get").then(function (response) {
+        console.log(response.data);
+      })["catch"](function (error) {
+        return console.log(error);
+      })["finally"](function () {
+        return _this.loading = false;
+      });
+    },
+    setLocale: function setLocale(locale) {
+      this.$i18n.locale = locale;
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.recuperarSession();
+  }
+});
 
 /***/ }),
 
@@ -60009,7 +60210,11 @@ var render = function() {
                               staticClass: "nav-link",
                               attrs: { to: "/explorador" }
                             },
-                            [_vm._v("Explorador")]
+                            [
+                              _vm._v(
+                                " " + _vm._s(_vm.$t("app.menuExplorador")) + " "
+                              )
+                            ]
                           )
                         ],
                         1
@@ -60025,13 +60230,59 @@ var render = function() {
                               staticClass: "nav-link",
                               attrs: { to: "/profesionales" }
                             },
-                            [_vm._v("Profesionales")]
+                            [
+                              _vm._v(
+                                " " +
+                                  _vm._s(_vm.$t("app.menuProfesionales")) +
+                                  " "
+                              )
+                            ]
                           )
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _vm._m(1)
+                      _c("li", { staticClass: "nav-item d-md-none mx-auto" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-lila-peludets btn-sm mr-2",
+                            attrs: {
+                              id: "inicio-sesion",
+                              type: "button",
+                              "data-toggle": "modal",
+                              "data-target": "#form-inicioSesion"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(_vm.$t("app.menuLogin")) +
+                                "\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-lila-peludets btn-sm",
+                            attrs: {
+                              id: "registro",
+                              type: "button",
+                              "data-toggle": "modal",
+                              "data-target": "#form-registro"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(_vm.$t("app.menuRegistro")) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      ])
                     ]),
                     _vm._v(" "),
                     _c(
@@ -60054,7 +60305,9 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                  Iniciar sesión\n                "
+                                  "\n                  " +
+                                    _vm._s(_vm.$t("app.menuLogin")) +
+                                    "\n                "
                                 )
                               ]
                             )
@@ -60074,7 +60327,9 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                  Registrate!\n                "
+                                  "\n                  " +
+                                    _vm._s(_vm.$t("app.menuRegistro")) +
+                                    "\n                "
                                 )
                               ]
                             )
@@ -60104,15 +60359,35 @@ var render = function() {
           [
             _c("div", { staticClass: "text-center text-md-left" }, [
               _c("div", { staticClass: "row" }, [
-                _vm._m(2),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("hr", { staticClass: "clearfix w-100 d-md-none pb-3" }),
                 _vm._v(" "),
-                _vm._m(3),
+                _c("div", { staticClass: "col-md-3 mb-md-0 mb-3" }, [
+                  _c("h5", { staticClass: "text-uppercase" }, [
+                    _vm._v(" " + _vm._s(_vm.$t("app.footerContacto")) + " ")
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "list-unstyled" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("p", [
+                        _vm._v(
+                          "Barcelona, " + _vm._s(_vm.$t("app.footerPais")) + " "
+                        )
+                      ])
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-3 mb-md-0 mb-3" }, [
                   _c("h5", { staticClass: "text-uppercase" }, [
-                    _vm._v("Redes sociales")
+                    _vm._v(
+                      " " + _vm._s(_vm.$t("app.footerRedesSociales")) + " "
+                    )
                   ]),
                   _vm._v(" "),
                   _vm._m(4),
@@ -60182,40 +60457,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item d-md-none mx-auto" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-lila-peludets btn-sm mr-2",
-          attrs: {
-            id: "inicio-sesion",
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#form-inicioSesion"
-          }
-        },
-        [_vm._v("\n                Iniciar sesión\n              ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-lila-peludets btn-sm",
-          attrs: {
-            id: "registro",
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#form-registro"
-          }
-        },
-        [_vm._v("\n                Registrate!\n              ")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-6 mt-md-0 mt-3" }, [
       _c("h5", { staticClass: "text-uppercase" }, [_vm._v("Footer Content")]),
       _vm._v(" "),
@@ -60230,17 +60471,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3 mb-md-0 mb-3" }, [
-      _c("h5", { staticClass: "text-uppercase" }, [_vm._v("Contacto")]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "list-unstyled" }, [
-        _c("li", [_c("p", [_vm._v("Badia del valles, 08214")])]),
-        _vm._v(" "),
-        _c("li", [_c("p", [_vm._v("Hoña uwu")])]),
-        _vm._v(" "),
-        _c("li", [_c("p", [_vm._v("Barcelona, ESPAÑA")])])
-      ])
-    ])
+    return _c("li", [_c("p", [_vm._v("Badia del valles, 08214")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("Hoña uwu")])])
   },
   function() {
     var _vm = this
@@ -60271,20 +60508,6 @@ var staticRenderFns = [
           { attrs: { href: "htttps://facebook.com/", target: "blank" } },
           [_c("i", { staticClass: "fab fa-facebook-square" })]
         )
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("img", {
-          attrs: { src: __webpack_require__(/*! ../img/flag/es.png */ "./resources/img/flag/es.png"), alt: "es", width: "10%" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: { src: __webpack_require__(/*! ../img/flag/ca.png */ "./resources/img/flag/ca.png"), alt: "ca", width: "10%" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: { src: __webpack_require__(/*! ../img/flag/en.png */ "./resources/img/flag/en.png"), alt: "en", width: "13%" }
-        })
       ])
     ])
   },
@@ -90416,10 +90639,10 @@ webpackContext.id = "./resources/i18n/locales sync recursive [A-Za-z0-9-_,\\s]+\
 /*!****************************************!*\
   !*** ./resources/i18n/locales/ca.json ***!
   \****************************************/
-/*! exports provided: home, default */
+/*! exports provided: app, home, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"home\":{\"formTrabajos\":\"Treballs\",\"formTipoMascotas\":\"Tipus de mascota\",\"formBotonBuscar\":\"Cercador de treballs\",\"formSelectTrabajos1\":\"Allotjament\",\"formSelectTrabajos2\":\"Paseig\",\"formSelectTrabajos3\":\"Ensinistrament\",\"formSelectTipoMascotas1\":\"Gos\",\"formSelectTipoMascotas2\":\"Gat\",\"formSelectTipoMascotas3\":\"Fura\",\"sliderTitulo1\":\"Passejades com a ell de agraden\",\"sliderTitulo2\":\"¿Més d'una mascota?\",\"sliderTitulo3\":\"També hi ha lloc per a tu, petitó!\",\"sliderDesc1\":\"La nostra comunitat coneix les millors zones perquè la teva mascota gaudeixi d'un passeig agradable.\",\"sliderDesc2\":\"Cap problema! Podem ocupar-nos de totes elles.\",\"sliderDesc3\":\"Peludets! no és només per a gossos o gats. Tenim lloc per a tot tipus de mascotes.\",\"cardBox1\":\"Busca un lloc on la teva mascota està agust mentre gaudeixes de les teves vacances!\",\"cardBox2\":\"No només és només per a gossos i gats. La nostra comunitat pot tenir cura a qualsevol tipus de mascota.\",\"cardBox3\":\"Pots demanar quants passejos i de quant de temps són necessaris.\",\"cardBox4\":\"Disposem de secció de professionals per a mascotes exòtiques i amb cures especials.\"}}");
+module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorador\",\"menuProfesionales\":\"Profesionals\",\"menuLogin\":\"Inicia sessió\",\"menuRegistro\":\"Registra't!\",\"footerContacto\":\"Contacte\",\"footerPais\":\"ESPANYA\",\"footerRedesSociales\":\"Xarxes Socials\"},\"home\":{\"formTrabajos\":\"Treballs\",\"formTipoMascotas\":\"Tipus de mascota\",\"formBotonBuscar\":\"Cercador de treballs\",\"formSelectTrabajos1\":\"Allotjament\",\"formSelectTrabajos2\":\"Paseig\",\"formSelectTrabajos3\":\"Ensinistrament\",\"formSelectTipoMascotas1\":\"Gos\",\"formSelectTipoMascotas2\":\"Gat\",\"formSelectTipoMascotas3\":\"Fura\",\"sliderTitulo1\":\"Passejades com a ell de agraden\",\"sliderTitulo2\":\"¿Més d'una mascota?\",\"sliderTitulo3\":\"També hi ha lloc per a tu, petitó!\",\"sliderDesc1\":\"La nostra comunitat coneix les millors zones perquè la teva mascota gaudeixi d'un passeig agradable.\",\"sliderDesc2\":\"Cap problema! Podem ocupar-nos de totes elles.\",\"sliderDesc3\":\"Peludets! no és només per a gossos o gats. Tenim lloc per a tot tipus de mascotes.\",\"cardBox1\":\"Busca un lloc on la teva mascota està agust mentre gaudeixes de les teves vacances!\",\"cardBox2\":\"No només és només per a gossos i gats. La nostra comunitat pot tenir cura a qualsevol tipus de mascota.\",\"cardBox3\":\"Pots demanar quants passejos i de quant de temps són necessaris.\",\"cardBox4\":\"Disposem de secció de professionals per a mascotes exòtiques i amb cures especials.\"}}");
 
 /***/ }),
 
@@ -90427,10 +90650,10 @@ module.exports = JSON.parse("{\"home\":{\"formTrabajos\":\"Treballs\",\"formTipo
 /*!****************************************!*\
   !*** ./resources/i18n/locales/en.json ***!
   \****************************************/
-/*! exports provided: home, default */
+/*! exports provided: app, home, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"home\":{\"formTrabajos\":\"Works\",\"formTipoMascotas\":\"Pet type\",\"formBotonBuscar\":\"Search works\",\"formSelectTrabajos1\":\"Accommodation\",\"formSelectTrabajos2\":\"Walk\",\"formSelectTrabajos3\":\"Training\",\"formSelectTipoMascotas1\":\"Dog\",\"formSelectTipoMascotas2\":\"Cat\",\"formSelectTipoMascotas3\":\"Ferret\",\"sliderTitulo1\":\"Walks like he likes\",\"sliderTitulo2\":\"More than one pet?\",\"sliderTitulo3\":\"There is also a place for you, little one!\",\"sliderDesc1\":\"Our community knows the best areas for your pet to enjoy a pleasant walk.\",\"sliderDesc2\":\"No problem! We can take care of all of them.\",\"sliderDesc3\":\"Peludets! It is not just for cats or dogs. We have room for all kinds of pets.\",\"cardBox1\":\"Find a place where your pet is comfortable while you enjoy your vacation!\",\"cardBox2\":\"It's not just for cats and dogs only. Our community can take care of any type of pet.\",\"cardBox3\":\"You can ask for how many walks and how long they are needed.\",\"cardBox4\":\"We have a professional section for exotic pets with special care.\"}}");
+module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorer\",\"menuProfesionales\":\"Profesionals\",\"menuLogin\":\"Log in\",\"menuRegistro\":\"Register!\",\"footerContacto\":\"Contact\",\"footerPais\":\"SPAIN\",\"footerRedesSociales\":\"Social networks\"},\"home\":{\"formTrabajos\":\"Works\",\"formTipoMascotas\":\"Pet type\",\"formBotonBuscar\":\"Search works\",\"formSelectTrabajos1\":\"Accommodation\",\"formSelectTrabajos2\":\"Walk\",\"formSelectTrabajos3\":\"Training\",\"formSelectTipoMascotas1\":\"Dog\",\"formSelectTipoMascotas2\":\"Cat\",\"formSelectTipoMascotas3\":\"Ferret\",\"sliderTitulo1\":\"Walks like he likes\",\"sliderTitulo2\":\"More than one pet?\",\"sliderTitulo3\":\"There is also a place for you, little one!\",\"sliderDesc1\":\"Our community knows the best areas for your pet to enjoy a pleasant walk.\",\"sliderDesc2\":\"No problem! We can take care of all of them.\",\"sliderDesc3\":\"Peludets! It is not just for cats or dogs. We have room for all kinds of pets.\",\"cardBox1\":\"Find a place where your pet is comfortable while you enjoy your vacation!\",\"cardBox2\":\"It's not just for cats and dogs only. Our community can take care of any type of pet.\",\"cardBox3\":\"You can ask for how many walks and how long they are needed.\",\"cardBox4\":\"We have a professional section for exotic pets with special care.\"}}");
 
 /***/ }),
 
@@ -90438,10 +90661,10 @@ module.exports = JSON.parse("{\"home\":{\"formTrabajos\":\"Works\",\"formTipoMas
 /*!****************************************!*\
   !*** ./resources/i18n/locales/es.json ***!
   \****************************************/
-/*! exports provided: home, default */
+/*! exports provided: app, home, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"home\":{\"formTrabajos\":\"Trabajos\",\"formTipoMascotas\":\"Tipo de mascota\",\"formBotonBuscar\":\"Buscar Trabajos\",\"formSelectTrabajos1\":\"Alojamiento\",\"formSelectTrabajos2\":\"Paseo\",\"formSelectTrabajos3\":\"Adiestramiento\",\"formSelectTipoMascotas1\":\"Perro\",\"formSelectTipoMascotas2\":\"Gato\",\"formSelectTipoMascotas3\":\"Hurón\",\"sliderTitulo1\":\"Paseos como a él de gustan\",\"sliderTitulo2\":\"¿Más de una mascota?\",\"sliderTitulo3\":\"También hay sitio para ti, chiquitín!\",\"sliderDesc1\":\"Nuestra comunidad conoce las mejores zonas para que tu mascota disfrute de un paseo agradable.\",\"sliderDesc2\":\"No hay problema! Podemos ocuparnos de todas ellas.\",\"sliderDesc3\":\"Peludets! no es solo para perros o gatos. Tenemos sitio para todo tipo de mascotas.\",\"cardBox1\":\"Busca un sitio donde tu mascota está agusto mientras disfrutas de tus vacaciones!\",\"cardBox2\":\"No solo es solo para perros y gatos. Nuestra comunidad puede cuidar a cualquier tipo de mascota.\",\"cardBox3\":\"Puedes pedir cuantos paseos y de cuanto tiempo són necesarios.\",\"cardBox4\":\"Disponemos de sección de profesionales para mascotas exóticas y con cuidados especiales.\"}}");
+module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorador\",\"menuProfesionales\":\"Profesionales\",\"menuLogin\":\"Iniciar session\",\"menuRegistro\":\"Registrate!\",\"footerContacto\":\"Contacto\",\"footerPais\":\"ESPAÑITA\",\"footerRedesSociales\":\"Redes Sociales\"},\"home\":{\"formTrabajos\":\"Trabajos\",\"formTipoMascotas\":\"Tipo de mascota\",\"formBotonBuscar\":\"Buscar Trabajos\",\"formSelectTrabajos1\":\"Alojamiento\",\"formSelectTrabajos2\":\"Paseo\",\"formSelectTrabajos3\":\"Adiestramiento\",\"formSelectTipoMascotas1\":\"Perro\",\"formSelectTipoMascotas2\":\"Gato\",\"formSelectTipoMascotas3\":\"Hurón\",\"sliderTitulo1\":\"Paseos como a él de gustan\",\"sliderTitulo2\":\"¿Más de una mascota?\",\"sliderTitulo3\":\"También hay sitio para ti, chiquitín!\",\"sliderDesc1\":\"Nuestra comunidad conoce las mejores zonas para que tu mascota disfrute de un paseo agradable.\",\"sliderDesc2\":\"No hay problema! Podemos ocuparnos de todas ellas.\",\"sliderDesc3\":\"Peludets! no es solo para perros o gatos. Tenemos sitio para todo tipo de mascotas.\",\"cardBox1\":\"Busca un sitio donde tu mascota está agusto mientras disfrutas de tus vacaciones!\",\"cardBox2\":\"No solo es solo para perros y gatos. Nuestra comunidad puede cuidar a cualquier tipo de mascota.\",\"cardBox3\":\"Puedes pedir cuantos paseos y de cuanto tiempo són necesarios.\",\"cardBox4\":\"Disponemos de sección de profesionales para mascotas exóticas y con cuidados especiales.\"}}");
 
 /***/ }),
 
@@ -90475,39 +90698,6 @@ module.exports = "/images/slide2.jpg?9719378046166f44292df44b26d80acf";
 /***/ (function(module, exports) {
 
 module.exports = "/images/slide3.jpg?2c390ff2d0b64215028f75600cc91b1f";
-
-/***/ }),
-
-/***/ "./resources/img/flag/ca.png":
-/*!***********************************!*\
-  !*** ./resources/img/flag/ca.png ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/ca.png?c7c4e490abc48ac89efc23d8332e92da";
-
-/***/ }),
-
-/***/ "./resources/img/flag/en.png":
-/*!***********************************!*\
-  !*** ./resources/img/flag/en.png ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/en.png?455ae637bf83005b3fdef75849853cd6";
-
-/***/ }),
-
-/***/ "./resources/img/flag/es.png":
-/*!***********************************!*\
-  !*** ./resources/img/flag/es.png ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/es.png?4b5a8fc852245e041e6d1aff973f63cd";
 
 /***/ }),
 
@@ -91034,15 +91224,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************!*\
   !*** ./resources/js/components/Home.vue ***!
   \******************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=f2b6376c& */ "./resources/js/components/Home.vue?vue&type=template&id=f2b6376c&");
 /* harmony import */ var _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js& */ "./resources/js/components/Home.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Home_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Home.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Home_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Home.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -91074,7 +91263,7 @@ component.options.__file = "resources/js/components/Home.vue"
 /*!*******************************************************************!*\
   !*** ./resources/js/components/Home.vue?vue&type=script&lang=js& ***!
   \*******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

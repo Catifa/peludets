@@ -36,12 +36,12 @@
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <router-link to="/explorador" class="nav-link"
-                  >Explorador</router-link
+                  > {{ $t('app.menuExplorador') }} </router-link
                 >
               </li>
               <li class="nav-item">
                 <router-link to="/profesionales" class="nav-link"
-                  >Profesionales</router-link
+                  > {{ $t('app.menuProfesionales') }} </router-link
                 >
               </li>
               <li class="nav-item d-md-none mx-auto">
@@ -52,7 +52,7 @@
                   data-toggle="modal"
                   data-target="#form-inicioSesion"
                 >
-                  Iniciar sesión
+                  {{ $t('app.menuLogin') }}
                 </button>
                 <button
                   id="registro"
@@ -61,7 +61,7 @@
                   data-toggle="modal"
                   data-target="#form-registro"
                 >
-                  Registrate!
+                  {{ $t('app.menuRegistro') }}
                 </button>
               </li>
             </ul>
@@ -77,7 +77,7 @@
                     data-toggle="modal"
                     data-target="#form-inicioSesion"
                   >
-                    Iniciar sesión
+                    {{ $t('app.menuLogin') }}
                   </button>
               </li>
               <li class="nav-item">
@@ -88,7 +88,7 @@
                     data-toggle="modal"
                     data-target="#form-registro"
                   >
-                    Registrate!
+                    {{ $t('app.menuRegistro') }}
                   </button>
                 
               </li>
@@ -116,7 +116,7 @@
             </div>
             <hr class="clearfix w-100 d-md-none pb-3" />
             <div class="col-md-3 mb-md-0 mb-3">
-              <h5 class="text-uppercase">Contacto</h5>
+              <h5 class="text-uppercase"> {{ $t('app.footerContacto') }} </h5>
               <ul class="list-unstyled">
                 <li>
                   <p>Badia del valles, 08214</p>
@@ -125,12 +125,12 @@
                   <p>Hoña uwu</p>
                 </li>
                 <li>
-                  <p>Barcelona, ESPAÑA</p>
+                  <p>Barcelona, {{ $t('app.footerPais') }} </p>
                 </li>
               </ul>
             </div>
             <div class="col-md-3 mb-md-0 mb-3">
-              <h5 class="text-uppercase">Redes sociales</h5>
+              <h5 class="text-uppercase"> {{ $t('app.footerRedesSociales') }} </h5>
               <ul class="list-unstyled">
                 <li class="redes-sociales">
                   <a class="mr-2" href="https://twitter.com/" target="blank"
