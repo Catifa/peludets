@@ -1,34 +1,27 @@
 <template>
   <div class="col-md-5 mt-3 mx-auto" id="mapa">
-    <button @click="mostrarMapa" class="btn btn-lila-peludets">Mapa</button>
-    <transition name="fade" mode="out-in">
-      <l-map
-        v-if="showMap"
-        class="mt-3"
-        style="height: 80%"
-        width="100%"
-        :zoom="zoom"
-        :center="center"
-        @update:zoom="updateZoom"
-        @update:center="updateCenter"
-      >
-        <l-title-layer :url="url"></l-title-layer>
-        <l-marker
-          v-for="(marker, index) in markers"
-          :key="marker"
-          :lat-lng="marker"
-          :icon="icon"
-        >
-          <l-icon
-            :icon-size="dynamicSize"
-            :icon-anchor="dynamicAnchor"
-            icon-url="https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
-          >
-          </l-icon>
-          <l-popup> {{ popups[index] }} </l-popup>
-        </l-marker>
-      </l-map>
-    </transition>
+    <button @click="mostrarMapa" class="btn btn-lila-peludets">{{ texto }}</button>
+    <l-map
+      v-if="showMap"
+      class="mt-3"
+      style="height: 80%"
+      width="100%"
+      :zoom="zoom"
+      :center="center"
+      @update:zoom="updateZoom"
+      @update:center="updateCenter"
+    >
+      <l-title-layer :url="url"></l-title-layer>
+      <l-marker v-for="(marker, index) in markers" :key="marker" :lat-lng="marker" :icon="icon">
+        <l-icon
+          :icon-size="dynamicSize"
+          :icon-anchor="dynamicAnchor"
+          icon-url="https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
+        ></l-icon>
+        <l-popup>{{ popups[index] }}</l-popup>
+      </l-marker>
+    </l-map>
+    <button @click="updateMarker">Marker</button>
   </div>
 </template>
 
@@ -40,7 +33,7 @@ import {
   LMarker,
   LPopup,
   LTooltip,
-  LIcon,
+  LIcon
 } from "vue2-leaflet";
 
 export default {
@@ -51,7 +44,16 @@ export default {
     LMarker,
     LPopup,
     LTooltip,
-    LIcon,
+    LIcon
+  },
+  props: ["props"],
+  watch: {
+    props: {
+      handler(val) {
+        this.updateMarker();
+      } 
+      
+    }
   },
   data() {
     return {
@@ -63,21 +65,23 @@ export default {
         L.latLng(41.50677, 2.11371),
         L.latLng(41.50601, 2.12021),
         L.latLng(41.50755, 2.11537),
-        L.latLng(41.5095, 2.11505),
+        L.latLng(41.5095, 2.11505)
       ],
       popups: [
         "Parque para perros 1",
         "Parque para perros 2",
         "Parque para perros 3",
-        "Parque para perros 4",
+        "Parque para perros 4"
       ],
       icon: L.icon({
         iconUrl:
           "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png",
         iconSize: [32, 37],
-        iconAnchor: [16, 37],
+        iconAnchor: [16, 37]
       }),
       showMap: true,
+      // Variables Vista
+      texto: "Ocultar Mapa"
     };
   },
   computed: {
@@ -86,7 +90,7 @@ export default {
     },
     dynamicAnchor() {
       return [this.iconSize / 2, this.iconSize * 1.15];
-    },
+    }
   },
   methods: {
     updateZoom(zoom) {
@@ -95,14 +99,19 @@ export default {
     updateCenter(center) {
       this.center = center;
     },
-    mostrarMapa(showMap) {
-      if (showMap) {
-        this.showMap = false;
-      } else if (!showMap) {
-        this.showMap = true;
+    mostrarMapa() {
+      this.showMap = !this.showMap;
+      if (this.showMap) {
+        this.texto = "Ocultar Mapa";
+      } else {
+        this.texto = " Mostrar Mapa";
       }
     },
-  },
+    updateMarker() {
+      if (this.props.latLng != undefined) {
+        this.markers.push(this.props.latLng);
+      }
+    }
+  }
 };
-
 </script>

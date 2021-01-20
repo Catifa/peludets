@@ -3,7 +3,7 @@
 </style>
 <template>
   <div class="row">
-    <mapa-exp latitudes="sitiosInteres"></mapa-exp>
+    <mapa-exp :props="sitioMapa"></mapa-exp>
     <div class="col-md-6 mt-3 mx-auto">
       <div class="row">
         <button class="btn btn-azul-peludets mr-2" type="button">
@@ -25,7 +25,7 @@
             <p class="card-text">
               {{ sitio.descripcion }}
             </p>
-            <button class="btn btn-azul-peludets" type="button"> Mostrar en el mapa </button>
+            <button class="btn btn-azul-peludets" type="button" @click="enviarMapa(sitio)"> Mostrar en el mapa </button>
           </div>
         </div>
       </div>
@@ -34,30 +34,37 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       sitiosInteres: [
         {
-          nombre: "Pinar de Badia",
+          nombre: "Parc de Can grocs",
           descripcion: "Parque guapisimo para ir con el perro",
-          primeraCoordenada: "41.50675",
-          segundaCoordenada: "2.1136",
+          latLng: L.latLng(41.51076, 2.11969),
+          center: [41.51076, 2.11969]
         },
         {
-          nombre: "Plaça 2 de Maig",
+          nombre: "Parc Valles Central",
           descripcion: "Parque verificado por Aitor",
-          primeraCoordenada: "41.50971",
-          segundaCoordenada: "2.11469",
+          latLng: L.latLng(41.52103, 2.1121),
+          center: [41.52103, 2.1121]
         },
         {
-          nombre: "Parc Joan Aguilar",
-          descripcion: "Parque que tiene columpios",
-          primeraCoordenada: "41.50768",
-          segundaCoordenada: "2.11526",
+          nombre: "Aiguestortes",
+          descripcion: "Esta lejos, pero mola",
+          latLng: L.latLng(42.5719, 0.9425),
+          center: [42.5719, 0.9425]
         },
       ],
+      sitioMapa: {}
     };
   },
+  methods: {
+    enviarMapa(obj) {
+      this.sitioMapa = obj;
+    }
+  }
 };
 </script>
