@@ -14,6 +14,10 @@ import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Vue from 'vue';
 import i18n from '../i18n/i18n'; // Traduccion
+import VueScheduler from 'v-calendar-scheduler';//calendario
+import 'v-calendar-scheduler/lib/main.css';//etilos calendario
+
+Vue.use(VueScheduler);//calendario
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);

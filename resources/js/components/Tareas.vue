@@ -16,6 +16,31 @@
         v-model="nuevaTarea"
         v-on:keyup.enter="agregarTarea"
       />
+      <vue-scheduler
+    :min-date="null"
+    :max-date="null"
+    :labels="{
+        today: 'Hoy',
+        back: 'Atrás',
+        next: 'Siguiente',
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día',
+        all_day: 'Todo el día'
+    }"
+    :time-range="[10,20]"
+    :available-views="['month', 'week', 'day']"
+    :initial-date="null"
+    initial-view="month"
+    use12
+    :show-time-marker="showMarker"
+    :show-today-button="false"
+    eventDisplay="eventDisplay"
+/>
+
+
+
+
 
       <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
 
@@ -49,6 +74,7 @@ export default {
 
     },
     methods: {
+      eventDisplay: event => event.customAttribute,
         agregarTarea(){
             console.log(this.nuevaTarea);
             this.tareas.push({
@@ -83,3 +109,4 @@ export default {
     }
 }
 </script>
+
