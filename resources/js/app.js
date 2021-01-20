@@ -13,7 +13,7 @@ import {routes} from './routes';
 import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Vue from 'vue';
- 
+import i18n from '../i18n/i18n'; // Traduccion
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -47,6 +47,7 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router: router,
+    i18n,
     render: h => h(App)
 });
 

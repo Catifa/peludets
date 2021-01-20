@@ -1,0 +1,23 @@
+{
+  "home": {
+    "formTrabajos": "Works",
+    "formTipoMascotas": "Pet type",
+    "formBotonBuscar": "Search works",
+    "formSelectTrabajos1": "Accommodation",
+    "formSelectTrabajos2": "Walk",
+    "formSelectTrabajos3": "Training",
+    "formSelectTipoMascotas1": "Dog",
+    "formSelectTipoMascotas2": "Cat",
+    "formSelectTipoMascotas3": "Ferret",
+    "sliderTitulo1": "Walks like he likes",
+    "sliderTitulo2": "More than one pet?",
+    "sliderTitulo3": "There is also a place for you, little one!",
+    "sliderDesc1": "Our community knows the best areas for your pet to enjoy a pleasant walk.",
+    "sliderDesc2": "No problem! We can take care of all of them.",
+    "sliderDesc3": "Peludets! It is not just for cats or dogs. We have room for all kinds of pets.",
+    "cardBox1": "Find a place where your pet is comfortable while you enjoy your vacation!",
+    "cardBox2": "It's not just for cats and dogs only. Our community can take care of any type of pet.",
+    "cardBox3": "You can ask for how many walks and how long they are needed.",
+    "cardBox4": "We have a professional section for exotic pets with special care."
+  }
+}

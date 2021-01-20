@@ -144,6 +144,20 @@
                   ></a>
                 </li>
               </ul>
+              <ul class="list-unstyled">
+                <li>
+                  <button 
+                    class="mr-1 btn btn-lila-peludets"
+                    href="javascrip:void(0)"
+                    v-for="(lang, i) in langs"
+                    :key="`Lang${i}`"
+                    :value="lang"
+                    @click="setLocale(lang)"
+                    >
+                    {{ lang }}
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -158,9 +172,11 @@
 </template>
 <script>
 export default {
+  name: 'local-changer',
   data() {
     return {
       usuario: {},
+      langs: ["es", "ca", "en"],
     }
   
   },
@@ -173,6 +189,9 @@ export default {
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
+    },
+    setLocale(locale) {
+      this.$i18n.locale = locale;
     },
   },
     beforeMount(){

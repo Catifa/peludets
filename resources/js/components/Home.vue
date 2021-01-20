@@ -28,11 +28,8 @@
               alt="..."
             />
             <div class="carousel-caption d-none d-md-block">
-              <h5>Paseos como a él le gustan</h5>
-              <p>
-                Nuestra comunidad conoce las mejores zonas para que tu mascota
-                disfrute de un paseo agradable.
-              </p>
+              <h5>{{ $t("home.sliderTitulo1") }}</h5>
+              <p>{{ $t("home.sliderDesc1") }}</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -42,8 +39,8 @@
               alt="..."
             />
             <div class="carousel-caption d-none d-md-block">
-              <h5>¿Más de una mascota?</h5>
-              <p>No hay problema! Podemos ocuparnos de todas ellas.</p>
+              <h5>{{ $t("home.sliderTitulo2") }}</h5>
+              <p>{{ $t("home.sliderDesc2") }}</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -53,11 +50,8 @@
               alt="..."
             />
             <div class="carousel-caption d-none d-md-block">
-              <h5>También hay sitio para ti, chiquitín!</h5>
-              <p>
-                Peludets! no es solo para perros o gatos. Tenemos sitio para
-                todo tipo de mascotas.
-              </p>
+              <h5>{{ $t("home.sliderTitulo3") }}</h5>
+              <p>{{ $t("home.sliderDesc3") }}</p>
             </div>
           </div>
         </div>
@@ -66,31 +60,23 @@
       <div class="col-md-3 col-sd-10 mt-4 mx-auto align-self-center">
         <form id="formTrabajos" class="rounded">
           <div class="form-group">
-            <label class="mt-2x" for="exampleFormControlSelect1"
-              >Trabajos</label
-            >
+            <label class="mt-2x" for="exampleFormControlSelect1">
+              {{ $t("home.formTrabajos") }}
+            </label>
             <select class="form-control" id="exampleFormControlSelect1">
-              <option>Alojamiento</option>
-              <option>Paseo</option>
-              <option>Asesinato</option>
+              <option>{{ $t("home.formSelectTrabajos1") }}</option>
+              <option>{{ $t("home.formSelectTrabajos2") }}</option>
+              <option>{{ $t("home.formSelectTrabajos3") }}</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Tipo de mascora</label>
+            <label for="exampleFormControlSelect1">
+              {{ $t("home.formTipoMascotas") }}
+            </label>
             <select class="form-control" id="exampleFormControlSelect2">
-              <option>Perro</option>
-              <option>Gato</option>
-              <option>Hurón</option>
-              <option>Loro</option>
-              <option>Aitor</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Cantidad de animales</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+              <option> {{ $t("home.formSelectTipoMascotas1") }} </option>
+              <option> {{ $t("home.formSelectTipoMascotas2") }} </option>
+              <option> {{ $t("home.formSelectTipoMascotas3") }} </option>
             </select>
           </div>
           <button
@@ -98,7 +84,7 @@
             type="submit"
             class="btn btn-lila-peludets"
           >
-            Buscar trabajos
+            {{ $t('home.formBotonBuscar') }}
           </button>
         </form>
       </div>
@@ -115,8 +101,7 @@
           />
           <div class="card-body bg-crema-peludets">
             <p class="card-text">
-              Busca un sitio donde tu mascota este agusto mientras disfrutas de
-              tus vacaciones!
+              {{ $t('home.cardBox1') }}
             </p>
           </div>
         </div>
@@ -131,8 +116,7 @@
           />
           <div class="card-body bg-crema-peludets">
             <p class="card-text">
-              No solo es solo para perros y gatos. Nuestra comunidad puede
-              cuidar a cualquier tipo de mascota.
+              {{ $t('home.cardBox2') }}
             </p>
           </div>
         </div>
@@ -147,7 +131,7 @@
           />
           <div class="card-body bg-crema-peludets">
             <p class="card-text">
-              Puedes pedir cuantos paseos y de cuanto tiempo són necesarios.
+              {{ $t('home.cardBox3') }}
             </p>
           </div>
         </div>
@@ -162,8 +146,7 @@
           />
           <div class="card-body bg-crema-peludets">
             <p class="card-text">
-              Disponemos de sección de profesionales para mascotas exóticas y
-              con cuidados especiales
+              {{ $t('home.cardBox4') }}
             </p>
           </div>
         </div>
@@ -171,3 +154,15 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      
+    };
+  },
+  methods: {
+  
+  }
+};
+</script>

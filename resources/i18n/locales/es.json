@@ -1,0 +1,23 @@
+{
+  "home": {
+    "formTrabajos": "Trabajos",
+    "formTipoMascotas": "Tipo de mascota",
+    "formBotonBuscar": "Buscar Trabajos",
+    "formSelectTrabajos1": "Alojamiento",
+    "formSelectTrabajos2": "Paseo",
+    "formSelectTrabajos3": "Adiestramiento",
+    "formSelectTipoMascotas1": "Perro",
+    "formSelectTipoMascotas2": "Gato",
+    "formSelectTipoMascotas3": "Hurón",
+    "sliderTitulo1": "Paseos como a él de gustan",
+    "sliderTitulo2": "¿Más de una mascota?",
+    "sliderTitulo3": "También hay sitio para ti, chiquitín!",
+    "sliderDesc1": "Nuestra comunidad conoce las mejores zonas para que tu mascota disfrute de un paseo agradable.",
+    "sliderDesc2": "No hay problema! Podemos ocuparnos de todas ellas.",
+    "sliderDesc3": "Peludets! no es solo para perros o gatos. Tenemos sitio para todo tipo de mascotas.",
+    "cardBox1": "Busca un sitio donde tu mascota está agusto mientras disfrutas de tus vacaciones!",
+    "cardBox2": "No solo es solo para perros y gatos. Nuestra comunidad puede cuidar a cualquier tipo de mascota.",
+    "cardBox3": "Puedes pedir cuantos paseos y de cuanto tiempo són necesarios.",
+    "cardBox4": "Disponemos de sección de profesionales para mascotas exóticas y con cuidados especiales."
+  }
+}
