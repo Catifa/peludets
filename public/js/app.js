@@ -1904,210 +1904,9 @@ module.exports = {
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/App.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'local-changer',
-  data: function data() {
-    return {
-      usuario: {},
-      langs: ["es", "ca", "en"]
-    };
-  },
-  methods: {
-    recuperarSession: function recuperarSession() {
-      var _this = this;
-
-      this.axios.post("http://localhost/api/session/get").then(function (response) {
-        console.log(response.data);
-      })["catch"](function (error) {
-        return console.log(error);
-      })["finally"](function () {
-        return _this.loading = false;
-      });
-    },
-    setLocale: function setLocale(locale) {
-      this.$i18n.locale = locale;
-    }
-  },
-  beforeMount: function beforeMount() {
-    this.recuperarSession();
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\xampp\\htdocs\\peludets\\package.json: Error while parsing JSON - Unexpected token < in JSON at position 3\n    at JSON.parse (<anonymous>)\n    at D:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\core\\lib\\config\\files\\package.js:57:20\n    at D:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\core\\lib\\config\\files\\utils.js:36:12\n    at Generator.next (<anonymous>)\n    at Function.<anonymous> (D:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\core\\lib\\gensync-utils\\async.js:26:3)\n    at Generator.next (<anonymous>)\n    at step (D:\\xampp\\htdocs\\peludets\\node_modules\\gensync\\index.js:261:32)\n    at D:\\xampp\\htdocs\\peludets\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (D:\\xampp\\htdocs\\peludets\\node_modules\\gensync\\index.js:223:11)\n    at D:\\xampp\\htdocs\\peludets\\node_modules\\gensync\\index.js:189:28\n    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:63:3)");
 
 /***/ }),
 
@@ -60472,6 +60271,20 @@ var staticRenderFns = [
           { attrs: { href: "htttps://facebook.com/", target: "blank" } },
           [_c("i", { staticClass: "fab fa-facebook-square" })]
         )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: { src: __webpack_require__(/*! ../img/flag/es.png */ "./resources/img/flag/es.png"), alt: "es", width: "10%" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          attrs: { src: __webpack_require__(/*! ../img/flag/ca.png */ "./resources/img/flag/ca.png"), alt: "ca", width: "10%" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          attrs: { src: __webpack_require__(/*! ../img/flag/en.png */ "./resources/img/flag/en.png"), alt: "en", width: "13%" }
+        })
       ])
     ])
   },
@@ -90662,6 +90475,39 @@ module.exports = "/images/slide2.jpg?9719378046166f44292df44b26d80acf";
 /***/ (function(module, exports) {
 
 module.exports = "/images/slide3.jpg?2c390ff2d0b64215028f75600cc91b1f";
+
+/***/ }),
+
+/***/ "./resources/img/flag/ca.png":
+/*!***********************************!*\
+  !*** ./resources/img/flag/ca.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/ca.png?c7c4e490abc48ac89efc23d8332e92da";
+
+/***/ }),
+
+/***/ "./resources/img/flag/en.png":
+/*!***********************************!*\
+  !*** ./resources/img/flag/en.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/en.png?455ae637bf83005b3fdef75849853cd6";
+
+/***/ }),
+
+/***/ "./resources/img/flag/es.png":
+/*!***********************************!*\
+  !*** ./resources/img/flag/es.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/es.png?4b5a8fc852245e041e6d1aff973f63cd";
 
 /***/ }),
 
