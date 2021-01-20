@@ -5,8 +5,10 @@
 
 <template>
 
-    <div id="app" class="container mt-5">
-      <h3>{{titulo}}</h3>
+<div id = "app" class="container mt-5">
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+            <h3>{{titulo}}</h3>
 
       <input
         type="text"
@@ -16,33 +18,8 @@
         v-model="nuevaTarea"
         v-on:keyup.enter="agregarTarea"
       />
-      <vue-scheduler
-    :min-date="null"
-    :max-date="null"
-    :labels="{
-        today: 'Hoy',
-        back: 'Atrás',
-        next: 'Siguiente',
-        month: 'Mes',
-        week: 'Semana',
-        day: 'Día',
-        all_day: 'Todo el día'
-    }"
-    :time-range="[10,20]"
-    :available-views="['month', 'week', 'day']"
-    :initial-date="null"
-    initial-view="month"
-    use12
-    :show-time-marker="showMarker"
-    :show-today-button="false"
-    eventDisplay="eventDisplay"
-/>
 
-
-
-
-
-      <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
+       <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
 
       <div class="mt-3" v-for="(t,index) of tareas" :key="t.nombre">
         <div role="alert" :class="['alert' , t.estado ? 'alert-success' : 'alert-danger']">
@@ -58,8 +35,31 @@
         </div>
       </div>
     </div>
-
   
+    <div class="col-md-8 col-xs-12">
+        <vue-scheduler
+          :min-date="null"
+          :max-date="null"
+          :labels="{
+          today: 'Hoy',
+          back: 'Atrás',
+          next: 'Siguiente',
+          month: 'Mes',
+          week: 'Semana',
+          day: 'Día',
+          all_day: 'Todo el día'
+          }"
+          :time-range="[10,20]"
+          :available-views="['month', 'week', 'day']"
+          :initial-date="new Date()"
+          initial-view="month"
+          use12          
+          :show-today-button="false"
+          eventDisplay="eventDisplay"
+          />
+    </div>
+  </div>
+</div> 
 </template>
 
 <script>

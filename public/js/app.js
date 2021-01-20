@@ -87028,135 +87028,145 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container mt-5", attrs: { id: "app" } },
-    [
-      _c("h3", [_vm._v(_vm._s(_vm.titulo))]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.nuevaTarea,
-            expression: "nuevaTarea"
-          }
-        ],
-        staticClass: "form-control my-3",
-        attrs: { type: "text", name: "", id: "" },
-        domProps: { value: _vm.nuevaTarea },
-        on: {
-          keyup: function($event) {
-            if (
-              !$event.type.indexOf("key") &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            return _vm.agregarTarea($event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.nuevaTarea = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("vue-scheduler", {
-        attrs: {
-          "min-date": null,
-          "max-date": null,
-          labels: {
-            today: "Hoy",
-            back: "Atrás",
-            next: "Siguiente",
-            month: "Mes",
-            week: "Semana",
-            day: "Día",
-            all_day: "Todo el día"
-          },
-          "time-range": [10, 20],
-          "available-views": ["month", "week", "day"],
-          "initial-date": null,
-          "initial-view": "month",
-          use12: "",
-          "show-time-marker": _vm.showMarker,
-          "show-today-button": false,
-          eventDisplay: "eventDisplay"
-        }
-      }),
-      _vm._v(" "),
+  return _c("div", { staticClass: "container mt-5", attrs: { id: "app" } }, [
+    _c("div", { staticClass: "row" }, [
       _c(
-        "button",
-        { staticClass: "btn btn-primary", on: { click: _vm.agregarTarea } },
-        [_vm._v("Agregar")]
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.tareas, function(t, index) {
-        return _c("div", { key: t.nombre, staticClass: "mt-3" }, [
+        "div",
+        { staticClass: "col-md-4 col-xs-12" },
+        [
+          _c("h3", [_vm._v(_vm._s(_vm.titulo))]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.nuevaTarea,
+                expression: "nuevaTarea"
+              }
+            ],
+            staticClass: "form-control my-3",
+            attrs: { type: "text", name: "", id: "" },
+            domProps: { value: _vm.nuevaTarea },
+            on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.agregarTarea($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.nuevaTarea = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
           _c(
-            "div",
-            {
-              class: ["alert", t.estado ? "alert-success" : "alert-danger"],
-              attrs: { role: "alert" }
-            },
-            [
+            "button",
+            { staticClass: "btn btn-primary", on: { click: _vm.agregarTarea } },
+            [_vm._v("Agregar")]
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.tareas, function(t, index) {
+            return _c("div", { key: t.nombre, staticClass: "mt-3" }, [
               _c(
                 "div",
                 {
-                  staticClass:
-                    "d-flex justify-content-between align-items-center"
+                  class: ["alert", t.estado ? "alert-success" : "alert-danger"],
+                  attrs: { role: "alert" }
                 },
                 [
-                  _c("div", [
-                    _vm._v(
-                      "\n                 " +
-                        _vm._s(index + 1) +
-                        ".  " +
-                        _vm._s(t.nombre) +
-                        "\n              "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success btn-sm",
-                        on: {
-                          click: function($event) {
-                            return _vm.editarTarea(index)
-                          }
-                        }
-                      },
-                      [_vm._v("Agregar")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger btn-sm",
-                        on: {
-                          click: function($event) {
-                            return _vm.eliminarTarea(index)
-                          }
-                        }
-                      },
-                      [_vm._v("Eliminar")]
-                    )
-                  ])
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "d-flex justify-content-between align-items-center"
+                    },
+                    [
+                      _c("div", [
+                        _vm._v(
+                          "\r\n                 " +
+                            _vm._s(index + 1) +
+                            ".  " +
+                            _vm._s(t.nombre) +
+                            "\r\n              "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success btn-sm",
+                            on: {
+                              click: function($event) {
+                                return _vm.editarTarea(index)
+                              }
+                            }
+                          },
+                          [_vm._v("Agregar")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger btn-sm",
+                            on: {
+                              click: function($event) {
+                                return _vm.eliminarTarea(index)
+                              }
+                            }
+                          },
+                          [_vm._v("Eliminar")]
+                        )
+                      ])
+                    ]
+                  )
                 ]
               )
-            ]
-          )
-        ])
-      })
-    ],
-    2
-  )
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-8 col-xs-12" },
+        [
+          _c("vue-scheduler", {
+            attrs: {
+              "min-date": null,
+              "max-date": null,
+              labels: {
+                today: "Hoy",
+                back: "Atrás",
+                next: "Siguiente",
+                month: "Mes",
+                week: "Semana",
+                day: "Día",
+                all_day: "Todo el día"
+              },
+              "time-range": [10, 20],
+              "available-views": ["month", "week", "day"],
+              "initial-date": new Date(),
+              "initial-view": "month",
+              use12: "",
+              "show-today-button": false,
+              eventDisplay: "eventDisplay"
+            }
+          })
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -115143,10 +115153,10 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
+/* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_i18n__WEBPACK_IMPORTED_MODULE_2__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 function loadLocaleMessages() {
   var locales = __webpack_require__("./resources/i18n/locales sync recursive [A-Za-z0-9-_,\\s]+\\.json$/");
@@ -115163,7 +115173,7 @@ function loadLocaleMessages() {
   return messages;
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (new vue_i18n__WEBPACK_IMPORTED_MODULE_2__["default"]({
+/* harmony default export */ __webpack_exports__["default"] = (new vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]({
   locale: process.env.VUE_APP_I18N_LOCALE || 'en',
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   messages: loadLocaleMessages()
