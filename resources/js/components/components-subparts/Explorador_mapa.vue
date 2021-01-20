@@ -21,7 +21,6 @@
         <l-popup>{{ popups[index] }}</l-popup>
       </l-marker>
     </l-map>
-    <button @click="updateMarker">Marker</button>
   </div>
 </template>
 
@@ -46,20 +45,19 @@ export default {
     LTooltip,
     LIcon
   },
-  props: ["props"],
+  props: ["props", "geoLoc"],
   watch: {
     props: {
       handler(val) {
         this.updateMarker();
       } 
-      
     }
   },
   data() {
     return {
       // Ajustes Mapa
       zoom: 16,
-      center: [41.50546, 2.11775],
+      center: [this.geoLoc.lat, this.geoLoc.lang],
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       markers: [
         L.latLng(41.50677, 2.11371),

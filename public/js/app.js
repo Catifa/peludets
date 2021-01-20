@@ -2101,6 +2101,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2136,6 +2138,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2155,13 +2164,37 @@ __webpack_require__.r(__webpack_exports__);
         latLng: L.latLng(42.5719, 0.9425),
         center: [42.5719, 0.9425]
       }],
-      sitioMapa: {}
+      sitioMapa: {},
+      geoLoc: {}
     };
   },
   methods: {
     enviarMapa: function enviarMapa(obj) {
       this.sitioMapa = obj;
+    },
+    geolocalizacion: function geolocalizacion() {
+      if (!navigator.geolocation) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          icon: "error",
+          title: "Tu navegador no soporta la geolocalizacion, pero intentaremos obtener una localizacion cercana."
+        });
+        this.geoLoc = {
+          latLng: L.latLng(41.50546, 2.11775)
+        };
+        console.log("EEEEEEEEEEEEEEEEEEEEEEEE");
+      } else {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          this.geoLoc = {
+            lat: position.coords.latitude,
+            lang: position.coords.longitude
+          };
+          console.log("AAAAAAAAAAAAAAAAAAAA");
+        });
+      }
     }
+  },
+  beforeMount: function beforeMount() {
+    this.geolocalizacion();
   }
 });
 
@@ -3189,7 +3222,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3202,7 +3234,7 @@ __webpack_require__.r(__webpack_exports__);
     LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTooltip"],
     LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LIcon"]
   },
-  props: ["props"],
+  props: ["props", "geoLoc"],
   watch: {
     props: {
       handler: function handler(val) {
@@ -3214,7 +3246,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // Ajustes Mapa
       zoom: 16,
-      center: [41.50546, 2.11775],
+      center: [this.geoLoc.lat, this.geoLoc.lang],
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       markers: [leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.latLng(41.50677, 2.11371), leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.latLng(41.50601, 2.12021), leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.latLng(41.50755, 2.11537), leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.latLng(41.5095, 2.11505)],
       popups: ["Parque para perros 1", "Parque para perros 2", "Parque para perros 3", "Parque para perros 4"],
@@ -58046,7 +58078,7 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _c("mapa-exp", { attrs: { props: _vm.sitioMapa } }),
+      _c("mapa-exp", { attrs: { props: _vm.sitioMapa, geoLoc: _vm.geoLoc } }),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6 mt-3 mx-auto" }, [
         _vm._m(0),
@@ -58088,7 +58120,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v(" Mostrar en el mapa ")]
+                    [_vm._v("\n            Mostrar en el mapa\n          ")]
                   )
                 ])
               ]
@@ -60165,9 +60197,7 @@ var render = function() {
             ],
             2
           )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.updateMarker } }, [_vm._v("Marker")])
+        : _vm._e()
     ],
     1
   )
@@ -89135,8 +89165,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\pldts\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\pldts\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\xampp\htdocs\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
