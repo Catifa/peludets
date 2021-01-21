@@ -7,33 +7,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Usuario extends Authenticatable
+class User extends Authenticatable
 {
-    // Tabla donde se guarda el objeto Usuario
-    protected $table = 'usuarios';
-    
     use HasFactory, Notifiable;
 
     /**
-     * Atributos que se asignan a la tabla.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'nombre',
-        'apellido',
+        'name',
+        'lastname',
         'dni',
         'email',
-        'contrasena',
+        'password',
     ];
 
     /**
-     * Atributos que se ocultaran en el array.
+     * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [
-        'contrasena',
+        'password',
         'remember_token',
     ];
 

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
 
 
 /*
@@ -15,6 +15,9 @@ use App\Http\Controllers\SessionController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::middleware('auth:api')->get('/user',function (Request $request){
+    return $request->user();
+});
 
 Route::get('mascotas', 'MascotasController@index');
 
@@ -22,13 +25,14 @@ Route::group(['prefix' => 'mascota'], function() {
     Route::post('add', 'MascotasController@add');
 });
 
-Route::group(['prefix' => 'usuario'], function() {
-    Route::post('add', [RegisterController::class, 'add']);
-});
-
-Route::group(['prefix' => 'session'], function () {
+/* Route::group(['prefix' => 'session'], function () {
     Route::post('get',[SessionController::class,'getSessionData']);
     Route::post('set',[SessionController::class,'storeSessionData']);
     Route::get('remove',[SessionController::class,'deleteSessionData']);
-});
+}); */
 
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('register',[AuthController::class,'register']);
+    Route::post('login',[AuthController::class,'login']);
+    //Route::post('remove',[AuthController::class,'deleteSessionData']);
+});

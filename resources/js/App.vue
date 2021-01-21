@@ -176,7 +176,7 @@ export default {
     },
   },
     beforeMount(){
-      this.recuperarSession();
+      //this.recuperarSession();
     }
 };
 </script>

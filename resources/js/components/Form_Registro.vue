@@ -13,13 +13,13 @@
             </div>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="addUser" method="post">
+            <form @submit.prevent="register" method="post">
               <div class="form-group">
                 <label for="email">Correo</label>
                 <input
                   type="text"
                   class="form-control"
-                  v-model="usuario.email"
+                  v-model="user.email"
                   placeholder="Introduce tu correo electrónico"
                 />
               </div>
@@ -28,7 +28,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  v-model="usuario.nombre"
+                  v-model="user.name"
                   placeholder="Introduce tu nombre"
                 />
               </div>
@@ -39,7 +39,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="usuario.apellido"
+                      v-model="user.lastname"
                       placeholder="Primer apellido"
                     />
                   </div>
@@ -57,7 +57,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  v-model="usuario.dni"
+                  v-model="user.dni"
                   placeholder="Introduce tu DNI"
                 />
               </div>
@@ -66,7 +66,7 @@
                 <input
                   type="password"
                   class="form-control"
-                  v-model="usuario.contrasena"
+                  v-model="user.password"
                 />
               </div>
               <button type="submit" class="btn btn-azul-peludets">
@@ -87,47 +87,27 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      usuario: {},
+      user: {
+        email:"",
+        name:"",
+        lastname:"",
+        dni:"",
+        password:"",
+      },
     };
   },
   methods: {
-    addUser() {
+    register() {
 
       this.axios
-        .post("http://localhost:80/api/usuario/add", this.usuario)
-        .then((response) => {
+        .post("api/auth/register", this.user).then((response) => {
           $("#form-registro").modal("hide");
           Swal.fire(
             "Registro completado",
             "Bienvenido, " + response.data.nombre,
             "success"
           );
-          this.setSession(this.usuario);
-          //console.log(response.data);
           this.$router.push("/");
-        })
-        .catch((error) => console.log(error))
-        .finally(() => (this.loading = false));
-    },
-    getSession() {
-      this.axios
-        .post("http://localhost/api/session/get")
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => console.log(error))
-        .finally(() => (this.loading = false));
-    },
-    setSession(user) {
-      //console.log(user);
-      const params = {
-        usuario: user.nombre,
-        data: user
-      }
-      this.axios
-        .post("http://localhost/api/session/set",{params})
-        .then(() => {
-          this.getSession();
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
