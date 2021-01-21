@@ -15,8 +15,12 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::middleware('auth:api')->get('/user',function (Request $request){
+Route::middleware('auth:sanctum')->get('/user',function (Request $request){
     return $request->user();
+});
+
+Route::middleware('auth:sanctum')->get('/authentication',function (Request $request){
+    return true;
 });
 
 Route::get('mascotas', 'MascotasController@index');
@@ -34,5 +38,6 @@ Route::group(['prefix' => 'mascota'], function() {
 Route::group(['prefix' => 'auth'], function () {
     Route::post('register',[AuthController::class,'register']);
     Route::post('login',[AuthController::class,'login']);
-    //Route::post('remove',[AuthController::class,'deleteSessionData']);
+    Route::post('logout',[AuthController::class,'logout']);
+    Route::post('check',[AuthController::class,'check']);
 });

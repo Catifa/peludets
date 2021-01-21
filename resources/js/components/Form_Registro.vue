@@ -104,9 +104,10 @@ export default {
           $("#form-registro").modal("hide");
           Swal.fire(
             "Registro completado",
-            "Bienvenido, " + response.data.nombre,
+            "Bienvenido, " + this.user.name,
             "success"
           );
+          console.log(response.data);
           this.$router.push("/");
         })
         .catch((error) => console.log(error))

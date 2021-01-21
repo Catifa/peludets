@@ -20,7 +20,7 @@ class AuthController extends Controller
             'password' => 'required|string|min:5'
         ]);
 
-        User::create([
+        return User::create([
             'name' => $request->input('name'),
             'lastname' => $request->input('lastname'),
             'dni' => $request->input('dni'),
@@ -36,12 +36,21 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))){
+        if (Auth::attempt($request->only('email', 'password'))) {
             return response()->json(Auth::user(), 200);
         }
         throw ValidationException::withMessages([
-            'email' =>['The provided credentials are incorect.']
+            'email' => ['The provided credentials are incorect.']
         ]);
+    }
 
+    public function logout()
+    {
+        Auth::logout();
+    }
+
+    public function check()
+    {
+        return (Auth::check()) ? json_encode(true) : json_encode(false);
     }
 }

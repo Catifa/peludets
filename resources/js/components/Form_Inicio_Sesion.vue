@@ -62,11 +62,12 @@ export default {
       this.axios
         .post("api/auth/login", this.user)
         .then((response) => {
-          /* Swal.fire(
+          $("#form-inicioSesion").modal("hide");
+          Swal.fire(
             "Registro completado",
             "Bienvenido, " + response.data.nombre,
             "success"
-          ); */
+          );
           console.log(response.data);
           this.$router.push("/");
         })

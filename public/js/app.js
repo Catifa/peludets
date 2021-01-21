@@ -2066,6 +2066,117 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2073,19 +2184,26 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    recuperarSession: function recuperarSession() {
+    isAuthenticated: function isAuthenticated() {
+      axios.post("/api/auth/check").then(function (res) {
+        console.log(res.data);
+        return true;
+      });
+    },
+    logout: function logout() {
       var _this = this;
 
-      this.axios.post("http://localhost/api/session/get").then(function (response) {
-        console.log(response.data);
-      })["catch"](function (error) {
-        return console.log(error);
-      })["finally"](function () {
-        return _this.loading = false;
+      axios.post("api/auth/logout").then(function (res) {
+        console.log(res.data);
+
+        _this.$router.push("/");
       });
     }
   },
-  beforeMount: function beforeMount() {//this.recuperarSession();
+  mounted: function mounted() {
+    /* axios.get('/api/authentication').then((res) => {
+        console.log(res.data);
+      })  */
   }
 });
 
@@ -2233,11 +2351,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.axios.post("api/auth/login", this.user).then(function (response) {
-        /* Swal.fire(
-          "Registro completado",
-          "Bienvenido, " + response.data.nombre,
-          "success"
-        ); */
+        $("#form-inicioSesion").modal("hide");
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Registro completado", "Bienvenido, " + response.data.nombre, "success");
         console.log(response.data);
 
         _this.$router.push("/");
@@ -2365,7 +2480,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.axios.post("api/auth/register", this.user).then(function (response) {
         $("#form-registro").modal("hide");
-        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Registro completado", "Bienvenido, " + response.data.nombre, "success");
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Registro completado", "Bienvenido, " + _this.user.name, "success");
+        console.log(response.data);
 
         _this.$router.push("/");
       })["catch"](function (error) {
@@ -57600,14 +57716,148 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      _c(
-        "div",
-        [
-          _c("form_registro"),
-          _vm._v(" "),
-          _c("form_inicio_sesion"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
+      !_vm.isAuthenticated()
+        ? _c(
+            "div",
+            [
+              _c("form_registro"),
+              _vm._v(" "),
+              _c("form_inicio_sesion"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "nav",
+                  {
+                    staticClass:
+                      "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
+                    attrs: { id: "navbar-peludets" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "navbar-brand", attrs: { to: "/" } },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
+                            alt: "Peludets!"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "collapse navbar-collapse",
+                        attrs: { id: "navbarNav" }
+                      },
+                      [
+                        _c("ul", { staticClass: "navbar-nav mx-auto" }, [
+                          _c(
+                            "li",
+                            { staticClass: "nav-item" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "nav-link",
+                                  attrs: { to: "/explorador" }
+                                },
+                                [_vm._v("Explorador")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            { staticClass: "nav-item" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "nav-link",
+                                  attrs: { to: "/profesionales" }
+                                },
+                                [_vm._v("Profesionales")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._m(1)
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "navbar-brand",
+                            attrs: { to: "/login" }
+                          },
+                          [
+                            _c(
+                              "ul",
+                              { staticClass: "navbar-nav navbar-right" },
+                              [
+                                _c("li", { staticClass: "nav-item" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "btn btn-lila-peludets btn-sm mr-2",
+                                      attrs: {
+                                        id: "inicio-sesion",
+                                        type: "button",
+                                        "data-toggle": "modal",
+                                        "data-target": "#form-inicioSesion"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Iniciar sesión\n                "
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("li", { staticClass: "nav-item" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "btn btn-lila-peludets btn-sm",
+                                      attrs: {
+                                        id: "registro",
+                                        type: "button",
+                                        "data-toggle": "modal",
+                                        "data-target": "#form-registro"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Registrate!\n                "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            ],
+            1
+          )
+        : _c("div", [
             _c(
               "nav",
               {
@@ -57616,20 +57866,9 @@ var render = function() {
                 attrs: { id: "navbar-peludets" }
               },
               [
-                _c(
-                  "router-link",
-                  { staticClass: "navbar-brand", attrs: { to: "/" } },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
-                        alt: "Peludets!"
-                      }
-                    })
-                  ]
-                ),
+                _vm._m(2),
                 _vm._v(" "),
-                _vm._m(0),
+                _vm._m(3),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -57638,104 +57877,90 @@ var render = function() {
                     attrs: { id: "navbarNav" }
                   },
                   [
-                    _c("ul", { staticClass: "navbar-nav mx-auto" }, [
-                      _c(
-                        "li",
-                        { staticClass: "nav-item" },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "nav-link",
-                              attrs: { to: "/explorador" }
-                            },
-                            [_vm._v("Explorador")]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "li",
-                        { staticClass: "nav-item" },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "nav-link",
-                              attrs: { to: "/profesionales" }
-                            },
-                            [_vm._v("Profesionales")]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm._m(1)
-                    ]),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c(
-                      "router-link",
-                      { staticClass: "navbar-brand", attrs: { to: "/login" } },
+                      "div",
+                      {
+                        staticClass: "navbar-nav navbar-right",
+                        attrs: { id: "navbar-peludets-derecha" }
+                      },
                       [
-                        _c("ul", { staticClass: "navbar-nav navbar-right" }, [
-                          _c("li", { staticClass: "nav-item" }, [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "dropdown-menu dropdown-menu-right text-center"
+                          },
+                          [
+                            _vm._m(6),
+                            _vm._v(" "),
+                            _vm._m(7),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "dropdown-divider" }),
+                            _vm._v(" "),
                             _c(
-                              "button",
+                              "a",
                               {
-                                staticClass:
-                                  "btn btn-lila-peludets btn-sm mr-2",
+                                staticClass: "dropdeown-item",
                                 attrs: {
-                                  id: "inicio-sesion",
-                                  type: "button",
-                                  "data-toggle": "modal",
-                                  "data-target": "#form-inicioSesion"
+                                  href: "javascript:void(0)",
+                                  id: "perfil",
+                                  type: "button"
                                 }
                               },
-                              [
-                                _vm._v(
-                                  "\n                  Iniciar sesión\n                "
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("li", { staticClass: "nav-item" }, [
+                              [_vm._v("Perfil")]
+                            ),
+                            _vm._v(" "),
                             _c(
-                              "button",
+                              "a",
                               {
-                                staticClass: "btn btn-lila-peludets btn-sm",
+                                staticClass: "dropdown-item",
                                 attrs: {
-                                  id: "registro",
-                                  type: "button",
-                                  "data-toggle": "modal",
-                                  "data-target": "#form-registro"
+                                  href: "javascript:void(0)",
+                                  id: "tareas",
+                                  type: "button"
                                 }
                               },
-                              [
-                                _vm._v(
-                                  "\n                  Registrate!\n                "
-                                )
-                              ]
-                            )
-                          ])
-                        ])
+                              [_vm._v("Tareas")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "dropdown-divider" }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "dropdown-item-text" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger-peludets",
+                                  attrs: { id: "desconectar", type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.logout()
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                Desconectar\n              "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
                       ]
                     )
-                  ],
-                  1
+                  ]
                 )
-              ],
-              1
+              ]
             )
-          ])
-        ],
-        1
-      ),
+          ]),
       _vm._v(" "),
       _c("router-view"),
       _vm._v(" "),
-      _vm._m(2)
+      _vm._m(8)
     ],
     1
   )
@@ -57793,6 +58018,142 @@ var staticRenderFns = [
         },
         [_vm._v("\n                Registrate!\n              ")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)", id: "home" } }, [
+      _c("img", {
+        attrs: { src: "sources/img/logo/logo.png", alt: "Peludets!" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarNav",
+          "aria-controls": "navbarNav",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("i", { staticClass: "fas fa-bars" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "navbar-nav mx-auto" }, [
+      _c("li", { staticClass: "nav-item" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: { href: "javascript:void(0)", id: "explorador" }
+          },
+          [_vm._v("Explorador")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: { href: "javascript:void(0)", id: "profesionales" }
+          },
+          [_vm._v("Profesionales")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item d-md-none" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "?accio=Perfil" } }, [
+          _vm._v("Perfil")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item d-md-none" }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "?accio=Tareas" } }, [
+          _vm._v("Tareas")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item d-md-none mx-auto" }, [
+        _c("span", { staticClass: "dropdown-item-text" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-danger-peludets",
+              attrs: { id: "desconectar", type: "button" }
+            },
+            [_vm._v("\n                Desconectar\n              ")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "dropdown-toggle",
+        attrs: {
+          "data-toggle": "dropdown",
+          "aria-haspopup": "true",
+          "aria-expanded": "false"
+        }
+      },
+      [
+        _c("img", {
+          staticClass: "rounded-circle",
+          attrs: { src: "sources/img/avatar.jfif", width: "100%" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "dropdown-item-text" }, [
+      _c("img", {
+        staticClass: "rounded",
+        attrs: {
+          id: "fotoDesplegable",
+          src: "sources/img/avatar.jfif",
+          alt: "Foto perfil"
+        }
+      }),
+      _c("span", { staticClass: "ml-3 font-weight-bold" }, [
+        _vm._v("'.$_SESSION['usuario']->getNombre().'")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "dropdown-item-text text-right" }, [
+      _c("i", { staticClass: "far fa-envelope mr-2" }),
+      _vm._v(" "),
+      _c("a", {
+        staticClass: "fas fa-cog",
+        attrs: { a: "", href: "javascript:void(0)", id: "editaPerfil" }
+      })
     ])
   },
   function() {
