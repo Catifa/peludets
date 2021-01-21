@@ -8,36 +8,13 @@
 <div id = "app" class="container mt-5">
   <div class="row">
     <div class="col-md-4 col-xs-12">
-            <h3>{{titulo}}</h3>
 
-      <input
-        type="text"
-        class="form-control my-3"
-        name=""
-        id=""
-        v-model="nuevaTarea"
-        v-on:keyup.enter="agregarTarea"
-      />
+      <AgregarTareas></AgregarTareas>
 
-       <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
-
-      <div class="mt-3" v-for="(t,index) of tareas" :key="t.nombre">
-        <div role="alert" :class="['alert' , t.estado ? 'alert-success' : 'alert-danger']">
-          <div class="d-flex justify-content-between align-items-center">
-              <div>
-                 {{index+1}}.  {{t.nombre}}
-              </div>
-            <div>
-              <button class="btn btn-success btn-sm" @click="editarTarea(index)">Agregar</button>
-              <button class="btn btn-danger btn-sm" @click="eliminarTarea(index)">Eliminar</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   
     <div class="col-md-8 col-xs-12">
-        <vue-scheduler
+        <vue-scheduler :event-dialog-config="dialogConfig"
           :min-date="null"
           :max-date="null"
           :labels="{
@@ -63,50 +40,33 @@
 </template>
 
 <script>
-export default {
+import AgregarTareas from './components-subparts/AgregarTareas';
 
-       data() {
-        return { 
-         titulo:"Tareas",
-        tareas: [],
-        nuevaTarea: '',
-        } 
-
+  export default {
+    components:{
+      AgregarTareas
     },
-    methods: {
-      eventDisplay: event => event.customAttribute,
-        agregarTarea(){
-            console.log(this.nuevaTarea);
-            this.tareas.push({
-                nombre: this.nuevaTarea,
-                estado: false
-            });
-            console.log(this.tareas)
-            this.nuevaTarea= '';
-            localStorage.setItem('peludets-vue',JSON.stringify(this.tareas));
-
-        },
-        editarTarea(index){
-           this.tareas[index].estado=true;
-           localStorage.setItem('peludets-vue',JSON.stringify(this.tareas));
-
-        },
-        eliminarTarea(index){
-           this.tareas.splice(index,1)
-           localStorage.setItem('peludets-vue',JSON.stringify(this.tareas));
-
+    data() {
+      return {
+        dialogConfig: {
+          title: 'Tarea',
+          createButtonLabel: 'Save event thingy',
+          enableTimeInputs: true,
+          fields: [
+              {
+                  name: 'name',
+                  label: 'Tarea'
+              },
+             
+              
+              {
+                  name: 'Comentarios',
+                  type: 'textarea',
+                  label: 'Comentarios'
+              }
+          ]
         }
-    },
-    created: function () {
-        let datosDB = JSON.parse(localStorage.getItem('peludets-vue'));
-        if (datosDB ===null) {
-            this.tareas = [];
-        } else {
-            this.tareas= datosDB;
-        }
-
-        
+      }
     }
-}
+  }
 </script>
-
