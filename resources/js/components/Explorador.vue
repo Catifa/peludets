@@ -3,35 +3,32 @@
 </style>
 <template>
   <div class="row">
-    <mapa-exp :props="sitioMapa" :geoLoc="geoLoc"></mapa-exp>
+    <div class="col-md-6 mt-3 mx-auto">
+      <div id="gifCargar" v-if="!cargarCoord">
+        <img
+          class="rounded-circle"
+          src="https://media.tenor.com/images/bf12191c6d2e5416d13860b5a137dbb8/tenor.gif"
+        />
+        <h3>Espera mientras te buscamos...</h3>
+      </div>
+      <mapa-exp :props="sitioMapa" :geoLoc="geoLoc"></mapa-exp>
+    </div>
     <div class="col-md-6 mt-3 mx-auto">
       <div class="row">
-        <button class="btn btn-azul-peludets mr-2" type="button">
-          Sitios de interés
-        </button>
-        <button class="btn btn-azul-peludets" type="button">
-          Trabajos disponibles
-        </button>
+        <button class="btn btn-azul-peludets mr-2" type="button">Sitios de interés</button>
+        <button class="btn btn-azul-peludets" type="button">Trabajos disponibles</button>
       </div>
       <div class="row mt-3">
-        <div
-          class="card bg-crema-peludets"
-          v-for="sitio in sitiosInteres"
-          :key="sitio.nombre"
-        >
+        <div class="card bg-crema-peludets" v-for="sitio in sitiosInteres" :key="sitio.nombre">
           <img class="card-img-top" alt="Imagen" />
           <div class="card-body">
             <h5 class="card-title">{{ sitio.nombre }}</h5>
-            <p class="card-text">
-              {{ sitio.descripcion }}
-            </p>
+            <p class="card-text">{{ sitio.descripcion }}</p>
             <button
               class="btn btn-azul-peludets"
               type="button"
               @click="enviarMapa(sitio)"
-            >
-              Mostrar en el mapa
-            </button>
+            >Mostrar en el mapa</button>
           </div>
         </div>
       </div>
@@ -50,53 +47,54 @@ export default {
           nombre: "Parc de Can grocs",
           descripcion: "Parque guapisimo para ir con el perro",
           latLng: L.latLng(41.51076, 2.11969),
-          center: [41.51076, 2.11969],
+          center: [41.51076, 2.11969]
         },
         {
           nombre: "Parc Valles Central",
           descripcion: "Parque verificado por Aitor",
           latLng: L.latLng(41.52103, 2.1121),
-          center: [41.52103, 2.1121],
+          center: [41.52103, 2.1121]
         },
         {
           nombre: "Aiguestortes",
           descripcion: "Esta lejos, pero mola",
           latLng: L.latLng(42.5719, 0.9425),
-          center: [42.5719, 0.9425],
-        },
+          center: [42.5719, 0.9425]
+        }
       ],
       sitioMapa: {},
-      geoLoc: {},
+      geoLoc: [],
+      cargarCoord: true
     };
   },
   methods: {
     enviarMapa(obj) {
       this.sitioMapa = obj;
-    },
-    geolocalizacion() {
-      if (!navigator.geolocation) {
-        Swal.fire({
-          icon: "error",
-          title:
-            "Tu navegador no soporta la geolocalizacion, pero intentaremos obtener una localizacion cercana.",
-        });
-        this.geoLoc = {
-          latLng: L.latLng(41.50546, 2.11775),
-        };
-        console.log("EEEEEEEEEEEEEEEEEEEEEEEE");
-      } else {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          this.geoLoc = {
-            lat: position.coords.latitude,
-            lang: position.coords.longitude,
-          };
-          console.log("AAAAAAAAAAAAAAAAAAAA");
-        });
-      }
-    },
+    }
   },
-  beforeMount() {
-    this.geolocalizacion();
-  },
+  mounted: function() {
+    if (!navigator.geolocation) {
+      Swal.fire({
+        icon: "error",
+        title:
+          "Tu navegador no soporta la geolocalizacion, pero intentaremos obtener una localizacion cercana."
+      });
+      this.cargarCoord = false;
+      this.geoLoc = {
+        latLng: [41.50546, 2.11775]
+      };
+    } else {
+      this.cargarCoord = false;
+      navigator.geolocation.getCurrentPosition(position => {
+        this.cargarCoord = true;
+        this.geoLoc = [position.coords.latitude, position.coords.longitude];
+      }).fail(() => {
+        this.cargarCoord = true;
+        this.geoLoc = [41.50546, 2.11775];
+      });
+    }
+  }
 };
 </script>
+
+

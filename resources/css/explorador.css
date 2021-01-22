@@ -5,3 +5,10 @@
 #mapa {
     height: 600px;
 }
+
+#gifCargar {
+    z-index: 999;
+    position: absolute;
+    left: 35%;
+    top: 35%;
+}

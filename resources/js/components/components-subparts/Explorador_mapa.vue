@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-5 mt-3 mx-auto" id="mapa">
+  <div id="mapa">
     <button @click="mostrarMapa" class="btn btn-lila-peludets">{{ texto }}</button>
     <l-map
       v-if="showMap"
@@ -51,13 +51,18 @@ export default {
       handler(val) {
         this.updateMarker();
       } 
+    },
+    geoLoc: {
+      handler(val) {
+        this.updateCenter(val);
+      }
     }
   },
   data() {
     return {
       // Ajustes Mapa
       zoom: 16,
-      center: [this.geoLoc.lat, this.geoLoc.lang],
+      center: [35.997, 139.834],
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       markers: [
         L.latLng(41.50677, 2.11371),
