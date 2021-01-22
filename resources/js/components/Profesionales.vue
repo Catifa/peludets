@@ -42,10 +42,10 @@
           value="trabajos"
           name="trabajos"
           @click="mostrarTarj"
-        >Buscar trabajos</button>
+        >Buscar Profesionales</button>
       </div>
       <div class="col-md-2 mr-auto col-xs-12">
-        <button type="button" class="btn btn-block btn-lg btn-lila-peludets mt-4" @click="geoFindMe">Show my location</button>
+        <button type="button" class="btn btn-block btn-lg btn-lila-peludets mt-4" @click="geoFindMe">Cerca de ti</button>
         <div id="out" class="col-md-12 mt-3"></div>
       </div>
     </div>
@@ -60,10 +60,10 @@
         v-for="usuario in usuarios"
         :key="usuario"
       >
-        <div class="card border border-dark mt-1 ml-2 id">
+        <div class="card border border-dark mt-4 ml-2 id">
           <img
             class="card-img-top foto"
-            src="resources/img/carousel/slide1.jpg"
+            src="/resources/img/tarjetas_home/perro-paseando.jpg"
             height="50%"
             width="50%"
           />
@@ -89,7 +89,12 @@
 export default {
   data() {
     return {
-      usuarios: [{ nombre: "Pol", apellido: "poleras" }],
+      usuarios: [{ nombre: "Pol", apellido: "Prats" },
+      { nombre: "Adrian ", apellido: "Sanchez" }
+      , { nombre: "Carlos", apellido: "Marchena" }
+      , { nombre: "Erick", apellido: "Aciego" }
+      , { nombre: "Aitor", apellido: "Lopez" }
+      , { nombre: "Oscar", apellido: "Montoya" }],
       enseña: false
     };
   },

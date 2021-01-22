@@ -3329,7 +3329,22 @@ __webpack_require__.r(__webpack_exports__);
     return {
       usuarios: [{
         nombre: "Pol",
-        apellido: "poleras"
+        apellido: "Prats"
+      }, {
+        nombre: "Adrian ",
+        apellido: "Sanchez"
+      }, {
+        nombre: "Carlos",
+        apellido: "Marchena"
+      }, {
+        nombre: "Erick",
+        apellido: "Aciego"
+      }, {
+        nombre: "Aitor",
+        apellido: "Lopez"
+      }, {
+        nombre: "Oscar",
+        apellido: "Montoya"
       }],
       enseña: false
     };
@@ -87235,7 +87250,7 @@ var render = function() {
             attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" },
             on: { click: _vm.mostrarTarj }
           },
-          [_vm._v("Buscar trabajos")]
+          [_vm._v("Buscar Profesionales")]
         )
       ]),
       _vm._v(" "),
@@ -87247,7 +87262,7 @@ var render = function() {
             attrs: { type: "button" },
             on: { click: _vm.geoFindMe }
           },
-          [_vm._v("Show my location")]
+          [_vm._v("Cerca de ti")]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-12 mt-3", attrs: { id: "out" } })
@@ -87277,12 +87292,13 @@ var render = function() {
                 [
                   _c(
                     "div",
-                    { staticClass: "card border border-dark mt-1 ml-2 id" },
+                    { staticClass: "card border border-dark mt-4 ml-2 id" },
                     [
                       _c("img", {
                         staticClass: "card-img-top foto",
                         attrs: {
-                          src: "resources/img/carousel/slide1.jpg",
+                          src:
+                            "/resources/img/tarjetas_home/perro-paseando.jpg",
                           height: "50%",
                           width: "50%"
                         }
@@ -116863,8 +116879,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\pldts\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\pldts\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
