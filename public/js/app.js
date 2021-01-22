@@ -3324,42 +3324,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       usuarios: [{
         nombre: "Pol",
-        apellido: "poleras"
+        apellido: "Prats"
+      }, {
+        nombre: "Adrian ",
+        apellido: "Sanchez"
+      }, {
+        nombre: "Carlos",
+        apellido: "Marchena"
+      }, {
+        nombre: "Erick",
+        apellido: "Aciego"
+      }, {
+        nombre: "Aitor",
+        apellido: "Lopez"
+      }, {
+        nombre: "Oscar",
+        apellido: "Montoya"
       }],
       enseña: false
     };
@@ -3397,7 +3382,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       output.innerHTML = "<p>Locating…</p>";
-      navigator.geolocation.getCurrentPosition(success, error);
+      navigator.geolocation.getCurrentPosition((success, error));
     }
   }
 });
@@ -87247,12 +87232,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
+  return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row col-md-12 col-xs-12" }, [
-      _c("div", { staticClass: "col-md-1 col-xs-12" }),
-      _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
       _vm._m(1),
       _vm._v(" "),
       _vm._m(2),
@@ -87263,105 +87246,94 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-block btn-lg btn-pelu-naranja mt-4",
+            staticClass: "btn btn-block btn-lg btn-lila-peludets mt-4",
             attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" },
             on: { click: _vm.mostrarTarj }
           },
-          [_vm._v("\n        Buscar trabajos\n      ")]
+          [_vm._v("Buscar Profesionales")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2 mr-auto col-xs-12" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-block btn-lg btn-lila-peludets mt-4",
+            attrs: { type: "button" },
+            on: { click: _vm.geoFindMe }
+          },
+          [_vm._v("Cerca de ti")]
         ),
         _vm._v(" "),
-        _vm.enseña
-          ? _c(
-              "div",
-              {
-                staticClass: "row col-md-12 col-xs-12",
-                attrs: { id: "cards" }
-              },
-              _vm._l(_vm.usuarios, function(usuario) {
-                return _c(
-                  "div",
-                  {
-                    key: usuario,
-                    staticClass: "row col-md-12 col-xs-12",
-                    attrs: { id: "templates", name: "profesionales" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "card border border-dark col-md-2 mt-2 ml-2 id",
-                        attrs: { mierda_Aitor: "id" }
-                      },
-                      [
+        _c("div", { staticClass: "col-md-12 mt-3", attrs: { id: "out" } })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-3" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-6 col-xs-12", attrs: { id: "flotante" } },
+        [_c("mapa-prof")],
+        1
+      ),
+      _vm._v(" "),
+      _vm.enseña
+        ? _c(
+            "div",
+            { staticClass: "col-md-6 mt-4 col-xs-12", attrs: { id: "cards" } },
+            _vm._l(_vm.usuarios, function(usuario) {
+              return _c(
+                "div",
+                {
+                  key: usuario,
+                  staticClass: "col-md-4",
+                  attrs: { name: "profesionales" }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "card border border-dark mt-4 ml-2 id" },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top foto",
+                        attrs: {
+                          src:
+                            "/resources/img/tarjetas_home/perro-paseando.jpg",
+                          height: "50%",
+                          width: "50%"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c("h6", { staticClass: "card_name card_attr" }, [
+                          _vm._v(_vm._s(usuario.nombre))
+                        ]),
+                        _vm._v(" "),
+                        _c("h6", { staticClass: "card_surname card_attr" }, [
+                          _vm._v(_vm._s(usuario.apellido))
+                        ]),
+                        _vm._v(" "),
                         _c(
                           "a",
                           {
                             staticClass: "stretched-link id",
                             attrs: { href: "#" }
                           },
-                          [_vm._v("Ver Perfil ")]
-                        ),
-                        _vm._v(" "),
-                        _c("img", {
-                          staticClass: "card-img-top foto",
-                          attrs: {
-                            src: "resources/img/carousel/slide1.jpg",
-                            height: "50%",
-                            width: "50%"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "card-body" }, [
-                          _c("h6", { staticClass: "card_name card_attr" }, [
-                            _vm._v(_vm._s(usuario.nombre))
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "card_surname card_attr" }, [
-                            _c("p", [_vm._v("esta")]),
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(usuario.apellido) +
-                                "\n            "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "card_age card_attr" }, [
-                            _vm._v("aqui")
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              }),
-              0
-            )
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _vm._m(4),
-      _vm._v(" "),
-      _c("p", [
-        _c("button", { on: { click: _vm.geoFindMe } }, [
-          _vm._v("Show my location")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "out" } })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row col-md-12 col-xs-12 mt-3" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-12 col-xs-16 mt-4", attrs: { id: "flotante" } },
-        [_c("mapa-prof")],
-        1
-      )
+                          [_vm._v("Ver Perfil")]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        : _vm._e()
     ])
   ])
 }
@@ -87370,7 +87342,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row col-md-12 col-xs-12" }, [
+    return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12 col-xs-12" }, [
         _c(
           "p",
@@ -87381,7 +87353,7 @@ var staticRenderFns = [
               color: "rgb(243, 174, 26)"
             }
           },
-          [_vm._v("\n        Busca Toby, Busca!\n      ")]
+          [_vm._v("Busca Toby, Busca!")]
         )
       ])
     ])
@@ -87390,7 +87362,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+    return _c("div", { staticClass: "col-md-2 ml-auto col-xs-12" }, [
       _c("div", { staticClass: "form-group m-2" }, [
         _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
           _vm._v("Profesiones")
@@ -87473,30 +87445,6 @@ var staticRenderFns = [
           ]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
-      _c(
-        "a",
-        {
-          staticClass: "quitarSubrayado",
-          attrs: { href: "javascript:Alternar(flotante);" }
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-block btn-lg btn-dark mt-4",
-              attrs: { type: "button" }
-            },
-            [_vm._v("\n          Mostrar / Ocultar Mapa\n        ")]
-          )
-        ]
-      )
     ])
   }
 ]
@@ -87786,7 +87734,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-md-6 col-xs-6 mt-4 mx-auto", attrs: { id: "mapa" } },
+    { staticClass: "mx-auto", attrs: { id: "mapa" } },
     [
       _c(
         "button",
@@ -87806,7 +87754,7 @@ var render = function() {
             "l-map",
             {
               staticClass: "mt-3",
-              staticStyle: { height: "100%" },
+              staticStyle: { height: "90%" },
               attrs: {
                 zoom: _vm.zoom,
                 center: _vm.center,
