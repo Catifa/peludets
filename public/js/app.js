@@ -3230,32 +3230,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-if ("geolocation" in navigator) {
-  /* la geolocalización está disponible */
-} else {
-    /* la geolocalización NO está disponible */
-  }
-
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      usuarios: [{
+        nombre: "Pol",
+        apellido: "poleras"
+      }],
+      enseña: false
+    };
+  },
   methods: {
+    usuariosFiltrados: function usuariosFiltrados(profesiones, disponibilidad, titulacion) {
+      var _this = this;
+
+      this.axios.get("http://localhost:8000/api/book/delete/".concat(profesiones, ", ").concat(disponibilidad, ", ").concat(titulacion)).then(function (response) {
+        _this.usuarios = response.data;
+      });
+    },
+    mostrarTarj: function mostrarTarj() {
+      this.enseña = true;
+    },
     geoFindMe: function geoFindMe() {
       var output = document.getElementById("out");
 
@@ -3267,19 +3262,16 @@ if ("geolocation" in navigator) {
       function success(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+        output.innerHTML = "<p>Latitude is " + latitude + "° <br>Longitude is " + longitude + "°</p>";
         var img = new Image();
         img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
         output.appendChild(img);
       }
 
-      ;
-
       function error() {
         output.innerHTML = "Unable to retrieve your location";
       }
 
-      ;
       output.innerHTML = "<p>Locating…</p>";
       navigator.geolocation.getCurrentPosition(success, error);
     }
@@ -86754,108 +86746,123 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row" },
-    [
-      _vm._m(0),
+  return _c("div", { staticClass: "row" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row col-md-12 col-xs-12" }, [
+      _c("div", { staticClass: "col-md-1 col-xs-12" }),
       _vm._v(" "),
-      _c("div", { staticClass: "row col-md-12 col-xs-12" }, [
-        _c("div", { staticClass: "col-md-1 col-xs-12" }),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _vm._m(4),
-        _vm._v(" "),
-        _vm._m(5),
-        _vm._v(" "),
-        _c("p", [
-          _c("button", { on: { click: _vm.geoFindMe } }, [
-            _vm._v("Show my location")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { attrs: { id: "out" } })
-      ]),
+      _vm._m(1),
       _vm._v(" "),
-      _c("div", { staticClass: "row col-md-12 col-xs-12 mt-3 " }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
         _c(
-          "div",
+          "button",
           {
-            staticClass: "col-md-12 col-xs-16 mt-4",
-            attrs: { id: "flotante" }
+            staticClass: "btn btn-block btn-lg btn-pelu-naranja mt-4",
+            attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" },
+            on: { click: _vm.mostrarTarj }
           },
-          [_c("mapa-prof")],
-          1
+          [_vm._v("\n        Buscar trabajos\n      ")]
         ),
         _vm._v(" "),
-        _c("div", {
-          staticClass: "row col-md-12 col-xs-12",
-          attrs: { id: "cards" }
-        })
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.usuarios, function(usuario) {
-        return _c(
-          "div",
-          {
-            key: usuario.dni,
-            staticClass: "row col-md-12 col-xs-12",
-            attrs: { id: "templates", name: "profesionales" }
-          },
-          [
-            _c(
+        _vm.enseña
+          ? _c(
               "div",
               {
-                staticClass: "card border border-dark col-md-2 mt-2 ml-2 id",
-                attrs: { mierda_Aitor: "id" }
+                staticClass: "row col-md-12 col-xs-12",
+                attrs: { id: "cards" }
               },
-              [
-                _c(
-                  "a",
-                  { staticClass: "stretched-link id", attrs: { href: "#" } },
-                  [_vm._v("Ver Perfil ")]
-                ),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "card-img-top foto",
-                  attrs: {
-                    src: "resources/img/carousel/slide1.jpg",
-                    height: "50%",
-                    width: "50%"
-                  }
-                }),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("h6", { staticClass: "card_name card_attr" }, [
-                    _vm._v("erick" + _vm._s(usuario.nombre))
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "card_surname card_attr" }, [
-                    _c("p", [_vm._v("  esta ")]),
-                    _vm._v(_vm._s(usuario.apellido))
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "card_age card_attr" }, [
-                    _vm._v("aqui")
-                  ])
-                ])
-              ]
+              _vm._l(_vm.usuarios, function(usuario) {
+                return _c(
+                  "div",
+                  {
+                    key: usuario,
+                    staticClass: "row col-md-12 col-xs-12",
+                    attrs: { id: "templates", name: "profesionales" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card border border-dark col-md-2 mt-2 ml-2 id",
+                        attrs: { mierda_Aitor: "id" }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "stretched-link id",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Ver Perfil ")]
+                        ),
+                        _vm._v(" "),
+                        _c("img", {
+                          staticClass: "card-img-top foto",
+                          attrs: {
+                            src: "resources/img/carousel/slide1.jpg",
+                            height: "50%",
+                            width: "50%"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
+                          _c("h6", { staticClass: "card_name card_attr" }, [
+                            _vm._v(_vm._s(usuario.nombre))
+                          ]),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "card_surname card_attr" }, [
+                            _c("p", [_vm._v("esta")]),
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(usuario.apellido) +
+                                "\n            "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "card_age card_attr" }, [
+                            _vm._v("aqui")
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              }),
+              0
             )
-          ]
-        )
-      })
-    ],
-    2
-  )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm._m(4),
+      _vm._v(" "),
+      _c("p", [
+        _c("button", { on: { click: _vm.geoFindMe } }, [
+          _vm._v("Show my location")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "out" } })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row col-md-12 col-xs-12 mt-3" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-12 col-xs-16 mt-4", attrs: { id: "flotante" } },
+        [_c("mapa-prof")],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -86873,7 +86880,7 @@ var staticRenderFns = [
               color: "rgb(243, 174, 26)"
             }
           },
-          [_vm._v("Busca Toby, Busca!")]
+          [_vm._v("\n        Busca Toby, Busca!\n      ")]
         )
       ])
     ])
@@ -86973,21 +86980,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
       _c(
-        "button",
-        {
-          staticClass: "btn btn-block btn-lg btn-pelu-naranja  mt-4 ",
-          attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" }
-        },
-        [_vm._v("Buscar trabajos")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-xs-12 " }, [
-      _c(
         "a",
         {
           staticClass: "quitarSubrayado",
@@ -87000,7 +86992,7 @@ var staticRenderFns = [
               staticClass: "btn btn-block btn-lg btn-dark mt-4",
               attrs: { type: "button" }
             },
-            [_vm._v("Mostrar / Ocultar Mapa")]
+            [_vm._v("\n          Mostrar / Ocultar Mapa\n        ")]
           )
         ]
       )
@@ -116345,8 +116337,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\xampp\htdocs\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\xampp\htdocs\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
