@@ -32,7 +32,7 @@ class UsuariosController extends Controller
             'apellido' => 'required|string|max:255',
             'email' => 'required|email|unique:usuarios|max:255',
             'dni' => 'required|string|max:9|unique:usuarios',
-            'contrasena' => 'required|string|min:5'
+            'password' => 'required|string|min:5'
         ]);
 
         if ($datosValidos->fails()) {
@@ -41,7 +41,7 @@ class UsuariosController extends Controller
                 'apellido' => 'Apellido incorrecto',
                 'email' => 'Email incorrecto',
                 'dni' => 'DNI incorrecto',
-                'contrasena' => 'Contraseña incorrecta'
+                'password' => 'Contraseña incorrecta'
             ]);
         } else {
 
@@ -51,7 +51,7 @@ class UsuariosController extends Controller
                 'apellido' => $request->input('apellido'),
                 'dni' => $request->input('dni'),
                 'email' => $request->input('email'),
-                'contrasena' => Hash::make($request->input('contrasena'))
+                'password' => bcrypt($request->input('password'))
             ]);
         }
     }
@@ -65,17 +65,16 @@ class UsuariosController extends Controller
      */
     protected function login(Request $request)
     {
-        $credenciales = $request('email', 'contrasena');
+        $credenciales = [
+            'name' => '3',
+            'password' => '33333',
+        ];
 
         // Verificacion del login
         if (Auth::attempt($credenciales)) {
-            // Aquí tendría que devolver cookie
-            //return $request->session()->regenerate();
+            return "true";
         } else {
-            return back()->withErrors([
-                'email' => 'Email Incorrecto',
-                'contrasena' => 'Contraseña Incorrecta'
-            ]);
+            return $credenciales['password'];
         }
     }
 
