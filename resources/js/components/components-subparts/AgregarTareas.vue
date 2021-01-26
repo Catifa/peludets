@@ -13,7 +13,7 @@
       v-on:keyup.enter="agregarTarea"
     />
 
-    <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
+    <button class="btn btn-block btn-lg btn-lila-peludets mt-4" @click="agregarTarea">Agregar</button>
 
     <drag class="mt-3" v-for="(t, index) of tareas" :key="t.nombre">
       <div
