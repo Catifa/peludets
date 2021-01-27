@@ -2191,35 +2191,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'local-changer',
+  name: "local-changer",
   data: function data() {
     return {
-      usuario: {},
       langs: ["es", "ca", "en"]
     };
   },
   methods: {
     isAuthenticated: function isAuthenticated() {
+      var _this = this;
+
       axios.post("/api/auth/check").then(function (res) {
         console.log(res.data);
-        return true;
+
+        if (res.data == true) {
+          _this.$root.auth = true;
+
+          _this.getUser();
+        } else {
+          _this.$root.auth = false;
+        }
       });
     },
     setLocale: function setLocale(locale) {
       this.$i18n.locale = locale;
     },
     logout: function logout() {
-      var _this = this;
+      var _this2 = this;
 
       axios.post("api/auth/logout").then(function (res) {
         console.log(res.data);
+        _this2.$root.auth = false;
+        _this2.$root.user = null;
 
-        _this.$router.push("/");
+        _this2.$router.push("/");
+      });
+    },
+    getUser: function getUser() {
+      var _this3 = this;
+
+      axios.get("api/user").then(function (res) {
+        console.log(res.data);
+        _this3.$root.user = res.data;
       });
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.isAuthenticated();
+  }
 });
 
 /***/ }),
@@ -2405,6 +2429,8 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.post("api/auth/login", this.user).then(function (response) {
         $("#form-inicioSesion").modal("hide");
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Registro completado", "Bienvenido, " + response.data.nombre, "success");
+        _this.$root.auth = true;
+        _this.$root.user = response.data;
         console.log(response.data);
 
         _this.$router.push("/");
@@ -2533,6 +2559,8 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.post("api/auth/register", this.user).then(function (response) {
         $("#form-registro").modal("hide");
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Registro completado", "Bienvenido, " + _this.user.name, "success");
+        _this.$root.auth = true;
+        _this.$root.user = res.data;
         console.log(response.data);
 
         _this.$router.push("/");
@@ -3303,35 +3331,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      usuarios: [{
-        nombre: "Pol",
-        apellido: "Prats"
-      }, {
-        nombre: "Adrian ",
-        apellido: "Sanchez"
-      }, {
-        nombre: "Carlos",
-        apellido: "Marchena"
-      }, {
-        nombre: "Erick",
-        apellido: "Aciego"
-      }, {
-        nombre: "Aitor",
-        apellido: "Lopez"
-      }, {
-        nombre: "Oscar",
-        apellido: "Montoya"
-      }],
-      enseña: false,
-      profesionHome: this.$route.params
+      profesiones: null,
+      disponibilidad: null,
+      titulacion: null
     };
   },
   methods: {
-    usuariosFiltrados: function usuariosFiltrados(profesiones, disponibilidad, titulacion) {
-      var _this = this;
-
-      this.axios.get("http://localhost:8000/api/book/delete/".concat(profesiones, ", ").concat(disponibilidad, ", ").concat(titulacion)).then(function (response) {
-        _this.usuarios = response.data;
+    usuariosFiltrados: function usuariosFiltrados() {
+      this.axios.get('api/usuarios/busquedaProfesionales', this.profesiones).then(function (response) {
+        //this.usuarios = response.data;
+        console.log(response.data);
       });
     },
     mostrarTarj: function mostrarTarj() {
@@ -85049,8 +85058,135 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      !_vm.isAuthenticated()
-        ? _c(
+      this.$root.auth
+        ? _c("div", [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "nav",
+                {
+                  staticClass:
+                    "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
+                  attrs: { id: "navbar-peludets" }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse navbar-collapse",
+                      attrs: { id: "navbarNav" }
+                    },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "navbar-nav navbar-right",
+                          attrs: { id: "navbar-peludets-derecha" }
+                        },
+                        [
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "dropdown-menu dropdown-menu-right text-center"
+                            },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "dropdown-item-text" },
+                                [
+                                  _c("img", {
+                                    staticClass: "rounded",
+                                    attrs: {
+                                      id: "fotoDesplegable",
+                                      src: "sources/img/avatar.jfif",
+                                      alt: "Foto perfil"
+                                    }
+                                  }),
+                                  _c(
+                                    "span",
+                                    { staticClass: "ml-3 font-weight-bold" },
+                                    [_vm._v(_vm._s(this.$root.user.name))]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm._m(4),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "dropdown-divider" }),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "dropdeown-item",
+                                  attrs: {
+                                    href: "javascript:void(0)",
+                                    id: "perfil",
+                                    type: "button"
+                                  }
+                                },
+                                [_vm._v("Perfil")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  attrs: {
+                                    href: "javascript:void(0)",
+                                    id: "tareas",
+                                    type: "button"
+                                  }
+                                },
+                                [_vm._v("Tareas")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "dropdown-divider" }),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { staticClass: "dropdown-item-text" },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger-peludets",
+                                      attrs: {
+                                        id: "desconectar",
+                                        type: "button"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.logout()
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Desconectar\n                "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        : _c(
             "div",
             [
               _c("form_registro"),
@@ -85079,7 +85215,7 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(0),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -85101,9 +85237,9 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    " " +
+                                    "\n                " +
                                       _vm._s(_vm.$t("app.menuExplorador")) +
-                                      " "
+                                      "\n              "
                                   )
                                 ]
                               )
@@ -85123,9 +85259,9 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    " " +
+                                    "\n                " +
                                       _vm._s(_vm.$t("app.menuProfesionales")) +
-                                      " "
+                                      "\n              "
                                   )
                                 ]
                               )
@@ -85250,107 +85386,7 @@ var render = function() {
               ])
             ],
             1
-          )
-        : _c("div", [
-            _c(
-              "nav",
-              {
-                staticClass:
-                  "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
-                attrs: { id: "navbar-peludets" }
-              },
-              [
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "collapse navbar-collapse",
-                    attrs: { id: "navbarNav" }
-                  },
-                  [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "navbar-nav navbar-right",
-                        attrs: { id: "navbar-peludets-derecha" }
-                      },
-                      [
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "dropdown-menu dropdown-menu-right text-center"
-                          },
-                          [
-                            _vm._m(5),
-                            _vm._v(" "),
-                            _vm._m(6),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "dropdown-divider" }),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "dropdeown-item",
-                                attrs: {
-                                  href: "javascript:void(0)",
-                                  id: "perfil",
-                                  type: "button"
-                                }
-                              },
-                              [_vm._v("Perfil")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "dropdown-item",
-                                attrs: {
-                                  href: "javascript:void(0)",
-                                  id: "tareas",
-                                  type: "button"
-                                }
-                              },
-                              [_vm._v("Tareas")]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "dropdown-divider" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "dropdown-item-text" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger-peludets",
-                                  attrs: { id: "desconectar", type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.logout()
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                Desconectar\n              "
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ]),
+          ),
       _vm._v(" "),
       _c("router-view"),
       _vm._v(" "),
@@ -85363,25 +85399,23 @@ var render = function() {
           [
             _c("div", { staticClass: "text-center text-md-left" }, [
               _c("div", { staticClass: "row" }, [
-                _vm._m(7),
+                _vm._m(6),
                 _vm._v(" "),
                 _c("hr", { staticClass: "clearfix w-100 d-md-none pb-3" }),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-3 mb-md-0 mb-3" }, [
                   _c("h5", { staticClass: "text-uppercase" }, [
-                    _vm._v(" " + _vm._s(_vm.$t("app.footerContacto")) + " ")
+                    _vm._v(_vm._s(_vm.$t("app.footerContacto")))
                   ]),
                   _vm._v(" "),
                   _c("ul", { staticClass: "list-unstyled" }, [
-                    _vm._m(8),
+                    _vm._m(7),
                     _vm._v(" "),
-                    _vm._m(9),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("li", [
                       _c("p", [
-                        _vm._v(
-                          "Barcelona, " + _vm._s(_vm.$t("app.footerPais")) + " "
-                        )
+                        _vm._v("Barcelona, " + _vm._s(_vm.$t("app.footerPais")))
                       ])
                     ])
                   ])
@@ -85390,11 +85424,13 @@ var render = function() {
                 _c("div", { staticClass: "col-md-3 mb-md-0 mb-3" }, [
                   _c("h5", { staticClass: "text-uppercase" }, [
                     _vm._v(
-                      " " + _vm._s(_vm.$t("app.footerRedesSociales")) + " "
+                      "\n              " +
+                        _vm._s(_vm.$t("app.footerRedesSociales")) +
+                        "\n            "
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(10),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("ul", { staticClass: "list-unstyled" }, [
                     _c(
@@ -85428,7 +85464,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(11)
+            _vm._m(10)
           ]
         )
       ])
@@ -85437,26 +85473,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarNav",
-          "aria-controls": "navbarNav",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("i", { staticClass: "fas fa-bars" })]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -85534,7 +85550,7 @@ var staticRenderFns = [
               staticClass: "btn btn-danger-peludets",
               attrs: { id: "desconectar", type: "button" }
             },
-            [_vm._v("\n                Desconectar\n              ")]
+            [_vm._v("\n                  Desconectar\n                ")]
           )
         ])
       ])
@@ -85566,24 +85582,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "dropdown-item-text" }, [
-      _c("img", {
-        staticClass: "rounded",
-        attrs: {
-          id: "fotoDesplegable",
-          src: "sources/img/avatar.jfif",
-          alt: "Foto perfil"
-        }
-      }),
-      _c("span", { staticClass: "ml-3 font-weight-bold" }, [
-        _vm._v("'.$_SESSION['usuario']->getNombre().'")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("span", { staticClass: "dropdown-item-text text-right" }, [
       _c("i", { staticClass: "far fa-envelope mr-2" }),
       _vm._v(" "),
@@ -85592,6 +85590,26 @@ var staticRenderFns = [
         attrs: { a: "", href: "javascript:void(0)", id: "editaPerfil" }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarNav",
+          "aria-controls": "navbarNav",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("i", { staticClass: "fas fa-bars" })]
+    )
   },
   function() {
     var _vm = this
@@ -87354,11 +87372,151 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _vm._m(1),
+      _c("div", { staticClass: "col-md-2 ml-auto col-xs-12" }, [
+        _c("div", { staticClass: "form-group m-2" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("Profesiones")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.profesiones,
+                  expression: "profesiones"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "selectOption", id: "selectOption" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.profesiones = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "Psicologo" } }, [
+                _vm._v("Psicologo")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "Entrenador" } }, [
+                _vm._v("Entrenador")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "Peluquero" } }, [
+                _vm._v("Peluquero")
+              ])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+        _c("div", { staticClass: "form-group m-2" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("Disponibilidad")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.disponibilidad,
+                  expression: "disponibilidad"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "selectOption2", id: "exampleFormControlSelect2" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.disponibilidad = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "Presencial" } }, [
+                _vm._v("Presencial")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "Online" } }, [_vm._v("Online")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "Presencial y Online" } }, [
+                _vm._v("Presencial y Online")
+              ])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(3),
+      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+        _c("div", { staticClass: "form-group m-2" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("¿Titulación?")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.titulacion,
+                  expression: "titulacion"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "selectOption3", id: "exampleFormControlSelect1" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.titulacion = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "Si" } }, [_vm._v("Si")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "No" } }, [_vm._v("No")])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-2 col-xs-12" }, [
         _c(
@@ -87366,7 +87524,7 @@ var render = function() {
           {
             staticClass: "btn btn-block btn-lg btn-lila-peludets mt-4",
             attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" },
-            on: { click: _vm.mostrarTarj }
+            on: { click: _vm.usuariosFiltrados }
           },
           [_vm._v("Buscar Profesionales")]
         )
@@ -87472,95 +87630,6 @@ var staticRenderFns = [
             }
           },
           [_vm._v("Busca Toby, Busca!")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 ml-auto col-xs-12" }, [
-      _c("div", { staticClass: "form-group m-2" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-          _vm._v("Profesiones")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "selectOption", id: "selectOption" }
-          },
-          [
-            _c("option", { attrs: { value: "Psicologo" } }, [
-              _vm._v("Psicologo")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Entrenador" } }, [
-              _vm._v("Entrenador")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Peluquero" } }, [
-              _vm._v("Peluquero")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
-      _c("div", { staticClass: "form-group m-2" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-          _vm._v("Disponibilidad")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "selectOption2", id: "exampleFormControlSelect2" }
-          },
-          [
-            _c("option", { attrs: { value: "Presencial" } }, [
-              _vm._v("Presencial")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Online" } }, [_vm._v("Online")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Presencial y Online" } }, [
-              _vm._v("Presencial y Online")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
-      _c("div", { staticClass: "form-group m-2" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-          _vm._v("¿Titulación?")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "selectOption3", id: "exampleFormControlSelect1" }
-          },
-          [
-            _c("option", { attrs: { value: "Si" } }, [_vm._v("Si")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "No" } }, [_vm._v("No")])
-          ]
         )
       ])
     ])
@@ -116168,7 +116237,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
     else next()
   }) */
 
+vue__WEBPACK_IMPORTED_MODULE_11___default.a.config.devtools = true;
 var app = new vue__WEBPACK_IMPORTED_MODULE_11___default.a({
+  data: {
+    auth: false,
+    user: {}
+  },
   el: '#app',
   router: router,
   i18n: _i18n_i18n__WEBPACK_IMPORTED_MODULE_12__["default"],
@@ -117206,10 +117280,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Profesionales_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Profesionales.vue */ "./resources/js/components/Profesionales.vue");
 /* harmony import */ var _components_Perfil_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Perfil.vue */ "./resources/js/components/Perfil.vue");
 /* harmony import */ var _components_Tareas_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Tareas.vue */ "./resources/js/components/Tareas.vue");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 
 
 
 
+
+
+var originalPush = vue_router__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.push;
+
+vue_router__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.push = function push(location) {
+  return originalPush.call(this, location)["catch"](function (err) {
+    return err;
+  });
+};
 
 var routes = [{
   name: 'home',

@@ -11,7 +11,9 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
+    "express": "^4.16.3",
     "leaflet": "^1.7.1",
+    "socket.io": "^3.1.0",
     "sweetalert2": "^10.12.6",
     "symfony": "0.0.1",
     "v-calendar-scheduler": "^0.7.4",
@@ -35,5 +37,22 @@
     "vue-axios": "^3.2.2",
     "vue-cli-plugin-i18n": "~1.0.1",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "name": "chat",
+  "description": "<p align=\"center\"><a href=\"https://peludets.cat\" target=\"_blank\"><img src=\"http://peludets.cat/sources/img/logo/logo.png\" width=\"400\"></a></p>",
+  "version": "1.0.0",
+  "main": "chat vuejs",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catifa/peludets.git"
+  },
+  "author": "Peludets",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Catifa/peludets/issues"
+  },
+  "homepage": "https://github.com/Catifa/peludets#readme"
 }

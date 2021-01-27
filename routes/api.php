@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfesionController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Http\Request;
 
 
@@ -30,12 +31,6 @@ Route::group(['prefix' => 'mascota'], function() {
     Route::post('add', 'MascotasController@add');
 });
 
-/* Route::group(['prefix' => 'session'], function () {
-    Route::post('get',[SessionController::class,'getSessionData']);
-    Route::post('set',[SessionController::class,'storeSessionData']);
-    Route::get('remove',[SessionController::class,'deleteSessionData']);
-}); */
-
 Route::group(['prefix' => 'auth'], function () {
     Route::post('register',[AuthController::class,'register']);
     Route::post('login',[AuthController::class,'login']);
@@ -45,3 +40,6 @@ Route::group(['prefix' => 'auth'], function () {
 
 // Recoger las profesiones
 Route::get('profesiones', [ProfesionController::class, 'getAll']);
+Route::group(['prefix'=>'usuario'], function(){
+    Route::get('busquedaProfesionales',[UsuariosController::class,'buscarProfesionales']);
+});

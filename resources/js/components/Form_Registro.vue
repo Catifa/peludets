@@ -107,6 +107,8 @@ export default {
             "Bienvenido, " + this.user.name,
             "success"
           );
+          this.$root.auth = true;
+          this.$root.user = res.data;
           console.log(response.data);
           this.$router.push("/");
         })
