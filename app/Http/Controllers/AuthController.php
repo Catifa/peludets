@@ -20,13 +20,20 @@ class AuthController extends Controller
             'password' => 'required|string|min:5'
         ]);
 
-        return User::create([
+        User::create([
             'name' => $request->input('name'),
             'lastname' => $request->input('lastname'),
             'dni' => $request->input('dni'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password'))
         ]);
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return response()->json(Auth::user(), 200);
+        }
+        
+        return response()->json(Auth::user(), 200);
+        
     }
 
     public function login(Request $request)

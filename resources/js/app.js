@@ -48,7 +48,13 @@ const router = new VueRouter({
     else next()
   }) */
 
+Vue.config.devtools = true;
+
 const app = new Vue({
+    data:{
+      auth: false,
+      user: {}
+    },
     el: '#app',
     router: router,
     i18n,
