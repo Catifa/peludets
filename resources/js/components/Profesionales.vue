@@ -45,7 +45,11 @@
         >Buscar Profesionales</button>
       </div>
       <div class="col-md-2 mr-auto col-xs-12">
-        <button type="button" class="btn btn-block btn-lg btn-lila-peludets mt-4" @click="geoFindMe">Cerca de ti</button>
+        <button
+          type="button"
+          class="btn btn-block btn-lg btn-lila-peludets mt-4"
+          @click="geoFindMe"
+        >Cerca de ti</button>
         <div id="out" class="col-md-12 mt-3"></div>
       </div>
     </div>
@@ -54,33 +58,28 @@
         <mapa-prof></mapa-prof>
       </div>
       <div id="cards" v-if="enseña" class="col-md-6 mt-4 col-xs-12">
-      <div
-        name="profesionales"
-        class="col-md-4"
-        v-for="usuario in usuarios"
-        :key="usuario"
-      >
-        <div class="card border border-dark mt-4 ml-2 id">
-          <img
-            class="card-img-top foto"
-            src="/resources/img/tarjetas_home/perro-paseando.jpg"
-            height="50%"
-            width="50%"
-          />
-          <br />
-          <br />
-          <div class="card-body">
-            <h6 class="card_name card_attr">{{ usuario.nombre }}</h6>
-            <h6 class="card_surname card_attr">{{ usuario.apellido }}</h6>
-            <a href="#" class="stretched-link id">Ver Perfil</a>
+        <div name="profesionales" class="col-md-4" v-for="usuario in usuarios" :key="usuario">
+          <div class="card border border-dark mt-4 ml-2 id">
+            <img
+              class="card-img-top foto"
+              src="/resources/img/tarjetas_home/perro-paseando.jpg"
+              height="50%"
+              width="50%"
+            />
+            <br />
+            <br />
+            <div class="card-body">
+              <h6 class="card_name card_attr">{{ usuario.nombre }}</h6>
+              <h6 class="card_surname card_attr">{{ usuario.apellido }}</h6>
+              <a href="#" class="stretched-link id">Ver Perfil</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
     <!-- Seccion de Lugares Favoritors (recuadros) -->
     <!-- Cartas trabajos -->
-    
+
     <!---TEMPLATE DE LAS CARTAS DE PROFESIONALES-->
   </div>
 </template>
@@ -89,13 +88,16 @@
 export default {
   data() {
     return {
-      usuarios: [{ nombre: "Pol", apellido: "Prats" },
-      { nombre: "Adrian ", apellido: "Sanchez" }
-      , { nombre: "Carlos", apellido: "Marchena" }
-      , { nombre: "Erick", apellido: "Aciego" }
-      , { nombre: "Aitor", apellido: "Lopez" }
-      , { nombre: "Oscar", apellido: "Montoya" }],
-      enseña: false
+      usuarios: [
+        { nombre: "Pol", apellido: "Prats" },
+        { nombre: "Adrian ", apellido: "Sanchez" },
+        { nombre: "Carlos", apellido: "Marchena" },
+        { nombre: "Erick", apellido: "Aciego" },
+        { nombre: "Aitor", apellido: "Lopez" },
+        { nombre: "Oscar", apellido: "Montoya" }
+      ],
+      enseña: false,
+      profesionHome: this.$route.params
     };
   },
   methods: {
@@ -149,7 +151,14 @@ export default {
       output.innerHTML = "<p>Locating…</p>";
 
       navigator.geolocation.getCurrentPosition((success, error));
+    },
+    userProfOnly() {
+      this.axios.get('api/')
     }
+    
+  },
+  mounted() {
+    console.log(this.profesionHome);
   }
 };
 </script>
