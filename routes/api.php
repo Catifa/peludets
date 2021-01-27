@@ -29,12 +29,6 @@ Route::group(['prefix' => 'mascota'], function() {
     Route::post('add', 'MascotasController@add');
 });
 
-/* Route::group(['prefix' => 'session'], function () {
-    Route::post('get',[SessionController::class,'getSessionData']);
-    Route::post('set',[SessionController::class,'storeSessionData']);
-    Route::get('remove',[SessionController::class,'deleteSessionData']);
-}); */
-
 Route::group(['prefix' => 'auth'], function () {
     Route::post('register',[AuthController::class,'register']);
     Route::post('login',[AuthController::class,'login']);
