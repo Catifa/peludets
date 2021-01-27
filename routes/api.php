@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfesionController;
 use Illuminate\Http\Request;
 
 
@@ -41,3 +42,6 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('logout',[AuthController::class,'logout']);
     Route::post('check',[AuthController::class,'check']);
 });
+
+// Recoger las profesiones
+Route::get('profesiones', [ProfesionController::class, 'getAll']);
