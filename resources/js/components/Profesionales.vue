@@ -9,7 +9,7 @@
       <div class="col-md-2 ml-auto col-xs-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">Profesiones</label>
-          <select name="selectOption" class="form-control" id="selectOption">
+          <select name="selectOption"  v-model="profesiones" class="form-control" id="selectOption">
             <option value="Psicologo">Psicologo</option>
             <option value="Entrenador">Entrenador</option>
             <option value="Peluquero">Peluquero</option>
@@ -19,7 +19,7 @@
       <div class="col-md-2 col-xs-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">Disponibilidad</label>
-          <select name="selectOption2" class="form-control" id="exampleFormControlSelect2">
+          <select name="selectOption2" v-model="disponibilidad" class="form-control" id="exampleFormControlSelect2">
             <option value="Presencial">Presencial</option>
             <option value="Online">Online</option>
             <option value="Presencial y Online">Presencial y Online</option>
@@ -29,7 +29,7 @@
       <div class="col-md-2 col-xs-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">¿Titulación?</label>
-          <select name="selectOption3" class="form-control" id="exampleFormControlSelect1">
+          <select name="selectOption3" v-model="titulacion" class="form-control" id="exampleFormControlSelect1">
             <option value="Si">Si</option>
             <option value="No">No</option>
           </select>
@@ -41,7 +41,7 @@
           class="btn btn-block btn-lg btn-lila-peludets mt-4"
           value="trabajos"
           name="trabajos"
-          @click="mostrarTarj"
+          @click="usuariosFiltrados"
         >Buscar Profesionales</button>
       </div>
       <div class="col-md-2 mr-auto col-xs-12">
@@ -89,23 +89,21 @@
 export default {
   data() {
     return {
-      usuarios: [{ nombre: "Pol", apellido: "Prats" },
-      { nombre: "Adrian ", apellido: "Sanchez" }
-      , { nombre: "Carlos", apellido: "Marchena" }
-      , { nombre: "Erick", apellido: "Aciego" }
-      , { nombre: "Aitor", apellido: "Lopez" }
-      , { nombre: "Oscar", apellido: "Montoya" }],
-      enseña: false
+      profesiones:null,
+      disponibilidad:null,
+      titulacion:null,
+     
     };
   },
   methods: {
-    usuariosFiltrados(profesiones, disponibilidad, titulacion) {
+    usuariosFiltrados() {
       this.axios
         .get(
-          `http://localhost:8000/api/book/delete/${profesiones}, ${disponibilidad}, ${titulacion}`
+          'api/usuarios/busquedaProfesionales', this.profesiones
         )
         .then(response => {
-          this.usuarios = response.data;
+          //this.usuarios = response.data;
+          console.log(response.data);
         });
     },
     mostrarTarj() {

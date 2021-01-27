@@ -111,11 +111,16 @@ class UsuariosController extends Controller
      * @param string $tiulacion
      * @return array \App\Models\Usuario
      */
-    protected function buscarProfesionales($profesion, $disponibilidad, $titulacion)
+    protected function buscarProfesionales(Request $request)
     {
+
+        return $request->input('profesiones');
+/*
         $query = DB::table('usuarios')
         ->join('usuarios_profesiones', 'usuarios.id', '=', 'usuarios_profesiones.id_usuario')
         ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-        ->where('');
-    }
+        ->where('');*/
+   ; }
+
+
 }

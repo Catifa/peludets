@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Http\Request;
 
 
@@ -34,4 +35,8 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('login',[AuthController::class,'login']);
     Route::post('logout',[AuthController::class,'logout']);
     Route::post('check',[AuthController::class,'check']);
+});
+
+Route::group(['prefix'=>'usuario'], function(){
+    Route::get('busquedaProfesionales',[UsuariosController::class,'buscarProfesionales']);
 });

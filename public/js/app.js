@@ -3327,34 +3327,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      usuarios: [{
-        nombre: "Pol",
-        apellido: "Prats"
-      }, {
-        nombre: "Adrian ",
-        apellido: "Sanchez"
-      }, {
-        nombre: "Carlos",
-        apellido: "Marchena"
-      }, {
-        nombre: "Erick",
-        apellido: "Aciego"
-      }, {
-        nombre: "Aitor",
-        apellido: "Lopez"
-      }, {
-        nombre: "Oscar",
-        apellido: "Montoya"
-      }],
-      enseña: false
+      profesiones: null,
+      disponibilidad: null,
+      titulacion: null
     };
   },
   methods: {
-    usuariosFiltrados: function usuariosFiltrados(profesiones, disponibilidad, titulacion) {
-      var _this = this;
-
-      this.axios.get("http://localhost:8000/api/book/delete/".concat(profesiones, ", ").concat(disponibilidad, ", ").concat(titulacion)).then(function (response) {
-        _this.usuarios = response.data;
+    usuariosFiltrados: function usuariosFiltrados() {
+      this.axios.get('api/usuarios/busquedaProfesionales', this.profesiones).then(function (response) {
+        //this.usuarios = response.data;
+        console.log(response.data);
       });
     },
     mostrarTarj: function mostrarTarj() {
@@ -87420,11 +87402,151 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _vm._m(1),
+      _c("div", { staticClass: "col-md-2 ml-auto col-xs-12" }, [
+        _c("div", { staticClass: "form-group m-2" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("Profesiones")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.profesiones,
+                  expression: "profesiones"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "selectOption", id: "selectOption" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.profesiones = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "Psicologo" } }, [
+                _vm._v("Psicologo")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "Entrenador" } }, [
+                _vm._v("Entrenador")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "Peluquero" } }, [
+                _vm._v("Peluquero")
+              ])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+        _c("div", { staticClass: "form-group m-2" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("Disponibilidad")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.disponibilidad,
+                  expression: "disponibilidad"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "selectOption2", id: "exampleFormControlSelect2" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.disponibilidad = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "Presencial" } }, [
+                _vm._v("Presencial")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "Online" } }, [_vm._v("Online")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "Presencial y Online" } }, [
+                _vm._v("Presencial y Online")
+              ])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(3),
+      _c("div", { staticClass: "col-md-2 col-xs-12" }, [
+        _c("div", { staticClass: "form-group m-2" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("¿Titulación?")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.titulacion,
+                  expression: "titulacion"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "selectOption3", id: "exampleFormControlSelect1" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.titulacion = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "Si" } }, [_vm._v("Si")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "No" } }, [_vm._v("No")])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-2 col-xs-12" }, [
         _c(
@@ -87432,7 +87554,7 @@ var render = function() {
           {
             staticClass: "btn btn-block btn-lg btn-lila-peludets mt-4",
             attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" },
-            on: { click: _vm.mostrarTarj }
+            on: { click: _vm.usuariosFiltrados }
           },
           [_vm._v("Buscar Profesionales")]
         )
@@ -87538,95 +87660,6 @@ var staticRenderFns = [
             }
           },
           [_vm._v("Busca Toby, Busca!")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 ml-auto col-xs-12" }, [
-      _c("div", { staticClass: "form-group m-2" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-          _vm._v("Profesiones")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "selectOption", id: "selectOption" }
-          },
-          [
-            _c("option", { attrs: { value: "Psicologo" } }, [
-              _vm._v("Psicologo")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Entrenador" } }, [
-              _vm._v("Entrenador")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Peluquero" } }, [
-              _vm._v("Peluquero")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
-      _c("div", { staticClass: "form-group m-2" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-          _vm._v("Disponibilidad")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "selectOption2", id: "exampleFormControlSelect2" }
-          },
-          [
-            _c("option", { attrs: { value: "Presencial" } }, [
-              _vm._v("Presencial")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Online" } }, [_vm._v("Online")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Presencial y Online" } }, [
-              _vm._v("Presencial y Online")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2 col-xs-12" }, [
-      _c("div", { staticClass: "form-group m-2" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-          _vm._v("¿Titulación?")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "selectOption3", id: "exampleFormControlSelect1" }
-          },
-          [
-            _c("option", { attrs: { value: "Si" } }, [_vm._v("Si")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "No" } }, [_vm._v("No")])
-          ]
         )
       ])
     ])
@@ -117333,8 +117366,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
