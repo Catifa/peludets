@@ -33,20 +33,12 @@ export const routes = [
         component: Profesionales
     },
     {
-        name: 'tareas',
-        path: '/tareas',
-        component: Tareas,
-        beforeEnter: (to, form, next) =>{
-            axios.get('/api/authentication').then(() => {
-                next();
-            }).catch(() => {
-                return next({name: 'home'})
-            })
-        }
+        path :'*',
+        component:Home
     },
     {
-        name: 'perfil',
-        path: '/perfil',
+        name: 'myProfile',
+        path: '/myProfile',
         component: Perfil,
         beforeEnter: (to, form, next) =>{
             axios.get('/api/authentication').then(() => {
