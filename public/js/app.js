@@ -3328,17 +3328,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       profesiones: null,
       disponibilidad: null,
-      titulacion: null
+      titulacion: null,
+      profesionHome: this.$router.params
     };
   },
   methods: {
     usuariosFiltrados: function usuariosFiltrados() {
-      this.axios.get('api/usuarios/busquedaProfesionales', this.profesiones).then(function (response) {
+      this.axios.get("api/usuarios/busquedaProfesionales", this.profesiones).then(function (response) {
         //this.usuarios = response.data;
         console.log(response.data);
       });
@@ -3371,11 +3382,14 @@ __webpack_require__.r(__webpack_exports__);
       navigator.geolocation.getCurrentPosition((success, error));
     },
     userProfOnly: function userProfOnly() {
-      this.axios.get('api/');
+      this.axios.post("api/usuario/userByProf", this.profesionHome).then(function (response) {
+        console.log(response.config.data);
+      });
     }
   },
   mounted: function mounted() {
-    console.log(this.profesionHome);
+    this.profesionHome = 'Hola caracola';
+    this.userProfOnly();
   }
 });
 

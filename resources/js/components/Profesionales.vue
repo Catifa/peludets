@@ -9,7 +9,7 @@
       <div class="col-md-2 ml-auto col-xs-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">Profesiones</label>
-          <select name="selectOption"  v-model="profesiones" class="form-control" id="selectOption">
+          <select name="selectOption" v-model="profesiones" class="form-control" id="selectOption">
             <option value="Psicologo">Psicologo</option>
             <option value="Entrenador">Entrenador</option>
             <option value="Peluquero">Peluquero</option>
@@ -19,7 +19,12 @@
       <div class="col-md-2 col-xs-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">Disponibilidad</label>
-          <select name="selectOption2" v-model="disponibilidad" class="form-control" id="exampleFormControlSelect2">
+          <select
+            name="selectOption2"
+            v-model="disponibilidad"
+            class="form-control"
+            id="exampleFormControlSelect2"
+          >
             <option value="Presencial">Presencial</option>
             <option value="Online">Online</option>
             <option value="Presencial y Online">Presencial y Online</option>
@@ -29,7 +34,12 @@
       <div class="col-md-2 col-xs-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">¿Titulación?</label>
-          <select name="selectOption3" v-model="titulacion" class="form-control" id="exampleFormControlSelect1">
+          <select
+            name="selectOption3"
+            v-model="titulacion"
+            class="form-control"
+            id="exampleFormControlSelect1"
+          >
             <option value="Si">Si</option>
             <option value="No">No</option>
           </select>
@@ -88,17 +98,16 @@
 export default {
   data() {
     return {
-      profesiones:null,
-      disponibilidad:null,
-      titulacion:null,
+      profesiones: null,
+      disponibilidad: null,
+      titulacion: null,
+      profesionHome: this.$router.params
     };
   },
   methods: {
     usuariosFiltrados() {
       this.axios
-        .get(
-          'api/usuarios/busquedaProfesionales', this.profesiones
-        )
+        .get("api/usuarios/busquedaProfesionales", this.profesiones)
         .then(response => {
           //this.usuarios = response.data;
           console.log(response.data);
@@ -147,12 +156,16 @@ export default {
       navigator.geolocation.getCurrentPosition((success, error));
     },
     userProfOnly() {
-      this.axios.get('api/')
+      this.axios
+        .post("api/usuario/userByProf", this.profesionHome)
+        .then(response => {
+          console.log(response.config.data);
+        });
     }
-    
   },
   mounted() {
-    console.log(this.profesionHome);
+    this.profesionHome = 'Hola caracola';
+    this.userProfOnly();
   }
 };
 </script>

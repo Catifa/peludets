@@ -40,6 +40,8 @@ Route::group(['prefix' => 'auth'], function () {
 
 // Recoger las profesiones
 Route::get('profesiones', [ProfesionController::class, 'getAll']);
+
 Route::group(['prefix'=>'usuario'], function(){
     Route::get('busquedaProfesionales',[UsuariosController::class,'buscarProfesionales']);
+    Route::post('userByProf', [UsuariosController::class, 'searchByProf']);
 });
