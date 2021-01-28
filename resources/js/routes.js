@@ -4,6 +4,7 @@ import Profesionales from './components/Profesionales.vue';
 import Perfil from './components/Perfil.vue';
 import Tareas from './components/Tareas.vue';
 import VueRouter from 'vue-router';
+import axios from 'axios';
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -34,11 +35,25 @@ export const routes = [
     {
         name: 'tareas',
         path: '/tareas',
-        component: Tareas
+        component: Tareas,
+        beforeEnter: (to, form, next) =>{
+            axios.get('/api/authentication').then(() => {
+                next();
+            }).catch(() => {
+                return next({name: 'home'})
+            })
+        }
     },
     {
         name: 'perfil',
         path: '/perfil',
-        component: Perfil
+        component: Perfil,
+        beforeEnter: (to, form, next) =>{
+            axios.get('/api/authentication').then(() => {
+                next();
+            }).catch(() => {
+                return next({name: 'home'})
+            })
+        } 
     }
 ];

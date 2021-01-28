@@ -2697,54 +2697,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      profesiones: [],
+      profesion: {}
+    };
   },
-  methods: {}
+  methods: {
+    buscarTrabajos: function buscarTrabajos() {
+      var prof = this.profesion;
+      this.$router.push({
+        name: 'profesionales',
+        params: {
+          prof: prof
+        }
+      });
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    this.axios.get("api/profesiones").then(function (response) {
+      _this.profesiones = response.data;
+    });
+  }
 });
 
 /***/ }),
@@ -3352,17 +3329,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       profesiones: null,
       disponibilidad: null,
-      titulacion: null
+      titulacion: null,
+      profesionHome: this.$router.params
     };
   },
   methods: {
     usuariosFiltrados: function usuariosFiltrados() {
-      this.axios.get('api/usuarios/busquedaProfesionales', this.profesiones).then(function (response) {
+      this.axios.get("api/usuarios/busquedaProfesionales", this.profesiones).then(function (response) {
         //this.usuarios = response.data;
         console.log(response.data);
       });
@@ -3393,7 +3380,16 @@ __webpack_require__.r(__webpack_exports__);
 
       output.innerHTML = "<p>Locating…</p>";
       navigator.geolocation.getCurrentPosition((success, error));
+    },
+    userProfOnly: function userProfOnly() {
+      this.axios.post("api/usuario/userByProf", this.profesionHome).then(function (response) {
+        console.log(response.config.data);
+      });
     }
+  },
+  mounted: function mounted() {
+    this.profesionHome = 'Hola caracola';
+    this.userProfOnly();
   }
 });
 
@@ -86307,77 +86303,44 @@ var render = function() {
                     staticClass: "mt-2x",
                     attrs: { for: "exampleFormControlSelect1" }
                   },
-                  [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(_vm.$t("home.formTrabajos")) +
-                        "\n          "
-                    )
-                  ]
+                  [_vm._v(_vm._s(_vm.$t("home.formTrabajos")))]
                 ),
                 _vm._v(" "),
                 _c(
                   "select",
                   {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.profesion,
+                        expression: "profesion"
+                      }
+                    ],
                     staticClass: "form-control",
-                    attrs: { id: "exampleFormControlSelect1" }
+                    attrs: { id: "exampleFormControlSelect1" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.profesion = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
                   },
-                  [
-                    _c("option", [
-                      _vm._v(_vm._s(_vm.$t("home.formSelectTrabajos1")))
-                    ]),
-                    _vm._v(" "),
-                    _c("option", [
-                      _vm._v(_vm._s(_vm.$t("home.formSelectTrabajos2")))
-                    ]),
-                    _vm._v(" "),
-                    _c("option", [
-                      _vm._v(_vm._s(_vm.$t("home.formSelectTrabajos3")))
+                  _vm._l(_vm.profesiones, function(profesion) {
+                    return _c("option", { key: profesion.id }, [
+                      _vm._v(_vm._s(profesion.nombre_profesion))
                     ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.$t("home.formTipoMascotas")) +
-                      "\n          "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    staticClass: "form-control",
-                    attrs: { id: "exampleFormControlSelect2" }
-                  },
-                  [
-                    _c("option", [
-                      _vm._v(
-                        " " +
-                          _vm._s(_vm.$t("home.formSelectTipoMascotas1")) +
-                          " "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("option", [
-                      _vm._v(
-                        " " +
-                          _vm._s(_vm.$t("home.formSelectTipoMascotas2")) +
-                          " "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("option", [
-                      _vm._v(
-                        " " +
-                          _vm._s(_vm.$t("home.formSelectTipoMascotas3")) +
-                          " "
-                      )
-                    ])
-                  ]
+                  }),
+                  0
                 )
               ]),
               _vm._v(" "),
@@ -86385,15 +86348,15 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-lila-peludets",
-                  attrs: { id: "buscarTrabajos", type: "submit" }
+                  attrs: { id: "buscarTrabajos", type: "submit" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.buscarTrabajos($event)
+                    }
+                  }
                 },
-                [
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(_vm.$t("home.formBotonBuscar")) +
-                      "\n        "
-                  )
-                ]
+                [_vm._v(_vm._s(_vm.$t("home.formBotonBuscar")))]
               )
             ]
           )
@@ -86415,11 +86378,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body bg-crema-peludets" }, [
             _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.$t("home.cardBox1")) +
-                  "\n          "
-              )
+              _vm._v(_vm._s(_vm.$t("home.cardBox1")))
             ])
           ])
         ])
@@ -86438,11 +86397,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body bg-crema-peludets" }, [
             _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.$t("home.cardBox2")) +
-                  "\n          "
-              )
+              _vm._v(_vm._s(_vm.$t("home.cardBox2")))
             ])
           ])
         ])
@@ -86461,11 +86416,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body bg-crema-peludets" }, [
             _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.$t("home.cardBox3")) +
-                  "\n          "
-              )
+              _vm._v(_vm._s(_vm.$t("home.cardBox3")))
             ])
           ])
         ])
@@ -86484,11 +86435,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body bg-crema-peludets" }, [
             _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.$t("home.cardBox4")) +
-                  "\n          "
-              )
+              _vm._v(_vm._s(_vm.$t("home.cardBox4")))
             ])
           ])
         ])
@@ -117408,8 +117355,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Erick\Desktop\2 DAW\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\pldts\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\pldts\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
