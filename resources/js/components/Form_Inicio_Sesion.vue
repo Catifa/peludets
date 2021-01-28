@@ -60,7 +60,7 @@ export default {
   methods: {
     login() {
       this.axios
-        .post("api/auth/login", this.user)
+        .post("/api/auth/login", this.user)
         .then((response) => {
           $("#form-inicioSesion").modal("hide");
           Swal.fire(

@@ -27,7 +27,7 @@
             <i class="fas fa-bars"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <router-link to="/explorador" class="nav-link">
                   {{ $t("app.menuExplorador") }}
@@ -38,8 +38,12 @@
                   {{ $t("app.menuProfesionales") }}
                 </router-link>
               </li>
-                
-            
+              <li class="nav-item">
+                <router-link to="/download" class="nav-link">
+                  Descarga la app <!-- FALTA TRADUCIR -->
+                </router-link>
+              </li>
+
               <li class="nav-item d-md-none">
                 <router-link to="/myProfile" class="nav-link">
                   Perfil
@@ -51,6 +55,7 @@
                     class="btn btn-danger-peludets"
                     id="desconectar"
                     type="button"
+                    @click="logout()"
                   >
                     Desconectar
                   </button></span
@@ -95,8 +100,6 @@
                 <router-link to="/myProfile" class="nav-link">
                   Perfil
                 </router-link>
-              
-             
 
                 <div class="dropdown-divider"></div>
                 <span class="dropdown-item-text"
@@ -142,7 +145,7 @@
             <i class="fas fa-bars"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <router-link to="/explorador" class="nav-link">
                   {{ $t("app.menuExplorador") }}
@@ -151,6 +154,11 @@
               <li class="nav-item">
                 <router-link to="/profesionales" class="nav-link">
                   {{ $t("app.menuProfesionales") }}
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/download" class="nav-link">
+                  Descarga la app <!-- FALTA TRADUCIR -->
                 </router-link>
               </li>
               <li class="nav-item d-md-none mx-auto">
@@ -300,14 +308,14 @@ export default {
       this.$i18n.locale = locale;
     },
     logout() {
-      axios.post("api/auth/logout").then((res) => {
+      axios.post("/api/auth/logout").then((res) => {
         console.log(res.data);
         this.$root.user = null;
         this.$router.push("/");
       });
     },
     getUser() {
-      axios.get("api/user").then((res) => {
+      axios.get("/api/user").then((res) => {
         console.log(res.data);
         this.$root.user = res.data;
       });

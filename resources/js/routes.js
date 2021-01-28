@@ -1,8 +1,8 @@
 import Home from './components/Home.vue';
 import Explorador from './components/Explorador.vue';
 import Profesionales from './components/Profesionales.vue';
-import Perfil from './components/Perfil.vue';
-import Tareas from './components/Tareas.vue';
+import myProfile from './components/Perfil.vue';
+import Profile from './components/templates/tpm_perfil.vue';
 import VueRouter from 'vue-router';
 import axios from 'axios';
 
@@ -39,7 +39,7 @@ export const routes = [
     {
         name: 'myProfile',
         path: '/myProfile',
-        component: Perfil,
+        component: myProfile,
         beforeEnter: (to, form, next) =>{
             axios.get('/api/authentication').then(() => {
                 next();
@@ -47,5 +47,10 @@ export const routes = [
                 return next({name: 'home'})
             })
         } 
-    }
+    },
+    {
+        name: 'Profile',
+        path :'/profile/:id',
+        component:Profile
+    },
 ];

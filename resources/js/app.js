@@ -96,14 +96,14 @@ function geoFindMe() {
  *****************************************************/
 
 //Inicializamos las constantes para trabajar con express y socket.io
-const express = require('express');
+/* const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const io = require('socket.io')(http); */
 
 //Declaramos la carpeta public y definimos la ruta raiz '/' a index.html 
-app.use('/public', express.static(__dirname + '/public'));
-app.get('/', (req, res) => res.sendfile(__dirname + '/index.html'));
+/* app.use('/public', express.static(__dirname + '/public'));
+app.get('/', (req, res) => res.sendfile(__dirname + '/index.html')); */
 
 //Conexión con socket
 io.on('connection', (socket)=>{

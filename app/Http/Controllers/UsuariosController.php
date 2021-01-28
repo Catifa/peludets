@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-use App\Http\Controllers\Controller;
-use App\Models\Usuario;
+use App\Models\User;
 
 class UsuariosController extends Controller
 {
@@ -40,7 +38,14 @@ class UsuariosController extends Controller
      * 
      * @return \App\Models\UserUser
      */
-    protected function searchByProf(Request $request) {
+    protected function searchByProf(Request $request)
+    {
         return $request->input('profesionHome');
+    }
+
+    
+    protected function perfil(Request $request)
+    {
+        return User::where('id', '=', $request->input('id'))->get();
     }
 }
