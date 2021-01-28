@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfesionController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Http\Request;
 
@@ -37,6 +38,10 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('check',[AuthController::class,'check']);
 });
 
+// Recoger las profesiones
+Route::get('profesiones', [ProfesionController::class, 'getAll']);
+
 Route::group(['prefix'=>'usuario'], function(){
     Route::get('busquedaProfesionales',[UsuariosController::class,'buscarProfesionales']);
+    Route::post('userByProf', [UsuariosController::class, 'searchByProf']);
 });

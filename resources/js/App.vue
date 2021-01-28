@@ -12,9 +12,9 @@
           id="navbar-peludets"
           class="container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets"
         >
-          <a href="javascript:void(0)" id="home"
-            ><img src="sources/img/logo/logo.png" alt="Peludets!"
-          /></a>
+          <router-link to="/" class="navbar-brand"
+            ><img src="../img/logo/logo.png" alt="Peludets!" />
+          </router-link>
           <button
             class="navbar-toggler"
             type="button"
@@ -29,15 +29,17 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)" id="explorador"
-                  >Explorador</a
-                >
+                <router-link to="/explorador" class="nav-link">
+                  {{ $t("app.menuExplorador") }}
+                </router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)" id="profesionales"
-                  >Profesionales</a
-                >
+                <router-link to="/profesionales" class="nav-link">
+                  {{ $t("app.menuProfesionales") }}
+                </router-link>
               </li>
+                
+            
               <li class="nav-item d-md-none">
                 <a class="nav-link" href="?accio=Perfil">Perfil</a>
               </li>
@@ -91,20 +93,11 @@
                   ></a>
                 </span>
                 <div class="dropdown-divider"></div>
-                <a
-                  href="javascript:void(0)"
-                  id="perfil"
-                  class="dropdeown-item"
-                  type="button"
-                  >Perfil</a
-                >
-                <a
-                  href="javascript:void(0)"
-                  id="tareas"
-                  class="dropdown-item"
-                  type="button"
-                  >Tareas</a
-                >
+                <router-link to="/perfil" class="nav-link">
+                  Perfil
+                </router-link>
+              
+             
 
                 <div class="dropdown-divider"></div>
                 <span class="dropdown-item-text"

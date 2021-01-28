@@ -1,6 +1,6 @@
 
 <style>
-    @import "../../css/perfil.css";
+@import "../../css/perfil.css";
 </style>
 
 <template>
@@ -95,6 +95,18 @@
             aria-controls="editaPerfilMascota"
             aria-selected="false"
             >Edita perfil mascota</a
+          >
+        </li>
+                <li class="nav-item">
+          <a
+            class="nav-link"
+            id="edita-tab"
+            data-toggle="tab"
+            href="#tareas"
+            role="tab"
+            aria-controls="tareas"
+            aria-selected="false"
+            >Tareas</a
           >
         </li>
       </ul>
@@ -471,27 +483,42 @@
             </div>
           </div>
         </div>
+
+
+        <div
+          class="tab-pane fade"
+          id="tareas"
+          role="tabpanel"
+          aria-labelledby="edita-tab"
+        >
+          <Tareas></Tareas>
+
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-  name: 'panel',
-  data () {
-    return { }
+import Tareas from "./Tareas";
+export default {
+   components: {
+    Tareas
+    },
+  name: "panel",
+  data() {
+    return {};
   },
   beforeCreate: function () {
     if (!this.$session.exists()) {
-      this.$router.push('/')
+      this.$router.push("/");
     }
   },
   methods: {
     logout: function () {
-      this.$session.destroy()
-      this.$router.push('/')
-    }
-  }
-}
+      this.$session.destroy();
+      this.$router.push("/");
+    },
+  },
+};
 </script>
