@@ -68,7 +68,6 @@ export default {
             "Bienvenido, " + response.data.nombre,
             "success"
           );
-          this.$root.auth = true;
           this.$root.user = response.data;
           console.log(response.data);
           this.$router.push("/");

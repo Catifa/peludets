@@ -2187,7 +2187,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
+=======
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "local-changer",
   data: function data() {
@@ -2202,12 +2205,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/auth/check").then(function (res) {
         console.log(res.data);
 
-        if (res.data == true) {
-          _this.$root.auth = true;
-
+        if (res.data) {
           _this.getUser();
         } else {
-          _this.$root.auth = false;
+          _this.$root.user = null;
         }
       });
     },
@@ -2219,7 +2220,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post("api/auth/logout").then(function (res) {
         console.log(res.data);
-        _this2.$root.auth = false;
         _this2.$root.user = null;
 
         _this2.$router.push("/");
@@ -2422,7 +2422,6 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.post("api/auth/login", this.user).then(function (response) {
         $("#form-inicioSesion").modal("hide");
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Registro completado", "Bienvenido, " + response.data.nombre, "success");
-        _this.$root.auth = true;
         _this.$root.user = response.data;
         console.log(response.data);
 
@@ -2552,8 +2551,7 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.post("api/auth/register", this.user).then(function (response) {
         $("#form-registro").modal("hide");
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire("Registro completado", "Bienvenido, " + _this.user.name, "success");
-        _this.$root.auth = true;
-        _this.$root.user = res.data;
+        _this.$root.user = response.data;
         console.log(response.data);
 
         _this.$router.push("/");
@@ -3365,7 +3363,11 @@ __webpack_require__.r(__webpack_exports__);
       profesiones: null,
       disponibilidad: null,
       titulacion: null,
+<<<<<<< HEAD
       profesionHome: {}
+=======
+      profesionHome: this.$router.params
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
     };
   },
   methods: {
@@ -3409,8 +3411,13 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+<<<<<<< HEAD
     console.log(this.$route.params.prof);
     this.profesionHome = this.$route.params.prof; //this.userProfOnly();
+=======
+    this.profesionHome = 'Hola caracola';
+    this.userProfOnly();
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
   }
 });
 
@@ -85093,7 +85100,7 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      this.$root.auth
+      this.$root.user != null && this.$root.user != _vm.isEmpty
         ? _c("div", [
             _c("div", { staticClass: "row" }, [
               _c(
@@ -85171,11 +85178,35 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
+<<<<<<< HEAD
                         _vm._m(1),
                         _vm._v(" "),
                         _vm._m(2),
                         _vm._v(" "),
                         _vm._m(3)
+=======
+                        _c(
+                          "li",
+                          { staticClass: "nav-item d-md-none" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/myProfile" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                Perfil\n              "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1)
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
                       ]),
                       _vm._v(" "),
                       _c(
@@ -85185,7 +85216,11 @@ var render = function() {
                           attrs: { id: "navbar-peludets-derecha" }
                         },
                         [
+<<<<<<< HEAD
                           _vm._m(4),
+=======
+                          _vm._m(2),
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
                           _vm._v(" "),
                           _c(
                             "div",
@@ -85214,7 +85249,11 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
+<<<<<<< HEAD
                               _vm._m(5),
+=======
+                              _vm._m(3),
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
                               _vm._v(" "),
                               _c("div", { staticClass: "dropdown-divider" }),
                               _vm._v(" "),
@@ -85222,7 +85261,11 @@ var render = function() {
                                 "router-link",
                                 {
                                   staticClass: "nav-link",
+<<<<<<< HEAD
                                   attrs: { to: "/perfil" }
+=======
+                                  attrs: { to: "/myProfile" }
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
                                 },
                                 [
                                   _vm._v(
@@ -85271,7 +85314,10 @@ var render = function() {
               )
             ])
           ])
-        : _c(
+        : _vm._e(),
+      _vm._v(" "),
+      this.$root.user == null
+        ? _c(
             "div",
             [
               _c("form_registro"),
@@ -85300,7 +85346,11 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
+<<<<<<< HEAD
                     _vm._m(6),
+=======
+                    _vm._m(4),
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
                     _vm._v(" "),
                     _c(
                       "div",
@@ -85471,7 +85521,8 @@ var render = function() {
               ])
             ],
             1
-          ),
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c("router-view"),
       _vm._v(" "),
@@ -85484,7 +85535,11 @@ var render = function() {
           [
             _c("div", { staticClass: "text-center text-md-left" }, [
               _c("div", { staticClass: "row" }, [
+<<<<<<< HEAD
                 _vm._m(7),
+=======
+                _vm._m(5),
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
                 _vm._v(" "),
                 _c("hr", { staticClass: "clearfix w-100 d-md-none pb-3" }),
                 _vm._v(" "),
@@ -85494,7 +85549,13 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("ul", { staticClass: "list-unstyled" }, [
+<<<<<<< HEAD
                     _vm._m(8),
+=======
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _vm._m(7),
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
                     _vm._v(" "),
                     _vm._m(9),
                     _vm._v(" "),
@@ -85515,7 +85576,11 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
+<<<<<<< HEAD
                   _vm._m(10),
+=======
+                  _vm._m(8),
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
                   _vm._v(" "),
                   _c("ul", { staticClass: "list-unstyled" }, [
                     _c(
@@ -85549,7 +85614,11 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+<<<<<<< HEAD
             _vm._m(11)
+=======
+            _vm._m(9)
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
           ]
         )
       ])
@@ -85582,6 +85651,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+<<<<<<< HEAD
     return _c("li", { staticClass: "nav-item d-md-none" }, [
       _c("a", { staticClass: "nav-link", attrs: { href: "?accio=Perfil" } }, [
         _vm._v("Perfil")
@@ -85602,6 +85672,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+=======
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
     return _c("li", { staticClass: "nav-item d-md-none mx-auto" }, [
       _c("span", { staticClass: "dropdown-item-text" }, [
         _c(
@@ -116279,15 +116351,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
   mode: 'history',
   routes: _routes__WEBPACK_IMPORTED_MODULE_8__["routes"]
 });
-/* router.beforeEach((to, from, next) => {
-    if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
-    else next()
-  }) */
-
 vue__WEBPACK_IMPORTED_MODULE_11___default.a.config.devtools = true;
 var app = new vue__WEBPACK_IMPORTED_MODULE_11___default.a({
   data: {
-    auth: false,
     user: {}
   },
   el: '#app',
@@ -117362,6 +117428,7 @@ var routes = [{
   path: '/profesionales',
   component: _components_Profesionales_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
+<<<<<<< HEAD
   name: 'tareas',
   path: '/tareas',
   component: _components_Tareas_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -117377,6 +117444,13 @@ var routes = [{
 }, {
   name: 'perfil',
   path: '/perfil',
+=======
+  path: '*',
+  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+}, {
+  name: 'myProfile',
+  path: '/myProfile',
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
   component: _components_Perfil_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   beforeEnter: function beforeEnter(to, form, next) {
     axios__WEBPACK_IMPORTED_MODULE_6___default.a.get('/api/authentication').then(function () {
@@ -117409,8 +117483,13 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! D:\xampp\htdocs\peludets\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\xampp\htdocs\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\xampp\htdocs\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> 2a0c26ae1351bee6ff5e5e6bdb47068e01ccab11
 
 
 /***/ })

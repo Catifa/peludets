@@ -6,7 +6,7 @@
  
 <template>
   <div class="container-fluid">
-    <div v-if="this.$root.auth">
+    <div v-if="this.$root.user != null && this.$root.user != isEmpty">
       <div class="row">
         <nav
           id="navbar-peludets"
@@ -41,10 +41,9 @@
                 
             
               <li class="nav-item d-md-none">
-                <a class="nav-link" href="?accio=Perfil">Perfil</a>
-              </li>
-              <li class="nav-item d-md-none">
-                <a class="nav-link" href="?accio=Tareas">Tareas</a>
+                <router-link to="/myProfile" class="nav-link">
+                  Perfil
+                </router-link>
               </li>
               <li class="nav-item d-md-none mx-auto">
                 <span class="dropdown-item-text"
@@ -93,7 +92,7 @@
                   ></a>
                 </span>
                 <div class="dropdown-divider"></div>
-                <router-link to="/perfil" class="nav-link">
+                <router-link to="/myProfile" class="nav-link">
                   Perfil
                 </router-link>
               
@@ -116,7 +115,7 @@
         </nav>
       </div>
     </div>
-    <div v-else>
+    <div v-if="this.$root.user == null">
       <!--Formulario registro -->
       <form_registro></form_registro>
       <!--Formulario inicio sesion -->
@@ -290,11 +289,10 @@ export default {
     isAuthenticated() {
       axios.post("/api/auth/check").then((res) => {
         console.log(res.data);
-        if (res.data == true) {
-          this.$root.auth = true;
+        if (res.data) {
           this.getUser();
         } else {
-          this.$root.auth = false;
+          this.$root.user = null;
         }
       });
     },
@@ -304,7 +302,6 @@ export default {
     logout() {
       axios.post("api/auth/logout").then((res) => {
         console.log(res.data);
-        this.$root.auth = false;
         this.$root.user = null;
         this.$router.push("/");
       });
