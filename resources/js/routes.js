@@ -18,11 +18,6 @@ export const routes = [
         component: Home
     },
     {
-        name: 'login',
-        path: '/login',
-        component: Home
-    },
-    {
         name: 'explorador',
         path: '/explorador',
         component: Explorador

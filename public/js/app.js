@@ -2193,8 +2193,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "local-changer",
   data: function data() {
@@ -85982,68 +85980,53 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "navbar-brand",
-                            attrs: { to: "/login" }
-                          },
-                          [
+                        _c("ul", { staticClass: "navbar-nav navbar-right" }, [
+                          _c("li", { staticClass: "nav-item" }, [
                             _c(
-                              "ul",
-                              { staticClass: "navbar-nav navbar-right" },
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-lila-peludets btn-sm mr-2",
+                                attrs: {
+                                  id: "inicio-sesion",
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target": "#form-inicioSesion"
+                                }
+                              },
                               [
-                                _c("li", { staticClass: "nav-item" }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "btn btn-lila-peludets btn-sm mr-2",
-                                      attrs: {
-                                        id: "inicio-sesion",
-                                        type: "button",
-                                        "data-toggle": "modal",
-                                        "data-target": "#form-inicioSesion"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                  " +
-                                          _vm._s(_vm.$t("app.menuLogin")) +
-                                          "\n                "
-                                      )
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("li", { staticClass: "nav-item" }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "btn btn-lila-peludets btn-sm",
-                                      attrs: {
-                                        id: "registro",
-                                        type: "button",
-                                        "data-toggle": "modal",
-                                        "data-target": "#form-registro"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                  " +
-                                          _vm._s(_vm.$t("app.menuRegistro")) +
-                                          "\n                "
-                                      )
-                                    ]
-                                  )
-                                ])
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(_vm.$t("app.menuLogin")) +
+                                    "\n                "
+                                )
                               ]
                             )
-                          ]
-                        )
-                      ],
-                      1
+                          ]),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "nav-item" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-lila-peludets btn-sm",
+                                attrs: {
+                                  id: "registro",
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target": "#form-registro"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(_vm.$t("app.menuRegistro")) +
+                                    "\n                "
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ]
                     )
                   ],
                   1
@@ -118830,10 +118813,6 @@ vue_router__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.push = function pus
 var routes = [{
   name: 'home',
   path: '/',
-  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-}, {
-  name: 'login',
-  path: '/login',
   component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   name: 'explorador',

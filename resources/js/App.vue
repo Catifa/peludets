@@ -182,7 +182,6 @@
                 </button>
               </li>
             </ul>
-            <router-link to="/login" class="navbar-brand">
               <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
                   <button
@@ -207,7 +206,6 @@
                   </button>
                 </li>
               </ul>
-            </router-link>
           </div>
         </nav>
       </div>
