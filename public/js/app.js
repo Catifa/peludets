@@ -3367,7 +3367,7 @@ __webpack_require__.r(__webpack_exports__);
       profesiones: null,
       disponibilidad: null,
       titulacion: null,
-      profesionHome: this.$router.params
+      profesionHome: {}
     };
   },
   methods: {
@@ -3411,8 +3411,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.profesionHome = 'Hola caracola';
-    this.userProfOnly();
+    console.log(this.$route.params.prof);
+    this.profesionHome = this.$route.params.prof; //this.userProfOnly();
   }
 });
 

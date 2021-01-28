@@ -38,9 +38,8 @@ class UsuariosController extends Controller
      * 
      * @return \App\Models\UserUser
      */
-    protected function searchByProf(Request $request)
-    {
-        return $request->input('profesionHome');
+    protected function searchByProf(Request $request) {
+        return $request->input('obj');
     }
 
     

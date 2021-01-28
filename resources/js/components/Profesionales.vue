@@ -101,8 +101,8 @@ export default {
       profesiones: null,
       disponibilidad: null,
       titulacion: null,
-      profesionHome: this.$router.params
-    };
+      profesionHome: {}
+    }
   },
   methods: {
     usuariosFiltrados() {
@@ -164,8 +164,9 @@ export default {
     }
   },
   mounted() {
-    this.profesionHome = 'Hola caracola';
-    this.userProfOnly();
+    console.log(this.$route.params.prof);
+    this.profesionHome = this.$route.params.prof;
+    //this.userProfOnly();
   }
 };
 </script>
