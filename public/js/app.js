@@ -3343,21 +3343,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      ensena: false,
       profesiones: null,
       disponibilidad: null,
       titulacion: null,
-      profesionHome: {}
+      profesionHome: {},
+      usuarios: {}
     };
   },
   methods: {
     usuariosFiltrados: function usuariosFiltrados() {
-      this.axios.get("api/usuarios/busquedaProfesionales", this.profesiones).then(function (response) {
-        //this.usuarios = response.data;
-        console.log(response.data);
+      var _this = this;
+
+      this.axios.post("api/usuario/userByProf", this.profesiones).then(function (response) {
+        _this.usuarios = response.data;
+        _this.ensena = true;
       });
     },
     mostrarTarj: function mostrarTarj() {
@@ -88031,7 +88034,7 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-block btn-lg btn-lila-peludets mt-4",
-            attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" },
+            attrs: { id: "usuariosFiltrados", type: "submit" },
             on: { click: _vm.usuariosFiltrados }
           },
           [_vm._v("Buscar Profesionales")]
@@ -118798,8 +118801,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\pldts\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\pldts\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\peludets\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

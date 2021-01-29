@@ -47,10 +47,9 @@
       </div>
       <div class="col-md-2 col-xs-12">
         <button
-          id="tarjeta"
+          id="usuariosFiltrados"
+          type="submit"
           class="btn btn-block btn-lg btn-lila-peludets mt-4"
-          value="trabajos"
-          name="trabajos"
           @click="usuariosFiltrados"
         >Buscar Profesionales</button>
       </div>
@@ -98,19 +97,21 @@
 export default {
   data() {
     return {
+      ensena: false,
       profesiones: null,
       disponibilidad: null,
       titulacion: null,
-      profesionHome: {}
+      profesionHome: {},
+      usuarios: {}
     };
   },
   methods: {
     usuariosFiltrados() {
       this.axios
-        .get("api/usuarios/busquedaProfesionales", this.profesiones)
+        .post("api/usuario/userByProf", this.profesiones)
         .then(response => {
-          //this.usuarios = response.data;
-          console.log(response.data);
+          this.usuarios = response.data
+         this.ensena =true;
         });
     },
     mostrarTarj() {
