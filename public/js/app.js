@@ -3404,13 +3404,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     userProfOnly: function userProfOnly() {
       this.axios.post("api/usuario/userByProf", this.profesionHome).then(function (response) {
-        console.log(response.config.data);
+        console.log(response.data);
       });
     }
   },
   mounted: function mounted() {
-    console.log(this.$route.params.prof);
-    this.profesionHome = this.$route.params.prof; //this.userProfOnly();
+    if (this.$route.params.prof != undefined) {
+      this.profesionHome.nombre = this.$route.params.prof;
+      this.userProfOnly();
+    }
   }
 });
 
@@ -118864,8 +118866,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\peludets\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\peludets\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\pldts\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\pldts\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

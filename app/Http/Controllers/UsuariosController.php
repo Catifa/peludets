@@ -23,11 +23,11 @@ class UsuariosController extends Controller
     {
 
         return $request->input('profesiones');
-            /*
-        $query = DB::table('usuarios')
+            
+        /*$query = DB::table('usuarios')
         ->join('usuarios_profesiones', 'usuarios.id', '=', 'usuarios_profesiones.id_usuario')
         ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-        ->where('');*/;
+        ->where('');*/
     }
 
     /**
@@ -39,7 +39,16 @@ class UsuariosController extends Controller
      * @return \App\Models\UserUser
      */
     protected function searchByProf(Request $request) {
-        return $request->input('obj');
+
+        $prof = $request->input('nombre');
+
+        $query = DB::table('users')->
+        join('usuarios_profesiones', 'id_usuario', '=', 'users.id')->
+        join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')->
+        where('profesiones.nombre_profesion', '=', $prof);
+
+        return $query->addSelect('users.name', 'users.lastname')->get();
+
     }
 
     
