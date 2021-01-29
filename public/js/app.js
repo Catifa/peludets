@@ -3346,24 +3346,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      profesiones: null,
+      ensena: false,
+      profesiones: {},
       disponibilidad: null,
       titulacion: null,
-      profesionHome: {}
+      profesionHome: {},
+      usuarios: {},
+      showByProf: false
     };
   },
   methods: {
     usuariosFiltrados: function usuariosFiltrados() {
-      this.axios.get("api/usuarios/busquedaProfesionales", this.profesiones).then(function (response) {
-        //this.usuarios = response.data;
-        console.log(response.data);
+      var _this = this;
+
+      this.axios.post("api/usuario/userByProf", this.profesiones).then(function (response) {
+        _this.usuarios = response.data;
+        _this.ensena = true;
+        console.log(response);
       });
-    },
-    mostrarTarj: function mostrarTarj() {
-      this.enseña = true;
     },
     geoFindMe: function geoFindMe() {
       var output = document.getElementById("out");
@@ -3390,8 +3405,11 @@ __webpack_require__.r(__webpack_exports__);
       navigator.geolocation.getCurrentPosition((success, error));
     },
     userProfOnly: function userProfOnly() {
+      var _this2 = this;
+
       this.axios.post("api/usuario/userByProf", this.profesionHome).then(function (response) {
-        console.log(response.data);
+        _this2.usuarios = response.data;
+        _this2.showByProf = true;
       });
     }
   },
@@ -87872,8 +87890,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.profesiones,
-                  expression: "profesiones"
+                  value: _vm.profesiones.nombre,
+                  expression: "profesiones.nombre"
                 }
               ],
               staticClass: "form-control",
@@ -87888,9 +87906,11 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.profesiones = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
+                  _vm.$set(
+                    _vm.profesiones,
+                    "nombre",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
                 }
               }
             },
@@ -88010,7 +88030,7 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-block btn-lg btn-lila-peludets mt-4",
-            attrs: { id: "tarjeta", value: "trabajos", name: "trabajos" },
+            attrs: { id: "usuariosFiltrados", type: "submit" },
             on: { click: _vm.usuariosFiltrados }
           },
           [_vm._v("Buscar Profesionales")]
@@ -88040,7 +88060,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.enseña
+      _vm.ensena
         ? _c(
             "div",
             { staticClass: "col-md-6 mt-4 col-xs-12", attrs: { id: "cards" } },
@@ -88089,6 +88109,64 @@ var render = function() {
                           [_vm._v("Ver Perfil")]
                         )
                       ])
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showByProf
+        ? _c(
+            "div",
+            { staticClass: "col-md-6 mt-4 col-xs-12", attrs: { id: "cards" } },
+            _vm._l(_vm.usuarios, function(usuario) {
+              return _c(
+                "div",
+                {
+                  key: usuario,
+                  staticClass: "col-md-4",
+                  attrs: { name: "profesionales" }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "card", staticStyle: { width: "18rem" } },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src:
+                            "https://corgicare.com/wp-content/uploads/welsh-corgi-history-and-lore.jpg",
+                          alt: "Card image cap"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body" },
+                        [
+                          _c("p", { staticClass: "card_name card_attr" }, [
+                            _vm._v(_vm._s(usuario.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card_surname card_attr" }, [
+                            _vm._v(_vm._s(usuario.lastname))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-azul-peludets",
+                              attrs: { to: "/profile/" + usuario.id }
+                            },
+                            [_vm._v("Contratar")]
+                          )
+                        ],
+                        1
+                      )
                     ]
                   )
                 ]
