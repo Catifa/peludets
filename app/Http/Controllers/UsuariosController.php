@@ -47,7 +47,7 @@ class UsuariosController extends Controller
         join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')->
         where('profesiones.nombre_profesion', '=', $prof);
 
-        return $query->addSelect('users.name', 'users.lastname')->get();
+        return $query->addSelect('users.id', 'users.name', 'users.lastname')->get();
 
     }
 

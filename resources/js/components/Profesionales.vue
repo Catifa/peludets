@@ -86,6 +86,19 @@
           </div>
         </div>
       </div>
+      <!-- Tarjetas de profesionales home que vienen de Home -->
+      <div id="cards" v-if="showByProf" class="col-md-6 mt-4 col-xs-12">
+        <div name="profesionales" class="col-md-4" v-for="usuario in usuarios" :key="usuario">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://corgicare.com/wp-content/uploads/welsh-corgi-history-and-lore.jpg" alt="Card image cap">
+            <div class="card-body">
+              <p class="card_name card_attr">{{ usuario.name }}</p>
+              <p class="card_surname card_attr">{{ usuario.lastname }}</p>
+              <router-link v-bind:to="'/profile/' +  usuario.id " class="btn btn-azul-peludets">Contratar</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Seccion de Lugares Favoritors (recuadros) -->
     <!-- Cartas trabajos -->
@@ -101,7 +114,9 @@ export default {
       profesiones: null,
       disponibilidad: null,
       titulacion: null,
-      profesionHome: {}
+      profesionHome: {},
+      usuarios: {},
+      showByProf: false
     };
   },
   methods: {
@@ -159,7 +174,8 @@ export default {
       this.axios
         .post("api/usuario/userByProf", this.profesionHome)
         .then(response => {
-          console.log(response.data);
+          this.usuarios = response.data;
+          this.showByProf = true;
         });
     }
   },

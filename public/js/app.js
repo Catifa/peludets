@@ -3344,13 +3344,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       profesiones: null,
       disponibilidad: null,
       titulacion: null,
-      profesionHome: {}
+      profesionHome: {},
+      usuarios: {},
+      showByProf: false
     };
   },
   methods: {
@@ -3388,8 +3403,11 @@ __webpack_require__.r(__webpack_exports__);
       navigator.geolocation.getCurrentPosition((success, error));
     },
     userProfOnly: function userProfOnly() {
+      var _this = this;
+
       this.axios.post("api/usuario/userByProf", this.profesionHome).then(function (response) {
-        console.log(response.data);
+        _this.usuarios = response.data;
+        _this.showByProf = true;
       });
     }
   },
@@ -88110,6 +88128,64 @@ var render = function() {
                           [_vm._v("Ver Perfil")]
                         )
                       ])
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showByProf
+        ? _c(
+            "div",
+            { staticClass: "col-md-6 mt-4 col-xs-12", attrs: { id: "cards" } },
+            _vm._l(_vm.usuarios, function(usuario) {
+              return _c(
+                "div",
+                {
+                  key: usuario,
+                  staticClass: "col-md-4",
+                  attrs: { name: "profesionales" }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "card", staticStyle: { width: "18rem" } },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src:
+                            "https://corgicare.com/wp-content/uploads/welsh-corgi-history-and-lore.jpg",
+                          alt: "Card image cap"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body" },
+                        [
+                          _c("p", { staticClass: "card_name card_attr" }, [
+                            _vm._v(_vm._s(usuario.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card_surname card_attr" }, [
+                            _vm._v(_vm._s(usuario.lastname))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-azul-peludets",
+                              attrs: { to: "/profile/" + usuario.id }
+                            },
+                            [_vm._v("Contratar")]
+                          )
+                        ],
+                        1
+                      )
                     ]
                   )
                 ]
