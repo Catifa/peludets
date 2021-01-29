@@ -102,7 +102,7 @@ export default {
       disponibilidad: null,
       titulacion: null,
       profesionHome: {}
-    }
+    };
   },
   methods: {
     usuariosFiltrados() {
@@ -159,14 +159,15 @@ export default {
       this.axios
         .post("api/usuario/userByProf", this.profesionHome)
         .then(response => {
-          console.log(response.config.data);
+          console.log(response.data);
         });
     }
   },
   mounted() {
-    console.log(this.$route.params.prof);
-    this.profesionHome = this.$route.params.prof;
-    //this.userProfOnly();
+    if (this.$route.params.prof != undefined) {
+      this.profesionHome.nombre = this.$route.params.prof;
+      this.userProfOnly();
+    }
   }
 };
 </script>
