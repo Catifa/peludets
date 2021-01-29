@@ -11,6 +11,7 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^3.2.8",
     "express": "^4.16.3",
     "leaflet": "^1.7.1",
     "socket.io": "^3.1.0",
