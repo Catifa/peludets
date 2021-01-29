@@ -4364,6 +4364,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/usuario/perfil", {
         id: this.$route.params.id
       }).then(function (res) {
+        if (jQuery.isEmptyObject(res.data)) {
+          _this.$router.push("/");
+        }
+
         _this.user = res.data;
       });
     }

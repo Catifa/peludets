@@ -480,6 +480,9 @@ export default {
       axios
         .post("/api/usuario/perfil", { id: this.$route.params.id })
         .then((res) => {
+          if (jQuery.isEmptyObject(res.data)) {
+            this.$router.push("/");
+          }
           this.user = res.data;
         });
     },
