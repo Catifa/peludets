@@ -91,8 +91,7 @@
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="https://corgicare.com/wp-content/uploads/welsh-corgi-history-and-lore.jpg" alt="Card image cap">
             <div class="card-body">
-              <p class="card_name card_attr">{{ usuario.name }}</p>
-              <p class="card_surname card_attr">{{ usuario.lastname }}</p>
+              <h5 class="card-title">{{ usuario.name }} {{ usuario.lastname }}</h5>
               <router-link v-bind:to="'/profile/' +  usuario.id " class="btn btn-azul-peludets">Contratar</router-link>
             </div>
           </div>
