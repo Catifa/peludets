@@ -54,13 +54,18 @@
                     aria-haspopup="true"
                     aria-expanded="true"
                   >
-                    Descarga la app <!-- FALTA TRADUCIR -->
+                    Descarga la app
+                    <!-- FALTA TRADUCIR -->
                     <span class="caret"></span
                   ></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#" @click="downloadApp('Mac')">Mac</a></li>
-                    <li><a href="#" @click="downloadApp('Win')">Windows</a></li>
-                    <li><a href="#" @click="downloadApp('Lin')">Linux based</a></li>
+                    <li>
+                      <a href="/bin/test.zip" download>Mac</a>
+                    </li>
+                    <li><a href="/bin/test.zip" download>Windows</a></li>
+                    <li>
+                      <a href="/bin/test.zip" download>Linux based</a>
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -301,9 +306,6 @@ export default {
         this.$root.user = res.data;
       });
     },
-    downloadApp(text){
-      console.log(text);
-    }
   },
   mounted() {
     this.isAuthenticated();

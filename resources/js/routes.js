@@ -2,7 +2,7 @@ import Home from './components/Home.vue';
 import Explorador from './components/Explorador.vue';
 import Profesionales from './components/Profesionales.vue';
 import myProfile from './components/Perfil.vue';
-import Profile from './components/templates/tpm_perfil.vue';
+import Profile from './components/templates/tmp_perfil.vue';
 import VueRouter from 'vue-router';
 import axios from 'axios';
 
