@@ -9,7 +9,7 @@
       <div class="col-md-2 ml-auto col-xs-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">Profesiones</label>
-          <select name="selectOption" v-model="profesiones" class="form-control" id="selectOption">
+          <select name="selectOption" v-model="profesiones.nombre" class="form-control" id="selectOption">
             <option value="Psicologo">Psicologo</option>
             <option value="Entrenador">Entrenador</option>
             <option value="Peluquero">Peluquero</option>
@@ -66,7 +66,7 @@
       <div class="col-md-6 col-xs-12" id="flotante">
         <mapa-prof></mapa-prof>
       </div>
-      <div id="cards" v-if="enseña" class="col-md-6 mt-4 col-xs-12">
+      <div id="cards" v-if="ensena" class="col-md-6 mt-4 col-xs-12">
         <div name="profesionales" class="col-md-4" v-for="usuario in usuarios" :key="usuario">
           <div class="card border border-dark mt-4 ml-2 id">
             <img
@@ -111,7 +111,7 @@ export default {
   data() {
     return {
       ensena: false,
-      profesiones: null,
+      profesiones: {},
       disponibilidad: null,
       titulacion: null,
       profesionHome: {},
@@ -126,11 +126,10 @@ export default {
         .then(response => {
           this.usuarios = response.data
          this.ensena =true;
+         console.log(response);
         });
     },
-    mostrarTarj() {
-      this.enseña = true;
-    },
+  
     geoFindMe() {
       var output = document.getElementById("out");
 

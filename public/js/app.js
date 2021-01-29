@@ -3244,9 +3244,180 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profesionales.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\peludets\\resources\\js\\components\\Profesionales.vue: Unexpected token (118:0)\n\n\u001b[0m \u001b[90m 116 | \u001b[39m      titulacion\u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 117 | \u001b[39m      profesionHome\u001b[33m:\u001b[39m {}\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 118 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 119 | \u001b[39m      usuarios\u001b[33m:\u001b[39m {}\u001b[0m\n\u001b[0m \u001b[90m 120 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 121 | \u001b[39m      usuarios\u001b[33m:\u001b[39m {}\u001b[33m,\u001b[39m\u001b[0m\n    at Parser._raise (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:748:17)\n    at Parser.raiseWithData (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:741:17)\n    at Parser.raise (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:735:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9101:16)\n    at Parser.parseIdentifierName (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11344:18)\n    at Parser.parseIdentifier (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11317:23)\n    at Parser.parseMaybePrivateName (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10645:19)\n    at Parser.parsePropertyName (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11130:155)\n    at Parser.parsePropertyDefinition (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11016:22)\n    at Parser.parseObjectLike (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10931:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10491:23)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)\n    at Parser.parseUpdate (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10130:21)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10119:17)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9989:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9963:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9926:21)\n    at Parser.parseExpressionBase (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9871:23)\n    at C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9865:39\n    at Parser.allowInAnd (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11541:16)\n    at Parser.parseExpression (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9865:17)\n    at Parser.parseReturnStatement (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12045:28)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11724:21)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11676:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12258:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12249:10)\n    at Parser.parseBlock (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12233:10)\n    at Parser.parseFunctionBody (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11221:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11205:10)\n    at Parser.parseMethod (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11155:10)\n    at Parser.parseObjectMethod (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11084:19)\n    at Parser.parseObjPropValue (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11117:23)\n    at Parser.parsePropertyDefinition (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11041:10)\n    at Parser.parseObjectLike (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10931:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10491:23)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      ensena: false,
+      profesiones: {},
+      disponibilidad: null,
+      titulacion: null,
+      profesionHome: {},
+      usuarios: {},
+      showByProf: false
+    };
+  },
+  methods: {
+    usuariosFiltrados: function usuariosFiltrados() {
+      var _this = this;
+
+      this.axios.post("api/usuario/userByProf", this.profesiones).then(function (response) {
+        _this.usuarios = response.data;
+        _this.ensena = true;
+        console.log(response);
+      });
+    },
+    geoFindMe: function geoFindMe() {
+      var output = document.getElementById("out");
+
+      if (!navigator.geolocation) {
+        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+        return;
+      }
+
+      function success(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        output.innerHTML = "<p>Latitude is " + latitude + "° <br>Longitude is " + longitude + "°</p>";
+        var img = new Image();
+        img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+        output.appendChild(img);
+      }
+
+      function error() {
+        output.innerHTML = "Unable to retrieve your location";
+      }
+
+      output.innerHTML = "<p>Locating…</p>";
+      navigator.geolocation.getCurrentPosition((success, error));
+    },
+    userProfOnly: function userProfOnly() {
+      var _this2 = this;
+
+      this.axios.post("api/usuario/userByProf", this.profesionHome).then(function (response) {
+        _this2.usuarios = response.data;
+        _this2.showByProf = true;
+      });
+    }
+  },
+  mounted: function mounted() {
+    if (this.$route.params.prof != undefined) {
+      this.profesionHome.nombre = this.$route.params.prof;
+      this.userProfOnly();
+    }
+  }
+});
 
 /***/ }),
 
@@ -87744,8 +87915,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.profesiones,
-                  expression: "profesiones"
+                  value: _vm.profesiones.nombre,
+                  expression: "profesiones.nombre"
                 }
               ],
               staticClass: "form-control",
@@ -87760,9 +87931,11 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.profesiones = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
+                  _vm.$set(
+                    _vm.profesiones,
+                    "nombre",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
                 }
               }
             },
@@ -87912,7 +88085,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.enseña
+      _vm.ensena
         ? _c(
             "div",
             { staticClass: "col-md-6 mt-4 col-xs-12", attrs: { id: "cards" } },
