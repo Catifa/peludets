@@ -6,7 +6,14 @@
  
 <template>
   <div class="container-fluid">
-    <div v-if="this.$root.user != null && this.$root.user != isEmpty">
+    <div>
+      <div v-if="this.$root.user == null">
+        <!--Formulario registro -->
+        <form_registro></form_registro>
+        <!--Formulario inicio sesion -->
+        <form_inicio_sesion></form_inicio_sesion>
+      </div>
+
       <div class="row">
         <nav
           id="navbar-peludets"
@@ -38,31 +45,73 @@
                   {{ $t("app.menuProfesionales") }}
                 </router-link>
               </li>
-              <li class="nav-item">
-                <router-link to="/download" class="nav-link">
-                  Descarga la app <!-- FALTA TRADUCIR -->
-                </router-link>
-              </li>
-
-              <li class="nav-item d-md-none">
-                <router-link to="/myProfile" class="nav-link">
-                  Perfil
-                </router-link>
-              </li>
-              <li class="nav-item d-md-none mx-auto">
-                <span class="dropdown-item-text"
-                  ><button
-                    class="btn btn-danger-peludets"
-                    id="desconectar"
-                    type="button"
-                    @click="logout()"
+              <ul class="nav navbar-nav">
+                <li class="dropdown nav-item">
+                  <a
+                    class="dropdown-toggle nav-link"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="true"
                   >
-                    Desconectar
-                  </button></span
-                >
-              </li>
+                    Descarga la app <!-- FALTA TRADUCIR -->
+                    <span class="caret"></span
+                  ></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" @click="downloadApp('Mac')">Mac</a></li>
+                    <li><a href="#" @click="downloadApp('Win')">Windows</a></li>
+                    <li><a href="#" @click="downloadApp('Lin')">Linux based</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <div v-if="this.$root.user != null">
+                <li class="nav-item d-md-none">
+                  <router-link to="/myProfile" class="nav-link">
+                    Perfil
+                  </router-link>
+                </li>
+                <li class="nav-item d-md-none mx-auto">
+                  <span class="dropdown-item-text"
+                    ><button
+                      class="btn btn-danger-peludets"
+                      id="desconectar"
+                      type="button"
+                      @click="logout"
+                    >
+                      Desconectar
+                    </button></span
+                  >
+                </li>
+              </div>
+              <div v-if="this.$root.user == null">
+                <li class="nav-item d-md-none mx-auto">
+                  <button
+                    id="inicio-sesion"
+                    type="button"
+                    class="btn btn-lila-peludets btn-sm mr-2"
+                    data-toggle="modal"
+                    data-target="#form-inicioSesion"
+                  >
+                    {{ $t("app.menuLogin") }}
+                  </button>
+                  <button
+                    id="registro"
+                    type="button"
+                    class="btn btn-lila-peludets btn-sm"
+                    data-toggle="modal"
+                    data-target="#form-registro"
+                  >
+                    {{ $t("app.menuRegistro") }}
+                  </button>
+                </li>
+              </div>
             </ul>
-            <div id="navbar-peludets-derecha" class="navbar-nav navbar-right">
+            <div
+              id="navbar-peludets-derecha"
+              class="navbar-nav navbar-right"
+              v-if="this.$root.user != null"
+            >
               <a
                 class="dropdown-toggle"
                 data-toggle="dropdown"
@@ -107,81 +156,14 @@
                     class="btn btn-danger-peludets"
                     id="desconectar"
                     type="button"
-                    @click="logout()"
+                    @click="logout"
                   >
                     Desconectar
                   </button></span
                 >
               </div>
             </div>
-          </div>
-        </nav>
-      </div>
-    </div>
-    <div v-if="this.$root.user == null">
-      <!--Formulario registro -->
-      <form_registro></form_registro>
-      <!--Formulario inicio sesion -->
-      <form_inicio_sesion></form_inicio_sesion>
-      <!-- Sin sesion -->
-      <!-- Menu Nav -->
-      <div class="row">
-        <nav
-          id="navbar-peludets"
-          class="container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets"
-        >
-          <router-link to="/" class="navbar-brand"
-            ><img src="../img/logo/logo.png" alt="Peludets!" />
-          </router-link>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <router-link to="/explorador" class="nav-link">
-                  {{ $t("app.menuExplorador") }}
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/profesionales" class="nav-link">
-                  {{ $t("app.menuProfesionales") }}
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/download" class="nav-link">
-                  Descarga la app <!-- FALTA TRADUCIR -->
-                </router-link>
-              </li>
-              <li class="nav-item d-md-none mx-auto">
-                <button
-                  id="inicio-sesion"
-                  type="button"
-                  class="btn btn-lila-peludets btn-sm mr-2"
-                  data-toggle="modal"
-                  data-target="#form-inicioSesion"
-                >
-                  {{ $t("app.menuLogin") }}
-                </button>
-                <button
-                  id="registro"
-                  type="button"
-                  class="btn btn-lila-peludets btn-sm"
-                  data-toggle="modal"
-                  data-target="#form-registro"
-                >
-                  {{ $t("app.menuRegistro") }}
-                </button>
-              </li>
-            </ul>
+            <div v-if="this.$root.user == null">
               <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
                   <button
@@ -206,6 +188,7 @@
                   </button>
                 </li>
               </ul>
+            </div>
           </div>
         </nav>
       </div>
@@ -294,7 +277,7 @@ export default {
   methods: {
     isAuthenticated() {
       axios.post("/api/auth/check").then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         if (res.data) {
           this.getUser();
         } else {
@@ -307,17 +290,20 @@ export default {
     },
     logout() {
       axios.post("/api/auth/logout").then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         this.$root.user = null;
         this.$router.push("/");
       });
     },
     getUser() {
       axios.get("/api/user").then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         this.$root.user = res.data;
       });
     },
+    downloadApp(text){
+      console.log(text);
+    }
   },
   mounted() {
     this.isAuthenticated();
