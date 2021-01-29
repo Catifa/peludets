@@ -3244,165 +3244,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profesionales.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      ensena: false,
-      profesiones: null,
-      disponibilidad: null,
-      titulacion: null,
-      profesionHome: {},
-      usuarios: {}
-    };
-  },
-  methods: {
-    usuariosFiltrados: function usuariosFiltrados() {
-      var _this = this;
-
-      this.axios.post("api/usuario/userByProf", this.profesiones).then(function (response) {
-        _this.usuarios = response.data;
-        _this.ensena = true;
-      });
-    },
-    mostrarTarj: function mostrarTarj() {
-      this.enseña = true;
-    },
-    geoFindMe: function geoFindMe() {
-      var output = document.getElementById("out");
-
-      if (!navigator.geolocation) {
-        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-        return;
-      }
-
-      function success(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        output.innerHTML = "<p>Latitude is " + latitude + "° <br>Longitude is " + longitude + "°</p>";
-        var img = new Image();
-        img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-        output.appendChild(img);
-      }
-
-      function error() {
-        output.innerHTML = "Unable to retrieve your location";
-      }
-
-      output.innerHTML = "<p>Locating…</p>";
-      navigator.geolocation.getCurrentPosition((success, error));
-    },
-    userProfOnly: function userProfOnly() {
-      this.axios.post("api/usuario/userByProf", this.profesionHome).then(function (response) {
-        console.log(response.data);
-      });
-    }
-  },
-  mounted: function mounted() {
-    if (this.$route.params.prof != undefined) {
-      this.profesionHome.nombre = this.$route.params.prof;
-      this.userProfOnly();
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\peludets\\resources\\js\\components\\Profesionales.vue: Unexpected token (118:0)\n\n\u001b[0m \u001b[90m 116 | \u001b[39m      titulacion\u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 117 | \u001b[39m      profesionHome\u001b[33m:\u001b[39m {}\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 118 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 119 | \u001b[39m      usuarios\u001b[33m:\u001b[39m {}\u001b[0m\n\u001b[0m \u001b[90m 120 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 121 | \u001b[39m      usuarios\u001b[33m:\u001b[39m {}\u001b[33m,\u001b[39m\u001b[0m\n    at Parser._raise (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:748:17)\n    at Parser.raiseWithData (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:741:17)\n    at Parser.raise (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:735:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9101:16)\n    at Parser.parseIdentifierName (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11344:18)\n    at Parser.parseIdentifier (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11317:23)\n    at Parser.parseMaybePrivateName (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10645:19)\n    at Parser.parsePropertyName (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11130:155)\n    at Parser.parsePropertyDefinition (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11016:22)\n    at Parser.parseObjectLike (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10931:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10491:23)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)\n    at Parser.parseUpdate (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10130:21)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10119:17)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9989:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9963:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9926:21)\n    at Parser.parseExpressionBase (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9871:23)\n    at C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9865:39\n    at Parser.allowInAnd (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11541:16)\n    at Parser.parseExpression (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:9865:17)\n    at Parser.parseReturnStatement (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12045:28)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11724:21)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11676:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12258:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12249:10)\n    at Parser.parseBlock (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:12233:10)\n    at Parser.parseFunctionBody (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11221:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11205:10)\n    at Parser.parseMethod (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11155:10)\n    at Parser.parseObjectMethod (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11084:19)\n    at Parser.parseObjPropValue (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11117:23)\n    at Parser.parsePropertyDefinition (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:11041:10)\n    at Parser.parseObjectLike (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10931:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10491:23)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\peludets\\node_modules\\@babel\\parser\\lib\\index.js:10150:23)");
 
 /***/ }),
 
@@ -4349,6 +4193,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/usuario/perfil", {
         id: this.$route.params.id
       }).then(function (res) {
+        if (jQuery.isEmptyObject(res.data)) {
+          _this.$router.push("/");
+        }
+
         _this.user = res.data;
       });
     }
@@ -88113,6 +87961,64 @@ var render = function() {
                           [_vm._v("Ver Perfil")]
                         )
                       ])
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showByProf
+        ? _c(
+            "div",
+            { staticClass: "col-md-6 mt-4 col-xs-12", attrs: { id: "cards" } },
+            _vm._l(_vm.usuarios, function(usuario) {
+              return _c(
+                "div",
+                {
+                  key: usuario,
+                  staticClass: "col-md-4",
+                  attrs: { name: "profesionales" }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "card", staticStyle: { width: "18rem" } },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src:
+                            "https://corgicare.com/wp-content/uploads/welsh-corgi-history-and-lore.jpg",
+                          alt: "Card image cap"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body" },
+                        [
+                          _c("p", { staticClass: "card_name card_attr" }, [
+                            _vm._v(_vm._s(usuario.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card_surname card_attr" }, [
+                            _vm._v(_vm._s(usuario.lastname))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-azul-peludets",
+                              attrs: { to: "/profile/" + usuario.id }
+                            },
+                            [_vm._v("Contratar")]
+                          )
+                        ],
+                        1
+                      )
                     ]
                   )
                 ]
