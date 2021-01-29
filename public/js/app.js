@@ -2176,23 +2176,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "local-changer",
   data: function data() {
@@ -2205,8 +2188,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/api/auth/check").then(function (res) {
-        console.log(res.data);
-
+        //console.log(res.data);
         if (res.data) {
           _this.getUser();
         } else {
@@ -2221,7 +2203,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post("/api/auth/logout").then(function (res) {
-        console.log(res.data);
+        //console.log(res.data);
         _this2.$root.user = null;
 
         _this2.$router.push("/");
@@ -2231,9 +2213,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.get("/api/user").then(function (res) {
-        console.log(res.data);
+        //console.log(res.data);
         _this3.$root.user = res.data;
       });
+    },
+    downloadApp: function downloadApp(text) {
+      console.log(text);
     }
   },
   mounted: function mounted() {
@@ -85596,155 +85581,258 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      this.$root.user != null && this.$root.user != _vm.isEmpty
-        ? _c("div", [
-            _c("div", { staticClass: "row" }, [
+      _c("div", [
+        this.$root.user == null
+          ? _c(
+              "div",
+              [_c("form_registro"), _vm._v(" "), _c("form_inicio_sesion")],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "nav",
+            {
+              staticClass:
+                "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
+              attrs: { id: "navbar-peludets" }
+            },
+            [
               _c(
-                "nav",
+                "router-link",
+                { staticClass: "navbar-brand", attrs: { to: "/" } },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
+                      alt: "Peludets!"
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
                 {
-                  staticClass:
-                    "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
-                  attrs: { id: "navbar-peludets" }
+                  staticClass: "collapse navbar-collapse",
+                  attrs: { id: "navbarNav" }
                 },
                 [
-                  _c(
-                    "router-link",
-                    { staticClass: "navbar-brand", attrs: { to: "/" } },
-                    [
-                      _c("img", {
-                        attrs: {
-                          src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
-                          alt: "Peludets!"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "collapse navbar-collapse",
-                      attrs: { id: "navbarNav" }
-                    },
-                    [
-                      _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+                  _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
                         _c(
-                          "li",
-                          { staticClass: "nav-item" },
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            attrs: { to: "/explorador" }
+                          },
                           [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: "/explorador" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                " +
-                                    _vm._s(_vm.$t("app.menuExplorador")) +
-                                    "\n              "
-                                )
-                              ]
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(_vm.$t("app.menuExplorador")) +
+                                "\n              "
                             )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
                         _c(
-                          "li",
-                          { staticClass: "nav-item" },
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            attrs: { to: "/profesionales" }
+                          },
                           [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: "/profesionales" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                " +
-                                    _vm._s(_vm.$t("app.menuProfesionales")) +
-                                    "\n              "
-                                )
-                              ]
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(_vm.$t("app.menuProfesionales")) +
+                                "\n              "
                             )
-                          ],
-                          1
-                        ),
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("ul", { staticClass: "nav navbar-nav" }, [
+                      _c("li", { staticClass: "dropdown nav-item" }, [
+                        _vm._m(1),
                         _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
+                        _c("ul", { staticClass: "dropdown-menu" }, [
+                          _c("li", [
                             _c(
-                              "router-link",
+                              "a",
                               {
-                                staticClass: "nav-link",
-                                attrs: { to: "/download" }
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.downloadApp("Mac")
+                                  }
+                                }
                               },
-                              [_vm._v("\n                Descarga la app ")]
+                              [_vm._v("Mac")]
                             )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item d-md-none" },
-                          [
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
                             _c(
-                              "router-link",
+                              "a",
                               {
-                                staticClass: "nav-link",
-                                attrs: { to: "/myProfile" }
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.downloadApp("Win")
+                                  }
+                                }
                               },
-                              [
-                                _vm._v(
-                                  "\n                Perfil\n              "
-                                )
-                              ]
+                              [_vm._v("Windows")]
                             )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item d-md-none mx-auto" },
-                          [
-                            _c("span", { staticClass: "dropdown-item-text" }, [
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.downloadApp("Lin")
+                                  }
+                                }
+                              },
+                              [_vm._v("Linux based")]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    this.$root.user != null
+                      ? _c("div", [
+                          _c(
+                            "li",
+                            { staticClass: "nav-item d-md-none" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "nav-link",
+                                  attrs: { to: "/myProfile" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  Perfil\n                "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            { staticClass: "nav-item d-md-none mx-auto" },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "dropdown-item-text" },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger-peludets",
+                                      attrs: {
+                                        id: "desconectar",
+                                        type: "button"
+                                      },
+                                      on: { click: _vm.logout }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    Desconectar\n                  "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    this.$root.user == null
+                      ? _c("div", [
+                          _c(
+                            "li",
+                            { staticClass: "nav-item d-md-none mx-auto" },
+                            [
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-danger-peludets",
-                                  attrs: { id: "desconectar", type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.logout()
-                                    }
+                                  staticClass:
+                                    "btn btn-lila-peludets btn-sm mr-2",
+                                  attrs: {
+                                    id: "inicio-sesion",
+                                    type: "button",
+                                    "data-toggle": "modal",
+                                    "data-target": "#form-inicioSesion"
                                   }
                                 },
                                 [
                                   _vm._v(
-                                    "\n                  Desconectar\n                "
+                                    "\n                  " +
+                                      _vm._s(_vm.$t("app.menuLogin")) +
+                                      "\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-lila-peludets btn-sm",
+                                  attrs: {
+                                    id: "registro",
+                                    type: "button",
+                                    "data-toggle": "modal",
+                                    "data-target": "#form-registro"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  " +
+                                      _vm._s(_vm.$t("app.menuRegistro")) +
+                                      "\n                "
                                   )
                                 ]
                               )
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
+                            ]
+                          )
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  this.$root.user != null
+                    ? _c(
                         "div",
                         {
                           staticClass: "navbar-nav navbar-right",
                           attrs: { id: "navbar-peludets-derecha" }
                         },
                         [
-                          _vm._m(1),
+                          _vm._m(2),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -85773,7 +85861,7 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
-                              _vm._m(2),
+                              _vm._m(3),
                               _vm._v(" "),
                               _c("div", { staticClass: "dropdown-divider" }),
                               _vm._v(" "),
@@ -85804,11 +85892,7 @@ var render = function() {
                                         id: "desconectar",
                                         type: "button"
                                       },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.logout()
-                                        }
-                                      }
+                                      on: { click: _vm.logout }
                                     },
                                     [
                                       _vm._v(
@@ -85823,163 +85907,10 @@ var render = function() {
                           )
                         ]
                       )
-                    ]
-                  )
-                ],
-                1
-              )
-            ])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      this.$root.user == null
-        ? _c(
-            "div",
-            [
-              _c("form_registro"),
-              _vm._v(" "),
-              _c("form_inicio_sesion"),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "nav",
-                  {
-                    staticClass:
-                      "container-fluid navbar navbar-expand-md sticky-top bg-azul-peludets",
-                    attrs: { id: "navbar-peludets" }
-                  },
-                  [
-                    _c(
-                      "router-link",
-                      { staticClass: "navbar-brand", attrs: { to: "/" } },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: __webpack_require__(/*! ../img/logo/logo.png */ "./resources/img/logo/logo.png"),
-                            alt: "Peludets!"
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "collapse navbar-collapse",
-                        attrs: { id: "navbarNav" }
-                      },
-                      [
-                        _c("ul", { staticClass: "navbar-nav mr-auto" }, [
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/explorador" }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.$t("app.menuExplorador")) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/profesionales" }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.$t("app.menuProfesionales")) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/download" }
-                                },
-                                [_vm._v("\n                Descarga la app ")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "nav-item d-md-none mx-auto" },
-                            [
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-lila-peludets btn-sm mr-2",
-                                  attrs: {
-                                    id: "inicio-sesion",
-                                    type: "button",
-                                    "data-toggle": "modal",
-                                    "data-target": "#form-inicioSesion"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.$t("app.menuLogin")) +
-                                      "\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-lila-peludets btn-sm",
-                                  attrs: {
-                                    id: "registro",
-                                    type: "button",
-                                    "data-toggle": "modal",
-                                    "data-target": "#form-registro"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(_vm.$t("app.menuRegistro")) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.$root.user == null
+                    ? _c("div", [
                         _c("ul", { staticClass: "navbar-nav navbar-right" }, [
                           _c("li", { staticClass: "nav-item" }, [
                             _c(
@@ -86026,16 +85957,15 @@ var render = function() {
                             )
                           ])
                         ])
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ])
+                      ])
+                    : _vm._e()
+                ]
+              )
             ],
             1
           )
-        : _vm._e(),
+        ])
+      ]),
       _vm._v(" "),
       _c("router-view"),
       _vm._v(" "),
@@ -86149,6 +86079,28 @@ var staticRenderFns = [
     return _c(
       "a",
       {
+        staticClass: "dropdown-toggle nav-link",
+        attrs: {
+          "data-toggle": "dropdown",
+          role: "button",
+          "aria-haspopup": "true",
+          "aria-expanded": "true"
+        }
+      },
+      [
+        _vm._v("\n                  Descarga la app "),
+        _vm._v(" "),
+        _c("span", { staticClass: "caret" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
         staticClass: "dropdown-toggle",
         attrs: {
           "data-toggle": "dropdown",
@@ -86176,26 +86128,6 @@ var staticRenderFns = [
         attrs: { a: "", href: "javascript:void(0)", id: "editaPerfil" }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarNav",
-          "aria-controls": "navbarNav",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("i", { staticClass: "fas fa-bars" })]
-    )
   },
   function() {
     var _vm = this
