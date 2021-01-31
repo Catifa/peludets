@@ -28,5 +28,12 @@
     "cardBox2": "It's not just for cats and dogs only. Our community can take care of any type of pet.",
     "cardBox3": "You can ask for how many walks and how long they are needed.",
     "cardBox4": "We have a professional section for exotic pets with special care."
+  },
+  "explorador": {
+    "tituloExplorador": "Wait while we look for you ...",
+    "buttonSitios":"Places of interest",
+    "buttonTrabajos":"Available jobs",
+    "buttonMostrarMapa": "Show map"
+    
   }
 }
