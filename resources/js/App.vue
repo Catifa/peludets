@@ -54,7 +54,7 @@
                     aria-haspopup="true"
                     aria-expanded="true"
                   >
-                    Descarga la app <!-- FALTA TRADUCIR -->
+                    {{ $t("app.menuDescarga") }} 
                     <span class="caret"></span
                   ></a>
                   <ul class="dropdown-menu">
@@ -147,7 +147,8 @@
                 </span>
                 <div class="dropdown-divider"></div>
                 <router-link to="/myProfile" class="nav-link">
-                  Perfil
+                
+                  {{ $t("app.menuPerfil") }}
                 </router-link>
 
                 <div class="dropdown-divider"></div>
@@ -158,7 +159,8 @@
                     type="button"
                     @click="logout"
                   >
-                    Desconectar
+                    
+                    {{ $t("app.menuDesconectar") }}
                   </button></span
                 >
               </div>

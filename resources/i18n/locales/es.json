@@ -4,6 +4,9 @@
     "menuProfesionales": "Profesionales",
     "menuLogin": "Iniciar session",
     "menuRegistro": "Registrate!",
+    "menuDescarga": "Descarga la app",
+    "menuPerfil" : "Perfil",
+    "menuDesconectar" : "Desconectar" ,
     "footerContacto": "Contacto",
     "footerPais": "ESPAÑITA",
     "footerRedesSociales": "Redes Sociales"
@@ -35,5 +38,25 @@
     "buttonTrabajos":"Trabajos disponibles",
     "buttonMostrarMapa": "Mostrar en el mapa"
     
+  },
+  "profesionales" : {
+    "tituloProfesionales" : "Busca Toby, Busca!",
+    "FormControlSelect1" : "Profesiones",
+    "selectOptionPsicologo": "Psicologo",
+    "selectOptionEntrenador": "Entrenador",
+    "selectOptionPeluquero": "Peluquero",
+    "FormControlSelectDispo" : "Disponibilidad",
+    "selectOptionPresencial": "Presencial",
+    "selectOptionOnline": "Online",
+    "selectOptionPreOn": "Presencial y Online",
+    "FormControlSelectTitulacion" : "¿Titulación?",
+    "valueSi": "Si",
+    "valueNo": "No",
+    "buscarProfesionales" : "Buscar Profesionales",
+    "cercaTi": "Cerca de ti",
+    "verPerfil": "Ver Perfil",
+    "contratar":"Contratar"
+
+
   }
 }
