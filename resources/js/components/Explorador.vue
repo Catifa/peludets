@@ -9,14 +9,14 @@
           class="rounded-circle"
           src="https://media.tenor.com/images/bf12191c6d2e5416d13860b5a137dbb8/tenor.gif"
         />
-        <h3>Espera mientras te buscamos...</h3>
+        <h3>{{ $t("explorador.tituloExplorador") }}</h3>
       </div>
       <mapa-exp :props="sitioMapa" :geoLoc="geoLoc"></mapa-exp>
     </div>
     <div class="col-md-6 mt-3 mx-auto">
       <div class="row">
-        <button class="btn btn-azul-peludets mr-2" type="button">Sitios de interés</button>
-        <button class="btn btn-azul-peludets" type="button">Trabajos disponibles</button>
+        <button class="btn btn-azul-peludets mr-2" type="button">{{ $t("explorador.buttonSitios") }}</button>
+        <button class="btn btn-azul-peludets" type="button">{{ $t("explorador.buttonTrabajos") }}</button>
       </div>
       <div class="row mt-3">
         <div class="card bg-crema-peludets" v-for="sitio in sitiosInteres" :key="sitio.nombre">
@@ -28,7 +28,7 @@
               class="btn btn-azul-peludets"
               type="button"
               @click="enviarMapa(sitio)"
-            >Mostrar en el mapa</button>
+            >{{ $t("explorador.buttonMostrarMapa")}}</button>
           </div>
         </div>
       </div>

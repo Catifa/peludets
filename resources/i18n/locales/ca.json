@@ -28,5 +28,13 @@
     "cardBox2": "No només és només per a gossos i gats. La nostra comunitat pot tenir cura a qualsevol tipus de mascota.",
     "cardBox3": "Pots demanar quants passejos i de quant de temps són necessaris.",
     "cardBox4": "Disposem de secció de professionals per a mascotes exòtiques i amb cures especials."
+  },
+  "explorador":{
+    "tituloExplorador": "Espera mentre et busquem ...",
+    "buttonSitios": "Llocs d'interès",
+    "buttonTrabajos": "Treballs disponibles",
+    "buttonMostrarMapa": "Mostra el mapa"
+    
+
   }
 }

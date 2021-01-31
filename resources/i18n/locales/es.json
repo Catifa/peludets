@@ -28,5 +28,12 @@
     "cardBox2": "No solo es solo para perros y gatos. Nuestra comunidad puede cuidar a cualquier tipo de mascota.",
     "cardBox3": "Puedes pedir cuantos paseos y de cuanto tiempo són necesarios.",
     "cardBox4": "Disponemos de sección de profesionales para mascotas exóticas y con cuidados especiales."
+  },
+  "explorador":{
+    "tituloExplorador": "Espera mientras te buscamos...",
+    "buttonSitios": "Sitios de interés",
+    "buttonTrabajos":"Trabajos disponibles",
+    "buttonMostrarMapa": "Mostrar en el mapa"
+    
   }
 }
