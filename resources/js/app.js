@@ -95,11 +95,12 @@ function geoFindMe() {
  *                      Chat                         *
  *****************************************************/
 
-const express = require('express');
+
+/* const express = require('express');
 
 const appChat = express();
 
 appChat.get("/", () => {
   resizeBy.send('Hola');
 
-});
+});*/

@@ -4,6 +4,9 @@
     "menuProfesionales": "Profesionals",
     "menuLogin": "Inicia sessió",
     "menuRegistro": "Registra't!",
+    "menuDescarga": "Descàrrega l'app",
+    "menuPerfil" : "Perfil",
+    "menuDesconectar" : "Desconnectar" ,
     "footerContacto": "Contacte",
     "footerPais": "ESPANYA",
     "footerRedesSociales": "Xarxes Socials"
@@ -36,5 +39,23 @@
     "buttonMostrarMapa": "Mostra el mapa"
     
 
+  },
+  "profesionales" : {
+    "tituloProfesionales" : "Cerca Toby, Cerca!",
+    "FormControlSelect1" : "Professions",
+    "selectOptionPsicologo": "Psicoleg",
+    "selectOptionEntrenador": "Entrenador",
+    "selectOptionPeluquero": "Perruquer",
+    "FormControlSelectDispo" : "Disponibilitat",
+    "selectOptionPresencial": "Presencial",
+    "selectOptionOnline": "Online",
+    "selectOptionPreOn": "Presencial y Online",
+    "FormControlSelectTitulacion" : "¿Titulació?",
+    "valueSi": "Si",
+    "valueNo": "No",
+    "buscarProfesionales" : "Buscar Profesionals",
+    "cercaTi": "A prop teu",
+    "verPerfil": "Veure perfil ",
+    "contratar":"Contratar"
   }
 }

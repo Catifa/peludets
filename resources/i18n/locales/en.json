@@ -4,6 +4,9 @@
     "menuProfesionales": "Profesionals",
     "menuLogin": "Log in",
     "menuRegistro": "Register!",
+    "menuDescarga": "Download the app",
+    "menuPerfil" : "Profile",
+    "menuDesconectar" : "Disconnect" ,
     "footerContacto": "Contact",
     "footerPais": "SPAIN",
     "footerRedesSociales": "Social networks"
@@ -35,5 +38,23 @@
     "buttonTrabajos":"Available jobs",
     "buttonMostrarMapa": "Show map"
     
+  },
+  "profesionales" : {
+    "tituloProfesionales" : "Search Toby, Search!",
+    "FormControlSelect1" : "Professions",
+    "selectOptionPsicologo": "Psychologist",
+    "selectOptionEntrenador": "Coach",
+    "selectOptionPeluquero": "Hairdresser",
+    "FormControlSelectDispo" : "Availability",
+    "selectOptionPresencial": "Face-to-face",
+    "selectOptionOnline": "Online",
+    "selectOptionPreOn": "Face-to-face and online",
+    "FormControlSelectTitulacion" : "¿Title?",
+    "valueSi": "Yes",
+    "valueNo": "No",
+    "buscarProfesionales" : "Find professionals",
+    "cercaTi": "Near you",
+    "verPerfil": "View profile",
+    "contratar":"Contract"
   }
 }
