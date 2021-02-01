@@ -2181,6 +2181,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "local-changer",
   data: function data() {
@@ -85692,7 +85693,32 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(1),
+                    _c("ul", { staticClass: "nav navbar-nav" }, [
+                      _c("li", { staticClass: "dropdown nav-item" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-toggle nav-link",
+                            attrs: {
+                              "data-toggle": "dropdown",
+                              role: "button",
+                              "aria-haspopup": "true",
+                              "aria-expanded": "true"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  " +
+                                _vm._s(_vm.$t("app.menuDescarga")) +
+                                " \n                  "
+                            ),
+                            _c("span", { staticClass: "caret" })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1)
+                      ])
+                    ]),
                     _vm._v(" "),
                     this.$root.user != null
                       ? _c("div", [
@@ -85848,7 +85874,9 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                Perfil\n              "
+                                    "\n              \n                " +
+                                      _vm._s(_vm.$t("app.menuPerfil")) +
+                                      "\n              "
                                   )
                                 ]
                               ),
@@ -85871,7 +85899,11 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                  Desconectar\n                "
+                                        "\n                  \n                  " +
+                                          _vm._s(
+                                            _vm.$t("app.menuDesconectar")
+                                          ) +
+                                          "\n                "
                                       )
                                     ]
                                   )
@@ -86051,44 +86083,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "nav navbar-nav" }, [
-      _c("li", { staticClass: "dropdown nav-item" }, [
-        _c(
-          "a",
-          {
-            staticClass: "dropdown-toggle nav-link",
-            attrs: {
-              "data-toggle": "dropdown",
-              role: "button",
-              "aria-haspopup": "true",
-              "aria-expanded": "true"
-            }
-          },
-          [
-            _vm._v("\n                  Descarga la app\n                  "),
-            _vm._v(" "),
-            _c("span", { staticClass: "caret" })
-          ]
-        ),
-        _vm._v(" "),
-        _c("ul", { staticClass: "dropdown-menu" }, [
-          _c("li", [
-            _c("a", { attrs: { href: "/bin/test.zip", download: "" } }, [
-              _vm._v("Mac")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/bin/test.zip", download: "" } }, [
-              _vm._v("Windows")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/bin/test.zip", download: "" } }, [
-              _vm._v("Linux based")
-            ])
-          ])
+    return _c("ul", { staticClass: "dropdown-menu" }, [
+      _c("li", [
+        _c("a", { attrs: { href: "/bin/test.zip", download: "" } }, [
+          _vm._v("Mac")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("a", { attrs: { href: "/bin/win.7z", download: "" } }, [
+          _vm._v("Windows")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("a", { attrs: { href: "/bin/test.zip", download: "" } }, [
+          _vm._v("Linux based")
         ])
       ])
     ])
@@ -86235,7 +86245,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("h3", [_vm._v("Espera mientras te buscamos...")])
+              _c("h3", [_vm._v(_vm._s(_vm.$t("explorador.tituloExplorador")))])
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -86245,7 +86255,22 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "col-md-6 mt-3 mx-auto" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-azul-peludets mr-2",
+            attrs: { type: "button" }
+          },
+          [_vm._v(_vm._s(_vm.$t("explorador.buttonSitios")))]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-azul-peludets", attrs: { type: "button" } },
+          [_vm._v(_vm._s(_vm.$t("explorador.buttonTrabajos")))]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -86280,7 +86305,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Mostrar en el mapa")]
+                  [_vm._v(_vm._s(_vm.$t("explorador.buttonMostrarMapa")))]
                 )
               ])
             ]
@@ -86291,29 +86316,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-azul-peludets mr-2",
-          attrs: { type: "button" }
-        },
-        [_vm._v("Sitios de interés")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-azul-peludets", attrs: { type: "button" } },
-        [_vm._v("Trabajos disponibles")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -87874,13 +87877,27 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 col-xs-12" }, [
+        _c(
+          "p",
+          {
+            staticStyle: {
+              "text-align": "center",
+              "font-size": "60px",
+              color: "rgb(243, 174, 26)"
+            }
+          },
+          [_vm._v(_vm._s(_vm.$t("profesionales.tituloProfesionales")))]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-2 ml-auto col-xs-12" }, [
         _c("div", { staticClass: "form-group m-2" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Profesiones")
+            _vm._v(_vm._s(_vm.$t("profesionales.FormControlSelect1")))
           ]),
           _vm._v(" "),
           _c(
@@ -87916,15 +87933,15 @@ var render = function() {
             },
             [
               _c("option", { attrs: { value: "Psicologo" } }, [
-                _vm._v("Psicologo")
+                _vm._v(_vm._s(_vm.$t("profesionales.selectOptionPsicologo")))
               ]),
               _vm._v(" "),
               _c("option", { attrs: { value: "Entrenador" } }, [
-                _vm._v("Entrenador")
+                _vm._v(_vm._s(_vm.$t("profesionales.selectOptionEntrenador")))
               ]),
               _vm._v(" "),
               _c("option", { attrs: { value: "Peluquero" } }, [
-                _vm._v("Peluquero")
+                _vm._v(_vm._s(_vm.$t("profesionales.selectOptionPeluquero")))
               ])
             ]
           )
@@ -87934,7 +87951,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-2 col-xs-12" }, [
         _c("div", { staticClass: "form-group m-2" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("Disponibilidad")
+            _vm._v(_vm._s(_vm.$t("profesionales.FormControlSelectDispo")))
           ]),
           _vm._v(" "),
           _c(
@@ -87968,13 +87985,15 @@ var render = function() {
             },
             [
               _c("option", { attrs: { value: "Presencial" } }, [
-                _vm._v("Presencial")
+                _vm._v(_vm._s(_vm.$t("profesionales.selectOptionPresencial")))
               ]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "Online" } }, [_vm._v("Online")]),
+              _c("option", { attrs: { value: "Online" } }, [
+                _vm._v(_vm._s(_vm.$t("profesionales.selectOptionOnline")))
+              ]),
               _vm._v(" "),
               _c("option", { attrs: { value: "Presencial y Online" } }, [
-                _vm._v("Presencial y Online")
+                _vm._v(_vm._s(_vm.$t("profesionales.selectOptionPreOn")))
               ])
             ]
           )
@@ -87984,7 +88003,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-2 col-xs-12" }, [
         _c("div", { staticClass: "form-group m-2" }, [
           _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-            _vm._v("¿Titulación?")
+            _vm._v(_vm._s(_vm.$t("profesionales.FormControlSelectTitulacion")))
           ]),
           _vm._v(" "),
           _c(
@@ -88017,9 +88036,13 @@ var render = function() {
               }
             },
             [
-              _c("option", { attrs: { value: "Si" } }, [_vm._v("Si")]),
+              _c("option", { attrs: { value: "Si" } }, [
+                _vm._v(_vm._s(_vm.$t("profesionales.valueSi")))
+              ]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "No" } }, [_vm._v("No")])
+              _c("option", { attrs: { value: "No" } }, [
+                _vm._v(_vm._s(_vm.$t("profesionales.valueNo")))
+              ])
             ]
           )
         ])
@@ -88033,7 +88056,7 @@ var render = function() {
             attrs: { id: "usuariosFiltrados", type: "submit" },
             on: { click: _vm.usuariosFiltrados }
           },
-          [_vm._v("Buscar Profesionales")]
+          [_vm._v(_vm._s(_vm.$t("profesionales.buscarProfesionales")))]
         )
       ]),
       _vm._v(" "),
@@ -88045,7 +88068,7 @@ var render = function() {
             attrs: { type: "button" },
             on: { click: _vm.geoFindMe }
           },
-          [_vm._v("Cerca de ti")]
+          [_vm._v(_vm._s(_vm.$t("profesionales.cercaTi")))]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-12 mt-3", attrs: { id: "out" } })
@@ -88106,7 +88129,7 @@ var render = function() {
                             staticClass: "stretched-link id",
                             attrs: { href: "#" }
                           },
-                          [_vm._v("Ver Perfil")]
+                          [_vm._v(_vm._s(_vm.$t("profesionales.verPerfil")))]
                         )
                       ])
                     ]
@@ -88162,7 +88185,7 @@ var render = function() {
                               staticClass: "btn btn-azul-peludets",
                               attrs: { to: "/profile/" + usuario.id }
                             },
-                            [_vm._v("Contratar")]
+                            [_vm._v(_vm._s(_vm.$t("profesionales.contratar")))]
                           )
                         ],
                         1
@@ -88178,28 +88201,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 col-xs-12" }, [
-        _c(
-          "p",
-          {
-            staticStyle: {
-              "text-align": "center",
-              "font-size": "60px",
-              color: "rgb(243, 174, 26)"
-            }
-          },
-          [_vm._v("Busca Toby, Busca!")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -117373,10 +117375,10 @@ webpackContext.id = "./resources/i18n/locales sync recursive [A-Za-z0-9-_,\\s]+\
 /*!****************************************!*\
   !*** ./resources/i18n/locales/ca.json ***!
   \****************************************/
-/*! exports provided: app, home, default */
+/*! exports provided: app, home, explorador, profesionales, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorador\",\"menuProfesionales\":\"Profesionals\",\"menuLogin\":\"Inicia sessió\",\"menuRegistro\":\"Registra't!\",\"footerContacto\":\"Contacte\",\"footerPais\":\"ESPANYA\",\"footerRedesSociales\":\"Xarxes Socials\"},\"home\":{\"formTrabajos\":\"Treballs\",\"formTipoMascotas\":\"Tipus de mascota\",\"formBotonBuscar\":\"Cercador de treballs\",\"formSelectTrabajos1\":\"Allotjament\",\"formSelectTrabajos2\":\"Paseig\",\"formSelectTrabajos3\":\"Ensinistrament\",\"formSelectTipoMascotas1\":\"Gos\",\"formSelectTipoMascotas2\":\"Gat\",\"formSelectTipoMascotas3\":\"Fura\",\"sliderTitulo1\":\"Passejades com a ell de agraden\",\"sliderTitulo2\":\"¿Més d'una mascota?\",\"sliderTitulo3\":\"També hi ha lloc per a tu, petitó!\",\"sliderDesc1\":\"La nostra comunitat coneix les millors zones perquè la teva mascota gaudeixi d'un passeig agradable.\",\"sliderDesc2\":\"Cap problema! Podem ocupar-nos de totes elles.\",\"sliderDesc3\":\"Peludets! no és només per a gossos o gats. Tenim lloc per a tot tipus de mascotes.\",\"cardBox1\":\"Busca un lloc on la teva mascota està agust mentre gaudeixes de les teves vacances!\",\"cardBox2\":\"No només és només per a gossos i gats. La nostra comunitat pot tenir cura a qualsevol tipus de mascota.\",\"cardBox3\":\"Pots demanar quants passejos i de quant de temps són necessaris.\",\"cardBox4\":\"Disposem de secció de professionals per a mascotes exòtiques i amb cures especials.\"}}");
+module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorador\",\"menuProfesionales\":\"Profesionals\",\"menuLogin\":\"Inicia sessió\",\"menuRegistro\":\"Registra't!\",\"menuDescarga\":\"Descàrrega l'app\",\"menuPerfil\":\"Perfil\",\"menuDesconectar\":\"Desconnectar\",\"footerContacto\":\"Contacte\",\"footerPais\":\"ESPANYA\",\"footerRedesSociales\":\"Xarxes Socials\"},\"home\":{\"formTrabajos\":\"Treballs\",\"formTipoMascotas\":\"Tipus de mascota\",\"formBotonBuscar\":\"Cercador de treballs\",\"formSelectTrabajos1\":\"Allotjament\",\"formSelectTrabajos2\":\"Paseig\",\"formSelectTrabajos3\":\"Ensinistrament\",\"formSelectTipoMascotas1\":\"Gos\",\"formSelectTipoMascotas2\":\"Gat\",\"formSelectTipoMascotas3\":\"Fura\",\"sliderTitulo1\":\"Passejades com a ell de agraden\",\"sliderTitulo2\":\"¿Més d'una mascota?\",\"sliderTitulo3\":\"També hi ha lloc per a tu, petitó!\",\"sliderDesc1\":\"La nostra comunitat coneix les millors zones perquè la teva mascota gaudeixi d'un passeig agradable.\",\"sliderDesc2\":\"Cap problema! Podem ocupar-nos de totes elles.\",\"sliderDesc3\":\"Peludets! no és només per a gossos o gats. Tenim lloc per a tot tipus de mascotes.\",\"cardBox1\":\"Busca un lloc on la teva mascota està agust mentre gaudeixes de les teves vacances!\",\"cardBox2\":\"No només és només per a gossos i gats. La nostra comunitat pot tenir cura a qualsevol tipus de mascota.\",\"cardBox3\":\"Pots demanar quants passejos i de quant de temps són necessaris.\",\"cardBox4\":\"Disposem de secció de professionals per a mascotes exòtiques i amb cures especials.\"},\"explorador\":{\"tituloExplorador\":\"Espera mentre et busquem ...\",\"buttonSitios\":\"Llocs d'interès\",\"buttonTrabajos\":\"Treballs disponibles\",\"buttonMostrarMapa\":\"Mostra el mapa\"},\"profesionales\":{\"tituloProfesionales\":\"Cerca Toby, Cerca!\",\"FormControlSelect1\":\"Professions\",\"selectOptionPsicologo\":\"Psicoleg\",\"selectOptionEntrenador\":\"Entrenador\",\"selectOptionPeluquero\":\"Perruquer\",\"FormControlSelectDispo\":\"Disponibilitat\",\"selectOptionPresencial\":\"Presencial\",\"selectOptionOnline\":\"Online\",\"selectOptionPreOn\":\"Presencial y Online\",\"FormControlSelectTitulacion\":\"¿Titulació?\",\"valueSi\":\"Si\",\"valueNo\":\"No\",\"buscarProfesionales\":\"Buscar Profesionals\",\"cercaTi\":\"A prop teu\",\"verPerfil\":\"Veure perfil \",\"contratar\":\"Contratar\"}}");
 
 /***/ }),
 
@@ -117384,10 +117386,10 @@ module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorador\",\"menuP
 /*!****************************************!*\
   !*** ./resources/i18n/locales/en.json ***!
   \****************************************/
-/*! exports provided: app, home, default */
+/*! exports provided: app, home, explorador, profesionales, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorer\",\"menuProfesionales\":\"Profesionals\",\"menuLogin\":\"Log in\",\"menuRegistro\":\"Register!\",\"footerContacto\":\"Contact\",\"footerPais\":\"SPAIN\",\"footerRedesSociales\":\"Social networks\"},\"home\":{\"formTrabajos\":\"Works\",\"formTipoMascotas\":\"Pet type\",\"formBotonBuscar\":\"Search works\",\"formSelectTrabajos1\":\"Accommodation\",\"formSelectTrabajos2\":\"Walk\",\"formSelectTrabajos3\":\"Training\",\"formSelectTipoMascotas1\":\"Dog\",\"formSelectTipoMascotas2\":\"Cat\",\"formSelectTipoMascotas3\":\"Ferret\",\"sliderTitulo1\":\"Walks like he likes\",\"sliderTitulo2\":\"More than one pet?\",\"sliderTitulo3\":\"There is also a place for you, little one!\",\"sliderDesc1\":\"Our community knows the best areas for your pet to enjoy a pleasant walk.\",\"sliderDesc2\":\"No problem! We can take care of all of them.\",\"sliderDesc3\":\"Peludets! It is not just for cats or dogs. We have room for all kinds of pets.\",\"cardBox1\":\"Find a place where your pet is comfortable while you enjoy your vacation!\",\"cardBox2\":\"It's not just for cats and dogs only. Our community can take care of any type of pet.\",\"cardBox3\":\"You can ask for how many walks and how long they are needed.\",\"cardBox4\":\"We have a professional section for exotic pets with special care.\"}}");
+module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorer\",\"menuProfesionales\":\"Profesionals\",\"menuLogin\":\"Log in\",\"menuRegistro\":\"Register!\",\"menuDescarga\":\"Download the app\",\"menuPerfil\":\"Profile\",\"menuDesconectar\":\"Disconnect\",\"footerContacto\":\"Contact\",\"footerPais\":\"SPAIN\",\"footerRedesSociales\":\"Social networks\"},\"home\":{\"formTrabajos\":\"Works\",\"formTipoMascotas\":\"Pet type\",\"formBotonBuscar\":\"Search works\",\"formSelectTrabajos1\":\"Accommodation\",\"formSelectTrabajos2\":\"Walk\",\"formSelectTrabajos3\":\"Training\",\"formSelectTipoMascotas1\":\"Dog\",\"formSelectTipoMascotas2\":\"Cat\",\"formSelectTipoMascotas3\":\"Ferret\",\"sliderTitulo1\":\"Walks like he likes\",\"sliderTitulo2\":\"More than one pet?\",\"sliderTitulo3\":\"There is also a place for you, little one!\",\"sliderDesc1\":\"Our community knows the best areas for your pet to enjoy a pleasant walk.\",\"sliderDesc2\":\"No problem! We can take care of all of them.\",\"sliderDesc3\":\"Peludets! It is not just for cats or dogs. We have room for all kinds of pets.\",\"cardBox1\":\"Find a place where your pet is comfortable while you enjoy your vacation!\",\"cardBox2\":\"It's not just for cats and dogs only. Our community can take care of any type of pet.\",\"cardBox3\":\"You can ask for how many walks and how long they are needed.\",\"cardBox4\":\"We have a professional section for exotic pets with special care.\"},\"explorador\":{\"tituloExplorador\":\"Wait while we look for you ...\",\"buttonSitios\":\"Places of interest\",\"buttonTrabajos\":\"Available jobs\",\"buttonMostrarMapa\":\"Show map\"},\"profesionales\":{\"tituloProfesionales\":\"Search Toby, Search!\",\"FormControlSelect1\":\"Professions\",\"selectOptionPsicologo\":\"Psychologist\",\"selectOptionEntrenador\":\"Coach\",\"selectOptionPeluquero\":\"Hairdresser\",\"FormControlSelectDispo\":\"Availability\",\"selectOptionPresencial\":\"Face-to-face\",\"selectOptionOnline\":\"Online\",\"selectOptionPreOn\":\"Face-to-face and online\",\"FormControlSelectTitulacion\":\"¿Title?\",\"valueSi\":\"Yes\",\"valueNo\":\"No\",\"buscarProfesionales\":\"Find professionals\",\"cercaTi\":\"Near you\",\"verPerfil\":\"View profile\",\"contratar\":\"Contract\"}}");
 
 /***/ }),
 
@@ -117395,10 +117397,10 @@ module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorer\",\"menuPro
 /*!****************************************!*\
   !*** ./resources/i18n/locales/es.json ***!
   \****************************************/
-/*! exports provided: app, home, default */
+/*! exports provided: app, home, explorador, profesionales, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorador\",\"menuProfesionales\":\"Profesionales\",\"menuLogin\":\"Iniciar session\",\"menuRegistro\":\"Registrate!\",\"footerContacto\":\"Contacto\",\"footerPais\":\"ESPAÑITA\",\"footerRedesSociales\":\"Redes Sociales\"},\"home\":{\"formTrabajos\":\"Trabajos\",\"formTipoMascotas\":\"Tipo de mascota\",\"formBotonBuscar\":\"Buscar Trabajos\",\"formSelectTrabajos1\":\"Alojamiento\",\"formSelectTrabajos2\":\"Paseo\",\"formSelectTrabajos3\":\"Adiestramiento\",\"formSelectTipoMascotas1\":\"Perro\",\"formSelectTipoMascotas2\":\"Gato\",\"formSelectTipoMascotas3\":\"Hurón\",\"sliderTitulo1\":\"Paseos como a él de gustan\",\"sliderTitulo2\":\"¿Más de una mascota?\",\"sliderTitulo3\":\"También hay sitio para ti, chiquitín!\",\"sliderDesc1\":\"Nuestra comunidad conoce las mejores zonas para que tu mascota disfrute de un paseo agradable.\",\"sliderDesc2\":\"No hay problema! Podemos ocuparnos de todas ellas.\",\"sliderDesc3\":\"Peludets! no es solo para perros o gatos. Tenemos sitio para todo tipo de mascotas.\",\"cardBox1\":\"Busca un sitio donde tu mascota está agusto mientras disfrutas de tus vacaciones!\",\"cardBox2\":\"No solo es solo para perros y gatos. Nuestra comunidad puede cuidar a cualquier tipo de mascota.\",\"cardBox3\":\"Puedes pedir cuantos paseos y de cuanto tiempo són necesarios.\",\"cardBox4\":\"Disponemos de sección de profesionales para mascotas exóticas y con cuidados especiales.\"}}");
+module.exports = JSON.parse("{\"app\":{\"menuExplorador\":\"Explorador\",\"menuProfesionales\":\"Profesionales\",\"menuLogin\":\"Iniciar session\",\"menuRegistro\":\"Registrate!\",\"menuDescarga\":\"Descarga la app\",\"menuPerfil\":\"Perfil\",\"menuDesconectar\":\"Desconectar\",\"footerContacto\":\"Contacto\",\"footerPais\":\"ESPAÑITA\",\"footerRedesSociales\":\"Redes Sociales\"},\"home\":{\"formTrabajos\":\"Trabajos\",\"formTipoMascotas\":\"Tipo de mascota\",\"formBotonBuscar\":\"Buscar Trabajos\",\"formSelectTrabajos1\":\"Alojamiento\",\"formSelectTrabajos2\":\"Paseo\",\"formSelectTrabajos3\":\"Adiestramiento\",\"formSelectTipoMascotas1\":\"Perro\",\"formSelectTipoMascotas2\":\"Gato\",\"formSelectTipoMascotas3\":\"Hurón\",\"sliderTitulo1\":\"Paseos como a él de gustan\",\"sliderTitulo2\":\"¿Más de una mascota?\",\"sliderTitulo3\":\"También hay sitio para ti, chiquitín!\",\"sliderDesc1\":\"Nuestra comunidad conoce las mejores zonas para que tu mascota disfrute de un paseo agradable.\",\"sliderDesc2\":\"No hay problema! Podemos ocuparnos de todas ellas.\",\"sliderDesc3\":\"Peludets! no es solo para perros o gatos. Tenemos sitio para todo tipo de mascotas.\",\"cardBox1\":\"Busca un sitio donde tu mascota está agusto mientras disfrutas de tus vacaciones!\",\"cardBox2\":\"No solo es solo para perros y gatos. Nuestra comunidad puede cuidar a cualquier tipo de mascota.\",\"cardBox3\":\"Puedes pedir cuantos paseos y de cuanto tiempo són necesarios.\",\"cardBox4\":\"Disponemos de sección de profesionales para mascotas exóticas y con cuidados especiales.\"},\"explorador\":{\"tituloExplorador\":\"Espera mientras te buscamos...\",\"buttonSitios\":\"Sitios de interés\",\"buttonTrabajos\":\"Trabajos disponibles\",\"buttonMostrarMapa\":\"Mostrar en el mapa\"},\"profesionales\":{\"tituloProfesionales\":\"Busca Toby, Busca!\",\"FormControlSelect1\":\"Profesiones\",\"selectOptionPsicologo\":\"Psicologo\",\"selectOptionEntrenador\":\"Entrenador\",\"selectOptionPeluquero\":\"Peluquero\",\"FormControlSelectDispo\":\"Disponibilidad\",\"selectOptionPresencial\":\"Presencial\",\"selectOptionOnline\":\"Online\",\"selectOptionPreOn\":\"Presencial y Online\",\"FormControlSelectTitulacion\":\"¿Titulación?\",\"valueSi\":\"Si\",\"valueNo\":\"No\",\"buscarProfesionales\":\"Buscar Profesionales\",\"cercaTi\":\"Cerca de ti\",\"verPerfil\":\"Ver Perfil\",\"contratar\":\"Contratar\"}}");
 
 /***/ }),
 
@@ -117689,32 +117691,6 @@ function geoFindMe() {
   output.innerHTML = "<p>Locating…</p>";
   navigator.geolocation.getCurrentPosition(success, error);
 }
-/*****************************************************
- *                      Chat                         *
- *****************************************************/
-//Inicializamos las constantes para trabajar con express y socket.io
-
-/* const express = require('express');
-const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http); */
-//Declaramos la carpeta public y definimos la ruta raiz '/' a index.html 
-
-/* app.use('/public', express.static(__dirname + '/public'));
-app.get('/', (req, res) => res.sendfile(__dirname + '/index.html')); */
-//Conexión con socket
-
-
-io.on('connection', function (socket) {
-  //Esta función recibirá un mensaje y lo enviará a todos los usuarios de chat
-  socket.on('message', function (msg) {
-    return io.emit('message', msg);
-  });
-}); //Levantamos nuestro servidor en el puerto 3000
-
-http.listen(3000, function () {
-  return console.log('Escuchando en puerto 3000');
-});
 
 /***/ }),
 
