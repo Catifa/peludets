@@ -5,48 +5,7 @@
 
 <template>
   <div class="row mt-4">
-    <div class="col-3 mt-2">
-      <h3 class="crema-peludets">Peticion de contrato</h3>
-      <form id="peticionTrabajo" class="rounded">
-        <div class="form-group">
-          <label>Tabajo</label>
-          <input type="text" class="form-control" id="peticionInfoTrabajo" />
-        </div>
-        <div class="form-group">
-          <label>Tipo de mascota</label>
-          <select class="form-control" id="peticionTipoMascota">
-            <option>Perro</option>
-            <option>Gato</option>
-            <option>Roedor</option>
-            <option>Reptil</option>
-            <option>Pajaro</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
-              <label>Fecha Inicio</label>
-              <input
-                type="date"
-                class="form-control"
-                id="peticionFechaInicio"
-              />
-            </div>
-            <div class="col-md-6">
-              <label>Fecha Fin</label>
-              <input type="date" class="form-control" id="peticionFechaFin" />
-            </div>
-          </div>
-        </div>
-        <button id="enviarPeticionTrabajo" class="btn btn-verde-peludets">
-          Enviar
-        </button>
-      </form>
-      <div class="col-md-12 mt-2">
-        <h3 class="crema-peludets">Disponibilidad</h3>
-        <div id="calendarioDispPerfil"></div>
-      </div>
-    </div>
+
     <div class="col-9 mt-2">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
@@ -496,14 +455,21 @@
         </div>
       </div>
     </div>
+    <div class="col-xs-12 mt-5 ml-5">
+      <ZonaPerfil></ZonaPerfil>
+    </div>
   </div>
 </template>
 
 <script>
 import Tareas from "./Tareas";
+
+import ZonaPerfil from './templates/ZonaPerfil.vue';
 export default {
    components: {
-    Tareas
+    Tareas,
+    ZonaPerfil
+
     },
   name: "panel",
   data() {
