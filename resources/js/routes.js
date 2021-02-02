@@ -2,6 +2,7 @@ import Home from './components/Home.vue';
 import Explorador from './components/Explorador.vue';
 import Profesionales from './components/Profesionales.vue';
 import myProfile from './components/Perfil.vue';
+import img from './components/image.vue';
 import Profile from './components/templates/tmp_perfil.vue';
 import VueRouter from 'vue-router';
 import axios from 'axios';
@@ -28,24 +29,30 @@ export const routes = [
         component: Profesionales
     },
     {
-        path :'*',
-        component:Home
+        path: '*',
+        component: Home
     },
     {
         name: 'myProfile',
         path: '/myProfile',
         component: myProfile,
-        beforeEnter: (to, form, next) =>{
+        beforeEnter: (to, form, next) => {
             axios.get('/api/authentication').then(() => {
                 next();
             }).catch(() => {
-                return next({name: 'home'})
+                return next({ name: 'home' })
             })
-        } 
+        }
     },
     {
         name: 'Profile',
-        path :'/profile/:id',
-        component:Profile
+        path: '/profile/:id',
+        component: Profile
     },
+    {
+        name: 'img',
+        path: '/img',
+        component: img
+    },
+
 ];
