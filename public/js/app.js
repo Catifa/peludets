@@ -86149,13 +86149,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("ul", { staticClass: "dropdown-menu" }, [
       _c("li", [
-        _c("a", { attrs: { href: "/bin/test.zip", download: "" } }, [
+        _c("a", { attrs: { href: "/bin/mac.zip", download: "" } }, [
           _vm._v("Mac")
         ])
       ]),
       _vm._v(" "),
       _c("li", [
-        _c("a", { attrs: { href: "/bin/test.zip", download: "" } }, [
+        _c("a", { attrs: { href: "/bin/win.7z", download: "" } }, [
           _vm._v("Windows")
         ])
       ]),

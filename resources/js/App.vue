@@ -59,9 +59,9 @@
                   ></a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="/bin/test.zip" download>Mac</a>
+                      <a href="/bin/mac.zip" download>Mac</a>
                     </li>
-                    <li><a href="/bin/test.zip" download>Windows</a></li>
+                    <li><a href="/bin/win.7z" download>Windows</a></li>
                     <li>
                       <a href="/bin/test.zip" download>Linux based</a>
                     </li>
