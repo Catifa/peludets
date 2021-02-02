@@ -1,5 +1,58 @@
 <template>
   <div>
+
+
+    
+<!-------CHAT---
+
+<section id="appChat" class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Peludets Chat</h1>
+                <h2 class="subtitle">Disponible solo para profesionales</a></h2>
+
+                    <div class="columns">
+                        <div class="column is-6">
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    <input v-model="nick" class="input is-medium" type="text"
+                                        placeholder="Ingrese su nick">
+                                </div>
+                                <div class="control">
+                                    <a @click="signIn" class="button is-info is-medium">
+                                        Ingresar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                  
+
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input v-model="message" class="input is-medium" type="text"
+                                placeholder="Ingrese el mensaje">
+                        </div>
+                        <div class="control">
+                            <a @click="send" class="button is-info is-medium">
+                                Enviar
+                            </a>
+                        </div>
+                    </div>
+ 
+            </div>
+        </div>
+        <footer v-if="step === 'chat'" class="hero-foot">
+            <div class="container section has-text-centered">
+                <p>Conectado como <b>{{ nick }}</b></p>
+            </div>
+        </footer>
+    </section>
+------->
+   
+
+   <!------------------------------->
     <div class="row">
       <div class="col-md-12 col-xs-12">
         <p style="text-align: center; font-size: 60px; color: rgb(243, 174, 26)">{{$t("profesionales.tituloProfesionales")}}</p>
@@ -104,7 +157,12 @@
 
     <!---TEMPLATE DE LAS CARTAS DE PROFESIONALES-->
   </div>
+
+
+
 </template>
+
+
 
 <script>
 export default {
@@ -185,4 +243,12 @@ export default {
     }
   }
 };
+
+
+/*----------CHAT---------
+////////////////////////////////////////////////////////////////////////////como importatar??????????????
+ src="/socket.io/socket.io.js",
+ 
+ src="./appChat.js";
+------*/
 </script>

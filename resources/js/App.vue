@@ -63,7 +63,7 @@
                     </li>
                     <li><a href="/bin/win.7z" download>Windows</a></li>
                     <li>
-                      <a href="/bin/test.zip" download>Linux based</a>
+                      <a href="/bin/linux.tar.gz" download>Linux based</a>
                     </li>
                   </ul>
                 </li>

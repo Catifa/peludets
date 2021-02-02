@@ -53,4 +53,7 @@ Route::group(['prefix' => 'usuario'], function () {
     Route::post('userByProf', [UsuariosController::class, 'searchByProf']);
     Route::post('perfil', [UsuariosController::class, 'perfil']);
     Route::post('app', [UsuariosController::class, 'app']);
+    Route::post('editarPerfil', [UsuariosController::class, 'editarPerfil']);
+    Route::post('getProfText', [UsuariosController::class, 'getProfText']);
+    Route::post('setProfText', [UsuariosController::class, 'setProfText']);
 });
