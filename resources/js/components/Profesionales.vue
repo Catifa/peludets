@@ -74,7 +74,7 @@
           <label for="exampleFormControlSelect1">{{$t("profesionales.FormControlSelectDispo")}}</label>
           <select
             name="selectOption2"
-            v-model="disponibilidad"
+            v-model="disponibilidad.disponibilidad"
             class="form-control"
             id="exampleFormControlSelect2"
           >
@@ -89,7 +89,7 @@
           <label for="exampleFormControlSelect1">{{$t("profesionales.FormControlSelectTitulacion")}}</label>
           <select
             name="selectOption3"
-            v-model="titulacion"
+            v-model="titulacion.titulacion"
             class="form-control"
             id="exampleFormControlSelect1"
           >
@@ -170,8 +170,8 @@ export default {
     return {
       ensena: false,
       profesiones: {},
-      disponibilidad: null,
-      titulacion: null,
+      disponibilidad: {},
+      titulacion: {},
       profesionHome: {},
       usuarios: {},
       showByProf: false
@@ -179,8 +179,16 @@ export default {
   },
   methods: {
     usuariosFiltrados() {
+
+let objeto = {
+  profesion : this.profesiones,
+  disponibilidad : this.disponibilidad,
+  titulacion : this.titulacion
+
+}
+
       this.axios
-        .post("api/usuario/userByProf", this.profesiones)
+        .post("api/usuario/userByProf", objeto)
         .then(response => {
           this.usuarios = response.data
          this.ensena =true;
