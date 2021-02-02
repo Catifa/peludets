@@ -84,15 +84,12 @@ class UsuariosController extends Controller
      */
     protected function getProfText(Request $request) {
 
-        echo $request->input('id');
-        
         $id = $request->input('id');
 
-        $query = DB::table('users')->
-        select('textoPerfil')->
+        $query = User::select('textoPerfil')->
         where('id', '=', $id);
 
-        return $query->get();
+        return json_encode($query->get());
     }
 
     /**
@@ -106,9 +103,8 @@ class UsuariosController extends Controller
         $id = $request->input('id');
         $texto = $request->input('val');
 
-        DB::table('users')->
-        where('id', $id)->
-        update(['textoPerfil->texto' => $texto]);
+        User::where('id', $id)->
+        update(['textoPerfil' => $texto]);
 
     }
 

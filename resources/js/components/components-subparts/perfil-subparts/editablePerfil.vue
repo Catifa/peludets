@@ -1,10 +1,13 @@
 <template>
-  <div class="col-md-11 mt-1">
+  <div class="col-md-11 mt-2 ml-3">
     <div id="textoPerfil" v-if="!showEditor"></div>
-    <vue-editor v-model="text" v-if="showEditor"></vue-editor>
-    <button @click="saveContent" class="btn btn-verde-peludets">
-      Guardar Perfil
-    </button>
+    <vue-editor v-model="text.val" v-if="showEditor" useCustomImageHandler @imageAdded="handleImageAdded"></vue-editor>
+    <button v-if="showEditor" @click="saveContent" class="btn btn-verde-peludets mt-1">Guardar Perfil</button>
+    <button
+      v-if="!showEditor"
+      @click="showEditor = !showEditor"
+      class="btn btn-verde-peludets mt-1"
+    >Editar Perfil</button>
   </div>
 </template>
 
@@ -13,40 +16,47 @@ import { VueEditor } from "vue2-editor";
 
 export default {
   components: {
-    VueEditor,
+    VueEditor
   },
   data() {
     return {
       text: {},
-      showEditor: true,
+      showEditor: false,
       user: {}
     };
   },
   methods: {
     saveContent() {
       let obj = {
-        val: this.text,
-        id: this.user.id,
+        val: this.text.val,
+        id: this.user.id
       };
 
-      this.axios.post("api/usuario/setProfText", obj).then(() => {
-        this.showEditor = false;
-        $("#textoPerfil").html(this.text);
-      });
-    },
-    getContent() {
       this.axios
-        .post("api/usuario/getProfText", this.user)
-        .then((response) => {
-          console.log(response.data);
+        .post("api/usuario/setProfText", obj)
+        .then(() => {
+          this.showEditor = false;
+        })
+        .finally(() => {
+          $("#textoPerfil").html(obj.val);
         });
     },
+    getContent() {
+      this.axios.post("api/usuario/getProfText", this.user).then(response => {
+        let textVal = response.data[0];
+        this.text.val = textVal.textoPerfil;
+        $("#textoPerfil").html(textVal.textoPerfil);
+      });
+    },
+    getUserId() {
+      this.axios.get("api/user").then((response) => {
+        this.user = response.data;
+        this.getContent();
+      })
+    }
   },
   mounted() {
-    this.getContent();
-  },
-  beforeCreate() {
-    this.user = this.$root.user;
+    this.getUserId();
   }
 };
 </script>
