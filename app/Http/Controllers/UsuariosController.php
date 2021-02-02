@@ -34,7 +34,7 @@ class UsuariosController extends Controller
      * 
      * Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home
      * 
-     * @param object $profesion
+     * @param Request $request
      * 
      * @return \App\Models\UserUser
      */
@@ -58,4 +58,56 @@ class UsuariosController extends Controller
     {
         return User::where('id', '=', $request->input('id'))->get();
     }
+
+    /** 
+    *
+    * Guarda la parte del perfil editable
+    * 
+    * @param Request $request
+    */
+    protected function editarPerfil(Request $request) {
+
+        $texto = $request->input('val');
+
+        DB::table('users')->
+        insert([
+            'textoPerfil' => $texto, 'id' => '1'
+        ]);
+
+    }
+
+    /**
+     * 
+     * Recuperar el texto que tenga el usuario guardado en su perfil
+     * 
+     * @param Request $request
+     * 
+     * @return json
+     */
+    protected function getProfText(Request $request) {
+
+        $id = $request->input('id');
+
+        $query = User::select('textoPerfil')->
+        where('id', '=', $id);
+
+        return json_encode($query->get());
+    }
+
+    /**
+     * 
+     * Actualizar el texto que tenga el usuario en su perfil
+     * 
+     * @param Request $request
+     */
+    protected function setProfText(Request $request) {
+        
+        $id = $request->input('id');
+        $texto = $request->input('val');
+
+        User::where('id', $id)->
+        update(['textoPerfil' => $texto]);
+
+    }
+
 }
