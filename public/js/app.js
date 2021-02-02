@@ -3359,6 +3359,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -3417,6 +3418,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> Profesionales
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3479,12 +3482,15 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+<<<<<<< HEAD
 /*----------CHAT---------
 ////////////////////////////////////////////////////////////////////////////como importatar??????????????
  src="/socket.io/socket.io.js",
  
  src="./appChat.js";
 ------*/
+=======
+>>>>>>> Profesionales
 
 /***/ }),
 
