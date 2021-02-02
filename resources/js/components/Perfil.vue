@@ -16,7 +16,8 @@
             role="tab"
             aria-controls="perfilUsuario"
             aria-selected="true"
-          >Perfil</a>
+            >Perfil</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -27,7 +28,8 @@
             role="tab"
             aria-controls="mascota"
             aria-selected="false"
-          >Mascotas</a>
+            >Mascotas</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -38,7 +40,8 @@
             role="tab"
             aria-controls="valoraciones"
             aria-selected="false"
-          >Valoraciones</a>
+            >Valoraciones</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -49,7 +52,8 @@
             role="tab"
             aria-controls="editaPerfilMascota"
             aria-selected="false"
-          >Edita perfil mascota</a>
+            >Edita perfil mascota</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -60,7 +64,8 @@
             role="tab"
             aria-controls="tareas"
             aria-selected="false"
-          >Tareas</a>
+            >Tareas</a
+          >
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -74,7 +79,12 @@
             <editorPerfil></editorPerfil>
           </div>
         </div>
-        <div class="tab-pane fade" id="mascota" role="tabpanel" aria-labelledby="mascota-tab">
+        <div
+          class="tab-pane fade"
+          id="mascota"
+          role="tabpanel"
+          aria-labelledby="mascota-tab"
+        >
           <div class="row">
             <div class="col-md-3 mt-1 mr-2">
               <div class="card" style="width: 18rem">
@@ -192,7 +202,9 @@
                     </div>
 
                     <div id="divFileMascota" class="mb-3 btn btn-azul-peludets">
-                      <label id="textoFile" for>Añade la foto de tu mascota</label>
+                      <label id="textoFile" for
+                        >Añade la foto de tu mascota</label
+                      >
                       <input
                         name="avatarMascota"
                         type="file"
@@ -207,7 +219,9 @@
                     id="btn-registroMascota"
                     type="submit"
                     class="btn btn-azul-peludets"
-                  >Registrala!</button>
+                  >
+                    Registrala!
+                  </button>
                 </div>
               </div>
             </div>
@@ -422,13 +436,20 @@
                   id="btn-updateMascota"
                   type="submit"
                   class="btn btn btn-azul-peludets"
-                >Submit</button>
+                >
+                  Submit
+                </button>
               </form>
             </div>
           </div>
         </div>
 
-        <div class="tab-pane fade" id="tareas" role="tabpanel" aria-labelledby="edita-tab">
+        <div
+          class="tab-pane fade"
+          id="tareas"
+          role="tabpanel"
+          aria-labelledby="edita-tab"
+        >
           <Tareas></Tareas>
         </div>
       </div>
@@ -442,32 +463,28 @@
 <script>
 import Tareas from "./Tareas";
 
-import ZonaPerfil from './templates/ZonaPerfil.vue';
+import ZonaPerfil from "./templates/ZonaPerfil.vue";
 import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 export default {
-   components: {
+  components: {
     Tareas,
     ZonaPerfil,
-    editorPerfil
-
-    },
-
-
-
+    editorPerfil,
+  },
   name: "panel",
   data() {
     return {};
   },
-  beforeCreate: function() {
+  beforeCreate: function () {
     if (!this.$session.exists()) {
       this.$router.push("/");
     }
   },
   methods: {
-    logout: function() {
+    logout: function () {
       this.$session.destroy();
       this.$router.push("/");
-    }
-  }
+    },
+  },
 };
 </script>
