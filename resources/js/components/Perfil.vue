@@ -441,24 +441,19 @@
 
 <script>
 import Tareas from "./Tareas";
-<<<<<<< HEAD
 
 import ZonaPerfil from './templates/ZonaPerfil.vue';
+import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 export default {
    components: {
     Tareas,
-    ZonaPerfil
+    ZonaPerfil,
+    editorPerfil
 
     },
-=======
-import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 
-export default {
-  components: {
-    Tareas,
-    editorPerfil
-  },
->>>>>>> cf2c937ee26c99884d7f30ef876fb5073995993e
+
+
   name: "panel",
   data() {
     return {};
