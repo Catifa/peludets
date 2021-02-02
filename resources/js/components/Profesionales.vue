@@ -3,7 +3,7 @@
 
 
     
-<!-------CHAT---------->
+<!-------CHAT---
 
 <section id="appChat" class="hero is-fullheight">
         <div class="hero-body">
@@ -49,7 +49,7 @@
             </div>
         </footer>
     </section>
-
+------->
    
 
    <!------------------------------->
