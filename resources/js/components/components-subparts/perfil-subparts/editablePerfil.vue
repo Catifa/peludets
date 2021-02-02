@@ -1,70 +1,52 @@
 <template>
   <div class="col-md-11 mt-1">
-    <form>
-      <editor
-        v-model="textoEditable.val"
-        api-key="6pjhqn98u0f2a21lhh3fnygr2np8uwshnw0huk04p8dty974"
-        :init="{
-          height: 500,
-          languaje: 'es',
-          menubar: false,
-          plugins: [
-            'advlist lists textcolor colorpicker emoticons image preview save table wordcount',
-          ],
-          toolbar:
-            'undo redo | formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | \
-                bullist numlist table outdent indent | removeformat | emoticons image | preview save',
-        }"
-        v-bind:initial-value="'' + texto.texto + ''"
-      ></editor>
-    </form>
-    <button @click="showEditor = !showEditor" class="btn btn-verde-peludets">
-      Editar Perfil
+    <div id="textoPerfil" v-if="!showEditor"></div>
+    <vue-editor v-model="text" v-if="showEditor"></vue-editor>
+    <button @click="saveContent" class="btn btn-verde-peludets">
+      Guardar Perfil
     </button>
   </div>
 </template>
 
 <script>
-
-import Editor from "@tinymce/tinymce-vue";
+import { VueEditor } from "vue2-editor";
 
 export default {
   components: {
-    editor: Editor,
+    VueEditor,
   },
   data() {
     return {
-      textoEditable: {},
-      texto: {},
-      usuario: {},
-      showEditor: false,
+      text: {},
+      showEditor: true,
+      user: {}
     };
   },
   methods: {
     saveContent() {
       let obj = {
-        val: this.textoEditable.val,
-        id: this.usuario.id,
+        val: this.text,
+        id: this.user.id,
       };
 
-      this.axios.post("api/usuario/setProfText", obj);
-
-      this.$router.go();
+      this.axios.post("api/usuario/setProfText", obj).then(() => {
+        this.showEditor = false;
+        $("#textoPerfil").html(this.text);
+      });
+    },
+    getContent() {
+      this.axios
+        .post("api/usuario/getProfText", this.user)
+        .then((response) => {
+          console.log(response.data);
+        });
     },
   },
   mounted() {
-    this.usuario.id = this.$root.user.id;
-    this.axios
-      .post("api/usuario/getProfText", this.usuario)
-      .then((response) => {
-        // Parseo de la respuesta de la base de datos a JSON
-        let textoSinParsear = response.data[0].textoPerfil;
-        let textoToJson = JSON.parse(
-          textoSinParsear.replace(/(\w+)=/g, '"$1":')
-        );
-        this.texto = textoToJson;
-        $('#perfEditable').html(this.texto.texto);
-      });
+    this.getContent();
   },
+  beforeCreate() {
+    this.user = this.$root.user;
+  }
 };
 </script>

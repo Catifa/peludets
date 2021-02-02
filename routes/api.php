@@ -45,5 +45,8 @@ Route::group(['prefix'=>'usuario'], function(){
     Route::get('busquedaProfesionales',[UsuariosController::class,'buscarProfesionales']);
     Route::post('userByProf', [UsuariosController::class, 'searchByProf']);
     Route::post('perfil', [UsuariosController::class, 'perfil']);
+    Route::post('editarPerfil', [UsuariosController::class, 'editarPerfil']);
+    Route::post('getProfText', [UsuariosController::class, 'getProfText']);
+    Route::post('setProfText', [UsuariosController::class, 'setProfText']);
 });
 
