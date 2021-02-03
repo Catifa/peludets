@@ -23,4 +23,20 @@ class FileController extends Controller
             ->where('idUser', '=', $request->idUser)
             ->where('category', '=', 'profile');
     }
+
+    protected function uploadImgae(Request $request)
+    {
+        Image::insert([
+            'idUser' => $request->idUser,
+            'category' => $request->category,
+            'image' => $request->img,
+        ]);
+    }
+
+    protected function getImage(Request $request)
+    {
+        return Image::select('image')
+            ->where('idUser', '=', $request->idUser)
+            ->where('category', '=', $request->category);
+    }
 }
