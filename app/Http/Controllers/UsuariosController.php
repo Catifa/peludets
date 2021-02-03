@@ -40,9 +40,9 @@ class UsuariosController extends Controller
      */
     protected function searchByProf(Request $request) {
 
-        $prof = $request->input('profesionales');
-        $disp = $request->input('disponibilidad');
-        $titu = $request->input('titulacion');
+        $prof = $request->profesionales;
+        $disp = $request->disponibilidad;
+        $titu = $request->titulacion;
 
         $query = DB::table('users')->
         join('usuarios_profesiones', 'id_usuario', '=', 'users.id')->
@@ -58,7 +58,7 @@ class UsuariosController extends Controller
     
     protected function perfil(Request $request)
     {
-        return User::where('id', '=', $request->input('id'))->get();
+        return User::where('id', '=', $request->id)->get();
     }
 
     /** 
@@ -69,7 +69,7 @@ class UsuariosController extends Controller
     */
     protected function editarPerfil(Request $request) {
 
-        $texto = $request->input('val');
+        $texto = $request->val;
 
         DB::table('users')->
         insert([
@@ -88,7 +88,7 @@ class UsuariosController extends Controller
      */
     protected function getProfText(Request $request) {
 
-        $id = $request->input('id');
+        $id = $request->id;
 
         $query = User::select('textoPerfil')->
         where('id', '=', $id);
@@ -104,8 +104,8 @@ class UsuariosController extends Controller
      */
     protected function setProfText(Request $request) {
         
-        $id = $request->input('id');
-        $texto = $request->input('val');
+        $id = $request->id;
+        $texto = $request->val;
 
         User::where('id', $id)->
         update(['textoPerfil' => $texto]);

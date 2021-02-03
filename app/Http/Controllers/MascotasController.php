@@ -26,11 +26,11 @@ class MascotasController extends Controller
     public function add(Request $request)
     {
         $mascota = new Mascota([
-            'nombre' => $request->input('nombre'),
-            'especie' => $request->input('especie'),
-            'raza' => $request->input('raza'),
-            'edad' => $request->input('edad'),
-            'peso' => $request->input('peso')
+            'nombre' => $request->nombre,
+            'especie' => $request->especie,
+            'raza' => $request->raza,
+            'edad' => $request->edad,
+            'peso' => $request->peso
         ]);
         $mascota->save();
     }
