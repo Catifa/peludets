@@ -235,9 +235,10 @@ let objeto = {
 
       navigator.geolocation.getCurrentPosition((success, error));
     },
+    // Metodo que SOLO filtra por profesion, para la peticion que viene de HOME
     userProfOnly() {
       this.axios
-        .post("api/usuario/userByProf", this.profesionHome)
+        .post("api/usuario/userByProfOnly", this.profesionHome)
         .then(response => {
           this.usuarios = response.data;
           this.showByProf = true;
