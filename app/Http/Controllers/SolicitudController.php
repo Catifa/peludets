@@ -4,82 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SolicitudController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected function enviarSolicitud(Request $request)
     {
-        //
+        $request->validate([
+            'nombre_trabajo' => 'required|string|max:255',
+            'descripcion_trabajo' => 'required|string|max:255',
+            'id_remitente' => 'required',
+            'id_destinatario' => 'required',
+        ]);
+
+        Solicitud::insert([
+            'nombre_trabajo' => $request->nombre_trabajo,
+            'descripcion_trabajo' => $request->descripcion_trabajo,
+
+        ]);
+
+        DB::table('usuarios_solicitudes')->insert([
+            'id_remitente' => $request->id_remitente,
+            'id_destinataio' => $request->id_destinatario,
+        ]);
+
+     
+    }
+    protected function recuperar(Request $request)
+    {
+       return Solicitud::select('nombre_trabajo', 'descripcion_trabajo')->get();
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Solicitud  $solicitud
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Solicitud $solicitud)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Solicitud  $solicitud
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Solicitud $solicitud)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Solicitud  $solicitud
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Solicitud $solicitud)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Solicitud  $solicitud
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Solicitud $solicitud)
-    {
-        //
-    }
+     
 }
+//si la primera solicitud no sale bien que la segunda no se faci
