@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
-use function PHPUnit\Framework\isEmpty;
-
 class FileController extends Controller
 {
     protected function setProfilePhoto(Request $request)
