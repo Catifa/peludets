@@ -87,13 +87,7 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      user: {
-        email:"",
-        name:"",
-        lastname:"",
-        dni:"",
-        password:"",
-      },
+      user: {},
     };
   },
   methods: {
