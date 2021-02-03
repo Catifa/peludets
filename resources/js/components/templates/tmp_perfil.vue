@@ -1,6 +1,6 @@
 <template>
   <div class="row mt-4">
-    <div class="col-3 mt-2">
+    <div class="col-xs-12 col-md-3 mt-2">
       <h3 class="crema-peludets">Peticion de contrato</h3>
       <form id="peticionTrabajo" class="rounded">
         <div class="form-group">
@@ -42,7 +42,7 @@
         <div id="calendarioDispPerfil"></div>
       </div>
     </div>
-    <div class="col-9 mt-2">
+    <div class="col-xs-12 col-md-6 mt-2">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a
@@ -465,6 +465,17 @@
         </div>
       </div>
     </div>
+    <div class="col-xs-12 col-md-3 mt-2">
+    <img
+     v-bind:src="user[0].photo"
+      class="rounded-circle mt-5"
+      alt="Peludets"
+      width="300px"
+      height="300px"
+    />
+    <h3 class="mt-5">{{ user[0].name }} </h3>
+    <h3 class="mt-5">{{ user[0].email }}</h3>
+  </div>
   </div>
 </template>
 

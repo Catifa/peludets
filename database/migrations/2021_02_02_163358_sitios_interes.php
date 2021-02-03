@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocalizacionesTable extends Migration
+class SitiosInteres extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,9 @@ class CreateLocalizacionesTable extends Migration
     public function up()
     {
         Schema::create('sitios_interes', function (Blueprint $table) {
-            $table->string('coordenadas');
-            $table->string('descripcion');
+            $table->string("coordenadas");
+            $table->string("descripcion");
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateLocalizacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sitios_interes');
+        //
     }
 }

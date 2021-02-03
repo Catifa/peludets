@@ -5,42 +5,6 @@
 
 <template>
   <div class="row mt-4">
-    <div class="col-3 mt-2">
-      <h3 class="crema-peludets">Peticion de contrato</h3>
-      <form id="peticionTrabajo" class="rounded">
-        <div class="form-group">
-          <label>Tabajo</label>
-          <input type="text" class="form-control" id="peticionInfoTrabajo" />
-        </div>
-        <div class="form-group">
-          <label>Tipo de mascota</label>
-          <select class="form-control" id="peticionTipoMascota">
-            <option>Perro</option>
-            <option>Gato</option>
-            <option>Roedor</option>
-            <option>Reptil</option>
-            <option>Pajaro</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
-              <label>Fecha Inicio</label>
-              <input type="date" class="form-control" id="peticionFechaInicio" />
-            </div>
-            <div class="col-md-6">
-              <label>Fecha Fin</label>
-              <input type="date" class="form-control" id="peticionFechaFin" />
-            </div>
-          </div>
-        </div>
-        <button id="enviarPeticionTrabajo" class="btn btn-verde-peludets">Enviar</button>
-      </form>
-      <div class="col-md-12 mt-2">
-        <h3 class="crema-peludets">Disponibilidad</h3>
-        <div id="calendarioDispPerfil"></div>
-      </div>
-    </div>
     <div class="col-9 mt-2">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
@@ -52,7 +16,8 @@
             role="tab"
             aria-controls="perfilUsuario"
             aria-selected="true"
-          >Perfil</a>
+            >Perfil</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -63,7 +28,8 @@
             role="tab"
             aria-controls="mascota"
             aria-selected="false"
-          >Mascotas</a>
+            >Mascotas</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -74,7 +40,8 @@
             role="tab"
             aria-controls="valoraciones"
             aria-selected="false"
-          >Valoraciones</a>
+            >Valoraciones</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -85,7 +52,8 @@
             role="tab"
             aria-controls="editaPerfilMascota"
             aria-selected="false"
-          >Edita perfil mascota</a>
+            >Edita perfil mascota</a
+          >
         </li>
         <li class="nav-item">
           <a
@@ -96,7 +64,8 @@
             role="tab"
             aria-controls="tareas"
             aria-selected="false"
-          >Tareas</a>
+            >Tareas</a
+          >
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -110,7 +79,12 @@
             <editorPerfil></editorPerfil>
           </div>
         </div>
-        <div class="tab-pane fade" id="mascota" role="tabpanel" aria-labelledby="mascota-tab">
+        <div
+          class="tab-pane fade"
+          id="mascota"
+          role="tabpanel"
+          aria-labelledby="mascota-tab"
+        >
           <div class="row">
             <div class="col-md-3 mt-1 mr-2">
               <div class="card" style="width: 18rem">
@@ -228,7 +202,9 @@
                     </div>
 
                     <div id="divFileMascota" class="mb-3 btn btn-azul-peludets">
-                      <label id="textoFile" for>Añade la foto de tu mascota</label>
+                      <label id="textoFile" for
+                        >Añade la foto de tu mascota</label
+                      >
                       <input
                         name="avatarMascota"
                         type="file"
@@ -243,7 +219,9 @@
                     id="btn-registroMascota"
                     type="submit"
                     class="btn btn-azul-peludets"
-                  >Registrala!</button>
+                  >
+                    Registrala!
+                  </button>
                 </div>
               </div>
             </div>
@@ -458,43 +436,55 @@
                   id="btn-updateMascota"
                   type="submit"
                   class="btn btn btn-azul-peludets"
-                >Submit</button>
+                >
+                  Submit
+                </button>
               </form>
             </div>
           </div>
         </div>
 
-        <div class="tab-pane fade" id="tareas" role="tabpanel" aria-labelledby="edita-tab">
+        <div
+          class="tab-pane fade"
+          id="tareas"
+          role="tabpanel"
+          aria-labelledby="edita-tab"
+        >
           <Tareas></Tareas>
         </div>
       </div>
+    </div>
+    <div class="col-xs-12 mt-5 ml-5">
+      <ZonaPerfil></ZonaPerfil>
     </div>
   </div>
 </template>
 
 <script>
 import Tareas from "./Tareas";
-import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 
+import ZonaPerfil from "./templates/ZonaPerfil.vue";
+import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 export default {
   components: {
     Tareas,
-    editorPerfil
+    ZonaPerfil,
+    editorPerfil,
   },
   name: "panel",
   data() {
     return {};
   },
-  beforeCreate: function() {
+  beforeCreate: function () {
     if (!this.$session.exists()) {
       this.$router.push("/");
     }
   },
   methods: {
-    logout: function() {
+    logout: function () {
       this.$session.destroy();
       this.$router.push("/");
-    }
-  }
+    },
+  },
 };
 </script>
