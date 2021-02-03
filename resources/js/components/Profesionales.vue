@@ -62,7 +62,7 @@
       <div class="col-md-2 ml-auto col-xs-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">{{$t("profesionales.FormControlSelect1")}}</label>
-          <select name="selectOption" v-model="profesiones.nombre" class="form-control" id="selectOption">
+          <select name="selectOption" v-model="profesiones.profesionales" class="form-control" id="selectOption">
             <option value="Psicologo">{{$t("profesionales.selectOptionPsicologo")}}</option>
             <option value="Entrenador">{{$t("profesionales.selectOptionEntrenador")}}</option>
             <option value="Peluquero">{{$t("profesionales.selectOptionPeluquero")}}</option>
