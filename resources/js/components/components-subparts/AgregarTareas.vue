@@ -38,9 +38,9 @@ export default {
     };
   },
   methods: {},
-  created() {
-    this.axios.get("api/solicitudes/recuperar").then((response) => {
-      this.solicitudes = response.data;
+  mounted() {
+      this.axios.post("/api/solicitudes/recuperar" , {'id':this.$root.user.id}).then((response) => {
+      this.solicitudes = response.data;      
     });
   },
 };

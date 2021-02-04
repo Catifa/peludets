@@ -47,7 +47,7 @@ Route::get('profesiones', [ProfesionController::class, 'getAll']);
 //Solitudes
 Route::group(['prefix' => 'solicitudes'], function () {
     Route::post('enviar', [SolicitudController::class, 'enviarSolicitud']);
-    Route::get('recuperar', [SolicitudController::class, 'recuperar']);
+    Route::post('recuperar', [SolicitudController::class, 'recuperar']);
 
 });
 

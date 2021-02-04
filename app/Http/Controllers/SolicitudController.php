@@ -20,23 +20,14 @@ class SolicitudController extends Controller
         Solicitud::insert([
             'nombre_trabajo' => $request->nombre_trabajo,
             'descripcion_trabajo' => $request->descripcion_trabajo,
-
-        ]);
-
-        DB::table('usuarios_solicitudes')->insert([
             'id_remitente' => $request->id_remitente,
-            'id_destinataio' => $request->id_destinatario,
+            'id_destinatario' => $request->id_destinatario,
         ]);
-
-     
     }
     protected function recuperar(Request $request)
     {
-       return Solicitud::select('nombre_trabajo', 'descripcion_trabajo')->get();
-
+        return Solicitud::select('nombre_trabajo', 'descripcion_trabajo')
+            ->where('id_destinatario', '=', $request->id)->get();
     }
-
-
-     
 }
 //si la primera solicitud no sale bien que la segunda no se faci
