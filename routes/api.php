@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfesionController;
+use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Http\Request;
 
@@ -42,6 +43,13 @@ Route::group(['prefix' => 'auth'], function () {
 
 // Recoger las profesiones
 Route::get('profesiones', [ProfesionController::class, 'getAll']);
+
+//Solitudes
+Route::group(['prefix' => 'solicitudes'], function () {
+    Route::post('enviar', [SolicitudController::class, 'enviarSolicitud']);
+    Route::get('recuperar', [SolicitudController::class, 'recuperar']);
+
+});
 
 Route::group(['prefix' => 'files'], function () {
     Route::post('setProfilePhoto', [FileController::class, 'setProfilePhoto']);
