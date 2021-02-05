@@ -45,11 +45,11 @@ class UsuariosController extends Controller
         return User::
 
         select('users.id', 'users.name', 'users.lastname') 
-        /*-> join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
+        -> join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
         -> join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-        -> where('profesiones.nombre_profesion', '=', $prof) */->get();
-        //where('usuarios_profesiones.disponibilidad', '=', $disp) ->
-        //where('usuarios_profesiones.titulacion', '=', $titu) ->get();
+        -> where('nombre_profesion.profesiones', '=', $prof)
+        -> where('usuarios_profesiones.disponibilidad', '=', $disp) 
+        -> where('usuarios_profesiones.titulacion', '=', $titu) ->get();
 
     }
 
