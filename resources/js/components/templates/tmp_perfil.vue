@@ -2,20 +2,18 @@
   <div class="row mt-4">
     <div class="col-xs-12 col-md-3 mt-2">
       <h3 class="crema-peludets">Peticion de contrato</h3>
-      <form id="peticionTrabajo" class="rounded">
+      <form
+        @submit.prevent="peticionSolicitud"
+        id="peticionTrabajo"
+        class="rounded"
+      >
         <div class="form-group">
           <label>Tabajo</label>
-          <input type="text" class="form-control" id="peticionInfoTrabajo" />
+          <input type="text" class="form-control" id="peticionInfoTrabajo" v-model="solicitud.nombre_trabajo"/>
         </div>
         <div class="form-group">
-          <label>Tipo de mascota</label>
-          <select class="form-control" id="peticionTipoMascota">
-            <option>Perro</option>
-            <option>Gato</option>
-            <option>Roedor</option>
-            <option>Reptil</option>
-            <option>Pajaro</option>
-          </select>
+          <label>Descripcion</label>
+          <input type="text" class="form-control" id="peticiondescripcionTrabajo" v-model="solicitud.descripcion_trabajo"/>
         </div>
         <div class="form-group">
           <div class="row">
@@ -466,24 +464,26 @@
       </div>
     </div>
     <div class="col-xs-12 col-md-3 mt-2">
-    <img
-     v-bind:src="user[0].photo"
-      class="rounded-circle mt-5"
-      alt="Peludets"
-      width="300px"
-      height="300px"
-    />
-    <h3 class="mt-5">{{ user[0].name }} </h3>
-    <h3 class="mt-5">{{ user[0].email }}</h3>
-  </div>
+      <img
+        v-bind:src="user[0].photo"
+        class="rounded-circle mt-5"
+        alt="Peludets"
+        width="300px"
+        height="300px"
+      />
+      <h3 class="mt-5">{{ user[0].name }}</h3>
+      <h3 class="mt-5">{{ user[0].email }}</h3>
+    </div>
   </div>
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   data() {
     return {
       user: {},
+      solicitud: {},
     };
   },
   methods: {
@@ -496,6 +496,24 @@ export default {
           }
           this.user = res.data;
         });
+    },
+    peticionSolicitud() {
+
+      this.axios
+        .post("/api/solicitudes/enviar", {
+          'nombre_trabajo': this.solicitud.nombre_trabajo,
+          'descripcion_trabajo': this.solicitud.descripcion_trabajo,
+          'id_remitente': this.$root.user.id,
+          'id_destinatario': this.user[0].id
+        })
+        .then(() => {
+          $("#peticionTrabajo").modal("hide");
+          Swal.fire("Solicitud enviada", "success");
+
+
+        })
+        .catch((error) => console.log(error))
+        .finally(() => (this.loading = false));
     },
   },
   mounted() {

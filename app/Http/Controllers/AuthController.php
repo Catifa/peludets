@@ -21,11 +21,11 @@ class AuthController extends Controller
         ]);
 
         User::create([
-            'name' => $request->input('name'),
-            'lastname' => $request->input('lastname'),
-            'dni' => $request->input('dni'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password'))
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'dni' => $request->dni,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {

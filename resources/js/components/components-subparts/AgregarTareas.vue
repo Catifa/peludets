@@ -3,36 +3,23 @@
 <template>
   <div id="app" class="container mt-5">
     <h3>{{ titulo }}</h3>
-
-    <input
-      type="text"
-      class="form-control my-3"
-      name=""
-      id=""
-      v-model="nuevaTarea"
-      v-on:keyup.enter="agregarTarea"
-    />
-
-    <button class="btn btn-block btn-lg btn-lila-peludets mt-4" @click="agregarTarea">Agregar</button>
-
-    <drag class="mt-3" v-for="(t, index) of tareas" :key="t.nombre">
-      <div
-        role="alert"
-        :class="['alert', t.estado ? 'alert-success' : 'alert-danger']"
-      >
-        <div class="d-flex justify-content-between align-items-center">
-          <div>{{ index + 1 }}. {{ t.nombre }}</div>
-          <div>
-            <button class="btn btn-success btn-sm" @click="editarTarea(index)">
-              Agregar
-            </button>
-            <button class="btn btn-danger btn-sm" @click="eliminarTarea(index)">
-              Eliminar
-            </button>
-          </div>
+    <div
+      name="solicitudes"
+      class="col-xs-12 col-md-12"
+      v-for="solicitud in solicitudes"
+      :key="solicitud"
+    >
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        <div>
+          {{ solicitud.nombre_trabajo }}
         </div>
+        <div>{{ solicitud.descripcion_trabajo }}</div>
+             <div>
+              <button class="btn btn-success btn-sm" >Agregar</button>
+              <button class="btn btn-danger btn-sm" >Eliminar</button>
+            </div>
       </div>
-    </drag>
+    </div>
   </div>
 </template>
 
@@ -46,38 +33,15 @@ export default {
   name: "AgregarTareas",
   data() {
     return {
-      titulo: "Tareas",
-      tareas: [],
-      nuevaTarea: "",
+      titulo: "Solicitudes",
+      solicitudes: [],
     };
   },
-  methods: {
-    agregarTarea() {
-      console.log(this.nuevaTarea);
-      this.tareas.push({
-        nombre: this.nuevaTarea,
-        estado: false,
-      });
-      console.log(this.tareas);
-      this.nuevaTarea = "";
-      localStorage.setItem("peludets-vue", JSON.stringify(this.tareas));
-    },
-    editarTarea(index) {
-      this.tareas[index].estado = true;
-      localStorage.setItem("peludets-vue", JSON.stringify(this.tareas));
-    },
-    eliminarTarea(index) {
-      this.tareas.splice(index, 1);
-      localStorage.setItem("peludets-vue", JSON.stringify(this.tareas));
-    },
-  },
-  created: function () {
-    let datosDB = JSON.parse(localStorage.getItem("peludets-vue"));
-    if (datosDB === null) {
-      this.tareas = [];
-    } else {
-      this.tareas = datosDB;
-    }
+  methods: {},
+  mounted() {
+      this.axios.post("/api/solicitudes/recuperar" , {'id':this.$root.user.id}).then((response) => {
+      this.solicitudes = response.data;      
+    });
   },
 };
 </script>
