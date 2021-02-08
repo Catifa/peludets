@@ -54,7 +54,7 @@
                     aria-haspopup="true"
                     aria-expanded="true"
                   >
-                    {{ $t("app.menuDescarga") }} 
+                    {{ $t("app.menuDescarga") }}
                     <span class="caret"></span
                   ></a>
                   <ul class="dropdown-menu">
@@ -124,7 +124,7 @@
               >
                 <!-- Foto de usuaio -->
                 <img
-                  src="sources/img/avatar.jfif"
+                  v-bind:src="this.$root.photo"
                   class="rounded-circle"
                   width="100%"
                 />
@@ -133,7 +133,7 @@
                 <span class="dropdown-item-text">
                   <img
                     id="fotoDesplegable"
-                    src="sources/img/avatar.jfif"
+                    v-bind:src="this.$root.photo"
                     class="rounded"
                     alt="Foto perfil"
                   /><span class="ml-3 font-weight-bold">{{
@@ -151,7 +151,6 @@
                 </span>
                 <div class="dropdown-divider"></div>
                 <router-link to="/myProfile" class="nav-link">
-                
                   {{ $t("app.menuPerfil") }}
                 </router-link>
 
@@ -163,7 +162,6 @@
                     type="button"
                     @click="logout"
                   >
-                    
                     {{ $t("app.menuDesconectar") }}
                   </button></span
                 >
@@ -277,6 +275,7 @@ export default {
   name: "local-changer",
   data() {
     return {
+      
       langs: ["es", "ca", "en"],
     };
   },
@@ -298,6 +297,7 @@ export default {
       axios.post("/api/auth/logout").then((res) => {
         //console.log(res.data);
         this.$root.user = null;
+        this.$root.photo = "sources/img/avatar.jfif";
         this.$router.push("/");
       });
     },
@@ -305,6 +305,9 @@ export default {
       axios.get("/api/user").then((res) => {
         //console.log(res.data);
         this.$root.user = res.data;
+        axios.post("/api/files/getProfilePhoto").then((res) => {
+          this.$root.photo = res.data[0].image;
+        });
       });
     },
   },

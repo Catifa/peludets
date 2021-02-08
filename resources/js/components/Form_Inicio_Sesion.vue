@@ -51,8 +51,7 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      user: {
-      },
+      user: {},
     };
   },
   methods: {
@@ -67,7 +66,9 @@ export default {
             "success"
           );
           this.$root.user = response.data;
-          console.log(response.data);
+          axios.post("/api/files/getProfilePhoto").then((res) => {
+            this.$root.photo = res.data[0].image;
+          });
           this.$router.push("/");
         })
         .catch((error) => console.log(error))
