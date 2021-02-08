@@ -119,21 +119,14 @@
       <div class="col-md-6 col-xs-12" id="flotante">
         <mapa-prof></mapa-prof>
       </div>
-      <div id="cards" v-if="ensena" class="col-md-6 mt-4 col-xs-12">
+     <div id="cards" v-if="ensena" class="col-md-6 mt-4 col-xs-12">
         <div name="profesionales" class="col-md-4" v-for="usuario in usuarios" :key="usuario">
-          <div class="card border border-dark mt-4 ml-2 id">
-            <img
-              class="card-img-top foto"
-              src="/resources/img/tarjetas_home/perro-paseando.jpg"
-              height="50%"
-              width="50%"
-            />
-            <br />
-            <br />
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://corgicare.com/wp-content/uploads/welsh-corgi-history-and-lore.jpg" alt="Card image cap">
             <div class="card-body">
-              <h6 class="card_name card_attr">{{ usuario.nombre }}</h6>
-              <h6 class="card_surname card_attr">{{ usuario.apellido }}</h6>
-              <a href="#" class="stretched-link id">{{$t("profesionales.verPerfil")}}</a>
+              <p class="card_name card_attr">{{ usuario.name }}</p>
+              <p class="card_surname card_attr">{{ usuario.lastname }}</p>
+              <router-link v-bind:to="'/profile/' +  usuario.id " class="btn btn-azul-peludets">{{$t("profesionales.contratar")}}</router-link>
             </div>
           </div>
         </div>
@@ -192,7 +185,7 @@ let objeto = {
         .then(response => {
           this.usuarios = response.data
          this.ensena =true;
-         console.log(response);
+         console.log(response.data);
         });
     },
   
@@ -254,10 +247,4 @@ let objeto = {
 };
 
 
-/*----------CHAT---------
-////////////////////////////////////////////////////////////////////////////como importatar??????????????
- src="/socket.io/socket.io.js",
- 
- src="./appChat.js";
-------*/
 </script>
