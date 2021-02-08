@@ -43,7 +43,9 @@ export default {
     },
     store() {
       //console.log(this.img);
-      axios.post("/api/files/setProfilePhoto", { img: this.img });
+      axios.post("/api/files/setProfilePhoto", { img: this.img }).then((res)=>{
+        console.log(res.data);
+      });
     },
   },
 };

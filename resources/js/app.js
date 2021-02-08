@@ -47,11 +47,12 @@ const router = new VueRouter({
     routes: routes
 });
 
-Vue.config.devtools = true;
+Vue.config.devtools = false;
 
 const app = new Vue({
     data:{
-      user: {}
+      user: {},
+      photo:'sources/img/avatar.jfif',
     },
     el: '#app',
     router: router,

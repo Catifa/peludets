@@ -10,7 +10,7 @@ class FileController extends Controller
     protected function setProfilePhoto(Request $request)
     {
         Image::updateOrInsert(
-            ['category' => 'profile', 'idUser' => $request->idUser],
+            ['category' => 'profile', 'idUser' => $request->user()->id],
             ['image' => $request->img,]
         );
     }
@@ -18,8 +18,9 @@ class FileController extends Controller
     protected function getProfilePhoto(Request $request)
     {
         return Image::select('image')
-            ->where('idUser', '=', $request->idUser)
-            ->where('category', '=', 'profile');
+            ->where('idUser', '=', $request->user()->id)
+            ->where('category', '=', 'profile')
+            ->get();
     }
 
     protected function uploadImgae(Request $request)

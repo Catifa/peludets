@@ -92,9 +92,9 @@ export default {
   },
   methods: {
     register() {
-
       this.axios
-        .post("api/auth/register", this.user).then((response) => {
+        .post("api/auth/register", this.user)
+        .then((response) => {
           $("#form-registro").modal("hide");
           Swal.fire(
             "Registro completado",
@@ -102,7 +102,9 @@ export default {
             "success"
           );
           this.$root.user = response.data;
-          console.log(response.data);
+          axios.post("/api/files/getProfilePhoto").then((res) => {
+            this.$root.photo = res.data[0].image;
+          });
           this.$router.push("/");
         })
         .catch((error) => console.log(error))
