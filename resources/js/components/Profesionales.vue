@@ -119,6 +119,7 @@
       <div class="col-md-6 col-xs-12" id="flotante">
         <mapa-prof></mapa-prof>
       </div>
+       <!-- Tarjetas de profesionales -->
      <div id="cards" v-if="ensena" class="col-md-6 mt-4 col-xs-12">
         <div name="profesionales" class="col-md-4" v-for="usuario in usuarios" :key="usuario">
           <div class="card" style="width: 18rem;">
