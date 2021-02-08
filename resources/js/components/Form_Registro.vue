@@ -15,6 +15,10 @@
           <div class="modal-body">
             <form @submit.prevent="register" method="post">
               <div class="form-group">
+                <label for="email">Foto de Perfil (opcional)</label>
+                <input type="file" id="file" @change="file($event)" />
+              </div>
+              <div class="form-group">
                 <label for="email">Correo</label>
                 <input
                   type="text"
@@ -88,6 +92,7 @@ export default {
   data() {
     return {
       user: {},
+      img: {},
     };
   },
   methods: {
@@ -101,14 +106,53 @@ export default {
             "Bienvenido, " + this.user.name,
             "success"
           );
+
+          this.store();
+
           this.$root.user = response.data;
-          axios.post("/api/files/getProfilePhoto").then((res) => {
-            this.$root.photo = res.data[0].image;
-          });
+
           this.$router.push("/");
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
+    },
+    file(e) {
+      var formData = new FormData();
+      var file = e.target.files[0];
+      formData.append("Filedata", file);
+      var t = file.type.split("/").pop().toLowerCase();
+      if (t != "jpeg" && t != "jpg" && t != "png") {
+        alert("Seleccione un formato de imágen válido: (jpeg, jpg, png)");
+        document.getElementById("file").value = "";
+        return false;
+      }
+      if (file.size > 1024000) {
+        alert("Tamaño de imágen máximo (1MB)");
+        document.getElementById("file").value = "";
+        return false;
+      }
+
+      let f = e.target.files[0];
+      let reader = new FileReader();
+
+      reader.onloadend = () => {
+        this.img = reader.result;
+      };
+
+      reader.readAsDataURL(f);
+    },
+    store() {
+      //console.log(this.img);
+      axios
+        .post("/api/files/setProfilePhoto", { img: this.img })
+        .then((res) => {
+          this.getPhoto();
+        });
+    },
+    getPhoto() {
+      axios.post("/api/files/getProfilePhoto").then((res) => {
+        this.$root.photo = res.data[0].image;
+      });
     },
   },
 };

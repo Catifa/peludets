@@ -58,6 +58,6 @@ class AuthController extends Controller
 
     public function check()
     {
-        return (Auth::check()) ? json_encode(true) : json_encode(false);
+        return Auth::check();
     }
 }
