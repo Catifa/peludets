@@ -38,7 +38,7 @@ class UsuariosController extends Controller
      */
     protected function searchByProf(Request $request) {
 
-        $prof = $request->profesionales;
+        $prof = $request->profesion;
         $disp = $request->disponibilidad;
         $titu = $request->titulacion;
 
@@ -47,9 +47,11 @@ class UsuariosController extends Controller
         select('users.id', 'users.name', 'users.lastname') 
         -> join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
         -> join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-        -> where('nombre_profesion.profesiones', '=', $prof)
+        -> where('profesiones.nombre_profesion', '=', $prof)
         -> where('usuarios_profesiones.disponibilidad', '=', $disp) 
-        -> where('usuarios_profesiones.titulacion', '=', $titu) ->get();
+        -> where('usuarios_profesiones.titulacion', '=', $titu) -> get();
+
+        
 
     }
 
