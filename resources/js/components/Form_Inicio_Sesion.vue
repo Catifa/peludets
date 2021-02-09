@@ -62,7 +62,7 @@ export default {
           $("#form-inicioSesion").modal("hide");
           Swal.fire(
             "Registro completado",
-            "Bienvenido, " + response.data.nombre,
+            "Bienvenido, " + response.data.name,
             "success"
           );
           this.$root.user = response.data;
