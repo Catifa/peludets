@@ -1,5 +1,4 @@
 <style>
-
 form {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
@@ -45,7 +44,7 @@ form > button {
 }
 
 .colorChat {
-  color: #F3FFD4;
+  color: #f3ffd4;
   background-color: #4e456de3;
 }
 </style>
@@ -65,27 +64,42 @@ import socket from "../socket.io";
 
 const socketIO = socket("http://peludets.ddns.net:1337");
 
-socketIO.on("chat message", (msg) => {
-  console.log(msg);
-  const item = document.createElement("li");
-  item.textContent = msg.username + ": " + msg.message;
-  document.getElementById("mensajes").appendChild(item).classList.add('colorChat');
-  window.scrollTo(0, document.body.scrollHeight);
-});
-
 export default {
   data() {
     return {
       mensaje: "",
       user: {
-        name: '',
+        name: "",
       },
+      typing: false
     };
   },
-  watch: {
-    mensaje: (newVal, oldVal) => {
-      socketIO.emit("typing");
-    },
+  created() {
+
+    // Recibir mensajes del servidor
+    socketIO.on("chat message", (msg) => {
+      const item = document.createElement("li");
+      item.textContent = msg.username + ": " + msg.message;
+      document
+        .getElementById("mensajes")
+        .appendChild(item)
+        .classList.add("colorChat");
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+
+    // Mostrar si alguien está escribiendo
+    socketIO.on('typing', (data) => {
+      this.typing = data;
+    });
+
+    // Mostrar si ha acabado de escribir
+    socketIO.on('stopTyping', () => {
+      this.typing = false;
+    });
+
+    socketIO.on('disconected', (data) => {
+
+    })
   },
   methods: {
     emitMessage() {
@@ -95,9 +109,9 @@ export default {
   },
   mounted() {
     axios.get("/api/user").then((res) => {
-        this.user = res.data;
-        socketIO.emit("add user", this.user.name);
-      });
+      this.user = res.data;
+      socketIO.emit("add user", this.user.name);
+    });
   },
 };
 </script>
