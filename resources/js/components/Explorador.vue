@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import utils from "../metodos";
 import Swal from "sweetalert2";
 
 export default {
@@ -70,6 +71,43 @@ export default {
   methods: {
     enviarMapa(obj) {
       this.sitioMapa = obj;
+    },
+    // Metodo para calcular la distancia entre los sitios de interes y el usuario
+    calcDistancia() {
+      // Primer parametro del objeto es latitud, el segundo longitud.
+      let posicionActual = this.geoLoc;
+      let arrayAux = [];
+      this.sitiosInteres.forEach(sitio => {
+        arrayAux.push(this.haversine(sitio, posicionActual));
+      });
+      console.log(arrayAux);
+    },
+    haversine(sitio, posicionActual) {
+      Number.prototype.toRad = function() {
+        return (this * Math.PI) / 180;
+      };
+
+      var lat2 = sitio.latLng.lat;
+      var lon2 = sitio.latLng.lang;
+      var lat1 = posicionActual[0];
+      var lon1 = posicionActual[1];
+
+      var R = 6371; // km
+      //has a problem with the .toRad() method below.
+      var x1 = lat2 - lat1;
+      var dLat = x1.toRad();
+      var x2 = lon2 - lon1;
+      var dLon = x2.toRad();
+      var a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1.toRad()) *
+          Math.cos(lat2.toRad()) *
+          Math.sin(dLon / 2) *
+          Math.sin(dLon / 2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      var d = R * c;
+
+      return d;
     }
   },
   mounted: function() {
@@ -83,15 +121,20 @@ export default {
       this.geoLoc = {
         latLng: [41.50546, 2.11775]
       };
+      this.calcDistancia();
     } else {
       this.cargarCoord = false;
-      navigator.geolocation.getCurrentPosition(position => {
-        this.cargarCoord = true;
-        this.geoLoc = [position.coords.latitude, position.coords.longitude];
-      }).fail(() => {
-        this.cargarCoord = true;
-        this.geoLoc = [41.50546, 2.11775];
-      });
+      navigator.geolocation
+        .getCurrentPosition(position => {
+          this.cargarCoord = true;
+          this.geoLoc = [position.coords.latitude, position.coords.longitude];
+          this.calcDistancia();
+        })
+        .fail(() => {
+          this.cargarCoord = true;
+          this.geoLoc = [41.50546, 2.11775];
+          this.calcDistancia();
+        });
     }
   }
 };

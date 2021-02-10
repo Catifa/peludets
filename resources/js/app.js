@@ -16,7 +16,6 @@ import Vue from 'vue';
 import i18n from '../i18n/i18n'; // Traduccion
 import VueScheduler from 'v-calendar-scheduler';//calendario
 import 'v-calendar-scheduler/lib/main.css';//etilos calendario
-import Editor from '@tinymce/tinymce-vue'; // Editor de texto
 
 Vue.use(VueScheduler);//calendario
 
@@ -38,9 +37,6 @@ Vue.component('mapa-exp', MapaExplorador);
 // Forms Usuario
 Vue.component('form_registro', Form_Registro);
 Vue.component('form_inicio_sesion', Form_Inicio_Sesion);
-
-// Editor de perfil
-Vue.component('editor', Editor);
 
 const router = new VueRouter({
     mode: 'history',
