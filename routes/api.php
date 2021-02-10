@@ -6,6 +6,8 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfesionController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\MascotasController;
+
 use Illuminate\Http\Request;
 
 
@@ -28,10 +30,10 @@ Route::middleware('auth:sanctum')->get('/authentication', function (Request $req
     return true;
 });
 
-Route::get('mascotas', 'MascotasController@index');
+Route::get('mascotas', [MascotasController::class, 'index']);
 
 Route::group(['prefix' => 'mascota'], function () {
-    Route::post('add', 'MascotasController@add');
+    Route::post('add', [MascotasController::class, 'add']);
 });
 
 Route::group(['prefix' => 'auth'], function () {
