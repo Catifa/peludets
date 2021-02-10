@@ -6,8 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
+
+/**
+* @OA\Info(title="API Usuarios", version="1.0")
+*
+* @OA\Server(url="http://localhost")
+*/
+
 class UsuariosController extends Controller
 {
+
 
 
 
@@ -19,6 +27,25 @@ class UsuariosController extends Controller
      * 
      * @return \App\Models\UserUser
      */
+
+
+
+     
+        /**
+    * @OA\Post(
+    *     path="/api/usuario/userByProfOnly",
+    *     summary="Mostrar usuarios por profesion en el Home",
+    * 
+    *     @OA\Response(
+    *         response=200,
+    *         description="Mostrar todos los usuarios por profesion."
+    *     ),
+    *     @OA\Response(
+    *         response="default",
+    *         description="Ha ocurrido un error."
+    *     )
+    * )
+    */
     protected function userByProfOnly(Request $request) {
 
         return User::select('users.id', 'users.name', 'users.lastname')->
@@ -36,6 +63,23 @@ class UsuariosController extends Controller
      * 
      * @return \App\Models\UserUser
      */
+
+             /**
+    * @OA\Post(
+    *     path="/api/usuario/userByProf",
+    *     summary="Mostrar usuarios por profesion en Profesionales",
+    * 
+    *     @OA\Response(
+    *         response=200,
+    *         description="Mostrar todos los usuarios por profesion."
+    *     ),
+    *     @OA\Response(
+    *         response="default",
+    *         description="Ha ocurrido un error."
+    *     )
+    * )
+    */
+
     protected function searchByProf(Request $request) {
 
         $prof = $request->profesion;
@@ -54,6 +98,22 @@ class UsuariosController extends Controller
         
 
     }
+
+                 /**
+    * @OA\Post(
+    *     path="/api/usuario/userByProf",
+    *     summary="Mostrar usuarios por profesion en Profesionales",
+    * 
+    *     @OA\Response(
+    *         response=200,
+    *         description="Mostrar todos los usuarios por profesion."
+    *     ),
+    *     @OA\Response(
+    *         response="default",
+    *         description="Ha ocurrido un error."
+    *     )
+    * )
+    */
 
     
     protected function perfil(Request $request)
