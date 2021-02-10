@@ -1,0 +1,66 @@
+#chat-box {
+  background-color: #9ea1b333;
+  border-radius: 1% 1% 0 0;
+}
+
+.form-chat {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+
+.input-chat {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+
+.input-chat:focus {
+  outline: none;
+}
+
+.form-chat>button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+}
+
+#mensajes {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#mensajes>li {
+  padding: 0.5rem 1rem;
+}
+
+.horaChat {
+  font-size: 0.6rem;
+  color: #959592;
+  float: right;
+}
+
+.colorChatClie {
+  color: #f3ffd4;
+  background-color: #4e456de3;
+  width: 70%;
+}
+
+.colorChatServ {
+  color: #4e456de3;
+  background-color: #f3ffd4;
+  width: 70%;
+}

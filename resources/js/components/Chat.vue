@@ -1,59 +1,12 @@
 <style>
-form {
-  background: rgba(0, 0, 0, 0.15);
-  padding: 0.25rem;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  height: 3rem;
-  box-sizing: border-box;
-  backdrop-filter: blur(10px);
-}
-
-input {
-  border: none;
-  padding: 0 1rem;
-  flex-grow: 1;
-  border-radius: 2rem;
-  margin: 0.25rem;
-}
-
-input:focus {
-  outline: none;
-}
-
-form > button {
-  background: #333;
-  border: none;
-  padding: 0 1rem;
-  margin: 0.25rem;
-  border-radius: 3px;
-  outline: none;
-  color: #fff;
-}
-
-#mensajes {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-#mensajes > li {
-  padding: 0.5rem 1rem;
-}
-
-.colorChat {
-  color: #f3ffd4;
-  background-color: #4e456de3;
-}
+@import "../../css/chat.css";
 </style>
     
 <template>
-  <div class="col-md-3 mx-auto mt-2">
-    <ul id="mensajes"></ul>
-    <form @submit.prevent="emitMessage">
-      <input v-model="mensaje" autocomplete="off" />
+  <div id="chat-box" class="col-md-3 mx-auto mt-2 p-0">
+    <ul id="mensajes" class="pt-1"></ul>
+    <form @submit.prevent="emitMessage" class="form-chat">
+      <input v-model="mensaje" autocomplete="off" class="input-chat" />
       <button>Enviar</button>
     </form>
   </div>
@@ -69,49 +22,80 @@ export default {
     return {
       mensaje: "",
       user: {
-        name: "",
+        name: ""
       },
       typing: false
     };
   },
   created() {
-
     // Recibir mensajes del servidor
-    socketIO.on("chat message", (msg) => {
+    socketIO.on("chat message", msg => {
       const item = document.createElement("li");
-      item.textContent = msg.username + ": " + msg.message;
+      item.textContent = msg.message;
+
+      let date = new Date();
+      let hora =
+        this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
+      const spanHora = document.createElement("span");
+      spanHora.textContent = hora;
+
+      item.appendChild(spanHora).classList.add("horaChat", "mt-2");
+
       document
         .getElementById("mensajes")
         .appendChild(item)
-        .classList.add("colorChat");
+        .classList.add("colorChatServ", "rounded-pill", "m-1", "mr-auto");
+
       window.scrollTo(0, document.body.scrollHeight);
+      this.mensaje = "";
     });
 
     // Mostrar si alguien está escribiendo
-    socketIO.on('typing', (data) => {
+    socketIO.on("typing", data => {
       this.typing = data;
     });
 
     // Mostrar si ha acabado de escribir
-    socketIO.on('stopTyping', () => {
+    socketIO.on("stopTyping", () => {
       this.typing = false;
     });
 
-    socketIO.on('disconected', (data) => {
-
-    })
+    socketIO.on("disconected", data => {});
   },
   methods: {
+    addZero(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    },
     emitMessage() {
       socketIO.emit("chat message", this.mensaje);
+      const item = document.createElement("li");
+      item.textContent = this.mensaje;
+
+      let date = new Date();
+      let hora =
+        this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
+      const spanHora = document.createElement("span");
+      spanHora.textContent = hora;
+
+      item.appendChild(spanHora).classList.add("horaChat", "mt-2");
+
+      document
+        .getElementById("mensajes")
+        .appendChild(item)
+        .classList.add("colorChatClie", "rounded-pill", "m-1", "ml-auto");
+
+      window.scrollTo(0, document.body.scrollHeight);
       this.mensaje = "";
-    },
+    }
   },
   mounted() {
-    axios.get("/api/user").then((res) => {
+    axios.get("/api/user").then(res => {
       this.user = res.data;
       socketIO.emit("add user", this.user.name);
     });
-  },
+  }
 };
 </script>
