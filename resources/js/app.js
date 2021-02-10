@@ -43,7 +43,7 @@ const router = new VueRouter({
     routes: routes
 });
 
-Vue.config.devtools = false;
+Vue.config.devtools = true;
 
 const app = new Vue({
     data:{

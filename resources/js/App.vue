@@ -275,7 +275,7 @@ export default {
   name: "local-changer",
   data() {
     return {
-      
+
       langs: ["es", "ca", "en"],
     };
   },
@@ -288,6 +288,8 @@ export default {
         } else {
           this.$root.user = null;
         }
+
+        console.log(res.data);
       });
     },
     setLocale(locale) {
