@@ -101,12 +101,12 @@ class UsuariosController extends Controller
 
                  /**
     * @OA\Post(
-    *     path="/api/usuario/userByProf",
-    *     summary="Mostrar usuarios por profesion en Profesionales",
+    *     path="/api/usuario/perfil",
+    *     summary="Recupera el id del usuario para mostrar el perfil que estas visitando",
     * 
     *     @OA\Response(
     *         response=200,
-    *         description="Mostrar todos los usuarios por profesion."
+    *         description="Recupera el id del usuario para mostrar el perfil que estas visitando"
     *     ),
     *     @OA\Response(
     *         response="default",

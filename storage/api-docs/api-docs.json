@@ -37,6 +37,20 @@
                     }
                 }
             }
+        },
+        "/api/usuario/perfil": {
+            "post": {
+                "summary": "Recupera el id del usuario para mostrar el perfil que estas visitando",
+                "operationId": "App\\Http\\Controllers\\UsuariosController::perfil",
+                "responses": {
+                    "200": {
+                        "description": "Recupera el id del usuario para mostrar el perfil que estas visitando"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
         }
     },
     "security": [
