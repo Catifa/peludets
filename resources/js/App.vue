@@ -289,7 +289,7 @@ export default {
           this.$root.user = null;
         }
 
-        console.log(res.data);
+        //console.log(res.data);
       });
     },
     setLocale(locale) {
