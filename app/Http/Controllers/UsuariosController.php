@@ -8,10 +8,10 @@ use App\Models\User;
 
 
 /**
-* @OA\Info(title="API Usuarios", version="1.0")
-*
-* @OA\Server(url="http://localhost")
-*/
+ * @OA\Info(title="API Usuarios", version="1.0")
+ *
+ * @OA\Server(url="http://localhost")
+ */
 
 class UsuariosController extends Controller
 {
@@ -30,29 +30,35 @@ class UsuariosController extends Controller
 
 
 
-     
-        /**
-    * @OA\Post(
-    *     path="/api/usuario/userByProfOnly",
-    *     summary="Mostrar usuarios por profesion en el Home",
-    * 
-    *     @OA\Response(
-    *         response=200,
-    *         description="Mostrar todos los usuarios por profesion."
-    *     ),
-    *     @OA\Response(
-    *         response="default",
-    *         description="Ha ocurrido un error."
-    *     )
-    * )
-    */
-    protected function userByProfOnly(Request $request) {
 
-        return User::select('users.id', 'users.name', 'users.lastname')->
-        join('usuarios_profesiones', 'id_usuario', '=', 'users.id')-> 
-        join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')-> 
-        where('profesiones.nombre_profesion', '=', $request->input('nombre'))->get();
+    /**
+     * @OA\Post(
+     *     path="/api/usuario/userByProfOnly",
+     *     summary="Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+    protected function userByProfOnly(Request $request)
+    {
 
+        return User::select('users.id', 'users.name', 'users.lastname')
+        ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
+        ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
+        ->where('profesiones.nombre_profesion', '=', $request->input('nombre'))->get();
     }
 
     /**
@@ -64,78 +70,108 @@ class UsuariosController extends Controller
      * @return \App\Models\UserUser
      */
 
-             /**
-    * @OA\Post(
-    *     path="/api/usuario/userByProf",
-    *     summary="Mostrar usuarios por profesion en Profesionales",
-    * 
-    *     @OA\Response(
-    *         response=200,
-    *         description="Mostrar todos los usuarios por profesion."
-    *     ),
-    *     @OA\Response(
-    *         response="default",
-    *         description="Ha ocurrido un error."
-    *     )
-    * )
-    */
+    /**
+     * @OA\Post(
+     *     path="/api/usuario/searchByProf",
+     *     summary="Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
 
-    protected function searchByProf(Request $request) {
+    protected function searchByProf(Request $request)
+    {
 
         $prof = $request->profesion;
         $disp = $request->disponibilidad;
         $titu = $request->titulacion;
 
-        return User::
-
-        select('users.id', 'users.name', 'users.lastname') 
-        -> join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
-        -> join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-        -> where('profesiones.nombre_profesion', '=', $prof)
-        -> where('usuarios_profesiones.disponibilidad', '=', $disp) 
-        -> where('usuarios_profesiones.titulacion', '=', $titu) -> get();
-
-        
-
+        return User::select('users.id', 'users.name', 'users.lastname')
+            ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
+            ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
+            ->where('profesiones.nombre_profesion', '=', $prof)
+            ->where('usuarios_profesiones.disponibilidad', '=', $disp)
+            ->where('usuarios_profesiones.titulacion', '=', $titu)->get();
     }
 
-                 /**
-    * @OA\Post(
-    *     path="/api/usuario/perfil",
-    *     summary="Recupera el id del usuario para mostrar el perfil que estas visitando",
-    * 
-    *     @OA\Response(
-    *         response=200,
-    *         description="Recupera el id del usuario para mostrar el perfil que estas visitando"
-    *     ),
-    *     @OA\Response(
-    *         response="default",
-    *         description="Ha ocurrido un error."
-    *     )
-    * )
-    */
+    /**
+     * @OA\Post(
+     *     path="/api/usuario/perfil/{id}",
+     *     summary="Recupera el id del usuario para mostrar el perfil que estas visitando",
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Recupera el id del usuario para mostrar el perfil que estas visitando"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
 
-    
+
     protected function perfil(Request $request)
     {
         return User::where('id', '=', $request->id)->get();
     }
 
     /** 
-    *
-    * Guarda la parte del perfil editable
-    * 
-    * @param Request $request
-    */
-    protected function editarPerfil(Request $request) {
+     *
+     * Guarda la parte del perfil editable
+     * 
+     * @param Request $request
+     */
+
+    /**
+     * @OA\Post(
+     *     path="/api/usuario/editarPerfil/{texto}",
+     *     summary="Guarda la parte del perfil editable",
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="texto",
+     *     )),      
+     *      @OA\Response(
+     *         response=200,
+     *         description="Guarda la parte del perfil editable"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+
+    protected function editarPerfil(Request $request)
+    {
 
         $texto = $request->val;
 
-        DB::table('users')->
-        insert([
+        DB::table('users')->insert([
             'textoPerfil' => $texto, 'id' => '1'
         ]);
-
     }
 
     /**
@@ -146,12 +182,36 @@ class UsuariosController extends Controller
      * 
      * @return json
      */
-    protected function getProfText(Request $request) {
+
+    /**
+     * @OA\Post(
+     *     path="/api/usuario/getProfText/{id}",
+     *     summary="Recuperar el texto que tenga el usuario guardado en su perfil",
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="Id",
+     *     )),  
+     * 
+     *     @OA\Response(
+     *         response=200,
+     *         description="Recuperar el texto que tenga el usuario guardado en su perfil."
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+
+    protected function getProfText(Request $request)
+    {
 
         $id = $request->id;
 
-        $query = User::select('textoPerfil')->
-        where('id', '=', $id);
+        $query = User::select('textoPerfil')->where('id', '=', $id);
 
         return json_encode($query->get());
     }
@@ -162,14 +222,37 @@ class UsuariosController extends Controller
      * 
      * @param Request $request
      */
-    protected function setProfText(Request $request) {
-        
+
+
+    /**
+     * @OA\Post(
+     *     path="/api/usuario/setProfText/{id}",
+     *     summary=" Actualizar el texto que tenga el usuario en su perfil",
+     * 
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),  
+     * 
+     *     @OA\Response(
+     *         response=200,
+     *         description=" Actualizar el texto que tenga el usuario en su perfil"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+    protected function setProfText(Request $request)
+    {
+
         $id = $request->id;
         $texto = $request->val;
 
-        User::where('id', $id)->
-        update(['textoPerfil' => $texto]);
-
+        User::where('id', $id)->update(['textoPerfil' => $texto]);
     }
-
 }

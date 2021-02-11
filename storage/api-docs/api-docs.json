@@ -7,16 +7,51 @@
     "servers": [
         {
             "url": "http://localhost"
+        },
+        {
+            "url": "http://localhost"
         }
     ],
     "paths": {
+        "/api/solicitudes/enviarSolicitud": {
+            "post": {
+                "summary": "Almacena solicitudes de los usuarios",
+                "operationId": "App\\Http\\Controllers\\SolicitudController::enviarSolicitud",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Almacena solicitudes de los usuarios"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/api/usuario/userByProfOnly": {
             "post": {
-                "summary": "Mostrar usuarios por profesion en el Home",
+                "summary": "Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::userByProfOnly",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Mostrar todos los usuarios por profesion."
+                        "description": "Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home"
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
@@ -24,13 +59,22 @@
                 }
             }
         },
-        "/api/usuario/userByProf": {
+        "/api/usuario/searchByProf": {
             "post": {
-                "summary": "Mostrar usuarios por profesion en Profesionales",
+                "summary": "Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::searchByProf",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Mostrar todos los usuarios por profesion."
+                        "description": "Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home"
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
@@ -38,13 +82,91 @@
                 }
             }
         },
-        "/api/usuario/perfil": {
+        "/api/usuario/perfil/{id}": {
             "post": {
                 "summary": "Recupera el id del usuario para mostrar el perfil que estas visitando",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::perfil",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Recupera el id del usuario para mostrar el perfil que estas visitando"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/usuario/editarPerfil/{texto}": {
+            "post": {
+                "summary": "Guarda la parte del perfil editable",
+                "operationId": "App\\Http\\Controllers\\UsuariosController::editarPerfil",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "texto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Guarda la parte del perfil editable"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/usuario/getProfText/{id}": {
+            "post": {
+                "summary": "Recuperar el texto que tenga el usuario guardado en su perfil",
+                "operationId": "App\\Http\\Controllers\\UsuariosController::getProfText",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Recuperar el texto que tenga el usuario guardado en su perfil."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/usuario/setProfText/{id}": {
+            "post": {
+                "summary": " Actualizar el texto que tenga el usuario en su perfil",
+                "operationId": "App\\Http\\Controllers\\UsuariosController::setProfText",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": " Actualizar el texto que tenga el usuario en su perfil"
                     },
                     "default": {
                         "description": "Ha ocurrido un error."

@@ -6,8 +6,39 @@ use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
+/**
+
+ *
+ * @OA\Server(url="http://localhost")
+ */
+
 class SolicitudController extends Controller
 {
+
+/**
+     * @OA\Post(
+     *     path="/api/solicitudes/enviarSolicitud",
+     *     summary="Almacena solicitudes de los usuarios",
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Almacena solicitudes de los usuarios"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+
+
     protected function enviarSolicitud(Request $request)
     {
         $request->validate([
