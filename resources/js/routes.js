@@ -3,6 +3,7 @@ import Explorador from './components/Explorador.vue';
 import Profesionales from './components/Profesionales.vue';
 import myProfile from './components/Perfil.vue';
 import Profile from './components/templates/tmp_perfil.vue';
+import Chat from './components/Chat.vue';
 import VueRouter from 'vue-router';
 import axios from 'axios';
 
@@ -48,4 +49,9 @@ export const routes = [
         path: '/profile/:id',
         component: Profile
     },
+    {
+        name: 'Chat',
+        path :'/chat',
+        component:Chat
+    }
 ];
