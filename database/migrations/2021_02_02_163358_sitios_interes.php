@@ -14,7 +14,9 @@ class SitiosInteres extends Migration
     public function up()
     {
         Schema::create('sitios_interes', function (Blueprint $table) {
-            $table->string("coordenadas");
+            $table->string("lat");
+            $table->string("lon");
+            $table->string("name");
             $table->string("descripcion");
             $table->timestamps();
         });
@@ -27,6 +29,6 @@ class SitiosInteres extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('sitios_interes');
     }
 }
