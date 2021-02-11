@@ -8,7 +8,7 @@ use App\Models\User;
 
 
 /**
- * @OA\Info(title="API Usuarios", version="1.0")
+ * @OA\Info(title="API Peludets", version="1.0")
  *
  * @OA\Server(url="http://localhost")
  */
@@ -33,14 +33,14 @@ class UsuariosController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/usuario/userByProfOnly",
+     *     path="/api/usuario/userByProfOnly?nombre_profesion",
      *     summary="Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
      *     @OA\Parameter(
      *          name="",
      *          in="path",
      * 
      *     @OA\Schema(
-     *         type="id",
+     *         type="Psicologo",
      *     )),      
      *     @OA\Response(
      *         response=200,
@@ -73,7 +73,7 @@ class UsuariosController extends Controller
     /**
      * @OA\Post(
      *     path="/api/usuario/searchByProf",
-     *     summary="Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
+     *     summary="Busqueda de profesionales solo por profesion",
      *     @OA\Parameter(
      *          name="",
      *          in="path",
@@ -155,7 +155,7 @@ class UsuariosController extends Controller
      *     )),      
      *      @OA\Response(
      *         response=200,
-     *         description="Guarda la parte del perfil editable"
+     *         description="Guarda la parte del perfil editable, en la base de datos del propio usuario"
      *     ),
      *     @OA\Response(
      *         response="default",
@@ -186,7 +186,7 @@ class UsuariosController extends Controller
     /**
      * @OA\Post(
      *     path="/api/usuario/getProfText/{id}",
-     *     summary="Recuperar el texto que tenga el usuario guardado en su perfil",
+     *     summary="Recuperar lo guardado por el usuario en su perfil",
      *     @OA\Parameter(
      *          name="",
      *          in="path",
@@ -227,7 +227,7 @@ class UsuariosController extends Controller
     /**
      * @OA\Post(
      *     path="/api/usuario/setProfText/{id}",
-     *     summary=" Actualizar el texto que tenga el usuario en su perfil",
+     *     summary=" Actualizar el diseño  perfil del usuario",
      * 
      *     @OA\Parameter(
      *          name="",
@@ -239,7 +239,7 @@ class UsuariosController extends Controller
      * 
      *     @OA\Response(
      *         response=200,
-     *         description=" Actualizar el texto que tenga el usuario en su perfil"
+     *         description=" Actualizar el diseño  que tenga el usuario en su perfil, que previamente modifique"
      *     ),
      *     @OA\Response(
      *         response="default",

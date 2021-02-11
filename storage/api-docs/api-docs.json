@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Usuarios",
+        "title": "API Peludets",
         "version": "1.0"
     },
     "servers": [
@@ -15,8 +15,31 @@
     "paths": {
         "/api/solicitudes/enviarSolicitud": {
             "post": {
-                "summary": "Almacena solicitudes de los usuarios",
+                "summary": "Envia una solicitud al profesional correspondiente",
                 "operationId": "App\\Http\\Controllers\\SolicitudController::enviarSolicitud",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cuando rellenas el formulario de solicitudes envia informacion a la base de datos del usuario"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/solicitudes/recuperar": {
+            "post": {
+                "summary": "Almacena solicitudes de los usuarios",
+                "operationId": "App\\Http\\Controllers\\SolicitudController::recuperar",
                 "parameters": [
                     {
                         "name": "",
@@ -36,7 +59,7 @@
                 }
             }
         },
-        "/api/usuario/userByProfOnly": {
+        "/api/usuario/userByProfOnly?nombre_profesion": {
             "post": {
                 "summary": "Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::userByProfOnly",
@@ -45,7 +68,7 @@
                         "name": "",
                         "in": "path",
                         "schema": {
-                            "type": "id"
+                            "type": "Psicologo"
                         }
                     }
                 ],
@@ -130,7 +153,7 @@
         },
         "/api/usuario/getProfText/{id}": {
             "post": {
-                "summary": "Recuperar el texto que tenga el usuario guardado en su perfil",
+                "summary": "Recuperar lo guardado por el usuario en su perfil",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::getProfText",
                 "parameters": [
                     {
@@ -153,7 +176,7 @@
         },
         "/api/usuario/setProfText/{id}": {
             "post": {
-                "summary": " Actualizar el texto que tenga el usuario en su perfil",
+                "summary": " Actualizar el texto  perfil del usuario",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::setProfText",
                 "parameters": [
                     {

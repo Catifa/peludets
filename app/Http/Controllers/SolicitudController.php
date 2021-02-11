@@ -16,10 +16,11 @@ use Illuminate\Support\Facades\DB;
 class SolicitudController extends Controller
 {
 
-/**
+    /**
      * @OA\Post(
      *     path="/api/solicitudes/enviarSolicitud",
-     *     summary="Almacena solicitudes de los usuarios",
+     *     summary="Envia una solicitud al profesional correspondiente",
+
      *     @OA\Parameter(
      *          name="",
      *          in="path",
@@ -29,7 +30,7 @@ class SolicitudController extends Controller
      *     )),      
      *     @OA\Response(
      *         response=200,
-     *         description="Almacena solicitudes de los usuarios"
+     *         description="Cuando rellenas el formulario de solicitudes envia informacion a la base de datos del usuario"
      *     ),
      *     @OA\Response(
      *         response="default",
@@ -55,6 +56,29 @@ class SolicitudController extends Controller
             'id_destinatario' => $request->id_destinatario,
         ]);
     }
+
+/**
+     * @OA\Post(
+     *     path="/api/solicitudes/recuperar",
+     *     summary="Almacena solicitudes de los usuarios",
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Almacena solicitudes de los usuarios"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+
     protected function recuperar(Request $request)
     {
         return Solicitud::select('nombre_trabajo', 'descripcion_trabajo')
