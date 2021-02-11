@@ -16,7 +16,7 @@ class SitiosInteres extends Migration
         Schema::create('sitios_interes', function (Blueprint $table) {
             $table->string("lat");
             $table->string("lon");
-            $table->string("name");
+            $table->string("nombre");
             $table->string("descripcion");
             $table->timestamps();
         });

@@ -10,4 +10,9 @@ class SitiosInteres extends Model
     protected $table = 'sitios_interes';
 
     use HasFactory;
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 }

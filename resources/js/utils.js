@@ -1,13 +1,10 @@
 export const utils = {
     calcDistancia: (localizacion, posicionUsuario) => {
 
-
         var lat2 = localizacion.lat;  //Localización
         var lon2 = localizacion.lon;
         var lat1 = posicionUsuario[0];   //Usuario
         var lon1 = posicionUsuario[1];
-
-        console.log(lat2, lon2, lat1, lon1);
 
         var R = 6371; // km 
         //has a problem with the .toRad() method below.
@@ -20,7 +17,6 @@ export const utils = {
             Math.sin(dLon / 2) * Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c;
-        console.log(d);
         return d;
     }
 }

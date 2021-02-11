@@ -17,7 +17,7 @@ class Ofertas extends Migration
             $table->integer("idUser");
             $table->string("lat");
             $table->string("lon");
-            $table->string("name");
+            $table->string("nombre");
             $table->string("descripcion");
             $table->timestamps();
         });
