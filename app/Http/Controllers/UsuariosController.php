@@ -33,14 +33,14 @@ class UsuariosController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/usuario/userByProfOnly?nombre_profesion",
+     *     path="/api/usuario/userByProfOnly",
      *     summary="Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
      *     @OA\Parameter(
      *          name="",
      *          in="path",
      * 
      *     @OA\Schema(
-     *         type="Psicologo",
+     *         type="String",
      *     )),      
      *     @OA\Response(
      *         response=200,
@@ -109,7 +109,7 @@ class UsuariosController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/usuario/perfil/{id}",
+     *     path="/api/usuario/perfil",
      *     summary="Recupera el id del usuario para mostrar el perfil que estas visitando",
      *     @OA\Parameter(
      *          name="",
@@ -144,7 +144,7 @@ class UsuariosController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/usuario/editarPerfil/{texto}",
+     *     path="/api/usuario/editarPerfil",
      *     summary="Guarda la parte del perfil editable",
      *     @OA\Parameter(
      *          name="",
@@ -185,7 +185,7 @@ class UsuariosController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/usuario/getProfText/{id}",
+     *     path="/api/usuario/getProfText",
      *     summary="Recuperar lo guardado por el usuario en su perfil",
      *     @OA\Parameter(
      *          name="",
@@ -226,7 +226,7 @@ class UsuariosController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/usuario/setProfText/{id}",
+     *     path="/api/usuario/setProfText",
      *     summary=" Actualizar el diseño  perfil del usuario",
      * 
      *     @OA\Parameter(

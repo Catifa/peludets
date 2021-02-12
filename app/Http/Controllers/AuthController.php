@@ -8,8 +8,38 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
 
+
+/**
+
+ *
+ * @OA\Server(url="http://localhost")
+ */
+
 class AuthController extends Controller
 {
+
+                 /**
+     * @OA\Post(
+     *     path="/api/auth/register",
+     *     summary="Registro de usuarios",
+
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Registro de usuarios"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
     public function register(Request $request)
     {
         $request->validate([
@@ -36,6 +66,30 @@ class AuthController extends Controller
         
     }
 
+
+                     /**
+     * @OA\Post(
+     *     path="/api/auth/login",
+     *     summary="Login de usuarios",
+
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Login de usuarios"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -51,11 +105,57 @@ class AuthController extends Controller
         ]);
     }
 
+                     /**
+     * @OA\Post(
+     *     path="/api/auth/logout",
+     *     summary="Metodo para obtener la autorizacion",
+
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Metodo para obtener la autorizacion"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+
     public function logout()
     {
         Auth::logout();
     }
 
+
+                     /**
+     * @OA\Post(
+     *     path="/api/auth/check",
+     *     summary="MEtodo de comprovacion de usuarios",
+
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="MEtodo de comprovacion de usuarios"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
     public function check()
     {
         return Auth::check();
