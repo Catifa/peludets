@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfesionController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\MascotasController;
+use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\SitiosInteresController;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,6 @@ Route::get('profesiones', [ProfesionController::class, 'getAll']);
 Route::group(['prefix' => 'solicitudes'], function () {
     Route::post('enviar', [SolicitudController::class, 'enviarSolicitud']);
     Route::post('recuperar', [SolicitudController::class, 'recuperar']);
-
 });
 
 Route::group(['prefix' => 'files'], function () {
@@ -71,4 +71,5 @@ Route::group(['prefix' => 'usuario'], function () {
 
 Route::group(['prefix' => 'explorador'], function () {
     Route::post('getSitiosInteres', [SitiosInteresController::class, 'getSitiosInteres']);
+    Route::post('getOfertas', [OfertasController::class, 'getOfertas']);
 });

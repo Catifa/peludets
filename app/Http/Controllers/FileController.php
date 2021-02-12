@@ -3,23 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
     protected function setProfilePhoto(Request $request)
     {
-        Image::updateOrInsert(
-            ['category' => 'profile', 'idUser' => $request->user()->id],
-            ['image' => $request->img,]
-        );
+        User::where('id', $request->user()->id)
+            ->update(['photo' => $request->img,]);
     }
 
     protected function getProfilePhoto(Request $request)
     {
-        return Image::select('image')
-            ->where('idUser', '=', $request->user()->id)
-            ->where('category', '=', 'profile')
+        return User::select('photo')
+            ->where('id', '=', $request->user()->id)
             ->get();
     }
 
