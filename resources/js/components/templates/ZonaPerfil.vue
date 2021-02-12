@@ -1,9 +1,8 @@
 <template>
   <div class="mb-2">
     <img
-     v-bind:src="this.$root.user.photo"
+     v-bind:src="this.$root.photo"
       class="rounded-circle mt-5"
-      alt="Peludets"
       width="300px"
       height="300px"
     />
