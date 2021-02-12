@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Mascota;
 use Illuminate\Http\Request;
 
+
+/**
+
+ *
+ * @OA\Server(url="http://localhost")
+ */
+
 class MascotasController extends Controller
 {
     /**
@@ -12,6 +19,30 @@ class MascotasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+             /**
+     * @OA\Get(
+     *     path="/api/mascotas/index",
+     *     summary="Devuelve todos los registros de mascotas",
+
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Devuelve todos los registros de mascotas"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+
     public function index()
     {
         $mascotas = Mascota::all()->toArray();
@@ -23,6 +54,33 @@ class MascotasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+                  /**
+     * @OA\Post(
+     *     path="/api/mascotas/add",
+     *     summary="Añadir Mascotas",
+
+     *     @OA\Parameter(
+     *          name="",
+     *          in="path",
+     * 
+     *     @OA\Schema(
+     *         type="id",
+     *     )),      
+     *     @OA\Response(
+     *         response=200,
+     *         description="Añadir mascotas"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
+
+
+     
     public function add(Request $request)
     {
         $mascota = new Mascota([

@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Usuarios",
+        "title": "API Peludets",
         "version": "1.0"
     },
     "servers": [
@@ -10,13 +10,281 @@
         },
         {
             "url": "http://localhost"
+        },
+        {
+            "url": "http://localhost"
+        },
+        {
+            "url": "http://localhost"
+        },
+        {
+            "url": "http://localhost"
+        },
+        {
+            "url": "http://localhost"
+        },
+        {
+            "url": "http://localhost"
         }
     ],
     "paths": {
+        "/api/auth/register": {
+            "post": {
+                "summary": "Registro de usuarios",
+                "operationId": "App\\Http\\Controllers\\AuthController::register",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Registro de usuarios"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "summary": "Login de usuarios",
+                "operationId": "App\\Http\\Controllers\\AuthController::login",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login de usuarios"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "summary": "Metodo para obtener la autorizacion",
+                "operationId": "App\\Http\\Controllers\\AuthController::logout",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Metodo para obtener la autorizacion"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/auth/check": {
+            "post": {
+                "summary": "MEtodo de comprovacion de usuarios",
+                "operationId": "App\\Http\\Controllers\\AuthController::check",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "MEtodo de comprovacion de usuarios"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/files/setProfilePhoto": {
+            "post": {
+                "summary": "Metodo para subir fotos",
+                "operationId": "App\\Http\\Controllers\\FileController::setProfilePhoto",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Metodo para subir fotos"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/files/getProfilePhoto": {
+            "post": {
+                "summary": "Devuelve las imagenes de los usuarios",
+                "operationId": "App\\Http\\Controllers\\FileController::getProfilePhoto",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve las imagenes de los usuarios"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/mascotas/index": {
+            "get": {
+                "summary": "Devuelve todos los registros de mascotas",
+                "operationId": "App\\Http\\Controllers\\MascotasController::index",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todos los registros de mascotas"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/mascotas/add": {
+            "post": {
+                "summary": "Añadir Mascotas",
+                "operationId": "App\\Http\\Controllers\\MascotasController::add",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Añadir mascotas"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/profesiones/getAll": {
+            "get": {
+                "summary": "Devuelve todos los registros de Profesiones",
+                "operationId": "App\\Http\\Controllers\\ProfesionController::getAll",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todos los registros de Profesiones"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/explorador/getSitiosInteres": {
+            "post": {
+                "summary": "Recupera sitios de interes",
+                "operationId": "App\\Http\\Controllers\\SitiosInteresController::getSitiosInteres",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Recupera de la base de datos los sitios de interes que los usuarios registran y almacenan"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/api/solicitudes/enviarSolicitud": {
             "post": {
-                "summary": "Almacena solicitudes de los usuarios",
+                "summary": "Envia una solicitud al profesional correspondiente",
                 "operationId": "App\\Http\\Controllers\\SolicitudController::enviarSolicitud",
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "path",
+                        "schema": {
+                            "type": "id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cuando rellenas el formulario de solicitudes envia informacion a la base de datos del usuario"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/solicitudes/recuperar": {
+            "post": {
+                "summary": "Almacena solicitudes de los usuarios",
+                "operationId": "App\\Http\\Controllers\\SolicitudController::recuperar",
                 "parameters": [
                     {
                         "name": "",
@@ -45,7 +313,7 @@
                         "name": "",
                         "in": "path",
                         "schema": {
-                            "type": "id"
+                            "type": "String"
                         }
                     }
                 ],
@@ -61,7 +329,7 @@
         },
         "/api/usuario/searchByProf": {
             "post": {
-                "summary": "Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home",
+                "summary": "Busqueda de profesionales solo por profesion",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::searchByProf",
                 "parameters": [
                     {
@@ -82,7 +350,7 @@
                 }
             }
         },
-        "/api/usuario/perfil/{id}": {
+        "/api/usuario/perfil": {
             "post": {
                 "summary": "Recupera el id del usuario para mostrar el perfil que estas visitando",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::perfil",
@@ -105,7 +373,7 @@
                 }
             }
         },
-        "/api/usuario/editarPerfil/{texto}": {
+        "/api/usuario/editarPerfil": {
             "post": {
                 "summary": "Guarda la parte del perfil editable",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::editarPerfil",
@@ -120,7 +388,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Guarda la parte del perfil editable"
+                        "description": "Guarda la parte del perfil editable, en la base de datos del propio usuario"
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
@@ -128,9 +396,9 @@
                 }
             }
         },
-        "/api/usuario/getProfText/{id}": {
+        "/api/usuario/getProfText": {
             "post": {
-                "summary": "Recuperar el texto que tenga el usuario guardado en su perfil",
+                "summary": "Recuperar lo guardado por el usuario en su perfil",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::getProfText",
                 "parameters": [
                     {
@@ -151,9 +419,9 @@
                 }
             }
         },
-        "/api/usuario/setProfText/{id}": {
+        "/api/usuario/setProfText": {
             "post": {
-                "summary": " Actualizar el texto que tenga el usuario en su perfil",
+                "summary": " Actualizar el diseño  perfil del usuario",
                 "operationId": "App\\Http\\Controllers\\UsuariosController::setProfText",
                 "parameters": [
                     {
@@ -166,7 +434,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": " Actualizar el texto que tenga el usuario en su perfil"
+                        "description": " Actualizar el diseño  que tenga el usuario en su perfil, que previamente modifique"
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
