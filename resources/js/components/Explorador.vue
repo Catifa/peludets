@@ -83,10 +83,37 @@ export default {
             nombre: element.sitioObject.nombre,
             descripcion: element.sitioObject.descripcion,
             latLng: L.latLng(element.sitioObject.lat, element.sitioObject.lon),
-          }
+          };
           this.sitiosInteres.push(obj);
         });
         console.log(arrSitios);
+      });
+    },
+    listarOfertas(geoloc) {
+      //geoloc es la posicion del usuario en el mapa
+      var arrOfertas = [];
+      axios.post("/api/explorador/getOfertas").then((res) => {
+        //console.log(res.data);
+        res.data.forEach((element) => {
+          let dist = utils.calcDistancia(element, geoloc);
+          let obj = {
+            ofertaObject: element,
+            distancia: dist,
+          };
+          arrSitios.push(obj);
+        });
+        arrOfertas.sort((a, b) => (a.distancia > b.distancia ? 1 : -1));
+
+        arrOfertas.forEach((element) => {
+          let obj = {
+            idUser: element.ofertaObject.idUser,
+            nombre: element.ofertaObject.nombre,
+            descripcion: element.ofertaObject.descripcion,
+            latLng: L.latLng(element.ofertaObject.lat, element.ofertaObject.lon),
+          };
+          this.ofertaObject.push(obj);
+        });
+        console.log(arrOfertas);
       });
     },
   },

@@ -308,7 +308,7 @@ export default {
         //console.log(res.data);
         this.$root.user = res.data;
         axios.post("/api/files/getProfilePhoto").then((res) => {
-          this.$root.photo = res.data[0].image;
+          this.$root.photo = res.data[0].photo;
         });
       });
     },
