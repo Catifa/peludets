@@ -123,7 +123,7 @@
      <div id="cards" v-if="ensena" class="col-md-6 mt-4 col-xs-12">
         <div name="profesionales" class="col-md-4" v-for="usuario in usuarios" :key="usuario">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://corgicare.com/wp-content/uploads/welsh-corgi-history-and-lore.jpg" alt="Card image cap">
+            <img class="card-img-top"  v-bind:src="usuario.photo" alt="Carddd image cap">
             <div class="card-body">
               <p class="card_name card_attr">{{ usuario.name }}</p>
               <p class="card_surname card_attr">{{ usuario.lastname }}</p>
@@ -136,7 +136,7 @@
       <div id="cards" v-if="showByProf" class="col-md-6 mt-4 col-xs-12">
         <div name="profesionales" class="col-md-4" v-for="usuario in usuarios" :key="usuario">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://corgicare.com/wp-content/uploads/welsh-corgi-history-and-lore.jpg" alt="Card image cap">
+            <img class="card-img-top" v-bind:src="usuario.photo" alt="Cardd image cap">
             <div class="card-body">
               <p class="card_name card_attr">{{ usuario.name }}</p>
               <p class="card_surname card_attr">{{ usuario.lastname }}</p>

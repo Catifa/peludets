@@ -99,7 +99,7 @@ class UsuariosController extends Controller
         $disp = $request->disponibilidad;
         $titu = $request->titulacion;
 
-        return User::select('users.id', 'users.name', 'users.lastname')
+        return User::select('users.id', 'users.name', 'users.lastname','user.photo')
             ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
             ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
             ->where('profesiones.nombre_profesion', '=', $prof)
