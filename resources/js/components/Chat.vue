@@ -3,74 +3,90 @@
 </style>
     
 <template>
-  <div id="chat-box" class="col-md-3 mx-auto mt-2 p-0">
-    <ul id="mensajes" class="pt-1"></ul>
-    <form @submit.prevent="emitMessage" class="form-chat">
-      <input v-model="mensaje" autocomplete="off" class="input-chat" />
-      <button>Enviar</button>
-    </form>
+  <div>
+    <button @click="iniciarChat"></button>
+    <div v-if="showChat" id="chat-box" class="col-md-3 mx-auto mt-2 p-0">
+      <ul id="mensajes" class="pt-1"></ul>
+      <form @submit.prevent="emitMessage" class="form-chat">
+        <input v-model="mensaje" autocomplete="off" class="input-chat" />
+        <button>Enviar</button>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
 import socket from "../socket.io";
 
-const socketIO = socket("http://peludets.ddns.net:1337");
-
 export default {
   data() {
     return {
       mensaje: "",
       user: {
-        name: ""
+        name: "",
       },
-      typing: false
+      typing: false,
+      showChat: false,
+      socketIO: socket("http://peludets.ddns.net:1337"),
+      room: "ID2_ID3_15022021",
     };
   },
   created() {
-    // Recibir mensajes del servidor
-    socketIO.on("chat message", msg => {
-      const item = document.createElement("li");
-      item.textContent = msg.message;
+      // Recibir mensajes del servidor
+      this.socketIO.on("chat message", (msg) => {
+        console.log(msg);
+        const item = document.createElement("li");
+        item.textContent = msg.message;
 
-      let date = new Date();
-      let hora =
-        this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
-      const spanHora = document.createElement("span");
-      spanHora.textContent = hora;
+        let date = new Date();
+        let hora =
+          this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
+        const spanHora = document.createElement("span");
+        spanHora.textContent = hora;
 
-      item.appendChild(spanHora).classList.add("horaChat", "mt-2");
+        item.appendChild(spanHora).classList.add("horaChat", "mt-2");
 
-      document
-        .getElementById("mensajes")
-        .appendChild(item)
-        .classList.add("colorChatServ", "rounded-pill", "m-1", "mr-auto");
+        document
+          .getElementById("mensajes")
+          .appendChild(item)
+          .classList.add("colorChatServ", "rounded-pill", "m-1", "mr-auto");
 
-      window.scrollTo(0, document.body.scrollHeight);
-      this.mensaje = "";
-    });
+        window.scrollTo(0, document.body.scrollHeight);
+      });
 
-    // Mostrar si alguien está escribiendo
-    socketIO.on("typing", data => {
-      this.typing = data;
-    });
+      // Mostrar si alguien está escribiendo
+      this.socketIO.on("typing", (data) => {
+        this.typing = data;
+      });
 
-    // Mostrar si ha acabado de escribir
-    socketIO.on("stopTyping", () => {
-      this.typing = false;
-    });
+      // Mostrar si ha acabado de escribir
+      this.socketIO.on("stopTyping", () => {
+        this.typing = false;
+      });
 
-    socketIO.on("disconected", data => {});
+      this.socketIO.on("disconected", (data) => {});
   },
   methods: {
+    // Arreglo para el horario del chat
     addZero(i) {
       if (i < 10) {
         i = "0" + i;
       }
       return i;
     },
+
+    // Iniciar el chat
+    iniciarChat() {
+      this.showChat = true;
+
+      this.socketIO.emit("add user", this.user.name);
+
+      this.socketIO.emit("room", this.room);
+    },
+
+    // Enviar mensajes
     emitMessage() {
-      socketIO.emit("chat message", this.mensaje);
+      this.socketIO.emit("chat message", this.mensaje);
       const item = document.createElement("li");
       item.textContent = this.mensaje;
 
@@ -92,10 +108,10 @@ export default {
     }
   },
   mounted() {
-    axios.get("/api/user").then(res => {
+    // Esto no se no se...
+    axios.get("/api/user").then((res) => {
       this.user = res.data;
-      socketIO.emit("add user", this.user.name);
     });
-  }
+  },
 };
 </script>
