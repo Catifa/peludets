@@ -15,30 +15,48 @@
     </div>
     <div class="col-md-6 mt-3 mx-auto">
       <div class="row">
-        <button class="btn btn-azul-peludets mr-2" type="button">
+        <button
+          class="btn btn-azul-peludets mr-2"
+          type="button"
+          @click="listarSitiosInteres(geoLoc)"
+        >
           {{ $t("explorador.buttonSitios") }}
         </button>
-        <button class="btn btn-azul-peludets" type="button">
+        <button
+          class="btn btn-azul-peludets"
+          type="button"
+          @click="listarOfertas(geoLoc)"
+        >
           {{ $t("explorador.buttonTrabajos") }}
         </button>
       </div>
-      <div class="row mt-3">
+      <div class="row mt-3" id="cards">
         <div
-          class="card bg-crema-peludets"
-          v-for="sitio in sitiosInteres"
-          :key="sitio.nombre"
+          class="card mb-3"
+          style="max-width: 320px"
+          v-for="obj in tarjetas"
+          :key="obj.nombre"
         >
-          <img class="card-img-top" alt="Imagen" />
-          <div class="card-body">
-            <h5 class="card-title">{{ sitio.nombre }}</h5>
-            <p class="card-text">{{ sitio.descripcion }}</p>
-            <button
-              class="btn btn-azul-peludets"
-              type="button"
-              @click="enviarMapa(sitio)"
-            >
-              {{ $t("explorador.buttonMostrarMapa") }}
-            </button>
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img v-bind:src="obj.photo" class="card-img" />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ obj.nombre }}</h5>
+                <p class="card-text">{{ obj.descripcion }}</p>
+                <button
+                  class="btn btn-azul-peludets"
+                  type="button"
+                  @click="enviarMapa(sitio)"
+                >
+                  {{ $t("explorador.buttonMostrarMapa") }}
+                </button>
+                <button v-if="obj.idUser != undefined">
+                  {{ obj.idUser }}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -53,7 +71,7 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      sitiosInteres: [],
+      tarjetas: [],
       sitioMapa: {},
       geoLoc: [],
       cargarCoord: true,
@@ -64,6 +82,7 @@ export default {
       this.sitioMapa = obj;
     },
     listarSitiosInteres(geoloc) {
+      $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
       var arrSitios = [];
       axios.post("/api/explorador/getSitiosInteres").then((res) => {
@@ -82,14 +101,16 @@ export default {
           let obj = {
             nombre: element.sitioObject.nombre,
             descripcion: element.sitioObject.descripcion,
+            photo: element.sitioObject.photo,
             latLng: L.latLng(element.sitioObject.lat, element.sitioObject.lon),
           };
-          this.sitiosInteres.push(obj);
+          this.tarjetas.push(obj);
         });
-        console.log(arrSitios);
+        //console.log(arrSitios);
       });
     },
     listarOfertas(geoloc) {
+      $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
       var arrOfertas = [];
       axios.post("/api/explorador/getOfertas").then((res) => {
@@ -100,7 +121,7 @@ export default {
             ofertaObject: element,
             distancia: dist,
           };
-          arrSitios.push(obj);
+          arrOfertas.push(obj);
         });
         arrOfertas.sort((a, b) => (a.distancia > b.distancia ? 1 : -1));
 
@@ -109,11 +130,15 @@ export default {
             idUser: element.ofertaObject.idUser,
             nombre: element.ofertaObject.nombre,
             descripcion: element.ofertaObject.descripcion,
-            latLng: L.latLng(element.ofertaObject.lat, element.ofertaObject.lon),
+            photo: element.ofertaObject.photo,
+            latLng: L.latLng(
+              element.ofertaObject.lat,
+              element.ofertaObject.lon
+            ),
           };
-          this.ofertaObject.push(obj);
+          this.tarjetas.push(obj);
         });
-        console.log(arrOfertas);
+        //console.log(arrOfertas);
       });
     },
   },
@@ -134,12 +159,10 @@ export default {
         .getCurrentPosition((position) => {
           this.cargarCoord = true;
           this.geoLoc = [position.coords.latitude, position.coords.longitude];
-          this.listarSitiosInteres(this.geoLoc);
         })
         .fail(() => {
           this.cargarCoord = true;
           this.geoLoc = [41.50546, 2.11775];
-          this.listarSitiosInteres(this.geoLoc);
         });
     }
   },

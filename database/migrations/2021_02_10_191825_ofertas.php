@@ -15,10 +15,11 @@ class Ofertas extends Migration
     {
         Schema::create('ofertas', function (Blueprint $table) {
             $table->integer("idUser");
-            $table->string("lat");
-            $table->string("lon");
+            $table->double("lat");
+            $table->double("lon");
             $table->string("nombre");
             $table->string("descripcion");
+            $table->longText('photo')->nullable();
             $table->timestamps();
         });
     }

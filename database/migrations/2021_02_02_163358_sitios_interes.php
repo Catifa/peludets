@@ -14,10 +14,11 @@ class SitiosInteres extends Migration
     public function up()
     {
         Schema::create('sitios_interes', function (Blueprint $table) {
-            $table->string("lat");
-            $table->string("lon");
+            $table->double("lat");
+            $table->double("lon");
             $table->string("nombre");
             $table->string("descripcion");
+            $table->longText('photo')->nullable();
             $table->timestamps();
         });
     }
