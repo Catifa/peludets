@@ -3,11 +3,17 @@
 </style>
     
 <template>
-  <div>
-    <button @click="iniciarChat"></button>
-    <div v-if="showChat" id="chat-box" class="col-md-3 mx-auto mt-2 p-0">
-      <ul id="mensajes" class="pt-1"></ul>
-      <form @submit.prevent="emitMessage" class="form-chat">
+  <div class="col-md-12 ml-5">
+    <div class="row">
+      <div id="chat-box" class="col-md-12 mx-auto mt-2 p-0">
+        <ul id="mensajes" class="pt-1"></ul>
+      </div>
+    </div>
+    <div class="row">
+      <form
+        @submit.prevent="emitMessage"
+        class="form-chat form-chat col-md-12 mx-auto"
+      >
         <input v-model="mensaje" autocomplete="off" class="input-chat" />
         <button>Enviar</button>
       </form>
@@ -32,39 +38,41 @@ export default {
     };
   },
   created() {
-      // Recibir mensajes del servidor
-      this.socketIO.on("chat message", (msg) => {
-        console.log(msg);
-        const item = document.createElement("li");
-        item.textContent = msg.message;
+    // Recibir mensajes del servidor
+    this.socketIO.on("chat message", (msg) => {
+      console.log(msg);
+      const item = document.createElement("li");
+      item.textContent = msg.message;
 
-        let date = new Date();
-        let hora =
-          this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
-        const spanHora = document.createElement("span");
-        spanHora.textContent = hora;
+      let date = new Date();
+      let hora =
+        this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
+      const spanHora = document.createElement("span");
+      spanHora.textContent = hora;
 
-        item.appendChild(spanHora).classList.add("horaChat", "mt-2");
+      item.appendChild(spanHora).classList.add("horaChat", "mt-2");
 
-        document
-          .getElementById("mensajes")
-          .appendChild(item)
-          .classList.add("colorChatServ", "rounded-pill", "m-1", "mr-auto");
+      document
+        .getElementById("mensajes")
+        .appendChild(item)
+        .classList.add("colorChatServ", "rounded-pill", "m-1", "mr-auto");
 
-        window.scrollTo(0, document.body.scrollHeight);
-      });
+      document.getElementById("chat-box").scrollTop = document.getElementById(
+        "chat-box"
+      ).scrollHeight;
+    });
 
-      // Mostrar si alguien está escribiendo
-      this.socketIO.on("typing", (data) => {
-        this.typing = data;
-      });
+    // Mostrar si alguien está escribiendo
+    this.socketIO.on("typing", (data) => {
+      this.typing = data;
+    });
 
-      // Mostrar si ha acabado de escribir
-      this.socketIO.on("stopTyping", () => {
-        this.typing = false;
-      });
+    // Mostrar si ha acabado de escribir
+    this.socketIO.on("stopTyping", () => {
+      this.typing = false;
+    });
 
-      this.socketIO.on("disconected", (data) => {});
+    this.socketIO.on("disconected", (data) => {});
   },
   methods: {
     // Arreglo para el horario del chat
@@ -86,26 +94,32 @@ export default {
 
     // Enviar mensajes
     emitMessage() {
-      this.socketIO.emit("chat message", this.mensaje);
-      const item = document.createElement("li");
-      item.textContent = this.mensaje;
+      if (this.mensaje.trim().length == 0) {
+        this.mensaje = "";
+      } else {
+        this.socketIO.emit("chat message", this.mensaje);
+        const item = document.createElement("li");
+        item.textContent = this.mensaje;
 
-      let date = new Date();
-      let hora =
-        this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
-      const spanHora = document.createElement("span");
-      spanHora.textContent = hora;
+        let date = new Date();
+        let hora =
+          this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
+        const spanHora = document.createElement("span");
+        spanHora.textContent = hora;
 
-      item.appendChild(spanHora).classList.add("horaChat", "mt-2");
+        item.appendChild(spanHora).classList.add("horaChat", "mt-2");
 
-      document
-        .getElementById("mensajes")
-        .appendChild(item)
-        .classList.add("colorChatClie", "rounded-pill", "m-1", "ml-auto");
+        document
+          .getElementById("mensajes")
+          .appendChild(item)
+          .classList.add("colorChatClie", "rounded-pill", "m-1", "ml-auto");
 
-      window.scrollTo(0, document.body.scrollHeight);
-      this.mensaje = "";
-    }
+        document.getElementById("chat-box").scrollTop = document.getElementById(
+          "chat-box"
+        ).scrollHeight;
+        this.mensaje = "";
+      }
+    },
   },
   mounted() {
     // Esto no se no se...

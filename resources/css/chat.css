@@ -1,6 +1,8 @@
 #chat-box {
   background-color: #9ea1b333;
   border-radius: 1% 1% 0 0;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .form-chat {
