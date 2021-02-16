@@ -39,7 +39,7 @@ export default {
   },
   methods: {},
   mounted() {
-      this.axios.post("/api/solicitudes/recuperar" , {'id':this.$root.user.id}).then((response) => {
+      this.axios.post("/api/solicitudes/recuperar").then((response) => {
       this.solicitudes = response.data;      
     });
   },
