@@ -3,11 +3,7 @@
 </style>
 
 <template>
-  <div class="cotainer-fluid">
-    <div class="row">
-      
-  </div>
-  </div>
+  <div style="height: 8000px"></div>
 </template>
 <script>
 export default {
