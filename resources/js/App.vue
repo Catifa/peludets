@@ -1,12 +1,12 @@
 <style>
 @import "../css/app.css";
-@import "../css/main_menu.css";
 @import "../css/footer.css";
 </style>
  
 <template>
 
 <mainmenu></mainmenu>
+
 
 </template>
 

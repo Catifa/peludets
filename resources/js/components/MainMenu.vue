@@ -1,16 +1,20 @@
+<style>
+@import "../../css/main_menu.css";
+</style>
 <template>
+
   <div class="container-fluid bg-azul-peludets">
     <!-- CABECERA -->
     <div class="row">
       <!-- LOGO -->
-      <div class="mt-5 col-md-3 mx-auto d-flex justify-content-center">
-        <route-link to="/" class="navbar-brand">
+      <div class="mt-5 col-md-3 mx-auto">
+        <router-link to="/" class="navbar-brand d-flex justify-content-center">
           <img
             src="../../img/logo/logo.png"
             alt="Peludets"
             style="width: 50%"
           />
-        </route-link>
+        </router-link>
       </div>
     </div>
 
@@ -118,4 +122,6 @@
       </nav>
     </div>
   </div>
+
 </template>
+
