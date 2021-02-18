@@ -6,14 +6,14 @@
     text-decoration: none;
     padding: 10px 0;
     margin: 0 10px;
-    text-shadow: 0.5px 0.7px #0000004d;
-    font-size: 1.5em;
+    text-shadow: 0.5px 0.7px #E4F0C4;
+    font-size: 1.25em;
 }
 
 .menu-link:hover {
     color: #676086;
     text-shadow: 0.5px 0.7px #ffffffad;
-    border-bottom: 4px solid #96b5c2;
+    border-bottom: 4px solid #E4F0C4;
     padding: 6px 0; 
 }
 

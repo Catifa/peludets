@@ -5,7 +5,8 @@
 </style>
  
 <template>
-  <div class="container-fluid">
+
+  <div class="container-fluid bg-azul-peludets">
     <!-- CABECERA -->
     <div class="row">
       <!-- LOGO -->
@@ -115,7 +116,9 @@
       </nav>
     </div>
   </div>
+
 </template>
+
 <script>
 export default {
   name: "local-changer",
