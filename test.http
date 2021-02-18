@@ -1,0 +1,18 @@
+POST http://localhost/api/auth/login HTTP/1.1
+content-Content-Type: application/json
+
+{
+"email": "mailoji20@gmail.com",
+"password" : "12345"
+}
+
+###
+
+POST http://localhost/api/usuario/userByProfOnly HTTP/1.1
+content-Content-Type: application/json
+
+{
+"nombre": "Psicologo",
+}
+
+###
