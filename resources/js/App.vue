@@ -4,20 +4,21 @@
 </style>
  
 <template>
+  <div>
+    <mainmenu></mainmenu>
 
-<mainmenu></mainmenu>
-
-
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 
-import MainMenu from './components/MainMenu';
+import MainMenu from "./components/MainMenu";
 
 export default {
   name: "local-changer",
   components: {
-    mainmenu: MainMenu
+    mainmenu: MainMenu,
   },
   data() {
     return {
