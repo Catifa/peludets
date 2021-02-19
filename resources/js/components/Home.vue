@@ -5,28 +5,27 @@
 <template>
   <div class="cotainer-fluid">
     <div class="row">
-      
+      <div id="buscador" class="navbar col-md-3 container">
+        <div class="row mx-auto">
+            <select class="form-select col-md-7" onchange="hola()">
+                <option disabled selected>Categoria</option>
+                <option>Oferta</option>
+                <option>Profesionales</option>
+                <option>Sitios de interes</option>
+            </select>
+            <button class="btn col-md-4 ml-auto">Search</button>
+        </div>
+    </div>
   </div>
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      profesiones: [],
-      profesion: {}
-    };
-  },
   methods: {
-    buscarTrabajos() {
-      let prof = this.profesion; 
-      this.$router.push({name: 'profesionales', params: {prof}});
-    }
-  },
-  created() {
-    this.axios.get("api/profesiones").then(response => {
-      this.profesiones = response.data;
-    });
+    hola() {
+        console.log("hola");
+        $('#buscador').toggleClass('col-md-6 col-md-4');
+    },
   }
 };
 </script>
