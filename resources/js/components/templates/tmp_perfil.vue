@@ -1,50 +1,8 @@
 <template>
   <div class="row mt-4">
-    <div class="col-xs-12 col-md-3 mt-2">
-      <h3 class="crema-peludets">Peticion de contrato</h3>
-      <form
-        @submit.prevent="peticionSolicitud"
-        id="peticionTrabajo"
-        class="rounded"
-      >
-        <div class="form-group">
-          <label>Tabajo</label>
-          <input
-            type="text"
-            class="form-control"
-            id="peticionInfoTrabajo"
-            v-model="solicitud.nombre_trabajo"
-          />
-        </div>
-        <div class="form-group">
-          <label>Descripcion</label>
-          <input
-            type="text"
-            class="form-control"
-            id="peticiondescripcionTrabajo"
-            v-model="solicitud.descripcion_trabajo"
-          />
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
-              <label>Fecha Inicio</label>
-              <input
-                type="date"
-                class="form-control"
-                id="peticionFechaInicio"
-              />
-            </div>
-            <div class="col-md-6">
-              <label>Fecha Fin</label>
-              <input type="date" class="form-control" id="peticionFechaFin" />
-            </div>
-          </div>
-        </div>
-        <button id="enviarPeticionTrabajo" class="btn btn-verde-peludets">
-          Enviar
-        </button>
-      </form>
+    <div class="col-xs-12 col-md-2">
+      <!-- Formulario para iniciar la solicitud de contrato -->
+      <solicitud-trabajo></solicitud-trabajo>
       <div class="col-md-12 mt-2">
         <h3 class="crema-peludets">Disponibilidad</h3>
         <div id="calendarioDispPerfil"></div>
@@ -498,10 +456,12 @@
 <script>
 import Swal from "sweetalert2";
 import Chat from "../Chat.vue";
+import SolicitudTrabajo from "./Tmp_Perfil_SolicitudTrabajo.vue";
 
 export default {
   components: {
     chat: Chat,
+    'solicitud-trabajo': SolicitudTrabajo,
   },
   data() {
     return {
@@ -525,10 +485,12 @@ export default {
         });
     },
     getContent() {
-      this.axios.post("/api/usuario/getProfText", this.user).then(response => {
-        let textVal = response.data[0];
-        $("#contenidoPerfil").html(textVal.textoPerfil);
-      });
+      this.axios
+        .post("/api/usuario/getProfText", this.user)
+        .then((response) => {
+          let textVal = response.data[0];
+          $("#contenidoPerfil").html(textVal.textoPerfil);
+        });
     },
     peticionSolicitud() {
       this.axios
