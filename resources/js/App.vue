@@ -34,7 +34,7 @@
             <i class="fas fa-bars"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <router-link to="/explorador" class="nav-link">
                   {{ $t("app.menuExplorador") }}
