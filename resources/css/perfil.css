@@ -156,22 +156,6 @@ div#cards {
     flex-wrap: wrap;
 }
 
-
-
-.card {
-    border-style: dashed;
-    border-radius: 15px;
-    width: fit-content;
-    padding: 10px;
-    background: antiquewhite;
-    font-weight: 600;
-    margin: 15px;
-}
-
-.card_attr{
-  font-weight:500;
-}
-
 #log {
   background:darkcyan;
   padding:5px;
