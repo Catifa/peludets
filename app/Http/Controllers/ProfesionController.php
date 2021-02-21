@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profesion;
+use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Request;
 
 
@@ -44,9 +45,20 @@ class ProfesionController extends Controller
      *     )
      * )
      */
-    public function getAll()
+    protected function getAll()
     {
-        $profesiones = Profesion::all()->toArray();
-        return array_reverse($profesiones);
+        return Profesion::all()->toArray();
+    }
+
+    /**
+     *  Obtener todas las profesiones de un usuario
+     * 
+     *  @return Array
+     */
+    protected function getUserProf(Request $request) {
+        
+        return Profesion::select('profesiones.id', 'profesiones.nombre_profesion')
+        ->join('usuarios_profesiones', 'id_profesion', '=', 'profesiones.id')
+        ->where('usuarios_profesiones.id_usuario', '=', $request->id)->get();
     }
 }
