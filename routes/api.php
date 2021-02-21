@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfesionController;
 use App\Http\Controllers\SolicitudController;
@@ -31,10 +32,15 @@ Route::middleware('auth:sanctum')->get('/authentication', function (Request $req
     return true;
 });
 
-Route::get('mascotas', [MascotasController::class, 'index']);
-
+// Peticiones Mascotas
 Route::group(['prefix' => 'mascota'], function () {
     Route::post('add', [MascotasController::class, 'add']);
+    Route::get('all', [MascotasController::class, 'index']);
+});
+
+// Peticiones Especies
+Route::group(['prefix' => 'especie'], function () {
+    Route::get('getAll', [EspecieController::class, 'getAll']);
 });
 
 Route::group(['prefix' => 'auth'], function () {
