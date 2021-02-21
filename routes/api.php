@@ -45,7 +45,9 @@ Route::group(['prefix' => 'especie'], function () {
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('register', [AuthController::class, 'register']);
+    Route::post('adminRegister', [AuthController::class, 'adminRegister']);
     Route::post('login', [AuthController::class, 'login']);
+    Route::post('adminLogin', [AuthController::class, 'adminLogin']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('check', [AuthController::class, 'check']);
 });

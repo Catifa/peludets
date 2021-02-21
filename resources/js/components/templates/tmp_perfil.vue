@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-xs-6 col-md-4 mt-5 ml-auto">
         <img
-          src="https://www.thesprucepets.com/thmb/svw9xgcobToAwVEmK-WhFYPNZfM=/1500x1000/filters:fill(auto,1)/breed_profile_corgi_1117986_hero_917-6ed2ed41b6e641bb98221b13a1d83a86.jpg"
+          v-bind:src="user.photo"
           class="rounded-circle"
           alt="Peludets"
           width="200px"

@@ -55,7 +55,7 @@ class UsuariosController extends Controller
     protected function userByProfOnly(Request $request)
     {
 
-        return User::select('users.id', 'users.name', 'users.lastname')
+        return User::select('users.id', 'users.name', 'users.lastname', 'users.photo')
         ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
         ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
         ->where('profesiones.nombre_profesion', '=', $request->input('nombre'))->get();

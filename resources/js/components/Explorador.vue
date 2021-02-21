@@ -32,7 +32,7 @@
       </div>
       <div class="row mt-3" id="cards">
         <div
-          class="card mb-3"
+          class="card card-explorador mb-3"
           style="max-width: 320px"
           v-for="obj in tarjetas"
           :key="obj.nombre"

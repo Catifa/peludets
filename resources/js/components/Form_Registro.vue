@@ -103,7 +103,7 @@ export default {
           $("#form-registro").modal("hide");
           Swal.fire(
             "Registro completado",
-            "Bienvenido, " + this.user.name,
+            "Bienvenido, " + response.data.name,
             "success"
           );
 

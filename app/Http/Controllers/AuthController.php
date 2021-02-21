@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +67,27 @@ class AuthController extends Controller
         
     }
 
+    public function adminRegister(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|string|min:5'
+        ]);
+
+        Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return response()->json(Auth::guard('admin')->user(), 200);
+        }
+        
+        return response()->json(Auth::guard('admin')->user(), 200);
+        
+    }
 
                      /**
      * @OA\Post(
@@ -105,6 +127,21 @@ class AuthController extends Controller
         ]);
     }
 
+    public function adminLogin(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
+            return response()->json(Auth::guard('admin')->user(), 200);
+        }
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorect.']
+        ]);
+    }
+
                      /**
      * @OA\Post(
      *     path="/api/auth/logout",
@@ -131,6 +168,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+        Auth::guard('admin')->logout();
     }
 
 
