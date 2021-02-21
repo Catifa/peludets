@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal" tabindex="-1" role="dialog" ref="modalSolicitud">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <!-- Header Modal -->
@@ -10,6 +10,7 @@
             class="close"
             data-dismiss="modal"
             aria-label="Close"
+            @click="reiniciarModal()"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -18,35 +19,25 @@
         <div class="modal-body">
           <!-- Botones donde se muestran las profesiones -->
           <div class="row">
-            <div class="col-md-4">
-              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Paseo'; activeBtn($event)">
-                Paseo <i class="fas fa-walking"></i>
-              </button>
-            </div>
-            <div class="col-md-4">
-              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Alojamiento'; activeBtn($event)">
-                Alojamiento <i class="fas fa-home"></i>
-              </button>
-            </div>
-            <div class="col-md-4">
-              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Peluqueria'; activeBtn($event)">
-                Peluqueria <i class="fas fa-cut"></i>
+            <div class="col-md-4" v-for="trabajo in propTrabajos" :key="trabajo.id">
+              <button type="button" class="btn btn-outline-success" @click="solicitud = trabajo.nombre_profesion; activeBtn($event)">
+                {{ trabajo.nombre_profesion }} <i class="fas fa-walking"></i>
               </button>
             </div>
           </div>
           <!-- Sección Solicitudes -->
           <div class="row mt-3">
-            <solicitud-paseo v-if="solicitud == 'Paseo'" :propHora="horas" :propEspecies="especies"></solicitud-paseo>
-            <solicitud-alojamiento v-if="solicitud == 'Alojamiento'" :propHora="horas" :propEspecies="especies"></solicitud-alojamiento>
-            <solicitud-peluqueria v-if="solicitud == 'Peluqueria'" :propEspecies="especies"></solicitud-peluqueria>
-            <solicitud-entrenador v-if="solicitud == 'Entrenamiento'" :propHora="horas" :propEspecies="especies"></solicitud-entrenador>
+            <solicitud-paseo v-if="solicitud == 'Paseador'" :propHora="horas" :propEspecies="especies"></solicitud-paseo>
+            <solicitud-alojamiento v-if="solicitud == 'Alojamiento'" :propEspecies="especies"></solicitud-alojamiento>
+            <solicitud-peluqueria v-if="solicitud == 'Peluquero'" :propHora="horas" :propEspecies="especies"></solicitud-peluqueria>
+            <solicitud-entrenador v-if="solicitud == 'Entrenador'" :propHora="horas" :propEspecies="especies"></solicitud-entrenador>
             <solicitud-psicologo v-if="solicitud == 'Psicologo'" :propHora="horas" :propEspecies="especies"></solicitud-psicologo>
           </div>
         </div>
         <!-- Footer Modal -->
         <div class="modal-footer bg-azul-peludets">
           <button type="button" class="btn btn-lila-peludets">Solicitar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" @click="reiniciarModal()">
             Cerrar
           </button>
         </div>
@@ -70,7 +61,7 @@ export default {
       'solicitud-entrenador': SolicitudEntrenador,
       'solicitud-psicologo': SolicitudPsicologo
   },
-
+  props: ['propTrabajos'],
   data() {
     return {
       // Variable para tener las horas sin tener que escribirlas a mano
@@ -78,10 +69,9 @@ export default {
       // Variable para pasarle a los modales las diferentes especies
       especies: [],
       // Variable para determinar el modal que se mostrara
-      solicitud: null
+      solicitud: null,
     };
   },
-
   methods: {
     // Bucle para rellenar todas las horas con franja de media hora
     rellenarHoras() {
@@ -98,16 +88,20 @@ export default {
       $('.modal-body .btn-outline-success').removeClass('active');
       $(event.target).addClass('active');
     },
+    // Get de todas las especies en la base de datos
     getAllSpecies() {
       this.axios.get('/api/especie/getAll').then((response) => {
         this.especies = response.data;
       });
+    },
+    reiniciarModal() {
+      this.solicitud = null
+      $('.modal-body .btn-outline-success').removeClass('active');
     }
   },
-
   created() {
     this.rellenarHoras();
     this.getAllSpecies();
-  },
+  }
 };
 </script>

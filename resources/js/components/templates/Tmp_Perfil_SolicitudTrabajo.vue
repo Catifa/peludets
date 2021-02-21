@@ -29,7 +29,7 @@
         </div>
     </div>
     <!-- Modal para realizar la contratación -->
-    <modal-trabajos id="modalTrabajos"></modal-trabajos>
+    <modal-trabajos id="modalTrabajos" :propTrabajos="profesiones"></modal-trabajos>
   </div>
 
 </template>
@@ -53,7 +53,9 @@ export default {
 
   methods: {
     obtenerProfesionesLista() {
-      return null;
+      this.axios.post('/api/profesiones/getUserProf', {id: this.$route.params.id}).then((response) => {
+        this.profesiones = response.data;
+      });
     },
     mostrarModalTrabajos() {
         $('#modalTrabajos').modal('show');
@@ -61,8 +63,7 @@ export default {
   },
 
   created() {
-    // Al crearse el componente se le añaden las profesiones
-    this.profesiones = this.obtenerProfesionesLista();
+    this.obtenerProfesionesLista();
   }
   
 };

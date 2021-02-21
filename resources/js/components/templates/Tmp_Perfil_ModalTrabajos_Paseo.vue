@@ -36,7 +36,8 @@
         <div class="form-group">
           <label for="razaMascota"> Raza de la mascota </label>
           <select class="form-control">
-            <option>
+            <option v-for="especie in especies" :key="especie.id">
+              {{ especie.nombre }}
             </option>
           </select>
         </div>
@@ -46,17 +47,29 @@
         <label for="pesoMascota"> Peso </label>
         <div class="row">
           <div class="col-md-3 ml-auto">
-            <button type="button" class="btn btn-outline-secondary">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              @click="activeBtn($event)"
+            >
               0 - 5 kg
             </button>
           </div>
           <div class="col-md-3">
-            <button type="button" class="btn btn-outline-secondary">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              @click="activeBtn($event)"
+            >
               5 - 10 kg
             </button>
           </div>
           <div class="col-md-3 mr-auto">
-            <button type="button" class="btn btn-outline-secondary">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              @click="activeBtn($event)"
+            >
               + 10 kg
             </button>
           </div>
@@ -90,3 +103,21 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['propHora', 'propEspecies'],
+  data() {
+    return {
+      horas: this.propHora,
+      especies: this.propEspecies
+    }
+  },
+  methods: {
+    activeBtn(event) {
+      $(".btn-outline-secondary").removeClass("active");
+      $(event.target).addClass("active");
+    }
+  }
+}
+</script>
