@@ -50,8 +50,12 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('check', [AuthController::class, 'check']);
 });
 
-// Recoger las profesiones
-Route::get('profesiones', [ProfesionController::class, 'getAll']);
+// Peticiones profesiones
+Route::group(['prefix' => 'profesiones'], function() {
+    Route::get('getAll', [ProfesionController::class, 'getAll']);
+    Route::post('getUserProf', [ProfesionController::class, 'getUserProf']);
+});
+
 
 //Solitudes
 Route::group(['prefix' => 'solicitudes'], function () {
