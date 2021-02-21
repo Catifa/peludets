@@ -19,28 +19,28 @@
           <!-- Botones donde se muestran las profesiones -->
           <div class="row">
             <div class="col-md-4">
-              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Paseo'">
+              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Paseo'; activeBtn($event)">
                 Paseo <i class="fas fa-walking"></i>
               </button>
             </div>
             <div class="col-md-4">
-              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Alojamiento'">
+              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Alojamiento'; activeBtn($event)">
                 Alojamiento <i class="fas fa-home"></i>
               </button>
             </div>
             <div class="col-md-4">
-              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Peluqueria'">
+              <button type="button" class="btn btn-outline-success" @click="solicitud = 'Peluqueria'; activeBtn($event)">
                 Peluqueria <i class="fas fa-cut"></i>
               </button>
             </div>
           </div>
           <!-- Sección Solicitudes -->
           <div class="row mt-3">
-            <solicitud-paseo v-if="solicitud == 'Paseo'"></solicitud-paseo>
-            <solicitud-alojamiento v-if="solicitud == 'Alojamiento'"></solicitud-alojamiento>
-            <solicitud-peluqueria v-if="solicitud == 'Peluqueria'"></solicitud-peluqueria>
-            <solicitud-entrenador v-if="solicitud == 'Entrenamiento'"></solicitud-entrenador>
-            <solicitud-psicologo v-if="solicitud == 'Psicologo'"></solicitud-psicologo>
+            <solicitud-paseo v-if="solicitud == 'Paseo'" :propHora="horas" :propEspecies="especies"></solicitud-paseo>
+            <solicitud-alojamiento v-if="solicitud == 'Alojamiento'" :propHora="horas" :propEspecies="especies"></solicitud-alojamiento>
+            <solicitud-peluqueria v-if="solicitud == 'Peluqueria'" :propEspecies="especies"></solicitud-peluqueria>
+            <solicitud-entrenador v-if="solicitud == 'Entrenamiento'" :propHora="horas" :propEspecies="especies"></solicitud-entrenador>
+            <solicitud-psicologo v-if="solicitud == 'Psicologo'" :propHora="horas" :propEspecies="especies"></solicitud-psicologo>
           </div>
         </div>
         <!-- Footer Modal -->
@@ -75,6 +75,8 @@ export default {
     return {
       // Variable para tener las horas sin tener que escribirlas a mano
       horas: [],
+      // Variable para pasarle a los modales las diferentes especies
+      especies: [],
       // Variable para determinar el modal que se mostrara
       solicitud: null
     };
@@ -91,11 +93,21 @@ export default {
           this.horas.push(i + ":30");
         }
       }
+    },
+    activeBtn(event) {
+      $('.modal-body .btn-outline-success').removeClass('active');
+      $(event.target).addClass('active');
+    },
+    getAllSpecies() {
+      this.axios.get('/api/especie/getAll').then((response) => {
+        this.especies = response.data;
+      });
     }
   },
 
   created() {
     this.rellenarHoras();
+    this.getAllSpecies();
   },
 };
 </script>
