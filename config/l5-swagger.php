@@ -150,7 +150,6 @@ return [
                         'read',
                         'write'
                     ],
-
                     'passport' => []
                     */
                 ],
