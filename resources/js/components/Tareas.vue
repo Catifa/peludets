@@ -10,7 +10,7 @@
       </div>
 
       <div class="col-md-8 col-xs-12 mt-5">
-        <vue-scheduler class="mt-5"
+                <vue-scheduler class="mt-5"
           :event-dialog-config="dialogConfig"
           :min-date="null"
           :max-date="null"
@@ -48,12 +48,15 @@
 import AgregarTareas from "./components-subparts/AgregarTareas";
 import DragArea from "./components-subparts/DragArea";
 import DropArea from "./components-subparts/DropArea";
+import Calendario from "./templates/Tmp_Calendario";
+
 
 export default {
   components: {
     AgregarTareas,
     DragArea,
     DropArea,
+    Calendario,
   },
   data() {
     return {
