@@ -2,7 +2,7 @@
   <div class="row mt-4">
     <div class="col-xs-12 col-md-2">
       <!-- Formulario para iniciar la solicitud de contrato -->
-      <solicitud-trabajo></solicitud-trabajo>
+      <solicitud-trabajo :propUser="user"></solicitud-trabajo>
       <div class="col-md-12 mt-2">
         <h3 class="crema-peludets">Disponibilidad</h3>
         <div id="calendarioDispPerfil"></div>

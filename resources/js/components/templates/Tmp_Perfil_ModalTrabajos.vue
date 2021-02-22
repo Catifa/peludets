@@ -61,7 +61,7 @@ export default {
       'solicitud-entrenador': SolicitudEntrenador,
       'solicitud-psicologo': SolicitudPsicologo
   },
-  props: ['propTrabajos'],
+  props: ['propTrabajos', 'propUsuario'],
   data() {
     return {
       // Variable para tener las horas sin tener que escribirlas a mano
