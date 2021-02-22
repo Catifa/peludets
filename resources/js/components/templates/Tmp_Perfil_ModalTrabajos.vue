@@ -27,16 +27,16 @@
           </div>
           <!-- Sección Solicitudes -->
           <div class="row mt-3">
-            <solicitud-paseo v-if="solicitud == 'Paseador'" :propHora="horas" :propEspecies="especies"></solicitud-paseo>
-            <solicitud-alojamiento v-if="solicitud == 'Alojamiento'" :propEspecies="especies"></solicitud-alojamiento>
-            <solicitud-peluqueria v-if="solicitud == 'Peluquero'" :propHora="horas" :propEspecies="especies"></solicitud-peluqueria>
-            <solicitud-entrenador v-if="solicitud == 'Entrenador'" :propHora="horas" :propEspecies="especies"></solicitud-entrenador>
-            <solicitud-psicologo v-if="solicitud == 'Psicologo'" :propHora="horas" :propEspecies="especies"></solicitud-psicologo>
+            <solicitud-paseo v-if="solicitud == 'Paseador'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-paseo>
+            <solicitud-alojamiento v-if="solicitud == 'Alojamiento'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-alojamiento>
+            <solicitud-peluqueria v-if="solicitud == 'Peluquero'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-peluqueria>
+            <solicitud-entrenador v-if="solicitud == 'Entrenador'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-entrenador>
+            <solicitud-psicologo v-if="solicitud == 'Psicologo'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-psicologo>
           </div>
         </div>
         <!-- Footer Modal -->
         <div class="modal-footer bg-azul-peludets">
-          <button type="button" class="btn btn-lila-peludets">Solicitar</button>
+          <button type="button" class="btn btn-lila-peludets" @click="enviarSolicitud()">Solicitar</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal" @click="reiniciarModal()">
             Cerrar
           </button>
@@ -70,6 +70,8 @@ export default {
       especies: [],
       // Variable para determinar el modal que se mostrara
       solicitud: null,
+      // Objeto con los campos de la solicitud
+      solicitudTrabajo: {},
     };
   },
   methods: {
@@ -94,8 +96,12 @@ export default {
         this.especies = response.data;
       });
     },
+    enviarSolicitud() {
+      
+    },
     reiniciarModal() {
       this.solicitud = null
+      this.solicitudTrabajo = {},
       $('.modal-body .btn-outline-success').removeClass('active');
     }
   },

@@ -7,14 +7,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="fechaSolicitud">Fecha</label>
-          <input type="date" class="form-control" />
+          <input type="date" class="form-control" v-model="propTrabajo.fecha" />
         </div>
       </div>
       <!-- Seleccion de la hora -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="horaSolicitud">Hora</label>
-          <select class="form-control">
+          <select class="form-control" v-model="propTrabajo.hora">
             <option v-for="hora in horas" :key="hora">
               {{ hora }}
             </option>
@@ -28,14 +28,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombreMascotaSolicitud"> Nombre de la mascota </label>
-          <input type="text" class="form-control" placeholder="Nombre..." />
+          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombre" />
         </div>
       </div>
       <!-- Raza Mascota -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="razaMascota"> Raza de la mascota </label>
-          <select class="form-control">
+          <select class="form-control" v-model="propTrabajo.especie">
             <option v-for="especie in especies" :key="especie.id">
               {{ especie.nombre }}
             </option>
@@ -82,6 +82,7 @@
           class="form-control"
           rows="3"
           placeholder="Miedo a ruidos fuertes, no quiere comer, etc."
+          v-model="propTrabajo.textoAdicional"
         ></textarea>
       </div>
     </div>
@@ -91,7 +92,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="codigoPostal">Codigo Postal</label>
-          <input type="text" class="form-control" placeholder="CP..." />
+          <input type="text" class="form-control" placeholder="CP..." v-model="propTrabajo.cp" />
         </div>
       </div>
     </div>
@@ -100,7 +101,7 @@
 
 <script>
 export default {
-  props: ["propHora", "propEspecies"],
+  props: ["propHora", "propEspecies", 'propTrabajo'],
   data() {
     return {
       horas: this.propHora,
@@ -111,6 +112,7 @@ export default {
     activeBtn(event) {
       $(".btn-outline-secondary").removeClass("active");
       $(event.target).addClass("active");
+      this.propTrabajo.fecha = event.target.innerText;
     }
   }
 };
