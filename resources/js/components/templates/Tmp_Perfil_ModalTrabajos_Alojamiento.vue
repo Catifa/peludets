@@ -7,14 +7,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="fechaInicioSolicitud">Fecha Inicio</label>
-          <input type="date" class="form-control" v-model="propTrabajo.fechaInicio" />
+          <input type="date" class="form-control" v-model="propTrabajo.fechaInicio" :class="{ 'border-danger': propErrores.fechaInicio !=null }" />
         </div>
       </div>
       <!-- Seleccion de la fecha fin de la solicitud -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="fechaFinalSolicitud">Fecha Final</label>
-          <input type="date" class="form-control" v-model="propTrabajo.fechaFinal" />
+          <input type="date" class="form-control" v-model="propTrabajo.fechaFinal" :class="{ 'border-danger': propErrores.fechaFinal !=null }" />
         </div>
       </div>
     </div>
@@ -24,14 +24,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombreMascotaSolicitud"> Nombre de la mascota </label>
-          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombre" />
+          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombre" :class="{ 'border-danger': propErrores.nombre !=null }" />
         </div>
       </div>
       <!-- Raza Mascota -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="razaMascota"> Raza de la mascota </label>
-          <select class="form-control" v-model="propTrabajo.especie">
+          <select class="form-control" v-model="propTrabajo.especie" :class="{ 'border-danger': propErrores.especie !=null }" >
             <option v-for="especie in especies" :key="especie.id">
               {{ especie.nombre }}
             </option>
@@ -90,7 +90,7 @@
           <div class="row">
             <div class="col-md-4">
               <label for="horaSolicitud">Mañana</label>
-              <select class="form-control" v-model="propTrabajo.horaManana">
+              <select class="form-control" v-model="propTrabajo.horaManana" :class="{ 'border-danger': propErrores.horaManana !=null }" >
                 <option v-for="hora in horas" :key="hora">
                   {{ hora }}
                 </option>
@@ -98,7 +98,7 @@
             </div>
             <div class="col-md-4">
               <label for="horaSolicitud">Mediodia</label>
-              <select class="form-control" v-model="propTrabajo.horaTarde">
+              <select class="form-control" v-model="propTrabajo.horaTarde" :class="{ 'border-danger': propErrores.horaTarde !=null }" >
                 <option v-for="hora in horas" :key="hora">
                   {{ hora }}
                 </option>
@@ -106,7 +106,7 @@
             </div>
             <div class="col-md-4">
               <label for="horaSolicitud">Noche</label>
-              <select class="form-control" v-model="propTrabajo.horaNoche">
+              <select class="form-control" v-model="propTrabajo.horaNoche" :class="{ 'border-danger': propErrores.horaNoche !=null }" >
                 <option v-for="hora in horas" :key="hora">
                   {{ hora }}
                 </option>
@@ -122,7 +122,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="codigoPostal">Codigo Postal</label>
-          <input type="text" class="form-control" placeholder="CP..." v-model="propTrabajo.cp" />
+          <input type="text" class="form-control" placeholder="CP..." v-model="propTrabajo.cp" :class="{ 'border-danger': propErrores.cp !=null }" />
         </div>
       </div>
       <!-- Recoger o entregar Mascota -->
@@ -147,7 +147,7 @@
 
 <script>
 export default {
-  props: ['propHora', 'propEspecies', 'propTrabajo'],
+  props: ['propHora', 'propEspecies', 'propTrabajo', 'propErrores'],
   data() {
     return {
       especies: this.propEspecies,

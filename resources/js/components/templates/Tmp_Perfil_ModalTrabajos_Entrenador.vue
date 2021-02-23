@@ -7,14 +7,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="fechaSolicitud">Fecha</label>
-          <input type="date" class="form-control" v-model="propTrabajo.fecha" />
+          <input type="date" class="form-control" v-model="propTrabajo.fecha" :class="{ 'border-danger': propErrores.fecha !=null }"/>
         </div>
       </div>
       <!-- Seleccion de la hora -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="horaSolicitud">Hora</label>
-          <select class="form-control" v-model="propTrabajo.hora">
+          <select class="form-control" v-model="propTrabajo.hora" :class="{ 'border-danger': propErrores.hora !=null }">
             <option v-for="hora in horas" :key="hora">
               {{ hora }}
             </option>
@@ -28,14 +28,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombreMascotaSolicitud"> Nombre de la mascota </label>
-          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombre"/>
+          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombre" :class="{ 'border-danger': propErrores.nombre !=null }"/>
         </div>
       </div>
       <!-- Raza Mascota -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="razaMascota"> Raza de la mascota </label>
-          <select class="form-control" v-model="propTrabajo.especie">
+          <select class="form-control" v-model="propTrabajo.especie" :class="{ 'border-danger': propErrores.especie !=null }">
             <option v-for="especie in especies" :key="especie.id">
               {{ especie.nombre }}
             </option>
@@ -80,19 +80,19 @@
         <label> Selecciona el tipo de entrenamiento </label>
         <div class="row mx-auto">
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="obedienciaBasica" name="obedienciaBasica" v-model="propTrabajo.entreno" />
+            <input type="radio" class="custom-control-input" id="obedienciaBasica" name="obedienciaBasica" v-model="propTrabajo.entreno" :class="{ 'border-danger': propErrores.entreno !=null }" />
             <label class="custom-control-label" for="obedienciaBasica"> Obediencia básica </label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="habilidades" name="habilidades" v-model="propTrabajo.entreno" />
+            <input type="radio" class="custom-control-input" id="habilidades" name="habilidades" v-model="propTrabajo.entreno" :class="{ 'border-danger': propErrores.entreno !=null }" />
             <label class="custom-control-label" for="habilidades"> Habilidades </label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="agility" name="agility" v-model="propTrabajo.entreno" />
+            <input type="radio" class="custom-control-input" id="agility" name="agility" v-model="propTrabajo.entreno" :class="{ 'border-danger': propErrores.entreno !=null }" />
             <label class="custom-control-label" for="agility"> Agility </label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="trabajo" name="trabajo" v-model="propTrabajo.entreno" />
+            <input type="radio" class="custom-control-input" id="trabajo" name="trabajo" v-model="propTrabajo.entreno" :class="{ 'border-danger': propErrores.entreno !=null }" />
             <label class="custom-control-label" for="trabajo"> Trabajo </label>
           </div>
         </div>
@@ -104,7 +104,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="codigoPostal">Codigo Postal</label>
-          <input type="text" class="form-control" placeholder="CP..." v-model="propTrabajo.cp"/>
+          <input type="text" class="form-control" placeholder="CP..." v-model="propTrabajo.cp" :class="{ 'border-danger': propErrores.cp !=null }"/>
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@
 
 <script>
 export default {
-  props: ['propHora', 'propEspecies', 'propTrabajo'],
+  props: ['propHora', 'propEspecies', 'propTrabajo', 'propErrores'],
   data() {
     return {
       horas: this.propHora,
