@@ -122,6 +122,7 @@ class SolicitudController extends Controller
             break;
 
             default:
+                return 'Escoge algo pri';
             break;
         }
     }
