@@ -15,10 +15,8 @@ class CreateSolicitudesTable extends Migration
     {
         Schema::create('solicitudes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_remitente');
-            $table->integer('id_destinatario');
-            $table->string('nombre_trabajo');
-            $table->string('descripcion_trabajo');
+            $table->json('solicitud');
+            $table->integer('id_usuario_solicitado');
             $table->timestamps();
         });
     }
