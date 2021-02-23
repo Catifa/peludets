@@ -16,9 +16,6 @@ use App\Models\User;
 class UsuariosController extends Controller
 {
 
-
-
-
     /**
      * 
      * Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home
