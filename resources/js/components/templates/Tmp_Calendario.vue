@@ -1,5 +1,7 @@
+
+
 <template>
-  <div id="app">
+  <div id="my-component">
     <sweet-calendar
       :eventCategories="eventCategories"
       :events="events"

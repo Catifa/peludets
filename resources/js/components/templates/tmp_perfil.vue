@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-md-2">
       <solicitud-trabajo :propUser="user"></solicitud-trabajo>
       <h3 class="crema-peludets mt-5">Disponibilidad</h3>
-      <Tmp-Calendario></Tmp-Calendario>
+      <tmpCalendario></tmpCalendario>
     </div>
     <div class="col-xs-12 col-md-7">
       <div class="row">
@@ -440,7 +440,6 @@
               role="tabpanel"
               aria-labelledby="edita-tab"
             >
-              <Tareas></Tareas>
             </div>
           </div>
         </div>
@@ -463,7 +462,7 @@ export default {
   components: {
     chat: Chat,
     "solicitud-trabajo": SolicitudTrabajo,
-    Tmp_Calendario,
+    tmpCalendario: Tmp_Calendario,
   },
   data() {
     return {
