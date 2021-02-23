@@ -168,8 +168,8 @@ export default {
       });
     },
     reiniciarModal() {
-      this.solicitud = null
-      this.solicitudTrabajo = {},
+      this.solicitud = null;
+      this.solicitudTrabajo = {};
       $('.modal-body .btn-outline-success').removeClass('active');
     }
   },
