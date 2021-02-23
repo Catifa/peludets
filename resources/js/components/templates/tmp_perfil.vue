@@ -3,7 +3,9 @@
     <div class="col-xs-12 col-md-2">
       <solicitud-trabajo :propUser="user"></solicitud-trabajo>
       <h3 class="crema-peludets mt-5">Disponibilidad</h3>
-      <tmpCalendario></tmpCalendario>
+      <div class="mt-3">
+        <tmpCalendario></tmpCalendario>
+      </div>
     </div>
     <div class="col-xs-12 col-md-7">
       <div class="row">
@@ -40,18 +42,7 @@
                 >Perfil</a
               >
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                id="mascota-tab"
-                data-toggle="tab"
-                href="#mascota"
-                role="tab"
-                aria-controls="mascota"
-                aria-selected="false"
-                >Mascotas</a
-              >
-            </li>
+
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -76,160 +67,7 @@
                 <div class="col-md-12 ml-2 mt-3" id="contenidoPerfil"></div>
               </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="mascota"
-              role="tabpanel"
-              aria-labelledby="mascota-tab"
-            >
-              <div class="row">
-                <div class="col-md-3 mt-1 mr-2">
-                  <div class="card" style="width: 18rem">
-                    <img
-                      src="sources/img/corgi1-z.jpg"
-                      class="card-img-top"
-                      width="286px"
-                      height="286px"
-                      alt="..."
-                    />
-                    <div class="card-body bg-crema-peludets">
-                      <h5 class="card-title">Cacahuete</h5>
-                      <ul>
-                        <li>
-                          <i class="fas fa-dog"></i>
-                        </li>
-                        <li>Corgi</li>
-                        <li>3 Años</li>
-                        <li>11 Kg</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mt-1">
-                  <div class="card" style="width: 18rem">
-                    <img
-                      src="https://img3.wikia.nocookie.net/__cb20140801151543/howtotrainyourdragon/images/9/91/Toothless_k.png"
-                      class="card-img-top"
-                      width="286px"
-                      height="286px"
-                      alt="..."
-                    />
-                    <div class="card-body bg-crema-peludets">
-                      <h5 class="card-title">Toothless</h5>
-                      <ul>
-                        <li>
-                          <i class="fas fa-dragon"></i>
-                        </li>
-                        <li>Night Fury</li>
-                        <li>20 Años</li>
-                        <li>805,585 Kg</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mt-1 buttonmass">
-                  <a
-                    href=""
-                    class="fas fa-plus-circle buttonmas"
-                    data-toggle="modal"
-                    data-target="#form-registroMascota"
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <!-- Modal -->
-              <div id="form-registroMascota" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-dialog-centered">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <div class="container-fluid">
-                        <div class="col-md-12">
-                          <h4 class="modal-title">Añade a tu Mascota</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-body">
-                      <form
-                        action=""
-                        method="post"
-                        enctype="multipart/form-data"
-                      >
-                        <div class="mb-3">
-                          <label for="" class="form-label">Nombre</label>
-                          <input
-                            type="text"
-                            id="nombreMascota"
-                            class="form-control"
-                            aria-describedby="emailHelp"
-                          />
-                        </div>
-                        <div class="mb-3">
-                          <label for="" class="form-label">Especie</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="especieMascota"
-                            aria-describedby="emailHelp"
-                          />
-                        </div>
-                        <div class="mb-3">
-                          <label for="" class="form-label">Raza</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="razaMascota"
-                            aria-describedby="emailHelp"
-                          />
-                        </div>
-                        <div class="mb-3">
-                          <label for="" class="form-label">Tamaño</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="tamanoMascota"
-                            aria-describedby="emailHelp"
-                          />
-                        </div>
-                        <div class="mb-3">
-                          <label for="" class="form-label">Peso</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="pesoMascota"
-                            aria-describedby="emailHelp"
-                          />
-                        </div>
-                        <div
-                          id="divFileMascota"
-                          class="mb-3 btn btn-azul-peludets"
-                        >
-                          <label id="textoFile" for=""
-                            >Añade la foto de tu mascota</label
-                          >
-                          <input
-                            name="avatarMascota"
-                            type="file"
-                            class="form-control btn btn-azul-peludets"
-                            id="updateFotoMascota"
-                          />
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        id="btn-registroMascota"
-                        type="submit"
-                        class="btn btn-azul-peludets"
-                      >
-                        Registrala!
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <div
               class="tab-pane fade"
               id="valoraciones"
@@ -355,92 +193,6 @@
                 </div>
               </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="editaPerfilMascota"
-              role="tabpanel"
-              aria-labelledby="edita-tab"
-            >
-              <div class="row">
-                <div class="row mt-4"></div>
-                <div class="container-sm">
-                  <h3 class="crema-peludets">Edita los datos de tu mascota</h3>
-                  <form action="" method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                      <label for="" class="form-label">Nombre</label>
-                      <input
-                        type="text"
-                        id="nombreMascota"
-                        class="form-control"
-                        aria-describedby="emailHelp"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="" class="form-label">Especie</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="especieMascota"
-                        aria-describedby="emailHelp"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="" class="form-label">Raza</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="razaMascota"
-                        aria-describedby="emailHelp"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="" class="form-label">Tamaño</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="tamanoMascota"
-                        aria-describedby="emailHelp"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="" class="form-label">Peso</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="pesoMascota"
-                        aria-describedby="emailHelp"
-                      />
-                    </div>
-                    <div id="divFileMascota" class="mb-3 btn btn-azul-peludets">
-                      <label id="textoFile" for=""
-                        >Añade la foto de tu mascota</label
-                      >
-                      <input
-                        name="avatarMascota"
-                        type="file"
-                        class="form-control btn btn-azul-peludets"
-                        id="updateFotoMascota"
-                      />
-                    </div>
-                    <br />
-                    <button
-                      id="btn-updateMascota"
-                      type="submit"
-                      class="btn btn btn-azul-peludets"
-                    >
-                      Submit
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="tareas"
-              role="tabpanel"
-              aria-labelledby="edita-tab"
-            >
-            </div>
           </div>
         </div>
       </div>
@@ -514,4 +266,6 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+
+</style>
