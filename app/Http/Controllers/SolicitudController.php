@@ -42,22 +42,91 @@ class SolicitudController extends Controller
 
     protected function enviarSolicitud(Request $request)
     {
-        $request->validate([
-            'nombre_trabajo' => 'required|string|max:255',
-            'descripcion_trabajo' => 'required|string|max:255',
-            'id_remitente' => 'required',
-            'id_destinatario' => 'required',
-        ]);
+        switch ($request->solicitud) {
+            case 'Paseador' || 'Peluquero':
+                $request->validate([
+                    'idDestinatario' => 'required|integer|max:255',
+                    'idRemitente' => 'required|integer|max:255',
+                    'fecha' => 'required|string',
+                    'hora' => 'required|string',
+                    'nombre' => 'required|string',
+                    'especie' => 'required|string',
+                    'peso' => 'required|string',
+                    'cp' => 'required|string'
+                ]);
 
-        Solicitud::insert([
-            'nombre_trabajo' => $request->nombre_trabajo,
-            'descripcion_trabajo' => $request->descripcion_trabajo,
-            'id_remitente' => $request->id_remitente,
-            'id_destinatario' => $request->id_destinatario,
-        ]);
+                Solicitud::create([
+                    'solicitud' => $request->getContent(),
+                    'id_usuario_solicitado' => $request->idDestinatario
+                ]);
+            break;
+
+            case 'Alojamiento':
+                $request->validate([
+                    'idDestinatario' => 'required|integer|max:255',
+                    'idRemitente' => 'required|integer|max:255',
+                    'fechaInicio' => 'required|string',
+                    'fechaFinal' => 'required|string',
+                    'horaManana' => 'required|string',
+                    'horaTarde' => 'required|string',
+                    'horaNoche' => 'required|string',
+                    'nombre' => 'required|string',
+                    'especie' => 'required|string',
+                    'peso' => 'required|string',
+                    'cp' => 'required|string'
+                ]);
+
+                Solicitud::create([
+                    'solicitud' => $request->getContent(),
+                    'id_usuario_solicitado' => $request->idDestinatario
+                ]);
+            break;
+
+            case 'Entrenador':
+                $request->validate([
+                    'idDestinatario' => 'required|integer|max:255',
+                    'idRemitente' => 'required|integer|max:255',
+                    'fecha' => 'required|string',
+                    'hora' => 'required|string',
+                    'nombre' => 'required|string',
+                    'especie' => 'required|string',
+                    'peso' => 'required|string',
+                    'entreno' => 'required|string',
+                    'cp' => 'required|string'
+                ]);
+
+                Solicitud::create([
+                    'solicitud' => $request->getContent(),
+                    'id_usuario_solicitado' => $request->idDestinatario
+                ]);
+            break;
+
+            case 'Psicologo':
+                $request->validate([
+                    'idDestinatario' => 'required|integer|max:255',
+                    'idRemitente' => 'required|integer|max:255',
+                    'fecha' => 'required|string',
+                    'hora' => 'required|string',
+                    'nombre' => 'required|string',
+                    'especie' => 'required|string',
+                    'peso' => 'required|string',
+                    'textoAdicional' => 'required|string',
+                    'entreno' => 'required|string',
+                    'cp' => 'required|string'
+                ]);
+
+                Solicitud::create([
+                    'solicitud' => $request->getContent(),
+                    'id_usuario_solicitado' => $request->idDestinatario
+                ]);
+            break;
+
+            default:
+            break;
+        }
     }
 
-/**
+    /**
      * @OA\Post(
      *     path="/api/solicitudes/recuperar",
      *     summary="Almacena solicitudes de los usuarios",
