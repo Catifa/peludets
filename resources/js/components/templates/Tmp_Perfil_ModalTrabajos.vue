@@ -19,25 +19,77 @@
         <div class="modal-body">
           <!-- Botones donde se muestran las profesiones -->
           <div class="row">
-            <div class="col-md-4" v-for="trabajo in propTrabajos" :key="trabajo.id">
-              <button type="button" class="btn btn-outline-success" @click="solicitud = trabajo.nombre_profesion; activeBtn($event)">
+            <div
+              class="col-md-4"
+              v-for="trabajo in propTrabajos"
+              :key="trabajo.id"
+            >
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                @click="
+                  solicitud = trabajo.nombre_profesion;
+                  activeBtn($event);
+                "
+              >
                 {{ trabajo.nombre_profesion }} <i class="fas fa-walking"></i>
               </button>
             </div>
           </div>
           <!-- Sección Solicitudes -->
           <div class="row mt-3">
-            <solicitud-paseo v-if="solicitud == 'Paseador'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-paseo>
-            <solicitud-alojamiento v-if="solicitud == 'Alojamiento'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-alojamiento>
-            <solicitud-peluqueria v-if="solicitud == 'Peluquero'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-peluqueria>
-            <solicitud-entrenador v-if="solicitud == 'Entrenador'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-entrenador>
-            <solicitud-psicologo v-if="solicitud == 'Psicologo'" :propHora="horas" :propEspecies="especies" :propTrabajo="solicitudTrabajo" @solicitudRellena="solicitudTrabajo"></solicitud-psicologo>
+            <solicitud-paseo
+              v-if="solicitud == 'Paseador'"
+              :propHora="horas"
+              :propEspecies="especies"
+              :propTrabajo="solicitudTrabajo"
+              @solicitudRellena="solicitudTrabajo"
+            ></solicitud-paseo>
+            <solicitud-alojamiento
+              v-if="solicitud == 'Alojamiento'"
+              :propHora="horas"
+              :propEspecies="especies"
+              :propTrabajo="solicitudTrabajo"
+              @solicitudRellena="solicitudTrabajo"
+            ></solicitud-alojamiento>
+            <solicitud-peluqueria
+              v-if="solicitud == 'Peluquero'"
+              :propHora="horas"
+              :propEspecies="especies"
+              :propTrabajo="solicitudTrabajo"
+              @solicitudRellena="solicitudTrabajo"
+            ></solicitud-peluqueria>
+            <solicitud-entrenador
+              v-if="solicitud == 'Entrenador'"
+              :propHora="horas"
+              :propEspecies="especies"
+              :propTrabajo="solicitudTrabajo"
+              @solicitudRellena="solicitudTrabajo"
+            ></solicitud-entrenador>
+            <solicitud-psicologo
+              v-if="solicitud == 'Psicologo'"
+              :propHora="horas"
+              :propEspecies="especies"
+              :propTrabajo="solicitudTrabajo"
+              @solicitudRellena="solicitudTrabajo"
+            ></solicitud-psicologo>
           </div>
         </div>
         <!-- Footer Modal -->
         <div class="modal-footer bg-azul-peludets">
-          <button type="button" class="btn btn-lila-peludets" @click="enviarSolicitud()">Solicitar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" @click="reiniciarModal()">
+          <button
+            type="button"
+            class="btn btn-lila-peludets"
+            @click="enviarSolicitud()"
+          >
+            Solicitar
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-dismiss="modal"
+            @click="reiniciarModal()"
+          >
             Cerrar
           </button>
         </div>
@@ -47,6 +99,9 @@
 </template>
 
 <script>
+
+import Swal2 from 'sweetalert2';
+
 import SolicitudPaseo from "./Tmp_Perfil_ModalTrabajos_Paseo.vue";
 import SolicitudAlojamiento from "./Tmp_Perfil_ModalTrabajos_Alojamiento.vue";
 import SolicitudPeluqueria from "./Tmp_Perfil_ModalTrabajos_Peluqueria.vue";
@@ -97,7 +152,20 @@ export default {
       });
     },
     enviarSolicitud() {
-      
+      this.solicitudTrabajo.idDestinatario = this.propUsuario.id;
+      this.solicitudTrabajo.idRemitente = this.$root.user.id;
+      console.log(this.solicitudTrabajo);
+      this.axios.post('api/solicitudes/enviar', this.solicitudTrabajo).then(() => {
+        Swal2.fire(
+          'Solicitud enviada correctamente',
+          'succes'
+        );
+      }).catch(() =>{
+        Swal2.fire({
+          text:'Ha habido un error',
+          icon:'error'
+        });
+      });
     },
     reiniciarModal() {
       this.solicitud = null
