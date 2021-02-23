@@ -48,7 +48,6 @@
 import AgregarTareas from "./components-subparts/AgregarTareas";
 import DragArea from "./components-subparts/DragArea";
 import DropArea from "./components-subparts/DropArea";
-import Calendario from "./templates/Tmp_Calendario";
 
 
 export default {
@@ -56,7 +55,6 @@ export default {
     AgregarTareas,
     DragArea,
     DropArea,
-    Calendario,
   },
   data() {
     return {
