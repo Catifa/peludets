@@ -3,7 +3,7 @@
 </style>
     
 <template>
-  <div class="col-md-12 ml-5">
+  <div class="col-md-12">
     <div class="row">
       <div id="chat-box" class="col-md-12 mx-auto mt-2 p-0">
         <ul id="mensajes" class="pt-1"></ul>

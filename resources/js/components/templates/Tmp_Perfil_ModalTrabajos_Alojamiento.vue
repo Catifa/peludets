@@ -7,14 +7,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="fechaInicioSolicitud">Fecha Inicio</label>
-          <input type="date" class="form-control" />
+          <input type="date" class="form-control" v-model="propTrabajo.fechaInicio" />
         </div>
       </div>
       <!-- Seleccion de la fecha fin de la solicitud -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="fechaFinalSolicitud">Fecha Final</label>
-          <input type="date" class="form-control" />
+          <input type="date" class="form-control" v-model="propTrabajo.fechaFinal" />
         </div>
       </div>
     </div>
@@ -24,14 +24,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombreMascotaSolicitud"> Nombre de la mascota </label>
-          <input type="text" class="form-control" placeholder="Nombre..." />
+          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombre" />
         </div>
       </div>
       <!-- Raza Mascota -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="razaMascota"> Raza de la mascota </label>
-          <select class="form-control">
+          <select class="form-control" v-model="propTrabajo.especie">
             <option v-for="especie in especies" :key="especie.id">
               {{ especie.nombre }}
             </option>
@@ -80,6 +80,7 @@
           class="form-control"
           rows="3"
           placeholder="Indica si tu mascota requiere algun cuidado especial"
+          v-model="propTrabajo.textoAdicional"
         ></textarea>
       </div>
       <!-- Horarios de paseo -->
@@ -89,7 +90,7 @@
           <div class="row">
             <div class="col-md-4">
               <label for="horaSolicitud">Mañana</label>
-              <select class="form-control">
+              <select class="form-control" v-model="propTrabajo.horaManana">
                 <option v-for="hora in horas" :key="hora">
                   {{ hora }}
                 </option>
@@ -97,7 +98,7 @@
             </div>
             <div class="col-md-4">
               <label for="horaSolicitud">Mediodia</label>
-              <select class="form-control">
+              <select class="form-control" v-model="propTrabajo.horaTarde">
                 <option v-for="hora in horas" :key="hora">
                   {{ hora }}
                 </option>
@@ -105,7 +106,7 @@
             </div>
             <div class="col-md-4">
               <label for="horaSolicitud">Noche</label>
-              <select class="form-control">
+              <select class="form-control" v-model="propTrabajo.horaNoche">
                 <option v-for="hora in horas" :key="hora">
                   {{ hora }}
                 </option>
@@ -121,7 +122,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="codigoPostal">Codigo Postal</label>
-          <input type="text" class="form-control" placeholder="CP..." />
+          <input type="text" class="form-control" placeholder="CP..." v-model="propTrabajo.cp" />
         </div>
       </div>
       <!-- Recoger o entregar Mascota -->
@@ -132,6 +133,7 @@
               type="checkbox"
               class="custom-control-input"
               id="switchEntrega"
+              v-model="propTrabajo.entregaMascota"
             />
             <label class="custom-control-label" for="switchEntrega">
               El cliente entregará la mascota
@@ -145,16 +147,18 @@
 
 <script>
 export default {
-  props: ['propEspecies'],
+  props: ['propHora', 'propEspecies', 'propTrabajo'],
   data() {
     return {
-      especies: this.propEspecies
+      especies: this.propEspecies,
+      horas: this.propHora
     }
   },
   methods: {
     activeBtn(event) {
       $(".btn-outline-secondary").removeClass("active");
       $(event.target).addClass("active");
+      this.propTrabajo.fecha = event.target.innerText;
     }
   }
 }

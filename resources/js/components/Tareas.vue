@@ -10,7 +10,8 @@
       </div>
 
       <div class="col-md-8 col-xs-12 mt-5">
-        <vue-scheduler class="mt-5"
+        <vue-scheduler
+          class="mt-5"
           :event-dialog-config="dialogConfig"
           :min-date="null"
           :max-date="null"
@@ -57,7 +58,7 @@ export default {
   },
   data() {
     return {
-      titulo2:"Recordatorios",
+      titulo2: "Recordatorios",
       dialogConfig: {
         title: "Tarea",
         createButtonLabel: "Save event thingy",
