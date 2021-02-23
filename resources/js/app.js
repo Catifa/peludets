@@ -19,6 +19,7 @@ import 'v-calendar-scheduler/lib/main.css';//etilos calendario
 
 Vue.use(VueScheduler);//calendario
 
+
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 

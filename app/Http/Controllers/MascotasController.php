@@ -88,7 +88,8 @@ class MascotasController extends Controller
             'especie' => $request->especie,
             'raza' => $request->raza,
             'edad' => $request->edad,
-            'peso' => $request->peso
+            'peso' => $request->peso,
+            'photo' => $request->photo
         ]);
         $mascota->save();
     }
