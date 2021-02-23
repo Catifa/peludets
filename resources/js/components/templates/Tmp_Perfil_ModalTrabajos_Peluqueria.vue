@@ -102,7 +102,7 @@ export default {
     activeBtn(event) {
       $(".btn-outline-secondary").removeClass("active");
       $(event.target).addClass("active");
-      this.propTrabajo.fecha = event.target.innerText;
+      this.propTrabajo.peso = event.target.innerText;
     }
   }
 };

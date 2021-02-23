@@ -28,14 +28,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombreMascotaSolicitud"> Nombre de la mascota </label>
-          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombreMascota"/>
+          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombre"/>
         </div>
       </div>
       <!-- Raza Mascota -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="razaMascota"> Raza de la mascota </label>
-          <select class="form-control" v-model="propTrabajo.razaMascota">
+          <select class="form-control" v-model="propTrabajo.especie">
             <option v-for="especie in especies" :key="especie.id">
               {{ especie.nombre }}
             </option>
@@ -125,7 +125,7 @@ export default {
       console.log(event.target);
       $(".btn-outline-secondary").removeClass("active");
       $(event.target).addClass("active");
-      this.propTrabajo.pesoMascota = event.target.innerText;
+      this.propTrabajo.peso = event.target.innerText;
     }
   }
 }

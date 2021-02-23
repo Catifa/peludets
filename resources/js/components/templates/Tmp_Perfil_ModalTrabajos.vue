@@ -154,13 +154,14 @@ export default {
     enviarSolicitud() {
       this.solicitudTrabajo.idDestinatario = this.propUsuario.id;
       this.solicitudTrabajo.idRemitente = this.$root.user.id;
-      console.log(this.solicitudTrabajo);
-      this.axios.post('api/solicitudes/enviar', this.solicitudTrabajo).then(() => {
+      this.solicitudTrabajo.solicitud = this.solicitud;
+      this.axios.post('/api/solicitudes/enviar', this.solicitudTrabajo).then(() => {
         Swal2.fire(
           'Solicitud enviada correctamente',
           'succes'
         );
-      }).catch(() =>{
+      }).catch(error => {
+        console.log(error.response.data.errors);
         Swal2.fire({
           text:'Ha habido un error',
           icon:'error'
