@@ -29,7 +29,7 @@ export default {
     return {
       mensaje: "",
       user: {
-        name: "",
+        id: "",
       },
       typing: false,
       showChat: false,
@@ -47,6 +47,7 @@ export default {
       let date = new Date();
       let hora =
         this.addZero(date.getHours()) + ":" + this.addZero(date.getMinutes());
+
       const spanHora = document.createElement("span");
       spanHora.textContent = hora;
 
@@ -73,6 +74,10 @@ export default {
     });
 
     this.socketIO.on("disconected", (data) => {});
+
+    this.socketIO.on("recuperarChat", (data) => {
+      console.log(msg);
+    });
   },
   methods: {
     // Arreglo para el horario del chat
@@ -87,7 +92,7 @@ export default {
     iniciarChat() {
       this.showChat = true;
 
-      this.socketIO.emit("add user", this.user.name);
+      this.socketIO.emit("add user", this.user.id);
 
       this.socketIO.emit("room", this.room);
     },
