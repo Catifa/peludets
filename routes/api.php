@@ -37,6 +37,8 @@ Route::middleware('auth:sanctum')->get('/authentication', function (Request $req
 Route::group(['prefix' => 'mascota'], function () {
     Route::post('add', [MascotasController::class, 'add']);
     Route::get('all', [MascotasController::class, 'index']);
+    Route::post('recuperarMascota', [MascotasController::class, 'recuperarMascota']);
+
 });
 
 // Peticiones Especies
