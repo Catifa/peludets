@@ -93,6 +93,14 @@ class MascotasController extends Controller
         ]);
         $mascota->save();
     }
+    protected function mascotaByUser(Request $request)
+    {
+
+        return Mascota::select('mascotas.id', 'mascotas.nombre', 'mascotas.especie', 'mascotas.raza','mascotas.edad','mascotas.peso','mascotas.photo')
+        ->join('usuarios_mascotas', 'id_usuario', '=', 'mascotas.id')
+        ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
+        ->where('profesiones.nombre_profesion', '=', $request->input('nombre'))->get();
+    }
 
     /**
      * Store a newly created resource in storage.
