@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mensaje;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MensajesController extends Controller
 {
@@ -11,7 +12,7 @@ class MensajesController extends Controller
     {
         Mensaje::create([
             'idEmisor' => 1,
-            'idRemitente' => 2,
+            'idDestinatario' => 2,
             'mensaje' => $request->msg,
             'leido' => false,
         ]);
@@ -21,7 +22,12 @@ class MensajesController extends Controller
     {
         return Mensaje::select('mensaje', 'created_at')
             ->where('idEmisor', $request->idEmisor)
-            ->where('idRemitente', 2)
+            ->where('idDestinatario', 2)
             ->get();
+    }
+
+    protected function hashRoom(Request $request)
+    {
+        return Hash::make($request->idRemitente . $request->idDestinatario);
     }
 }

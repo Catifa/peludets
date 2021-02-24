@@ -75,30 +75,14 @@
           aria-labelledby="mascota-tab"
         >
           <div class="row">
-            <div class="col-md-3 mt-1 mr-2">
-              <div class="card" style="width: 18rem">
-                <img
-                  src="sources/img/corgi1-z.jpg"
-                  class="card-img-top"
-                  width="286px"
-                  height="286px"
-                  alt="..."
-                />
-                <div class="card-body bg-crema-peludets">
-                  <h5 class="card-title">Cacahuete</h5>
-                  <ul>
-                    <li>
-                      <i class="fas fa-dog"></i>
-                    </li>
-                    <li>Corgi</li>
-                    <li>3 Años</li>
-                    <li>11 Kg</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
             <div class="col-md-3 mt-1">
-              <div class="card" style="width: 18rem">
+              <div
+                class="card"
+                style="width: 18rem"
+                name="mascotas"
+                v-for="mascota in mascotas"
+                :key="mascota"
+              >
                 <img
                   src="https://img3.wikia.nocookie.net/__cb20140801151543/howtotrainyourdragon/images/9/91/Toothless_k.png"
                   class="card-img-top"
@@ -112,9 +96,9 @@
                     <li>
                       <i class="fas fa-dragon"></i>
                     </li>
-                    <li>Night Fury</li>
-                    <li>20 Años</li>
-                    <li>805,585 Kg</li>
+                    <li>{{mascota.nombre}}</li>
+                    <li>{{mascota.edad}}</li>
+                    <li>{{mascota.peso}}</li>
                   </ul>
                 </div>
               </div>
@@ -355,7 +339,6 @@
           </div>
         </div>
 
-
         <div
           class="tab-pane fade"
           id="tareas"
@@ -385,7 +368,15 @@ export default {
   },
   name: "panel",
   data() {
-    return {};
+    return {
+      mascotas: [],
+    };
+  },
+  methods: {},
+  mounted() {
+    this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+      this.mascotas = response.data;
+    });
   },
 };
 </script>

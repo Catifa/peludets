@@ -76,7 +76,7 @@ export default {
     this.socketIO.on("disconected", (data) => {});
 
     this.socketIO.on("recuperarChat", (data) => {
-      console.log(msg);
+      console.log(data);
     });
   },
   methods: {
