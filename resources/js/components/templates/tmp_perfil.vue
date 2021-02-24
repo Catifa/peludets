@@ -269,6 +269,7 @@ export default {
           idRemitente: this.$root.user.id,
           idDestinatario: this.$route.params.id
         };
+        this.showChat = !this.showChat;
       });
     }
   },

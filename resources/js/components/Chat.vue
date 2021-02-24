@@ -90,11 +90,7 @@ export default {
 
     // Iniciar el chat
     iniciarChat() {
-      this.showChat = true;
-
-      this.socketIO.emit("add user", this.user.id);
-
-      this.socketIO.emit("room", this.room);
+      this.socketIO.emit("room", this.propRoom);
     },
 
     // Enviar mensajes
@@ -130,6 +126,9 @@ export default {
     // Esto no se no se...
     axios.get("/api/user").then((res) => {
       this.user = res.data;
+    }).then(() => {
+      this.socketIO.emit("add user", this.user.id);
+      this.iniciarChat();
     });
   },
 };
