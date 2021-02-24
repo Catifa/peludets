@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use app\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('{any}', function () {
     return view('app');
 })->where('any', '.*');
+
+
 
