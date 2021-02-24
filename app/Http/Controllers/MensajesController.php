@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mensaje;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MensajesController extends Controller
 {
@@ -27,6 +28,6 @@ class MensajesController extends Controller
 
     protected function hashRoom(Request $request)
     {
-        return $str = $request->idRemitente . $request->idDestinatario;
+        return Hash::make($request->idRemitente . $request->idDestinatario);
     }
 }
