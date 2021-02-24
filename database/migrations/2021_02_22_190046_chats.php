@@ -15,7 +15,7 @@ class Chats extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->integer('idEmisor');
-            $table->integer('idRemitente');
+            $table->integer('idDestinatario');
             $table->longText('mensaje');
             $table->boolean('leido');
             $table->timestamps();
