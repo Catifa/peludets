@@ -20,6 +20,7 @@ class CreateMascotasTable extends Migration
             $table->string('raza');
             $table->integer('edad');
             $table->integer('peso');
+            $table->longText('photo')->nullable();
             $table->timestamps();
         });
     }
