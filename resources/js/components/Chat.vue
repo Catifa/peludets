@@ -25,6 +25,7 @@
 import socket from "../socket.io";
 
 export default {
+  props: ['propRoom'],
   data() {
     return {
       mensaje: "",
@@ -34,7 +35,6 @@ export default {
       typing: false,
       showChat: false,
       socketIO: socket("http://peludets.ddns.net:1337"),
-      room: "ID2_ID3_15022021",
     };
   },
   created() {

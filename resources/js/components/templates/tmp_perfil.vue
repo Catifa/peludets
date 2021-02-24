@@ -22,8 +22,7 @@
           <h1 class="mt-5">{{ user.name }} {{ user.lastname }}</h1>
           <button
             class="btn btn-lila-peludets btn-lg"
-            v-bind:id="this.$route.params.id"
-            @click="showChat = !showChat"
+            @click="crearChat()"
           >
             Contacta con {{ user.name }}
           </button>
@@ -199,7 +198,7 @@
     </div>
     <div class="col-xs-12 col-md-3">
       <div class="row" v-if="showChat">
-        <chat></chat>
+        <chat :propRoom="room"></chat>
       </div>
     </div>
   </div>
@@ -221,6 +220,7 @@ export default {
       user: {},
       solicitud: {},
       showChat: false,
+      room: {}
     };
   },
   methods: {
@@ -237,6 +237,7 @@ export default {
           this.getContent();
         });
     },
+    // Obtenerr contenido del perfil
     getContent() {
       this.axios
         .post("/api/usuario/getProfText", this.user)
@@ -245,6 +246,7 @@ export default {
           $("#contenidoPerfil").html(textVal.textoPerfil);
         });
     },
+    // Enviar solicitud
     peticionSolicitud() {
       this.axios
         .post("/api/solicitudes/enviar", {
@@ -260,6 +262,15 @@ export default {
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
     },
+    crearChat() {
+      this.axios.post('/api/chat/hashRoom', {idDestinatario: this.$route.params.id, idRemitente: this.$root.user.id}).then((response) => {
+        this.room = {
+          roomName: response.data,
+          idRemitente: this.$root.user.id,
+          idDestinatario: this.$route.params.id
+        };
+      });
+    }
   },
   mounted() {
     this.getUser();
