@@ -43,6 +43,7 @@
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
+              :propErrores="errores"
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-paseo>
             <solicitud-alojamiento
@@ -50,6 +51,7 @@
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
+              :propErrores="errores"
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-alojamiento>
             <solicitud-peluqueria
@@ -57,6 +59,7 @@
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
+              :propErrores="errores"
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-peluqueria>
             <solicitud-entrenador
@@ -64,6 +67,7 @@
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
+              :propErrores="errores"
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-entrenador>
             <solicitud-psicologo
@@ -71,6 +75,7 @@
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
+              :propErrores="errores"
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-psicologo>
           </div>
@@ -99,8 +104,7 @@
 </template>
 
 <script>
-
-import Swal2 from 'sweetalert2';
+import Swal2 from "sweetalert2";
 
 import SolicitudPaseo from "./Tmp_Perfil_ModalTrabajos_Paseo.vue";
 import SolicitudAlojamiento from "./Tmp_Perfil_ModalTrabajos_Alojamiento.vue";
@@ -110,13 +114,13 @@ import SolicitudPsicologo from "./Tmp_Perfil_ModalTrabajos_Psicologo.vue";
 
 export default {
   components: {
-      'solicitud-paseo': SolicitudPaseo,
-      'solicitud-alojamiento': SolicitudAlojamiento,
-      'solicitud-peluqueria': SolicitudPeluqueria,
-      'solicitud-entrenador': SolicitudEntrenador,
-      'solicitud-psicologo': SolicitudPsicologo
+    "solicitud-paseo": SolicitudPaseo,
+    "solicitud-alojamiento": SolicitudAlojamiento,
+    "solicitud-peluqueria": SolicitudPeluqueria,
+    "solicitud-entrenador": SolicitudEntrenador,
+    "solicitud-psicologo": SolicitudPsicologo,
   },
-  props: ['propTrabajos', 'propUsuario'],
+  props: ["propTrabajos", "propUsuario"],
   data() {
     return {
       // Variable para tener las horas sin tener que escribirlas a mano
@@ -127,6 +131,8 @@ export default {
       solicitud: null,
       // Objeto con los campos de la solicitud
       solicitudTrabajo: {},
+      // Objeto para controlar los errores
+      errores: {}
     };
   },
   methods: {
@@ -142,40 +148,41 @@ export default {
       }
     },
     activeBtn(event) {
-      $('.modal-body .btn-outline-success').removeClass('active');
-      $(event.target).addClass('active');
+      $(".modal-body .btn-outline-success").removeClass("active");
+      $(event.target).addClass("active");
     },
     // Get de todas las especies en la base de datos
     getAllSpecies() {
-      this.axios.get('/api/especie/getAll').then((response) => {
+      this.axios.get("/api/especie/getAll").then((response) => {
         this.especies = response.data;
       });
     },
     enviarSolicitud() {
       this.solicitudTrabajo.idDestinatario = this.propUsuario.id;
       this.solicitudTrabajo.idRemitente = this.$root.user.id;
-      console.log(this.solicitudTrabajo);
-      this.axios.post('api/solicitudes/enviar', this.solicitudTrabajo).then(() => {
-        Swal2.fire(
-          'Solicitud enviada correctamente',
-          'succes'
-        );
-      }).catch(() =>{
-        Swal2.fire({
-          text:'Ha habido un error',
-          icon:'error'
+      this.solicitudTrabajo.solicitud = this.solicitud;
+      this.axios
+        .post("/api/solicitudes/enviar", this.solicitudTrabajo)
+        .then(() => {
+          Swal2.fire({
+            text: "Solicitud enviada correctamente",
+            icon: "succes",
+          });
+          $('.modal').modal('hide');
+        })
+        .catch((error) => {
+          this.errores = error.response.data.errors;
         });
-      });
     },
     reiniciarModal() {
-      this.solicitud = null
-      this.solicitudTrabajo = {},
-      $('.modal-body .btn-outline-success').removeClass('active');
+      this.solicitud = null;
+      this.solicitudTrabajo = {};
+      $(".modal-body .btn-outline-success").removeClass("active");
     }
   },
   created() {
     this.rellenarHoras();
     this.getAllSpecies();
-  }
+  },
 };
 </script>
