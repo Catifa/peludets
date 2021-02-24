@@ -92,4 +92,5 @@ Route::group(['prefix' => 'explorador'], function () {
 Route::group(['prefix' => 'chat'], function(){
     Route::post('insert',[MensajesController::class,'insert']);
     Route::post('select',[MensajesController::class,'select']);
+    Route::post('hashRoom', [MensajesController::class, 'hashRoom']);
 });
