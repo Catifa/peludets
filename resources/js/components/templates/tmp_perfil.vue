@@ -20,10 +20,7 @@
         </div>
         <div class="col-xs-6 col-md-7 mt-2">
           <h1 class="mt-5">{{ user.name }} {{ user.lastname }}</h1>
-          <button
-            class="btn btn-lila-peludets btn-lg"
-            @click="crearChat()"
-          >
+          <button class="btn btn-lila-peludets btn-lg" @click="crearChat()">
             Contacta con {{ user.name }}
           </button>
         </div>
@@ -198,12 +195,13 @@
     </div>
     <div class="col-xs-12 col-md-3">
       <div class="row" v-if="showChat">
-        <chat :propRoom="room"></chat>
+        <chat :propRoom="room" :propSocket="socketIO"></chat>
       </div>
     </div>
   </div>
 </template>
 <script>
+import socket from "../../socket.io";
 import Swal from "sweetalert2";
 import Chat from "../Chat.vue";
 import SolicitudTrabajo from "./Tmp_Perfil_SolicitudTrabajo.vue";
@@ -220,8 +218,12 @@ export default {
       user: {},
       solicitud: {},
       showChat: false,
-      room: {}
+      socketIO: socket("http://peludets.ddns.net:1337"),
+      room: {},
     };
+  },
+  created() {
+    this.socketIO.emmit('add user', this.$root.user.id);
   },
   methods: {
     getUser() {
@@ -263,15 +265,20 @@ export default {
         .finally(() => (this.loading = false));
     },
     crearChat() {
-      this.axios.post('/api/chat/hashRoom', {idDestinatario: this.$route.params.id, idRemitente: this.$root.user.id}).then((response) => {
-        this.room = {
-          roomName: response.data,
+      this.axios
+        .post("/api/chat/hashRoom", {
+          idDestinatario: this.$route.params.id,
           idRemitente: this.$root.user.id,
-          idDestinatario: this.$route.params.id
-        };
-        this.showChat = !this.showChat;
-      });
-    }
+        })
+        .then((response) => {
+          this.room = {
+            roomName: response.data,
+            idRemitente: this.$root.user.id,
+            idDestinatario: this.$route.params.id,
+          };
+          this.showChat = !this.showChat;
+        });
+    },
   },
   mounted() {
     this.getUser();
@@ -279,5 +286,4 @@ export default {
 };
 </script>
 <style>
-
 </style>

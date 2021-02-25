@@ -22,10 +22,9 @@
 </template>
 
 <script>
-import socket from "../socket.io";
 
 export default {
-  props: ['propRoom'],
+  props: ['propRoom', 'propSocket'],
   data() {
     return {
       mensaje: "",
@@ -33,11 +32,12 @@ export default {
         id: "",
       },
       typing: false,
-      showChat: false,
-      socketIO: socket("http://peludets.ddns.net:1337"),
+      socketIO: this.propSocket,
     };
   },
   created() {
+    this.iniciarChat();
+
     // Recibir mensajes del servidor
     this.socketIO.on("chat message", (msg) => {
       console.log(msg);
@@ -63,16 +63,6 @@ export default {
       ).scrollHeight;
     });
 
-    // Mostrar si alguien está escribiendo
-    this.socketIO.on("typing", (data) => {
-      this.typing = data;
-    });
-
-    // Mostrar si ha acabado de escribir
-    this.socketIO.on("stopTyping", () => {
-      this.typing = false;
-    });
-
     this.socketIO.on("disconected", (data) => {});
 
     this.socketIO.on("recuperarChat", (data) => {
@@ -86,11 +76,6 @@ export default {
         i = "0" + i;
       }
       return i;
-    },
-
-    // Iniciar el chat
-    iniciarChat() {
-      this.socketIO.emit("room", this.propRoom);
     },
 
     // Enviar mensajes
@@ -121,15 +106,6 @@ export default {
         this.mensaje = "";
       }
     },
-  },
-  mounted() {
-    // Esto no se no se...
-    axios.get("/api/user").then((res) => {
-      this.user = res.data;
-    }).then(() => {
-      this.socketIO.emit("add user", this.user.id);
-      this.iniciarChat();
-    });
-  },
+  }
 };
 </script>
