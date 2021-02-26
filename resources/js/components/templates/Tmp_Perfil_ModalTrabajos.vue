@@ -168,6 +168,11 @@ export default {
             text: "Solicitud enviada correctamente",
             icon: "succes",
           });
+
+          //ENVIAR CORREO
+          this.axios.get('/api/contactanos');
+           this.axios.get('/api/solicitud');
+
           $('.modal').modal('hide');
         })
         .catch((error) => {

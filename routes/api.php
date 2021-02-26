@@ -11,8 +11,9 @@ use App\Http\Controllers\MascotasController;
 use App\Http\Controllers\MensajesController;
 use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\SitiosInteresController;
+use App\Mail\ContactanosMailable;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,4 +98,29 @@ Route::group(['prefix' => 'explorador'], function () {
 Route::group(['prefix' => 'chat'], function(){
     Route::post('insert',[MensajesController::class,'insert']);
     Route::post('select',[MensajesController::class,'select']);
+    Route::post('hashRoom', [MensajesController::class, 'hashRoom']);
+});
+
+//Mail 
+Route::get('contactanos', function() {
+    $correo = [
+        'title' => 'Tienes una nueva solicitud',
+        'body' => 'PAYASO'
+    ];
+    Mail::to('aciegoe@gmail.com')->send(new \App\Mail\ContactanosMailable($correo));
+  
+
+    return 'Correo enviado';
+
+});
+
+Route::get('solicitud', function() {
+    $correo = [
+        'title' => 'Tienes una nueva solicitud',
+        'body' => 'PAYASO'
+    ];
+    Mail::to('aciegoe@gmail.com')->send(new \App\Mail\solicitud($correo));
+
+    return 'Correo enviado';
+
 });

@@ -20,11 +20,7 @@
         </div>
         <div class="col-xs-6 col-md-7 mt-2">
           <h1 class="mt-5">{{ user.name }} {{ user.lastname }}</h1>
-          <button
-            class="btn btn-lila-peludets btn-lg"
-            v-bind:id="this.$route.params.id"
-            @click="showChat = !showChat"
-          >
+          <button class="btn btn-lila-peludets btn-lg" @click="crearChat()">
             Contacta con {{ user.name }}
           </button>
         </div>
@@ -199,12 +195,13 @@
     </div>
     <div class="col-xs-12 col-md-3">
       <div class="row" v-if="showChat">
-        <chat></chat>
+        <chat :propRoom="room" :propSocket="socketIO"></chat>
       </div>
     </div>
   </div>
 </template>
 <script>
+import socket from "../../socket.io";
 import Swal from "sweetalert2";
 import Chat from "../Chat.vue";
 import SolicitudTrabajo from "./Tmp_Perfil_SolicitudTrabajo.vue";
@@ -221,8 +218,11 @@ export default {
       user: {},
       solicitud: {},
       showChat: false,
+      socketIO: socket("http://peludets.ddns.net:1337"),
+      room: {},
     };
   },
+  created() {},
   methods: {
     getUser() {
       axios
@@ -237,6 +237,7 @@ export default {
           this.getContent();
         });
     },
+    // Obtenerr contenido del perfil
     getContent() {
       this.axios
         .post("/api/usuario/getProfText", this.user)
@@ -245,6 +246,7 @@ export default {
           $("#contenidoPerfil").html(textVal.textoPerfil);
         });
     },
+    // Enviar solicitud
     peticionSolicitud() {
       this.axios
         .post("/api/solicitudes/enviar", {
@@ -260,12 +262,35 @@ export default {
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
     },
+    crearChat() {
+      this.axios
+        .post("/api/chat/hashRoom", {
+          idDestinatario: this.$route.params.id,
+          idRemitente: this.$root.user.id,
+        })
+        .then((response) => {
+          this.room = {
+            roomName: response.data,
+            idRemitente: this.$root.user.id,
+            idDestinatario: this.$route.params.id,
+          };
+          this.showChat = !this.showChat;
+        });
+    },
   },
   mounted() {
+    // Obtener usuario al cual pertenece el perfil
     this.getUser();
+    // Asignar socket al usuario que entra a ver el perfil. Le pongo el setTimeout para que le de tiempo a vue de coger $root
+    setTimeout(() => {
+      this.socketIO.emit('add user', {
+        id: this.$root.user.id,
+        name: this.$root.user.name,
+        lastName: this.$root.user.lastname
+      });
+    }, 1000);
   },
 };
 </script>
 <style>
-
 </style>
