@@ -20,7 +20,10 @@
         </div>
         <div class="col-xs-6 col-md-7 mt-2">
           <h1 class="mt-5">{{ user.name }} {{ user.lastname }}</h1>
-          <button class="btn btn-lila-peludets btn-lg" @click="crearChat()">
+          <button
+            class="btn btn-lila-peludets btn-lg"
+            @click="showChat = !showChat"
+          >
             Contacta con {{ user.name }}
           </button>
         </div>
@@ -274,7 +277,7 @@ export default {
             idRemitente: this.$root.user.id,
             idDestinatario: this.$route.params.id,
           };
-          this.showChat = !this.showChat;
+          this.socketIO.emit('room', this.room);
         });
     },
   },
@@ -283,11 +286,12 @@ export default {
     this.getUser();
     // Asignar socket al usuario que entra a ver el perfil. Le pongo el setTimeout para que le de tiempo a vue de coger $root
     setTimeout(() => {
-      this.socketIO.emit('add user', {
+      this.socketIO.emit("add user", {
         id: this.$root.user.id,
         name: this.$root.user.name,
-        lastName: this.$root.user.lastname
+        lastName: this.$root.user.lastname,
       });
+      this.crearChat();
     }, 1000);
   },
 };

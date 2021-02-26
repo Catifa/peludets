@@ -61,7 +61,7 @@ export default {
       ).scrollHeight;
     });
 
-    this.socketIO.on("disconected", (data) => {});
+    this.socketIO.on("disconected");
 
     this.socketIO.on("recuperarChat", (data) => {
       console.log(data);
