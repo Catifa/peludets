@@ -38,6 +38,11 @@ Route::group(['prefix' => 'mascota'], function () {
     Route::post('add', [MascotasController::class, 'add']);
     Route::get('all', [MascotasController::class, 'index']);
     Route::post('recuperarMascota', [MascotasController::class, 'recuperarMascota']);
+    Route::post('registerMascota', [MascotasController::class, 'registerMascota']);
+    Route::post('setProfilePhotoMascota', [MascotasController::class, 'setProfilePhotoMascota']);
+    Route::post('deleteMascota', [MascotasController::class, 'deleteMascota']);
+    Route::post('updateMascota', [MascotasController::class, 'updateMascota']);
+
 
 });
 
