@@ -170,7 +170,7 @@ export default {
           });
 
           //ENVIAR CORREO
-          this.axios.get('/api/contactanos');
+          this.axios.get('/api/contactanos', this.propUsuario);
            this.axios.get('/api/solicitud');
 
           $('.modal').modal('hide');

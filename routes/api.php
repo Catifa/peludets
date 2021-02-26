@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProfesionController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UsuariosController;
@@ -11,9 +12,8 @@ use App\Http\Controllers\MascotasController;
 use App\Http\Controllers\MensajesController;
 use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\SitiosInteresController;
-use App\Mail\ContactanosMailable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -97,15 +97,8 @@ Route::group(['prefix' => 'chat'], function(){
 });
 
 //Mail 
-Route::get('contactanos', function() {
-    $correo = [
-        'title' => 'Tienes una nueva solicitud',
-        'body' => 'PAYASO'
-    ];
-    Mail::to('aciegoe@gmail.com')->send(new \App\Mail\ContactanosMailable($correo));
-  
-
-    return 'Correo enviado';
+Route::group(['prefix'=> 'mail'], function() {
+    Route::post('noreply',[MailController::class,'MailNoreply']);
 
 });
 
