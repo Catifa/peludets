@@ -13,10 +13,12 @@ class Mascota extends Model
     use HasFactory;
     
     protected $fillable = [
+        'id_usuario',
         'nombre',
         'especie',
         'raza',
         'edad',
-        'peso'
+        'peso',
+        'photo'
     ];
 }
