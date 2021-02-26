@@ -222,9 +222,7 @@ export default {
       room: {},
     };
   },
-  created() {
-    this.socketIO.emmit('add user', this.$root.user.id);
-  },
+  created() {},
   methods: {
     getUser() {
       axios
@@ -281,7 +279,16 @@ export default {
     },
   },
   mounted() {
+    // Obtener usuario al cual pertenece el perfil
     this.getUser();
+    // Asignar socket al usuario que entra a ver el perfil. Le pongo el setTimeout para que le de tiempo a vue de coger $root
+    setTimeout(() => {
+      this.socketIO.emit('add user', {
+        id: this.$root.user.id,
+        name: this.$root.user.name,
+        lastName: this.$root.user.lastname
+      });
+    }, 1000);
   },
 };
 </script>

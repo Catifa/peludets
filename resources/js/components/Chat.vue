@@ -36,8 +36,6 @@ export default {
     };
   },
   created() {
-    this.iniciarChat();
-
     // Recibir mensajes del servidor
     this.socketIO.on("chat message", (msg) => {
       console.log(msg);
