@@ -4,7 +4,7 @@
       <solicitud-trabajo :propUser="user"></solicitud-trabajo>
       <h3 class="crema-peludets mt-5">Disponibilidad</h3>
       <div class="mt-3">
-        <tmpCalendario></tmpCalendario>
+        <vc-calendar></vc-calendar>
       </div>
     </div>
     <div class="col-xs-12 col-md-7">

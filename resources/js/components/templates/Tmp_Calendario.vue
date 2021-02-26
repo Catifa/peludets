@@ -17,6 +17,7 @@
           :show-today-button="false"
           eventDisplay="eventDisplay"
         />
+
   </div>
 </template>
 <script>
