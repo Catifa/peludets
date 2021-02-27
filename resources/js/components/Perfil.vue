@@ -395,6 +395,13 @@ export default {
     modalMascota(mascota) {
       this.mascota = mascota;
     },
+    recuperarMascota(){
+      this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+      this.mascotas = response.data;
+      console.log(response.data);
+    });
+
+    },
 
     deleteMascota(id) {
       console.log(id);
@@ -402,6 +409,7 @@ export default {
         .post("api/mascota/deleteMascota", { id })
         .then((response) => {
           Swal.fire("Mascota eliminada", "success");
+          this.recuperarMascota();
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
@@ -414,6 +422,8 @@ export default {
         .then((response) => {
           $("#form-registroMascota").modal("hide");
           Swal.fire("Registro completado", "success");
+                    this.recuperarMascota();
+
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));

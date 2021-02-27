@@ -95,6 +95,13 @@ export default {
     };
   },
   methods: {
+    recuperarMascota() {
+      this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+        this.mascotas = response.data;
+        console.log(response.data);
+      });
+    },
+
     updateMascota(id) {
       this.mascota.userId = this.$root.user.id;
       this.mascota.img = this.img;
@@ -105,6 +112,7 @@ export default {
         .then((response) => {
           $("#form-updateMascota").modal("hide");
           Swal.fire("Mascota modificada", "success");
+          this.recuperarMascota();
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
