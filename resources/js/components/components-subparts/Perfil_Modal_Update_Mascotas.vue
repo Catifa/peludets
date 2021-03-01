@@ -85,6 +85,8 @@
   </div>
 </template>
 <script>
+import Swal from "sweetalert2";
+
 export default {
   props: ["propMascota"],
   data() {
@@ -142,6 +144,12 @@ export default {
 
       reader.readAsDataURL(f);
     },
+  },
+   mounted() {
+    this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+      this.mascotas = response.data;
+      console.log(response.data);
+    });
   },
 };
 </script>
