@@ -15,16 +15,48 @@
         class="form-chat form-chat col-md-12 mx-auto"
       >
         <input v-model="mensaje" autocomplete="off" class="input-chat" />
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#videoCall"
+        >
+          <i class="fas fa-video"></i>
+        </button>
         <button>Enviar</button>
       </form>
+    </div>
+
+    <div class="row">
+      <!-- Modal -->
+      <div id="videoCall" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="container-fluid">
+                <div class="col-md-12">
+                  <h4 class="modal-title">Video LLamada</h4>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success"><i class="fas fa-phone"></i></button>
+              <button type="button" class="btn btn-danger"><i class="fas fa-phone-slash"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  props: ['propRoom', 'propSocket'],
+  props: ["propRoom", "propSocket"],
   data() {
     return {
       mensaje: "",
@@ -104,6 +136,6 @@ export default {
         this.mensaje = "";
       }
     },
-  }
+  },
 };
 </script>
