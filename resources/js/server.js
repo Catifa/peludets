@@ -14,41 +14,37 @@ httpServer.listen(port, () => {
     console.log('Escuchando por el puerto 1337');
 });
 
-let users = [];
-let rooms = [];
+const users = [];
+
+const rooms = [];
 
 // Chat
 io.on('connection', (socket) => {
 
     // Insertar nombre al usuario
     socket.on('add user', (user) => {
-        // Asignar id al socket para trabajar con el
-        socket.id = user.id;
-        users.push(socket.id);
+        // Situacion expectacular NO TOCAR, EN SERIO!!!!!!!!!!!!!!!!!!
+        users["uwu" + user.id] = socket.id;
     });
 
     // "Enjaular" a el usuario en una room
     socket.on('room', (room) => {
         let roomName = crearRoomName(room);
-
         // Si la sala no existe se crea y se une el socket a ella
         if (rooms.find(element => element === roomName) === undefined) {
             rooms.push(roomName);
-            console.log(room.idDestinatario);
-            // No va y quiero llorar
-            io.to(room.idDestinatario).emit('invite room', roomName);
+
+            io.to(users["uwu" + room.idDestinatario]).emit('invite room', room);
         }
 
         socket.join(roomName);
 
-        console.log(io.sockets.adapter.rooms);
-
+        socket.room = roomName;
     });
 
     // Gestionar las rooms
     socket.on('chat message', (msg) => {
-
-        socket.emit(users);
+        socket.to(socket.room).emit('chat message', (msg));
     });
 
     // Desconexion de la sesion
@@ -63,9 +59,9 @@ io.on('connection', (socket) => {
 function crearRoomName(room) {
     let name;
     if (room.idRemitente > room.idDestinatario) {
-        name = room.idDestinatario + '-' + room.idRemitente + '-' + room.roomName;
+        name = room.idDestinatario + '-' + room.idRemitente + '-' + room.roomName + '-UwU';
     } else {
-        name = room.idRemitente + '-' + room.idDestinatario + '-' + room.roomName;
+        name = room.idRemitente + '-' + room.idDestinatario + '-' + room.roomName + '-UwU';
     }
     return name;
 }

@@ -40,7 +40,7 @@ export default {
     this.socketIO.on("chat message", (msg) => {
       console.log(msg);
       const item = document.createElement("li");
-      item.textContent = msg.message;
+      item.textContent = msg;
 
       let date = new Date();
       let hora =

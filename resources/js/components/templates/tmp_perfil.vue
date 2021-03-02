@@ -228,7 +228,8 @@ export default {
   created() {
     // Comprobar si alguien le intenta meter en una room
     this.socketIO.on('invite room', (roomNode) => {
-      console.log('Hola');
+      this.room = roomNode;
+      this.socketIO.emit('room', roomNode);
     });
   },
   methods: {
@@ -279,8 +280,8 @@ export default {
         .then((response) => {
           this.room = {
             roomName: response.data,
-            idRemitente: this.$root.user.id,
-            idDestinatario: parseInt(this.$route.params.id),
+            idRemitente: String(this.$root.user.id),
+            idDestinatario: String(this.$route.params.id),
           };
         });
     },
@@ -295,7 +296,7 @@ export default {
     // Asignar socket al usuario que entra a ver el perfil. Le pongo el setTimeout para que le de tiempo a vue de coger $root
     setTimeout(() => {
       this.socketIO.emit("add user", {
-        id: this.$root.user.id,
+        id: String(this.$root.user.id),
         name: this.$root.user.name,
         lastName: this.$root.user.lastname,
       });
