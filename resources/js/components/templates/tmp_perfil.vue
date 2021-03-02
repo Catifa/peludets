@@ -22,7 +22,7 @@
           <h1 class="mt-5">{{ user.name }} {{ user.lastname }}</h1>
           <button
             class="btn btn-lila-peludets btn-lg"
-            @click="showChat = !showChat"
+            @click="iniciarChat()"
           >
             Contacta con {{ user.name }}
           </button>
@@ -225,7 +225,12 @@ export default {
       room: {},
     };
   },
-  created() {},
+  created() {
+    // Comprobar si alguien le intenta meter en una room
+    this.socketIO.on('invite room', (roomNode) => {
+      console.log('Hola');
+    });
+  },
   methods: {
     getUser() {
       axios
@@ -275,11 +280,14 @@ export default {
           this.room = {
             roomName: response.data,
             idRemitente: this.$root.user.id,
-            idDestinatario: this.$route.params.id,
+            idDestinatario: parseInt(this.$route.params.id),
           };
-          this.socketIO.emit('room', this.room);
         });
     },
+    iniciarChat() {
+      this.showChat = !this.showChat;
+      this.socketIO.emit('room', this.room);
+    }
   },
   mounted() {
     // Obtener usuario al cual pertenece el perfil
