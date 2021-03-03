@@ -113,7 +113,7 @@ export default {
       if (this.mensaje.trim().length == 0) {
         this.mensaje = "";
       } else {
-        this.socketIO.emit("chat message", this.mensaje);
+        this.socketIO.emit("chat message", (this.propRoom, this.mensaje));
         const item = document.createElement("li");
         item.textContent = this.mensaje;
 

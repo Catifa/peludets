@@ -3,6 +3,7 @@ const axios = require('axios');
 //const { response } = require('express');
 const fetch = require("node-fetch");
 const app = require('express');
+const { response } = require('express');
 const httpServer = require('http').createServer(app);
 const port = process.env.PORT || 1337;
 const io = require('socket.io')(httpServer, {
@@ -41,16 +42,18 @@ io.on('connection', (socket) => {
 
         socket.join(roomName);
 
-        socket.to(socket.room).emit('recuperar chat', recuperarChat(indexRoom));
-
-        console.dir(rooms);
+        socket.to(rooms[indexRoom]).emit('recuperar chat', recuperarChat(indexRoom));
     });
 
     // Gestionar las rooms
-    socket.on('chat message', (msg) => {
-        socket.to(socket.room).emit('chat message', (msg));
-    });
+    socket.on('chat message', (room, msg) => {
+        // Socket.room ya no sirve. Hay que mirar la manera de comprobar la sala
+        socket.to(room.roomName).emit('chat message', (msg));
 
+        // Metodo para guardar el mensaje en la base de datos
+        guardarMensaje({'id': socket.id, 'mensaje': msg})
+    });
+    
     // Desconexion de la sesion
     socket.on('disconnect', () => {
         users.splice(users.findIndex((i) => {
@@ -73,11 +76,22 @@ function crearIndexRoom(room) {  //Orden de ID's: Mayor > Menor
 }
 
 function recuperarChat(room) {
+    console.log(room);
     axios.post('http://www.peludets.cat/api/chat/select', {
         idRemitente: room.idRemitente,
         idDestinatario: room.idDestinatario
     }).then((response) => {
-        console.log(response);
+        console.log(response.data);
     });
     return null
+}
+
+// ADRI, MIRATE ESTO Y AÑADELO AL API SI PUEDES
+function guardarMensaje(obj) {
+    console.log(obj);
+    axios.post('http://www.peludets.cat/api/chat/insert', obj).then(() => {
+        console.log('Mensaje guardado');
+    }).catch(() => {
+        console.log('Error! 💥');
+    });
 }
