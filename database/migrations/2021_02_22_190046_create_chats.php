@@ -14,7 +14,7 @@ class Chats extends Migration
     public function up()
     {
         Schema::create('chats', function (Blueprint $table) {
-            $table->integer('idEmisor');
+            $table->text('roomName');
             $table->integer('idDestinatario');
             $table->longText('mensaje');
             $table->boolean('leido');
