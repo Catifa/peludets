@@ -11,8 +11,8 @@ class MensajesController extends Controller
     protected function insert(Request $request)
     {
         Mensaje::create([
-            'idEmisor' => 1,
-            'idDestinatario' => 2,
+            'idEmisor' => $request->idRemitente,
+            'idDestinatario' => $request->idDestinatario,
             'mensaje' => $request->msg,
             'leido' => false,
         ]);
@@ -21,8 +21,8 @@ class MensajesController extends Controller
     protected function select(Request $request)
     {
         return Mensaje::select('mensaje', 'created_at')
-            ->where('idEmisor', $request->idEmisor)
-            ->where('idDestinatario', 2)
+            ->where('idEmisor', $request->idRemitente)
+            ->where('idDestinatario', $request->idDestinatario)
             ->get();
     }
 
