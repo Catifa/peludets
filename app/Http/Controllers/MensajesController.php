@@ -11,10 +11,9 @@ class MensajesController extends Controller
     protected function insert(Request $request)
     {
         Mensaje::create([
-            'idEmisor' => $request->idRemitente,
-            'idDestinatario' => $request->idDestinatario,
+            'roomName' => $request->roomName,
             'mensaje' => $request->msg,
-            'leido' => false,
+            'leido' => false
         ]);
     }
 
