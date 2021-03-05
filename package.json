@@ -27,6 +27,7 @@
     "vue-router": "^3.4.9",
     "vue-socket.io": "^3.0.10",
     "vue-sweet-calendar": "^0.3.1",
+    "vue-webrtc": "^1.2.2",
     "vue2-editor": "^2.10.2",
     "vue2-leaflet": "^2.6.0"
   },

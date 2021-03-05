@@ -41,11 +41,14 @@
               </div>
             </div>
             <div class="modal-body">
-              
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success"><i class="fas fa-phone"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-phone-slash"></i></button>
+              <button type="button" class="btn btn-success">
+                <i class="fas fa-phone"></i>
+              </button>
+              <button type="button" class="btn btn-danger">
+                <i class="fas fa-phone-slash"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -55,6 +58,8 @@
 </template>
 
 <script>
+
+
 export default {
   props: ["propRoom", "propSocket"],
   data() {
