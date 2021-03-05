@@ -112,8 +112,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="rounded-pill col-md-3 mt-1 border">
-                  <div class="row">
+                <div class="rounded-pill col-md-3 mt-1 border" id="valoraciones" v-if="valora" >
+                  <div class="row" v-for="valoraciones
+                   in valoraciones" :key="valoraciones">
                     <div class="col-md-4 mt-1">
                       <img
                         src="sources/img/adiestrador.jpg"
@@ -123,7 +124,7 @@
                       />
                     </div>
                     <div class="col-md-8 mt-1">
-                      <span>Muy buena gente de zooooona</span>
+                      <span> {{ valoraciones.valoracion }}  </span>
                       <div class="col-md-12 mb-2">
                         <i class="fas fa-star"></i> <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i> <i class="far fa-star"></i>
@@ -227,6 +228,26 @@ export default {
   },
   created() {},
   methods: {
+
+  //Recoger Valoraciones
+  valoraciones() {
+
+let objeto = {
+  profesion : this.profesiones,
+  disponibilidad : this.disponibilidad,
+  titulacion : this.titulacion
+
+}
+     
+this.axios
+        .post("api/valoraciones/userByProf", objeto)
+        .then(response => {
+          this.usuarios = response.data
+         this.ensena =true;
+         console.log(response.data);
+        });
+    },
+
     getUser() {
       axios
         .post("/api/usuario/perfil", { id: this.$route.params.id })

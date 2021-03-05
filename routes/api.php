@@ -88,6 +88,8 @@ Route::group(['prefix' => 'usuario'], function () {
     Route::post('editarPerfil', [UsuariosController::class, 'editarPerfil']);
     Route::post('getProfText', [UsuariosController::class, 'getProfText']);
     Route::post('setProfText', [UsuariosController::class, 'setProfText']);
+    Route::post('updateUsuario', [UsuariosController::class, 'updateUsuario']);
+    
 });
 
 Route::group(['prefix' => 'explorador'], function () {
@@ -117,3 +119,11 @@ Route::get('solicitud', function() {
     return 'Correo enviado';
 
 });
+
+
+Route::group(['prefix' => 'valoraciones'], function(){
+    Route::post('insert',[MensajesController::class,'insert']);
+    Route::post('select',[MensajesController::class,'select']);
+    Route::post('hashRoom', [MensajesController::class, 'hashRoom']);
+});
+

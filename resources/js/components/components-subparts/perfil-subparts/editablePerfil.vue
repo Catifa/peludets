@@ -8,7 +8,13 @@
       @click="showEditor = !showEditor"
       class="btn btn-verde-peludets mt-1"
     >Editar Perfil</button>
-  </div>
+ 
+  <button
+      v-if="!showEditor"
+      @click="showEditor = !showEditor"
+      class="btn btn-verde-peludets mt-1"
+    >Modificar Cuenta</button>
+     </div>
 </template>
 
 <script>

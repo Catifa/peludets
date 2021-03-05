@@ -252,4 +252,28 @@ class UsuariosController extends Controller
 
         User::where('id', $id)->update(['textoPerfil' => $texto]);
     }
-}
+
+
+    
+    public function updateUsuario(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'dni' => 'required|string|max:9|unique:users',
+            'password' => 'required|string|min:5'
+        ]);
+
+
+        User::where('id','=', $request->id)->update([
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'dni' => $request->dni,
+            'email' => $request->email,
+            'password' => $request->password,
+            'photo' => $request->photo       
+        ]);
+        }
+    } 
