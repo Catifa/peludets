@@ -77,7 +77,7 @@ export default {
     this.socketIO.on("chat message", (msg) => {
       console.log(msg);
       const item = document.createElement("li");
-      item.textContent = msg.message;
+      item.textContent = msg;
 
       let date = new Date();
       let hora =
@@ -118,7 +118,7 @@ export default {
       if (this.mensaje.trim().length == 0) {
         this.mensaje = "";
       } else {
-        this.socketIO.emit("chat message", this.mensaje);
+        this.socketIO.emit("chat message", (this.propRoom, this.mensaje));
         const item = document.createElement("li");
         item.textContent = this.mensaje;
 
