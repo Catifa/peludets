@@ -14,7 +14,10 @@
   },
   "dependencies": {
     "express": "^4.16.3",
+    "getusermedia": "^2.0.1",
     "leaflet": "^1.7.1",
+    "simple-peer": "^9.9.3",
+    "socket.io": "^3.1.2",
     "sweetalert2": "^10.12.6",
     "symfony": "0.0.1",
     "v-calendar": "^2.2.3",
@@ -24,6 +27,7 @@
     "vue-router": "^3.4.9",
     "vue-socket.io": "^3.0.10",
     "vue-sweet-calendar": "^0.3.1",
+    "vue-webrtc": "^1.2.2",
     "vue2-editor": "^2.10.2",
     "vue2-leaflet": "^2.6.0"
   },
