@@ -36,15 +36,13 @@ Route::middleware('auth:sanctum')->get('/authentication', function (Request $req
 
 // Peticiones Mascotas
 Route::group(['prefix' => 'mascota'], function () {
-    Route::post('add', [MascotasController::class, 'add']);
+    Route::post('add', [MascotasController::class, 'add'])->middleware('auth');
     Route::get('all', [MascotasController::class, 'index']);
     Route::post('recuperarMascota', [MascotasController::class, 'recuperarMascota']);
-    Route::post('registerMascota', [MascotasController::class, 'registerMascota']);
-    Route::post('setProfilePhotoMascota', [MascotasController::class, 'setProfilePhotoMascota']);
-    Route::post('deleteMascota', [MascotasController::class, 'deleteMascota']);
-    Route::post('updateMascota', [MascotasController::class, 'updateMascota']);
-
-
+    Route::post('registerMascota', [MascotasController::class, 'registerMascota'])->middleware('auth');
+    Route::post('setProfilePhotoMascota', [MascotasController::class, 'setProfilePhotoMascota'])->middleware('auth');
+    Route::post('deleteMascota', [MascotasController::class, 'deleteMascota'])->middleware('auth');
+    Route::post('updateMascota', [MascotasController::class, 'updateMascota'])->middleware('auth');
 });
 
 // Peticiones Especies
@@ -70,13 +68,13 @@ Route::group(['prefix' => 'profesiones'], function() {
 
 //Solitudes
 Route::group(['prefix' => 'solicitudes'], function () {
-    Route::post('enviar', [SolicitudController::class, 'enviarSolicitud']);
-    Route::post('recuperar', [SolicitudController::class, 'recuperar']);
+    Route::post('enviar', [SolicitudController::class, 'enviarSolicitud'])->middleware('auth');
+    Route::post('recuperar', [SolicitudController::class, 'recuperar'])->middleware('auth');
 });
 
 Route::group(['prefix' => 'files'], function () {
-    Route::post('setProfilePhoto', [FileController::class, 'setProfilePhoto']);
-    Route::post('getProfilePhoto', [FileController::class, 'getProfilePhoto']);
+    Route::post('setProfilePhoto', [FileController::class, 'setProfilePhoto'])->middleware('auth');
+    Route::post('getProfilePhoto', [FileController::class, 'getProfilePhoto'])->middleware('auth');
 });
 
 Route::group(['prefix' => 'usuario'], function () {
@@ -85,11 +83,10 @@ Route::group(['prefix' => 'usuario'], function () {
     Route::post('userByProfOnly', [UsuariosController::class, 'userByProfOnly']);
     Route::post('perfil', [UsuariosController::class, 'perfil']);
     Route::post('app', [UsuariosController::class, 'app']);
-    Route::post('editarPerfil', [UsuariosController::class, 'editarPerfil']);
-    Route::post('getProfText', [UsuariosController::class, 'getProfText']);
-    Route::post('setProfText', [UsuariosController::class, 'setProfText']);
-    Route::post('updateUsuario', [UsuariosController::class, 'updateUsuario']);
-    
+    Route::post('editarPerfil', [UsuariosController::class, 'editarPerfil'])->middleware('auth');
+    Route::post('getProfText', [UsuariosController::class, 'getProfText'])->middleware('auth');
+    Route::post('setProfText', [UsuariosController::class, 'setProfText'])->middleware('auth');
+    Route::post('updateUsuario', [UsuariosController::class, 'updateUsuario'])->middleware('auth');
 });
 
 Route::group(['prefix' => 'explorador'], function () {
@@ -98,32 +95,19 @@ Route::group(['prefix' => 'explorador'], function () {
 });
 
 Route::group(['prefix' => 'chat'], function(){
-    Route::post('insert',[MensajesController::class,'insert']);
-    Route::post('select',[MensajesController::class,'select']);
-    Route::post('hashRoom', [MensajesController::class, 'hashRoom']);
+    Route::post('insert',[MensajesController::class,'insert'])->middleware('auth');
+    Route::post('select',[MensajesController::class,'select'])->middleware('auth');
+    Route::post('hashRoom', [MensajesController::class, 'hashRoom'])->middleware('auth');
 });
 
 //Mail 
 Route::group(['prefix'=> 'mail'], function() {
-    Route::post('noreply',[MailController::class,'MailNoreply']);
-
+    Route::post('noreply',[MailController::class,'MailNoreply'])->middleware('auth');
 });
-
-Route::get('solicitud', function() {
-    $correo = [
-        'title' => 'Tienes una nueva solicitud',
-        'body' => 'PAYASO'
-    ];
-    Mail::to('aciegoe@gmail.com')->send(new \App\Mail\solicitud($correo));
-
-    return 'Correo enviado';
-
-});
-
 
 Route::group(['prefix' => 'valoraciones'], function(){
-    Route::post('insert',[MensajesController::class,'insert']);
+   /*  Route::post('insert',[MensajesController::class,'insert']);
     Route::post('select',[MensajesController::class,'select']);
-    Route::post('hashRoom', [MensajesController::class, 'hashRoom']);
+    Route::post('hashRoom', [MensajesController::class, 'hashRoom']); */
 });
 
