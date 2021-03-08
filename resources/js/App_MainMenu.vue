@@ -173,14 +173,13 @@ export default {
       });
     },
 
+    // Funcion para controlar el tamaño de la pantalla
     handleResize() {
       this.window.width = window.innerWidth;
 
-      console.log(this.window.width);
-
       if (this.window.width < 576) {
         document.getElementById("btnsRegistro").className =
-          "navbar-right mt-3 mx-auto";
+          "navbar-right mt-3 text-center ulNoPaddingMenu";
       } else if (this.window.width > 576) {
         document.getElementById("btnsRegistro").className =
           "navbar-nav navbar-right list-inline";
