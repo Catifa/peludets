@@ -88,7 +88,6 @@ Route::group(['prefix' => 'usuario'], function () {
     Route::post('editarPerfil', [UsuariosController::class, 'editarPerfil']);
     Route::post('getProfText', [UsuariosController::class, 'getProfText']);
     Route::post('setProfText', [UsuariosController::class, 'setProfText']);
-    Route::post('updateUsuario', [UsuariosController::class, 'updateUsuario']);
     
 });
 
