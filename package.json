@@ -10,7 +10,8 @@
     "watch": "npm run development -- --watch",
     "watch-poll": "npm run watch -- --watch-poll",
     "start:dev": "nodemon resources/js/server.js",
-    "start": "node resources/js/server.js"
+    "start": "node resources/js/server.js",
+    "test": "jest --coverage"
   },
   "dependencies": {
     "express": "^4.16.3",
