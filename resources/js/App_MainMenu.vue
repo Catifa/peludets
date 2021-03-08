@@ -7,6 +7,7 @@
       </router-link>
       <!-- Boton responsive -->
       <button
+        @click="handleResize"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -57,9 +58,13 @@
         </ul>
         <!-- Seccion usuario/registro -->
         <!-- Sin registro -->
-        <ul class="navbar-nav navbar-right" v-if="this.$root.user == null">
+        <ul
+          id="btnsRegistro"
+          class="navbar-nav navbar-right list-inline"
+          v-if="this.$root.user == null"
+        >
           <!-- Iniciar Sesion -->
-          <li class="nav-item">
+          <li class="nav-item list-inline-item">
             <button
               id="inicio-sesion"
               type="button"
@@ -71,7 +76,7 @@
             </button>
           </li>
           <!-- Registro -->
-          <li class="nav-item">
+          <li class="nav-item list-inline-item">
             <button
               id="registro"
               type="button"
@@ -141,6 +146,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+      window: {
+        width: window.innerWidth,
+      },
+    };
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
   methods: {
     logout() {
       axios.post("/api/auth/logout").then((res) => {
@@ -150,6 +166,20 @@ export default {
         this.$router.push("/");
       });
     },
-  },
+
+    handleResize() {
+      this.window.width = window.innerWidth;
+
+      console.log(this.window.width);
+
+      if (this.window.width < 576) {
+        document.getElementById("btnsRegistro").className =
+          "navbar-right mt-3 mx-auto";
+      } else if (this.window.width > 576) {
+        document.getElementById("btnsRegistro").className =
+          "navbar-nav navbar-right list-inline";
+      }
+    },
+  }
 };
 </script>
