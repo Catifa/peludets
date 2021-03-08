@@ -69,6 +69,9 @@ export default {
   },
   mounted() {
     this.isAuthenticated();
+    if (this.$route.path ==  "/device" || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      this.$root.device = true;
+    }
   },
 };
 </script>

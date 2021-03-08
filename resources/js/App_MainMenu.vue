@@ -94,13 +94,18 @@
             <!-- Imagen Usuario -->
             <a
               class="nav-link dropdown-toggle"
-              v-bind:src="this.$root.photo"
               id="dropdownUsuario"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img src="" class="rounded-circle" alt="Usuario" />
+              <img
+                id="img-perfil"
+                v-bind:src="this.$root.photo"
+                class="rounded-circle"
+                width="100%"
+                alt="Usuario"
+              />
             </a>
             <!-- Submenu Usuario -->
             <div
@@ -113,6 +118,7 @@
                   v-bind:src="this.$root.photo"
                   class="rounded"
                   alt="Foto perfil"
+                  id="fotoDesplegable"
                 />
                 <span class="ml-3 font-weight-bold">
                   {{ this.$root.user.name }}
