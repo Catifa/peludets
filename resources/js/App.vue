@@ -28,12 +28,16 @@
 
 <script>
 
+import FormInicioSesion from './App_Form_Inicio_Sesion.vue';
+import FormRegistro from './App_Form_Registro.vue';
 import MainMenu from './App_MainMenu.vue';
 import Footer from './App_Footer.vue';
 
 export default {
   name: "local-changer",
   components: {
+    'form_inicio_sesion': FormInicioSesion,
+    'form_registro': FormRegistro,
     'footerPldts': Footer,
     'main_menu': MainMenu
   },
