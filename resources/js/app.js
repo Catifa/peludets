@@ -57,6 +57,7 @@ const app = new Vue({
     data:{
       user: {},
       photo:'sources/img/avatar.jfif',
+      device: false,
     },
     el: '#app',
     router: router,

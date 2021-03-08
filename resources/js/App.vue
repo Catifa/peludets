@@ -45,7 +45,7 @@
                   {{ $t("app.menuProfesionales") }}
                 </router-link>
               </li>
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav" v-if="this.$root.device == false">
                 <li class="dropdown nav-item">
                   <a
                     class="dropdown-toggle nav-link"
@@ -315,6 +315,9 @@ export default {
   },
   mounted() {
     this.isAuthenticated();
+    if (this.$route.path ==  "/device" || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      this.$root.device = true;
+    }
   },
 };
 </script>
