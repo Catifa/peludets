@@ -112,11 +112,12 @@
     </div>
     <!-- Tarjetas Info -->
     <div class="row mt-3">
+      <!-- Tarjeta 1 -->
       <div class="col-lg-3 col-md-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
-            src="../../img/tarjetas_home/gato-tranquilo.jpg"
+            src="../../img/tarjetas_home/adiestramiento.jpg"
             height="300px"
             width="100%"
             alt="Gato"
@@ -126,11 +127,12 @@
           </div>
         </div>
       </div>
+      <!-- Tarjeta 2 -->
       <div class="col-lg-3 col-md-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
-            src="../../img/tarjetas_home/gecko-feliz.jpg"
+            src="../../img/tarjetas_home/corgiJugando.jpg"
             height="300px"
             width="100%"
             alt="Gecko"
@@ -140,11 +142,12 @@
           </div>
         </div>
       </div>
+      <!-- Tarjeta 3 -->
       <div class="col-lg-3 col-md-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
-            src="../../img/tarjetas_home/perro-paseando.jpg"
+            src="../../img/tarjetas_home/loro.jpg"
             height="300px"
             width="100%"
             alt="Perro"
@@ -154,11 +157,12 @@
           </div>
         </div>
       </div>
+      <!-- Tarjeta 4 -->
       <div class="col-lg-3 col-md-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
-            src="../../img/tarjetas_home/zorro-feliz.jpg"
+            src="../../img/tarjetas_home/gatoLamiendose.jpg"
             height="300px"
             width="100%"
             alt="Zorro"
