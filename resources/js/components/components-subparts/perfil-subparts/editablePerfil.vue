@@ -9,20 +9,31 @@
       class="btn btn-verde-peludets mt-1"
     >Editar Perfil</button>
  
+ 
   <button
-      v-if="!showEditor"
-      @click="showEditor = !showEditor"
+     
+      @click="modalUsuario(usuario)"
       class="btn btn-verde-peludets mt-1"
     >Modificar Cuenta</button>
+
+    <div class="row">
+          <!-- Modal -->
+        
+        </div>
+
      </div>
+    
 </template>
+
 
 <script>
 import { VueEditor } from "vue2-editor";
 
+
 export default {
   components: {
-    VueEditor
+    VueEditor,
+   
   },
   data() {
     return {
@@ -32,6 +43,10 @@ export default {
     };
   },
   methods: {
+    modalUsuario(usuario) {
+      this.usuario = usuario;
+    },
+
     saveContent() {
       let obj = {
         val: this.text.val,

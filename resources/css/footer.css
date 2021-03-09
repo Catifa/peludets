@@ -5,7 +5,7 @@
 /* Redes Sociales */
 
 .redes-sociales a {
-    color: #4E4868;
+    color: #4e4868;
 }
 
 .redes-sociales a:hover {
@@ -19,5 +19,20 @@
 /* Copyright */
 
 .footer-copyright {
-    background-color: #F2E7C9;
+    background-color: #f2e7c9;
+}
+
+.banner {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.bannerTexto {
+    color: white;
+    font-size: large;
+    font-weight: bold;
 }

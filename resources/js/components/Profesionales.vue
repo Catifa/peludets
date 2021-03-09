@@ -49,6 +49,18 @@
 ------->
 
     <!------------------------------->
+    <div class="row container-fluid mx-auto mt-2" id="banner-info">
+      <div class="mx-auto banner-info">
+        <div align="right" class="mr-3 mt-1">
+          <i class="fas fa-times" @click="hideBannerInfo"></i>
+        </div>
+        <div align="center" class="ml-4 mr-4 mb-4">
+          Benvingut a serveis. <br />
+          Aquí trobaràs persones amb tota mena de serveis per a tu i les teves
+          mascotes!
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12 col-xs-12">
         <p

@@ -3,6 +3,20 @@
 </style>
 <template>
   <div class="row">
+    <div class="row container-fluid mx-auto mt-2" id="banner-info">
+      <div class="mx-auto banner-info">
+        <div align="right" class="mr-3 mt-1">
+          <i class="fas fa-times" @click="hideBannerInfo"></i>
+        </div>
+        <div align="center" class="ml-4 mr-4 mb-4">
+          Benvingut a l'explorador. <br />
+          Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris i
+          molt mes! <br />
+          A més si ets un dels nostres afiliats podràs
+          trobar treballs a la teva zona aquí!
+        </div>
+      </div>
+    </div>
     <div class="col-md-6 mt-3 mx-auto">
       <div id="gifCargar" v-if="!cargarCoord">
         <img
@@ -141,6 +155,9 @@ export default {
         //console.log(arrOfertas);
       });
     },
+    hideBannerInfo(){
+      document.getElementById('banner-info').style.display = 'none';
+    }
   },
   mounted() {
     if (!navigator.geolocation) {

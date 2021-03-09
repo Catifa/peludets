@@ -20,7 +20,10 @@
     <router-view></router-view>
 
     <!-- Footer -->
-    <footer-pldts></footer-pldts>
+    <footer-pldts></footer-pldts> 
+
+      <!-- Banner Publi -->
+    <banner_publi></banner_publi> 
 
   </div>
 
@@ -32,6 +35,9 @@ import FormInicioSesion from './App_Form_Inicio_Sesion.vue';
 import FormRegistro from './App_Form_Registro.vue';
 import MainMenu from './App_MainMenu.vue';
 import Footer from './App_Footer.vue';
+import BannerPubli from './App_Banner_Privacidad.vue';
+
+
 
 export default {
   name: "local-changer",
@@ -39,7 +45,9 @@ export default {
     'form_inicio_sesion': FormInicioSesion,
     'form_registro': FormRegistro,
     'footerPldts': Footer,
-    'main_menu': MainMenu
+    'main_menu': MainMenu,
+    'banner_publi' : BannerPubli
+   
   },
   data() {
     return {
