@@ -55,7 +55,7 @@
           <i class="fas fa-times" @click="hideBannerInfo"></i>
         </div>
         <div align="center" class="ml-4 mr-4 mb-4">
-          Benvingut a serveis. <br />
+          Benvingut a comunitat. <br />
           Aquí trobaràs persones amb tota mena de serveis per a tu i les teves
           mascotes!
         </div>
@@ -288,6 +288,9 @@ export default {
           this.showByProf = true;
         });
     },
+    hideBannerInfo(){
+      document.getElementById('banner-info').style.display = 'none';
+    }
   },
   mounted() {
     if (this.$route.params.prof != undefined) {

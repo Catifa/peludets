@@ -132,9 +132,9 @@
               </router-link>
               <!-- Divisor -->
               <div class="dropdown-divider" />
-              <router-link class="dropdown-item" to="/inbox">
+              <dir @click="mostrarModalInBox">
                 <i class="far fa-envelope inbox-icon" />
-              </router-link>
+              </dir>
               <div class="dropdown-divider" />
               <!-- Desconectar -->
               <span class="dropdown-item-text">
@@ -151,10 +151,13 @@
         </ul>
       </div>
     </nav>
+    <modalInBox id="modalInBox"></modalInBox>
   </div>
 </template>
 
 <script>
+import modalInBox from "./components/templates/Tmp_ModalInBox.vue";
+
 export default {
   data() {
     return {
@@ -189,6 +192,10 @@ export default {
           "navbar-nav navbar-right list-inline";
       }
     },
+  },
+  mostrarModalInBox() {
+    console.log("hola");
+    $("#modalInBox").modal("show");
   },
 };
 </script>

@@ -111,3 +111,8 @@ body {
 .card {
     border-style: outset !important;
 }
+
+.banner-info {
+    background-color: #f2e7c9;
+    border-radius: 15px;
+}
