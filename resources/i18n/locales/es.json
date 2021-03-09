@@ -1,37 +1,40 @@
 {
   "app": {
     "menuExplorador": "Explorador",
-    "menuProfesionales": "Profesionales",
-    "menuLogin": "Iniciar session",
+    "menuProfesionales": "Comunidad",
+    "menuLogin": "Iniciar sesión",
     "menuRegistro": "Registrate!",
-    "menuDescarga": "Descarga la app",
+    "menuDescarga": "Descargas",
     "menuPerfil" : "Perfil",
     "menuDesconectar" : "Desconectar" ,
     "footerContacto": "Contacto",
-    "footerPais": "ESPAÑITA",
+    "footerPais": "España",
     "footerRedesSociales": "Redes Sociales"
   },
+
   "home": {
-    "formTrabajos": "Trabajos",
+    "formTrabajos": "Servicios Disponibles",
     "formTipoMascotas": "Tipo de mascota",
-    "formBotonBuscar": "Buscar Trabajos",
+    "formBotonBuscar": "Buscar",
     "formSelectTrabajos1": "Alojamiento",
     "formSelectTrabajos2": "Paseo",
     "formSelectTrabajos3": "Adiestramiento",
     "formSelectTipoMascotas1": "Perro",
     "formSelectTipoMascotas2": "Gato",
     "formSelectTipoMascotas3": "Hurón",
-    "sliderTitulo1": "Paseos como a él de gustan",
-    "sliderTitulo2": "¿Más de una mascota?",
+    "formSelectDefecto" : "-- Selecciona un servicio --",
+    "sliderTitulo1": "No vuelvas a temer por dejarle solo",
+    "sliderTitulo2": "¿Tu mascota es exotica?",
     "sliderTitulo3": "También hay sitio para ti, chiquitín!",
-    "sliderDesc1": "Nuestra comunidad conoce las mejores zonas para que tu mascota disfrute de un paseo agradable.",
-    "sliderDesc2": "No hay problema! Podemos ocuparnos de todas ellas.",
+    "sliderDesc1": "Nunca más estará solo! Solo tienes que buscar el servicio que necesites para los días que quieras.",
+    "sliderDesc2": "Busca entre nuestra comunidad a los usuarios más calificados para que le den a tu mascota el cuidado que necesita",
     "sliderDesc3": "Peludets! no es solo para perros o gatos. Tenemos sitio para todo tipo de mascotas.",
-    "cardBox1": "Busca un sitio donde tu mascota está agusto mientras disfrutas de tus vacaciones!",
-    "cardBox2": "No solo es solo para perros y gatos. Nuestra comunidad puede cuidar a cualquier tipo de mascota.",
-    "cardBox3": "Puedes pedir cuantos paseos y de cuanto tiempo són necesarios.",
-    "cardBox4": "Disponemos de sección de profesionales para mascotas exóticas y con cuidados especiales."
+    "cardBox1": "En nuestra comunidad podrás encontrar a los mejores adiestradores dispuestos a ayudarte.",
+    "cardBox2": "Alojamiento diario para tus mascotas en la casa de tu cuidador.",
+    "cardBox3": "No es solo para perros y gatos! Cualquier tipo de mascota es bienvenida.",
+    "cardBox4": "Puedes estar tranquilo gracias a nuestro servicio de comunicación con tu cuidador."
   },
+
   "explorador":{
     "tituloExplorador": "Espera mientras te buscamos...",
     "buttonSitios": "Sitios de interés",
@@ -39,24 +42,17 @@
     "buttonMostrarMapa": "Mostrar en el mapa"
     
   },
+
   "profesionales" : {
-    "tituloProfesionales" : "Busca Toby, Busca!",
-    "FormControlSelect1" : "Profesiones",
-    "selectOptionPsicologo": "Psicologo",
-    "selectOptionEntrenador": "Entrenador",
-    "selectOptionPeluquero": "Peluquero",
+    "tituloProfesionales" : "Nuestra comunidad 🐾",
+    "FormControlSelect1" : "Servicios",
     "FormControlSelectDispo" : "Disponibilidad",
     "selectOptionPresencial": "Presencial",
     "selectOptionOnline": "Online",
     "selectOptionPreOn": "Presencial y Online",
-    "FormControlSelectTitulacion" : "¿Titulación?",
-    "valueSi": "Si",
-    "valueNo": "No",
-    "buscarProfesionales" : "Buscar Profesionales",
+    "buscarProfesionales" : "Buscar",
     "cercaTi": "Cerca de ti",
     "verPerfil": "Ver Perfil",
     "contratar":"Contratar"
-
-
   }
 }

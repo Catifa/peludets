@@ -2,7 +2,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import App from './App.vue';
-import MapaExplorador from './components/components-subparts/Explorador_mapa.vue';
 import MapaProfesionales from './components/components-subparts/Profesionales_mapa.vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
