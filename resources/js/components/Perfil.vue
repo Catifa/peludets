@@ -215,6 +215,9 @@
           <!-- Modal -->
           <modalUpdateMascota :propMascota="mascota" id="modalMascota"></modalUpdateMascota>
         </div>
+        
+        
+
 
         <div
           class="tab-pane fade"
@@ -376,12 +379,15 @@ import Swal from "sweetalert2";
 import ZonaPerfil from "./templates/ZonaPerfil.vue";
 import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 import Perfil_Modal_Update_Mascotas from "./components-subparts/Perfil_Modal_Update_Mascotas";
+
+
 export default {
   components: {
     Tareas,
     ZonaPerfil,
     editorPerfil,
     modalUpdateMascota: Perfil_Modal_Update_Mascotas,
+
   },
   name: "panel",
   data() {
