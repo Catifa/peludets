@@ -65,10 +65,15 @@
 </template>
 
 <script>
+
+import MapaExplorador from './components-subparts/Explorador_mapa.vue';
 import { utils } from "../utils";
 import Swal from "sweetalert2";
 
 export default {
+  components: {
+    'mapa-exp': MapaExplorador
+  },
   data() {
     return {
       tarjetas: [],
