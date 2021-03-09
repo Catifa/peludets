@@ -34,9 +34,6 @@ Vue.component('l-maker', LMarker);
 
 // Mapa Profesionales
 Vue.component('mapa-prof', MapaProfesionales);
-
-// Mapa Explorador
-Vue.component('mapa-exp', MapaExplorador);
   
 const router = new VueRouter({
     mode: 'history',
