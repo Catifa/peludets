@@ -8,7 +8,7 @@
       <!-- Carousel -->
       <div
         id="carouselCentral"
-        class="carousel slide col-md-8 mt-3"
+        class="carousel slide col-md-8 col-sm-8 mt-3"
         data-ride="carousel"
       >
         <ol class="carousel-indicators">
@@ -141,6 +141,9 @@ export default {
     return {
       profesiones: [],
       profesion: {},
+      window: {
+        width: window.innerWidth,
+      }
     };
   },
   methods: {
@@ -148,6 +151,21 @@ export default {
       let prof = this.profesion;
       this.$router.push({ name: "profesionales", params: { prof } });
     },
+    handleResize() {
+      this.window.width = window.innerWidth;
+
+      if (this.window.width < 576) {
+        document.getElementById("carouselCentral").className =
+          "carousel carouselCentralResp slide col-sm-8 mt-3";
+      } else if (this.window.width > 576) {
+        document.getElementById("carouselCentral").className =
+          "carousel slide col-md-8 mt-3";
+      }
+    },
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
   },
   created() {
     this.axios.get("api/profesiones/getAll").then((response) => {

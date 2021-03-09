@@ -6,6 +6,7 @@ import Profile from './components/templates/tmp_perfil.vue';
 import Chat from './components/Chat.vue';
 import VueRouter from 'vue-router';
 import AdminPanel from './components/AdminPanel.vue';
+import InBox from './InBox.vue';
 import axios from 'axios';
 
 const originalPush = VueRouter.prototype.push;
@@ -17,6 +18,11 @@ export const routes = [
     {
         name: 'home',
         path: '/',
+        component: Home
+    },
+    {
+        name: 'device',
+        path: '/device',
         component: Home
     },
     {
@@ -52,12 +58,17 @@ export const routes = [
     },
     {
         name: 'Chat',
-        path :'/chat',
-        component:Chat
+        path: '/chat',
+        component: Chat
     },
     {
         name: 'admin',
-        path :'/admin',
-        component:AdminPanel
+        path: '/admin',
+        component: AdminPanel
+    },
+    {
+        name: 'inbox',
+        path: '/inbox',
+        component: InBox
     }
 ];

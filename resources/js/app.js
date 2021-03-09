@@ -2,8 +2,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import App from './App.vue';
-import Form_Registro from './components/Form_Registro.vue';
-import Form_Inicio_Sesion from './components/Form_Inicio_Sesion.vue';
 import MapaExplorador from './components/components-subparts/Explorador_mapa.vue';
 import MapaProfesionales from './components/components-subparts/Profesionales_mapa.vue';
 import VueRouter from 'vue-router';
@@ -38,13 +36,8 @@ Vue.component('l-maker', LMarker);
 // Mapa Profesionales
 Vue.component('mapa-prof', MapaProfesionales);
 
-
 // Mapa Explorador
 Vue.component('mapa-exp', MapaExplorador);
-
-// Forms Usuario
-Vue.component('form_registro', Form_Registro);
-Vue.component('form_inicio_sesion', Form_Inicio_Sesion);
   
 const router = new VueRouter({
     mode: 'history',
@@ -57,6 +50,7 @@ const app = new Vue({
     data:{
       user: {},
       photo:'sources/img/avatar.jfif',
+      device: false,
     },
     el: '#app',
     router: router,

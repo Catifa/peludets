@@ -31,6 +31,8 @@
 
 <script>
 
+import FormInicioSesion from './App_Form_Inicio_Sesion.vue';
+import FormRegistro from './App_Form_Registro.vue';
 import MainMenu from './App_MainMenu.vue';
 import Footer from './App_Footer.vue';
 import BannerPubli from './App_Banner_Privacidad.vue';
@@ -40,6 +42,8 @@ import BannerPubli from './App_Banner_Privacidad.vue';
 export default {
   name: "local-changer",
   components: {
+    'form_inicio_sesion': FormInicioSesion,
+    'form_registro': FormRegistro,
     'footerPldts': Footer,
     'main_menu': MainMenu,
     'banner_publi' : BannerPubli
@@ -77,6 +81,9 @@ export default {
   },
   mounted() {
     this.isAuthenticated();
+    if (this.$route.path ==  "/device" || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      this.$root.device = true;
+    }
   },
 };
 </script>
