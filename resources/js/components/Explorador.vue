@@ -12,7 +12,7 @@
           Benvingut a l'explorador. <br />
           Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris i
           molt mes! <br />
-          A més si ets un dels nostres treballadors o professionals podràs
+          A més si ets un dels nostres afiliats podràs
           trobar treballs a la teva zona aquí!
         </div>
       </div>
