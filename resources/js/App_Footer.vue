@@ -5,11 +5,13 @@
         <div class="text-center text-md-left">
           <div class="row">
             <div class="col-md-6 mt-md-0 mt-3">
-              <h5 class="text-uppercase">Footer Content</h5>
-              <p>
-                Here you can use rows and columns to organize your footer
-                content.
-              </p>
+              <h5 class="text-uppercase">Colaboradores de la web</h5>
+               <img id="logo" src="../img/DinaHosting.jpg" alt="a" />
+               <img id="logo" src="../img/DonDominio.jpg" alt="a" />
+               <img id="logo" src="../img/wapps_logo.png" alt="a" />
+
+               
+
             </div>
             <hr class="clearfix w-100 d-md-none pb-3" />
             <div class="col-md-3 mb-md-0 mb-3">

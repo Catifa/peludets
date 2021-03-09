@@ -125,13 +125,17 @@
                 </span>
               </span>
               <!-- Divisor -->
-              <div class="dropdown-divider"></div>
+              <div class="dropdown-divider" />
               <!-- Perfil -->
               <router-link class="dropdown-item" to="/myProfile">
                 Perfil
               </router-link>
               <!-- Divisor -->
-              <div class="dropdown-divider"></div>
+              <div class="dropdown-divider" />
+              <router-link class="dropdown-item" to="/inbox">
+                <i class="far fa-envelope inbox-icon" />
+              </router-link>
+              <div class="dropdown-divider" />
               <!-- Desconectar -->
               <span class="dropdown-item-text">
                 <button
@@ -185,6 +189,6 @@ export default {
           "navbar-nav navbar-right list-inline";
       }
     },
-  }
+  },
 };
 </script>

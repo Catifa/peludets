@@ -46,3 +46,7 @@
 .ulNoPaddingMenu {
     padding-left: 0 !important;
 }
+
+.inbox-icon {
+    font-size: 1rem;
+}
