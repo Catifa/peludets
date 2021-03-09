@@ -20,6 +20,11 @@ export const routes = [
         component: Home
     },
     {
+        name: 'device',
+        path: '/device',
+        component: Home
+    },
+    {
         name: 'explorador',
         path: '/explorador',
         component: Explorador
@@ -52,12 +57,12 @@ export const routes = [
     },
     {
         name: 'Chat',
-        path :'/chat',
-        component:Chat
+        path: '/chat',
+        component: Chat
     },
     {
         name: 'admin',
-        path :'/admin',
-        component:AdminPanel
+        path: '/admin',
+        component: AdminPanel
     }
 ];

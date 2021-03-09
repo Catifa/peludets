@@ -32,3 +32,17 @@
     width: 100%;
     border-bottom: #ffffff solid 2px;
 }
+
+#img-perfil {
+    width: 60px;
+    height: 60px;
+}
+
+#fotoDesplegable {
+    width: 75px !important;
+    height: 75px !important;
+}
+
+.ulNoPaddingMenu {
+    padding-left: 0 !important;
+}

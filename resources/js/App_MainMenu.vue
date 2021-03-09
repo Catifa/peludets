@@ -7,6 +7,7 @@
       </router-link>
       <!-- Boton responsive -->
       <button
+        @click="handleResize"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -57,9 +58,13 @@
         </ul>
         <!-- Seccion usuario/registro -->
         <!-- Sin registro -->
-        <ul class="navbar-nav navbar-right" v-if="this.$root.user == null">
+        <ul
+          id="btnsRegistro"
+          class="navbar-nav navbar-right list-inline"
+          v-if="this.$root.user == null"
+        >
           <!-- Iniciar Sesion -->
-          <li class="nav-item">
+          <li class="nav-item list-inline-item">
             <button
               id="inicio-sesion"
               type="button"
@@ -71,7 +76,7 @@
             </button>
           </li>
           <!-- Registro -->
-          <li class="nav-item">
+          <li class="nav-item list-inline-item">
             <button
               id="registro"
               type="button"
@@ -89,13 +94,18 @@
             <!-- Imagen Usuario -->
             <a
               class="nav-link dropdown-toggle"
-              v-bind:src="this.$root.photo"
               id="dropdownUsuario"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img src="" class="rounded-circle" alt="Usuario" />
+              <img
+                id="img-perfil"
+                v-bind:src="this.$root.photo"
+                class="rounded-circle"
+                width="100%"
+                alt="Usuario"
+              />
             </a>
             <!-- Submenu Usuario -->
             <div
@@ -108,6 +118,7 @@
                   v-bind:src="this.$root.photo"
                   class="rounded"
                   alt="Foto perfil"
+                  id="fotoDesplegable"
                 />
                 <span class="ml-3 font-weight-bold">
                   {{ this.$root.user.name }}
@@ -141,6 +152,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+      window: {
+        width: window.innerWidth,
+      },
+    };
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
   methods: {
     logout() {
       axios.post("/api/auth/logout").then((res) => {
@@ -150,6 +172,19 @@ export default {
         this.$router.push("/");
       });
     },
-  },
+
+    // Funcion para controlar el tamaño de la pantalla
+    handleResize() {
+      this.window.width = window.innerWidth;
+
+      if (this.window.width < 576) {
+        document.getElementById("btnsRegistro").className =
+          "navbar-right mt-3 text-center ulNoPaddingMenu";
+      } else if (this.window.width > 576) {
+        document.getElementById("btnsRegistro").className =
+          "navbar-nav navbar-right list-inline";
+      }
+    },
+  }
 };
 </script>
