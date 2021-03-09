@@ -20,7 +20,10 @@
     <router-view></router-view>
 
     <!-- Footer -->
-    <footer-pldts></footer-pldts>
+    <footer-pldts></footer-pldts> 
+
+      <!-- Banner Publi -->
+    <banner_publi></banner_publi> 
 
   </div>
 
@@ -30,12 +33,17 @@
 
 import MainMenu from './App_MainMenu.vue';
 import Footer from './App_Footer.vue';
+import BannerPubli from './App_Banner_Privacidad.vue';
+
+
 
 export default {
   name: "local-changer",
   components: {
     'footerPldts': Footer,
-    'main_menu': MainMenu
+    'main_menu': MainMenu,
+    'banner_publi' : BannerPubli
+   
   },
   data() {
     return {
