@@ -81,4 +81,3 @@ export default {
 };
 </script>
 
---module-path "D:\D\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml,org.controlsfx.controls --add-opens=javafx.graphics/javafx.scene=org.controlsfx.controls
