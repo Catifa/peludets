@@ -1,6 +1,5 @@
 <template>
   <div id="mapa">
-    <button @click="mostrarMapa" class="btn btn-lila-peludets">{{ texto }}</button>
     <l-map
       v-if="showMap"
       class="mt-3"
