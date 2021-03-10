@@ -1,4 +1,3 @@
---insert tabla anuncios
 INSERT INTO `anuncios`(`id_responsable`, `texto_anuncio`) VALUES (1,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 INSERT INTO `anuncios`(`id_responsable`, `texto_anuncio`) VALUES (2,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 INSERT INTO `anuncios`(`id_responsable`, `texto_anuncio`) VALUES (3,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
@@ -38,7 +37,6 @@ INSERT INTO `anuncios`(`id_responsable`, `texto_anuncio`) VALUES (5,'Lorem ipsum
 INSERT INTO `anuncios`(`id_responsable`, `texto_anuncio`) VALUES (6,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 INSERT INTO `anuncios`(`id_responsable`, `texto_anuncio`) VALUES (7,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 
---insert tabla especies
 INSERT INTO `especies`(`nombre`) VALUES ('Perro');
 INSERT INTO `especies`(`nombre`) VALUES ('Gato');
 INSERT INTO `especies`(`nombre`) VALUES ('Pez');
@@ -73,7 +71,6 @@ INSERT INTO `especies`(`nombre`) VALUES ('Torutga de agua');
 INSERT INTO `especies`(`nombre`) VALUES ('Iguana');
 INSERT INTO `especies`(`nombre`) VALUES ('Reptil');
 
---insert tabla mascotas
 INSERT INTO `mascotas`( `id_usuario`, `nombre`, `especie`, `raza`, `edad`, `peso`) VALUES (1,'Nana','Perro','Mestizo','2','25');
 INSERT INTO `mascotas`( `id_usuario`, `nombre`, `especie`, `raza`, `edad`, `peso`) VALUES (2,'Pancho','Perro','Mestizo','3','3');
 INSERT INTO `mascotas`( `id_usuario`, `nombre`, `especie`, `raza`, `edad`, `peso`) VALUES (3,'Pucho','Perro','Mestizo','5','20');
@@ -103,7 +100,6 @@ INSERT INTO `mascotas`( `id_usuario`, `nombre`, `especie`, `raza`, `edad`, `peso
 INSERT INTO `mascotas`( `id_usuario`, `nombre`, `especie`, `raza`, `edad`, `peso`) VALUES (6,'Neo','Perro','Mestizo','7','20');
 INSERT INTO `mascotas`( `id_usuario`, `nombre`, `especie`, `raza`, `edad`, `peso`) VALUES (7,'Mosti','Perro','Mestizo','5','20');
 
---insert tabla mascotas_trabajos
 INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (1,2);
 INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (1,3);
 INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (1,4);
@@ -125,9 +121,6 @@ INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (4,3);
 INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (4,5);
 INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (4,6);
 
---insert tabla ofertas
-
---insert tabla profesiones
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Paseador','N');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Alojamiento','N');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Peluquero','N');
@@ -139,8 +132,6 @@ INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Agility','N');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Etologo','N');
 
-
---insert tabla sitios_interes
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (45,46,'Lorem ipsum dolor sit amet condus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?','Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferend?');
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (45,46,'Lorem ipsum dolor sit amet condi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?','Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (45,46,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?','Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cumm reiciendis. Itaque voluptas incidunt voluptatem?');
@@ -185,7 +176,6 @@ INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (33,3
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (45,26,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?','Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (34,56,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?','Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 
---insert tabla solicitudes
 INSERT INTO `solicitudes`( `solicitud`, `id_usuario_solicitado`) VALUES ('Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?',1);
 INSERT INTO `solicitudes`( `solicitud`, `id_usuario_solicitado`) VALUES ('Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?',2);
 INSERT INTO `solicitudes`( `solicitud`, `id_usuario_solicitado`) VALUES ('Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?',3);
@@ -215,7 +205,6 @@ INSERT INTO `solicitudes`( `solicitud`, `id_usuario_solicitado`) VALUES ('Lorem 
 INSERT INTO `solicitudes`( `solicitud`, `id_usuario_solicitado`) VALUES ('Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?',3);
 INSERT INTO `solicitudes`( `solicitud`, `id_usuario_solicitado`) VALUES ('Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?',4);
 
---insert tabla trabajos
 INSERT INTO `trabajos`( `id_responsable`, `acuerdo`) VALUES (1,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 INSERT INTO `trabajos`( `id_responsable`, `acuerdo`) VALUES (2,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 INSERT INTO `trabajos`( `id_responsable`, `acuerdo`) VALUES (4,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
@@ -239,9 +228,6 @@ INSERT INTO `trabajos`( `id_responsable`, `acuerdo`) VALUES (2,'Lorem ipsum dolo
 INSERT INTO `trabajos`( `id_responsable`, `acuerdo`) VALUES (3,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 INSERT INTO `trabajos`( `id_responsable`, `acuerdo`) VALUES (4,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?');
 
---insert tabla USER
-
---insert tabla usuarios_anuncios
 INSERT INTO `usuarios_anuncios`(`id_usuario`, `id_anuncio`) VALUES (1,2);
 INSERT INTO `usuarios_anuncios`(`id_usuario`, `id_anuncio`) VALUES (1,3);
 INSERT INTO `usuarios_anuncios`(`id_usuario`, `id_anuncio`) VALUES (1,4);
@@ -263,8 +249,6 @@ INSERT INTO `usuarios_anuncios`(`id_usuario`, `id_anuncio`) VALUES (4,3);
 INSERT INTO `usuarios_anuncios`(`id_usuario`, `id_anuncio`) VALUES (4,5);
 INSERT INTO `usuarios_anuncios`(`id_usuario`, `id_anuncio`) VALUES (4,6);
 
-
---insert tabla usuarios_mascotas
 INSERT INTO `usuarios_mascotas`(`id_usuario`, `id_mascota`) VALUES (1,2);
 INSERT INTO `usuarios_mascotas`(`id_usuario`, `id_mascota`) VALUES (1,2);
 INSERT INTO `usuarios_mascotas`(`id_usuario`, `id_mascota`) VALUES (1,3);
@@ -287,7 +271,6 @@ INSERT INTO `usuarios_mascotas`(`id_usuario`, `id_mascota`) VALUES (4,3);
 INSERT INTO `usuarios_mascotas`(`id_usuario`, `id_mascota`) VALUES (4,5);
 INSERT INTO `usuarios_mascotas`(`id_usuario`, `id_mascota`) VALUES (4,6);
 
---insert tabla usuarios_profesiones
 INSERT INTO `usuarios_profesiones`(`id_usuario`, `id_profesion`) VALUES (1,2);
 INSERT INTO `usuarios_profesiones`(`id_usuario`, `id_profesion`) VALUES (1,3);
 INSERT INTO `usuarios_profesiones`(`id_usuario`, `id_profesion`) VALUES (1,4);
@@ -309,7 +292,6 @@ INSERT INTO `usuarios_profesiones`(`id_usuario`, `id_profesion`) VALUES (4,3);
 INSERT INTO `usuarios_profesiones`(`id_usuario`, `id_profesion`) VALUES (4,5);
 INSERT INTO `usuarios_profesiones`(`id_usuario`, `id_profesion`) VALUES (4,6);
 
---insert tabla usuarios_trabajos
 INSERT INTO `usuarios_trabajos`(`id_usuario`, `id_trabajo`) VALUES (1,2);
 INSERT INTO `usuarios_trabajos`(`id_usuario`, `id_trabajo`) VALUES (1,3);
 INSERT INTO `usuarios_trabajos`(`id_usuario`, `id_trabajo`) VALUES (1,4);
