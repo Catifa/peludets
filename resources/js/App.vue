@@ -5,83 +5,82 @@
 </style>
  
 <template>
-
   <div class="container-fluid">
-
     <!--Formulario registro -->
-    <form_registro v-if="this.$root.user == null"></form_registro>
+    <form_registro v-if="this.$root.user == null" id="formRegistro" :hideReg="closeRegModal"></form_registro>
     <!--Formulario inicio sesion -->
-    <form_inicio_sesion v-if="this.$root.user == null"></form_inicio_sesion>
+    <form_inicio_sesion v-if="this.$root.user == null" id="formInicioSesion" :hideLog="closeLogModal"></form_inicio_sesion>
 
     <!-- Main Menu -->
-    <main_menu></main_menu>
-    
+    <main_menu :showReg="showRegModal" :showLog="showLogModal"></main_menu>
+
     <!-- Zona renderizado componentes -->
     <router-view></router-view>
 
     <!-- Footer -->
-    <footer-pldts></footer-pldts> 
+    <footer-pldts></footer-pldts>
 
-      <!-- Banner Publi -->
-    <banner_publi></banner_publi> 
-
+    <!-- Banner Publi -->
+    <banner_publi></banner_publi>
   </div>
-
 </template>
 
 <script>
-
-import FormInicioSesion from './App_Form_Inicio_Sesion.vue';
-import FormRegistro from './App_Form_Registro.vue';
-import MainMenu from './App_MainMenu.vue';
-import Footer from './App_Footer.vue';
-import BannerPubli from './App_Banner_Privacidad.vue';
-
-
+import FormInicioSesion from "./App_Form_Inicio_Sesion.vue";
+import FormRegistro from "./App_Form_Registro.vue";
+import MainMenu from "./App_MainMenu.vue";
+import Footer from "./App_Footer.vue";
+import BannerPubli from "./App_Banner_Privacidad.vue";
 
 export default {
-  name: "local-changer",
   components: {
-    'form_inicio_sesion': FormInicioSesion,
-    'form_registro': FormRegistro,
-    'footerPldts': Footer,
-    'main_menu': MainMenu,
-    'banner_publi' : BannerPubli
-   
-  },
-  data() {
-    return {
-      langs: ["es", "ca", "en"],
-    };
+    form_inicio_sesion: FormInicioSesion,
+    form_registro: FormRegistro,
+    footerPldts: Footer,
+    main_menu: MainMenu,
+    banner_publi: BannerPubli,
   },
   methods: {
     isAuthenticated() {
       axios.post("/api/auth/check").then((res) => {
-        //console.log(res.data);
         if (res.data) {
           this.getUser();
         } else {
           this.$root.user = null;
         }
-        //console.log(res.data);
       });
-    },
-    setLocale(locale) {
-      this.$i18n.locale = locale;
     },
     getUser() {
       axios.get("/api/user").then((res) => {
-        //console.log(res.data);
         this.$root.user = res.data;
         axios.post("/api/files/getProfilePhoto").then((res) => {
           this.$root.photo = res.data[0].photo;
         });
       });
     },
+    // Modal Registro
+    showRegModal() {
+      $('#formRegistro').modal('show');
+    },
+    closeRegModal() {
+      $('#formRegistro').modal('hide');
+    },
+    // Modal Inicio Sesion
+    showLogModal() {
+      $('#formInicioSesion').modal('show');
+    },
+    closeLogModal() {
+      $('#formInicioSesion').modal('hide');
+    },
   },
   mounted() {
     this.isAuthenticated();
-    if (this.$route.path ==  "/device" || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (
+      this.$route.path == "/device" ||
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
       this.$root.device = true;
     }
   },
