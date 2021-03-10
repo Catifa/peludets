@@ -2,68 +2,79 @@
 @import "../../css/explorador.css";
 </style>
 <template>
-  <div class="row">
-    <!-- Banner -->
-    <div class="row container-fluid mx-auto mt-2" id="banner-info">
-      <div class="mx-auto banner-info">
+  <div class="container-fluid">
+    <!-- Banner Info -->
+    <div id="banner-info" class="row">
+      <div class="col-lg-6 col-9 rounded banner-info mt-3 mx-auto">
         <!-- Boton cerrar Banner -->
-        <div align="right" class="mr-3 mt-1">
+        <div class="text-right">
           <i class="fas fa-times" @click="hideBannerInfo"></i>
         </div>
         <!-- Texto Banner -->
-        <div align="center" class="ml-4 mr-4 mb-4">
-          <p>Benvingut a l'explorador.</p>
-          <p>Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris i
-          molt mes!</p>
-          <p>A més si ets un dels nostres afiliats podràs</p>
-          <p>trobar treballs a la teva zona aquí!</p>
+        <div class="text-center">
+          <h3>Benvingut a l'explorador!</h3>
+          <p>
+            Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris
+            i molt mes!
+          </p>
+          <p>
+            A més si ets un dels nostres afiliats podràs trobar treballs a la
+            teva zona aquí!
+          </p>
         </div>
       </div>
     </div>
-    <div class="col-md-6 mt-3 mx-auto">
-      <!-- Gif Geoloc -->
-      <div id="gifCargar" v-if="!cargarCoord">
-        <img
-          class="rounded-circle"
-          src="https://media.tenor.com/images/bf12191c6d2e5416d13860b5a137dbb8/tenor.gif"
-          alt="Espera carga posicion"
-        />
-        <h3>{{ $t("explorador.tituloExplorador") }}</h3>
+    <!-- Geoloc y Mapa -->
+    <div class="row">
+      <div class="col-lg-6 col-10 mx-auto mt-3">
+        <!-- Gif Geoloc -->
+        <div id="gifCargar" class="text-center p-5 rounded" v-if="!cargarCoord">
+          <img
+            class="rounded-circle"
+            src="https://media.tenor.com/images/bf12191c6d2e5416d13860b5a137dbb8/tenor.gif"
+            alt="Espera carga posicion"
+          />
+          <h3>{{ $t("explorador.tituloExplorador") }}</h3>
+        </div>
+        <!-- Mapa -->
+        <mapa-exp :props="sitioMapa" :geoLoc="geoLoc"></mapa-exp>
       </div>
-      <mapa-exp :props="sitioMapa" :geoLoc="geoLoc"></mapa-exp>
-    </div>
-    <div class="col-md-6 mt-3 mx-auto">
-      <div class="row">
-        <button
-          class="btn btn-azul-peludets mr-2"
-          type="button"
-          @click="listarSitiosInteres(geoLoc)"
-        >
-          {{ $t("explorador.buttonSitios") }}
-        </button>
-        <button
-          class="btn btn-azul-peludets"
-          type="button"
-          @click="listarOfertas(geoLoc)"
-        >
-          {{ $t("explorador.buttonTrabajos") }}
-        </button>
-      </div>
-      <div class="row mt-3" id="cards">
-        <div
-          class="card card-explorador mb-3"
-          style="max-width: 320px"
-          v-for="obj in tarjetas"
-          :key="obj.nombre"
-        >
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img v-bind:src="obj.photo" class="card-img" />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{ obj.nombre }}</h5>
-                <p class="card-text">{{ obj.descripcion }}</p>
+      <!-- Sitios Interes / Trabajos Disponibles -->
+      <div class="col-lg-6 col-11 mt-5">
+        <!-- Botones Sitios Interes / Trabajos Disponibles -->
+        <div class="row">
+          <!-- Sitios Interes -->
+          <div class="col-lg-6 col-6 text-right">
+            <button
+              class="btn btn-azul-peludets mr-2"
+              @click="listarSitiosInteres(geoLoc)"
+            >
+              {{ $t("explorador.buttonSitios") }}
+            </button>
+          </div>
+          <!-- Trabajos Disponibles -->
+          <div class="col-lg-6 col-6">
+            <button
+              class="btn btn-azul-peludets"
+              @click="listarOfertas(geoLoc)"
+            >
+              {{ $t("explorador.buttonTrabajos") }}
+            </button>
+          </div>
+        </div>
+        <!-- Tarjetas Sitios Interes / Trabajos Disponibles -->
+        <div id="cards-explorer" class="row mt-1">
+          <div class="col-lg-4 col-6 card-explorador mb-2">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">Nombre</h5>
+                <p class="card-text">Texto</p>
                 <button
                   class="btn btn-azul-peludets"
                   type="button"
@@ -71,12 +82,114 @@
                 >
                   {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
-                <button v-if="obj.idUser != undefined">
-                  {{ obj.idUser }}
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-6 card-explorador mb-2">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">Nombre</h5>
+                <p class="card-text">Texto</p>
+                <button
+                  class="btn btn-azul-peludets"
+                  type="button"
+                  @click="enviarMapa(sitio)"
+                >
+                  {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
               </div>
             </div>
           </div>
+          <div class="col-lg-4 col-6 card-explorador mb-2">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">Nombre</h5>
+                <p class="card-text">Texto</p>
+                <button
+                  class="btn btn-azul-peludets"
+                  type="button"
+                  @click="enviarMapa(sitio)"
+                >
+                  {{ $t("explorador.buttonMostrarMapa") }}
+                </button>
+              </div>
+            </div>
+          </div>   
+          <div class="col-lg-4 col-6 card-explorador mb-2">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">Nombre</h5>
+                <p class="card-text">Texto</p>
+                <button
+                  class="btn btn-azul-peludets"
+                  type="button"
+                  @click="enviarMapa(sitio)"
+                >
+                  {{ $t("explorador.buttonMostrarMapa") }}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-6 card-explorador mb-2">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">Nombre</h5>
+                <p class="card-text">Texto</p>
+                <button
+                  class="btn btn-azul-peludets"
+                  type="button"
+                  @click="enviarMapa(sitio)"
+                >
+                  {{ $t("explorador.buttonMostrarMapa") }}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-6 card-explorador mb-2">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">Nombre</h5>
+                <p class="card-text">Texto</p>
+                <button
+                  class="btn btn-azul-peludets"
+                  type="button"
+                  @click="enviarMapa(sitio)"
+                >
+                  {{ $t("explorador.buttonMostrarMapa") }}
+                </button>
+              </div>
+            </div>
+          </div>      
         </div>
       </div>
     </div>
@@ -84,14 +197,13 @@
 </template>
 
 <script>
-
-import MapaExplorador from './components-subparts/Explorador_mapa.vue';
+import MapaExplorador from "./components-subparts/Explorador_mapa.vue";
 import { utils } from "../utils";
 import Swal from "sweetalert2";
 
 export default {
   components: {
-    'mapa-exp': MapaExplorador
+    "mapa-exp": MapaExplorador,
   },
   data() {
     return {
@@ -165,9 +277,9 @@ export default {
         //console.log(arrOfertas);
       });
     },
-    hideBannerInfo(){
-      document.getElementById('banner-info').style.display = 'none';
-    }
+    hideBannerInfo() {
+      document.getElementById("banner-info").style.display = "none";
+    },
   },
   mounted() {
     if (!navigator.geolocation) {

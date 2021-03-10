@@ -3,7 +3,6 @@
     <l-map
       v-if="showMap"
       class="mt-3"
-      style="height: 80%"
       width="100%"
       :zoom="zoom"
       :center="center"
