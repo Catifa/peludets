@@ -27,6 +27,7 @@ use Illuminate\Http\Request;
 */
 
 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -115,5 +116,6 @@ Route::group(['prefix' => 'valoraciones'], function(){
 
 Route::group(['middleware' => ['cors']], function () {
     //Rutas a las que se permitirá acceso
+
 
 });
