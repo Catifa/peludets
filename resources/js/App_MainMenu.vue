@@ -132,9 +132,11 @@
               </router-link>
               <!-- Divisor -->
               <div class="dropdown-divider" />
-              <dir @click="mostrarModalInBox">
-                <i class="far fa-envelope inbox-icon" />
-              </dir>
+              <!-- Boton Inbox -->
+              <i
+                class="far fa-envelope inbox-icon"
+                @click="mostrarModalInBox"
+              />
               <div class="dropdown-divider" />
               <!-- Desconectar -->
               <span class="dropdown-item-text">
@@ -151,14 +153,18 @@
         </ul>
       </div>
     </nav>
-    <modalInBox id="modalInBox"></modalInBox>
+    <modal-inbox id="modal-inbox"></modal-inbox>
   </div>
 </template>
 
 <script>
-import modalInBox from "./components/templates/Tmp_ModalInBox.vue";
+
+import ModalInbox from './components/templates/Tmp_ModalInBox.vue';
 
 export default {
+  components: {
+    'modal-inbox': ModalInbox
+  },
   data() {
     return {
       window: {
@@ -192,10 +198,10 @@ export default {
           "navbar-nav navbar-right list-inline";
       }
     },
-  },
-  mostrarModalInBox() {
-    console.log("hola");
-    $("#modalInBox").modal("show");
+    mostrarModalInBox() {
+      console.log("hola");
+      $('#modal-inbox').modal('show');
+    },
   },
 };
 </script>
