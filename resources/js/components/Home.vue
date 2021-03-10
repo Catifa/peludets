@@ -113,7 +113,7 @@
     <!-- Tarjetas Info -->
     <div class="row mt-3">
       <!-- Tarjeta 1 -->
-      <div class="col-lg-3 col-md-6 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
@@ -128,7 +128,7 @@
         </div>
       </div>
       <!-- Tarjeta 2 -->
-      <div class="col-lg-3 col-md-6 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
@@ -143,7 +143,7 @@
         </div>
       </div>
       <!-- Tarjeta 3 -->
-      <div class="col-lg-3 col-md-6 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
@@ -158,7 +158,7 @@
         </div>
       </div>
       <!-- Tarjeta 4 -->
-      <div class="col-lg-3 col-md-6 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"

@@ -71,6 +71,7 @@
               data-toggle="modal"
               data-target="#form-inicioSesion"
               class="btn btn-lila-peludets btn-sm mr-2"
+              @click="showLog"
             >
               Iniciar session
             </button>
@@ -83,6 +84,7 @@
               data-toggle="modal"
               data-target="#form-registro"
               class="btn btn-lila-peludets btn-sm"
+              @click="showReg"
             >
               Registrate!
             </button>
@@ -159,27 +161,26 @@
 
 <script>
 
-import ModalInbox from './components/templates/Tmp_ModalInBox.vue';
+import ModalInbox from "./components/templates/Tmp_ModalInBox.vue";
 
 export default {
   components: {
-    'modal-inbox': ModalInbox
+    "modal-inbox": ModalInbox,
+  },
+  props: {
+    showReg: { type: Function },
+    showLog: { type: Function },
   },
   data() {
-    return {
-      window: {
-        width: window.innerWidth,
-      },
-    };
+    return {};
   },
   mounted() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
+    this.showReg();
+    this.showLog();
   },
   methods: {
     logout() {
       axios.post("/api/auth/logout").then((res) => {
-        //console.log(res.data);
         this.$root.user = null;
         this.$root.photo = "sources/img/avatar.jfif";
         this.$router.push("/");
@@ -188,19 +189,22 @@ export default {
 
     // Funcion para controlar el tamaño de la pantalla
     handleResize() {
-      this.window.width = window.innerWidth;
+      if (document.getElementById("btnsRegistro") != null) {
+        let wdw = window.innerWidth;
 
-      if (this.window.width < 576) {
-        document.getElementById("btnsRegistro").className =
-          "navbar-right mt-3 text-center ulNoPaddingMenu";
-      } else if (this.window.width > 576) {
-        document.getElementById("btnsRegistro").className =
-          "navbar-nav navbar-right list-inline";
+        if (wdw < 576) {
+          document.getElementById("btnsRegistro").className =
+            "navbar-right mt-3 text-center ulNoPaddingMenu";
+        } else if (wdw > 576) {
+          document.getElementById("btnsRegistro").className =
+            "navbar-nav navbar-right list-inline";
+        }
       }
     },
+
     mostrarModalInBox() {
       console.log("hola");
-      $('#modal-inbox').modal('show');
+      $("#modal-inbox").modal("show");
     },
   },
 };

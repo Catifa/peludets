@@ -12,7 +12,7 @@
                 data-toggle="modal"
               
               >
-               <u> Cerrar Ventana de Privacidad </u>
+               <u> {{ $t("app.tituloBannerPrivacidad") }} </u>
               </button>
             </div>
           </div>

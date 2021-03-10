@@ -3,21 +3,25 @@
 </style>
 <template>
   <div class="row">
+    <!-- Banner -->
     <div class="row container-fluid mx-auto mt-2" id="banner-info">
       <div class="mx-auto banner-info">
+        <!-- Boton cerrar Banner -->
         <div align="right" class="mr-3 mt-1">
           <i class="fas fa-times" @click="hideBannerInfo"></i>
         </div>
+        <!-- Texto Banner -->
         <div align="center" class="ml-4 mr-4 mb-4">
-          Benvingut a l'explorador. <br />
-          Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris i
-          molt mes! <br />
-          A més si ets un dels nostres afiliats podràs
-          trobar treballs a la teva zona aquí!
+          <p>Benvingut a l'explorador.</p>
+          <p>Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris i
+          molt mes!</p>
+          <p>A més si ets un dels nostres afiliats podràs</p>
+          <p>trobar treballs a la teva zona aquí!</p>
         </div>
       </div>
     </div>
     <div class="col-md-6 mt-3 mx-auto">
+      <!-- Gif Geoloc -->
       <div id="gifCargar" v-if="!cargarCoord">
         <img
           class="rounded-circle"
