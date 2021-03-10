@@ -6,8 +6,8 @@
           <div class="row">
             <div class="col-md-6 mt-md-0 mt-3">
               <h5 class="text-uppercase">Colaboradores de la web</h5>
-               <img id="logo" src="../img/DinaHosting.jpg" alt="a" />
-               <img id="logo" src="../img/DonDominio.jpg" alt="a" />
+               <img id="logo" src="../img/DinaHosting.png" alt="a" />
+               <img id="logo" src="../img/DonDominio.png" alt="a" />
                <img id="logo" src="../img/wapps_logo.png" alt="a" />
 
                

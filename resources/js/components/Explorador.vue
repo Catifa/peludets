@@ -22,6 +22,7 @@
         <img
           class="rounded-circle"
           src="https://media.tenor.com/images/bf12191c6d2e5416d13860b5a137dbb8/tenor.gif"
+          alt="Espera carga posicion"
         />
         <h3>{{ $t("explorador.tituloExplorador") }}</h3>
       </div>

@@ -180,10 +180,7 @@ export default {
   data() {
     return {
       profesiones: [],
-      prof: {},
-      window: {
-        width: window.innerWidth,
-      },
+      prof: {}
     };
   },
 
@@ -191,25 +188,8 @@ export default {
     buscarTrabajos() {
       let prof = this.profesion;
       this.$router.push({ name: "profesionales", params: { prof } });
-    },
-    handleResize() {
-      this.window.width = window.innerWidth;
-
-      if (this.window.width < 576) {
-        document.getElementById("carouselCentral").className =
-          "carousel carouselCentralResp slide col-sm-8 mt-3";
-      } else if (this.window.width > 576) {
-        document.getElementById("carouselCentral").className =
-          "carousel slide col-md-8 mt-3";
-      }
-    },
+    }
   },
-
-  mounted() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-
   created() {
     this.axios.get("api/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
