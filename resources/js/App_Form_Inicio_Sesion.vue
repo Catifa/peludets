@@ -80,7 +80,7 @@ export default {
         .then((response) => {
           this.hideLog();
           Swal.fire(
-            "Registro completado",
+            "Usuario correcto!",
             "Bienvenido, " + response.data.name,
             "success"
           );
