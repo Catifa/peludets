@@ -3,22 +3,28 @@
 *************************************************************/
 
 #mapa {
-    height: 600px;
+    height: 30rem;
 }
 
 #gifCargar {
     z-index: 999;
     position: absolute;
-    left: 35%;
-    top: 35%;
+    left: 20%;
+    top: 10%;
+    background-color: rgba(255, 255, 255, 0.808);
 }
 
-#cards {
-    height: 700px;
+#cards-explorer {
     overflow-y: scroll;
+    scrollbar-width: none;
+    height: 25rem;
 }
 
-.card-explorador {
-    height: 200px;
-    width: 200px;
+#cards-explorer::-webkit-scrollbar {
+    display: none;
+  }
+
+.card-explorador .card {
+    flex: 0 0 auto;
+    
 }

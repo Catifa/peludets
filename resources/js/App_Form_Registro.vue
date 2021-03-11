@@ -1,7 +1,7 @@
 <template>
-  <div class="row">
+  
     <!-- Modal -->
-    <div id="form-registro" class="modal fade" role="dialog">
+    <div class="modal fade" role="dialog" v-on:keyup.enter="register">
       <div class="modal-dialog modal-dialog-centered">
         <!-- Modal content-->
         <div class="modal-content">
@@ -12,7 +12,7 @@
               class="close"
               data-dismiss="modal"
               aria-label="Close"
-              @click="document.getElementById('form-registro').modal('hide')"
+              @click="hideReg"
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -96,9 +96,7 @@
               type="button"
               class="btn btn-danger"
               data-dismiss="modal"
-              @click="
-                document.getElementById('form-inicioSesion').modal('hide')
-              "
+              @click="hideReg"
             >
               Cerrar
             </button>
@@ -106,25 +104,31 @@
         </div>
       </div>
     </div>
-  </div>
+  
 </template>
 
 <script>
 import Swal from "sweetalert2";
 
 export default {
+  props: {
+    hideReg: { type: Function }
+  },
   data() {
     return {
       user: {},
       img: {},
     };
   },
+  mounted() {
+    this.hideReg();
+  },
   methods: {
     register() {
       this.axios
         .post("api/auth/register", this.user)
         .then((response) => {
-          $("#form-registro").modal("hide");
+          this.hideReg();
           Swal.fire(
             "Registro completado",
             "Bienvenido, " + response.data.name,
@@ -177,7 +181,7 @@ export default {
       axios.post("/api/files/getProfilePhoto").then((res) => {
         this.$root.photo = res.data[0].photo;
       });
-    },
+    }
   },
 };
 </script>

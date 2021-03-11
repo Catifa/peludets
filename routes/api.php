@@ -114,8 +114,3 @@ Route::group(['prefix' => 'valoraciones'], function(){
 });
 
 
-Route::group(['middleware' => ['cors']], function () {
-    //Rutas a las que se permitirá acceso
-
-
-});
