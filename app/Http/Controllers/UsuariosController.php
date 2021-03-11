@@ -26,7 +26,6 @@ class UsuariosController extends Controller
      */
 
 
-
     /**
      * @OA\Post(
      *     path="/api/usuario/userByProfOnly",
