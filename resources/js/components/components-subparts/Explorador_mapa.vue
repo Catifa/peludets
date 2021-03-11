@@ -1,18 +1,12 @@
 <template>
-
   <div id="mapa">
     <l-map
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
-      @update:center="centerUpdate"
-      @update:zoom="zoomUpdate"
     >
-      <l-tile-layer
-        :url="url"
-        :attribution="attribution"
-      />
-      
+      <!-- Cartel abajo derecha -->
+      <l-tile-layer :url="url" />
     </l-map>
   </div>
 </template>
@@ -22,41 +16,38 @@ import { latLng } from "leaflet";
 import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from "vue2-leaflet";
 
 export default {
-  name: "Example",
+  props: ['propCurrentGeoLoc'],
+  watch: {
+    propCurrentGeoLoc: {
+      handler(val) {
+        this.centerUpdate(val);
+      }
+    }
+  },
   components: {
     LMap,
     LTileLayer,
     LMarker,
     LPopup,
-    LTooltip
+    LTooltip,
   },
   data() {
     return {
+      // Cosa del mapa
       zoom: 13,
-      center: latLng(47.41322, -1.219482),
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      withPopup: latLng(47.41322, -1.219482),
-      withTooltip: latLng(47.41422, -1.250482),
+      center: latLng(0, 0),
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       currentZoom: 11.5,
-      currentCenter: latLng(47.41322, -1.219482),
-      showParagraph: false,
+      currentCenter: undefined,
       mapOptions: {
-        zoomSnap: 0.5
-      }
+        zoomSnap: 0.5,
+      },
     };
   },
   methods: {
-    zoomUpdate(zoom) {
-      this.currentZoom = zoom;
-    },
     centerUpdate(center) {
-      this.currentCenter = center;
-    },
-    showLongText() {
-      this.showParagraph = !this.showParagraph;
+      this.center = center;
     }
-  }
+  },
 };
 </script>

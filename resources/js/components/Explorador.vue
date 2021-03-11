@@ -37,7 +37,7 @@
           <h3>{{ $t("explorador.tituloExplorador") }}</h3>
         </div>
         <!-- Mapa -->
-        <mapa-exp :props="sitioMapa" :currentGeoLoc="currentGeoLoc"></mapa-exp>
+        <mapa-exp :propLocalizaciones="sitioMapa" :propCurrentGeoLoc="currentGeoLoc"></mapa-exp>
       </div>
       <!-- Sitios Interes / Trabajos Disponibles -->
       <div class="col-lg-6 col-11 mx-auto mt-5">
@@ -107,7 +107,7 @@ export default {
       // Array donde se guardaran todos los trabajos de interes
       trabajosDisponibles: null,
       // Geolocalizacion obtenida por el navegador
-      currentGeoLoc: null,
+      currentGeoLoc: undefined,
       // Variable para controlar si se ha obtenido la localizacion (Gif gato esperando)
       localizacionObtenida: false,
       sitioMapa: {},
