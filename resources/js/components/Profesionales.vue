@@ -72,7 +72,7 @@
     </div>
     <div class="row">
       <div class="col-md-2 ml-auto col-xs-12">
-        <div class="form-group">
+        <div class="form-group m-2">
           <label>{{ $t("home.formTrabajos") }}</label>
           <select class="form-control">
             <option selected="true" disabled="disabled">
