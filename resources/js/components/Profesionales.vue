@@ -73,10 +73,6 @@
     <div class="row">
       <div class="col-md-2 ml-auto col-xs-12">
         <div class="form-group m-2">
-<<<<<<< HEAD
-          <label>{{ $t("home.formTrabajos") }}</label>
-          <select class="form-control">
-=======
           <label for="exampleFormControlSelect1">{{
             $t("profesionales.FormControlSelect1")
           }}</label>
@@ -86,7 +82,6 @@
             class="form-control"
             id="selectOption"
           >
->>>>>>> bd24f00339126948aae41e89cfee7bb9b14385bd
             <option selected="true" disabled="disabled">
               {{ $t("home.formSelectDefecto") }}
             </option>
@@ -300,11 +295,7 @@ export default {
       this.userProfOnly();
     }
   },
-<<<<<<< HEAD
-   created() {
-=======
   created() {
->>>>>>> bd24f00339126948aae41e89cfee7bb9b14385bd
     this.axios.get("api/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
     });
