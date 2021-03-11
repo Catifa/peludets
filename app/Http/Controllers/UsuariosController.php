@@ -91,17 +91,12 @@ class UsuariosController extends Controller
 
     protected function searchByProf(Request $request)
     {
-
-        $prof = $request->profesion;
-        $disp = $request->disponibilidad;
-        $titu = $request->titulacion;
-
-        return User::select('users.id', 'users.name', 'users.lastname','user.photo')
+        return User::select('users.id', 'users.name', 'users.lastname','users.photo')
             ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
             ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-            ->where('profesiones.nombre_profesion', '=', $prof)
-            ->where('usuarios_profesiones.disponibilidad', '=', $disp)
-            ->where('usuarios_profesiones.titulacion', '=', $titu)->get();
+            ->where('profesiones.nombre_profesion', '=', $request->profesion)
+            ->where('usuarios_profesiones.disponibilidad', '=', $request->disponibilidad)
+            ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)->get();
     }
 
     /**

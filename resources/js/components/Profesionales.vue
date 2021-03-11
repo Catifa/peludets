@@ -78,18 +78,15 @@
           }}</label>
           <select
             name="selectOption"
-            v-model="profesiones.profesionales"
+            v-model="servicio"
             class="form-control"
             id="selectOption"
           >
-            <option value="Psicologo">
-              {{ $t("profesionales.selectOptionPsicologo") }}
+            <option selected="true" disabled="disabled">
+              {{ $t("home.formSelectDefecto") }}
             </option>
-            <option value="Entrenador">
-              {{ $t("profesionales.selectOptionEntrenador") }}
-            </option>
-            <option value="Peluquero">
-              {{ $t("profesionales.selectOptionPeluquero") }}
+            <option v-for="profesion in profesiones" :key="profesion.id">
+              {{ profesion.nombre_profesion }}
             </option>
           </select>
         </div>
@@ -101,7 +98,7 @@
           }}</label>
           <select
             name="selectOption2"
-            v-model="disponibilidad.disponibilidad"
+            v-model="disponibilidad"
             class="form-control"
             id="exampleFormControlSelect2"
           >
@@ -124,7 +121,7 @@
           }}</label>
           <select
             name="selectOption3"
-            v-model="titulacion.titulacion"
+            v-model="titulacion"
             class="form-control"
             id="exampleFormControlSelect1"
           >
@@ -218,8 +215,6 @@ export default {
     return {
       ensena: false,
       profesiones: {},
-      disponibilidad: {},
-      titulacion: {},
       profesionHome: {},
       usuarios: {},
       showByProf: false,
@@ -228,11 +223,12 @@ export default {
   methods: {
     usuariosFiltrados() {
       let objeto = {
-        profesion: this.profesiones,
+        profesion: this.servicio,
         disponibilidad: this.disponibilidad,
         titulacion: this.titulacion,
       };
-      this.axios.post("api/usuario/userByProf", objeto).then((response) => {
+      console.log(objeto);
+      this.axios.post("api/usuario/searchByProf", objeto).then((response) => {
         this.usuarios = response.data;
         this.ensena = true;
         console.log(response.data);
@@ -288,15 +284,20 @@ export default {
           this.showByProf = true;
         });
     },
-    hideBannerInfo(){
-      document.getElementById('banner-info').style.display = 'none';
-    }
+    hideBannerInfo() {
+      document.getElementById("banner-info").style.display = "none";
+    },
   },
   mounted() {
     if (this.$route.params.prof != undefined) {
       this.profesionHome.nombre = this.$route.params.prof;
       this.userProfOnly();
     }
+  },
+  created() {
+    this.axios.get("api/profesiones/getAll").then((response) => {
+      this.profesiones = response.data;
+    });
   },
 };
 </script>
