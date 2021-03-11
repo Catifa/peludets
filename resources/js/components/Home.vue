@@ -92,7 +92,7 @@
       >
         <div class="form-group">
           <label>{{ $t("home.formTrabajos") }}</label>
-          <select class="form-control">
+          <select class="form-control" v-model="prof">
             <option selected="true" disabled="disabled">
               {{ $t("home.formSelectDefecto") }}
             </option>
@@ -180,13 +180,13 @@ export default {
   data() {
     return {
       profesiones: [],
-      prof: {}
     };
   },
 
   methods: {
     buscarTrabajos() {
-      let prof = this.profesion;
+      console.log(this.prof);
+      let prof = this.prof;
       this.$router.push({ name: "profesionales", params: { prof } });
     }
   },
