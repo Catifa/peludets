@@ -73,8 +73,20 @@
     <div class="row">
       <div class="col-md-2 ml-auto col-xs-12">
         <div class="form-group m-2">
+<<<<<<< HEAD
           <label>{{ $t("home.formTrabajos") }}</label>
           <select class="form-control">
+=======
+          <label for="exampleFormControlSelect1">{{
+            $t("profesionales.FormControlSelect1")
+          }}</label>
+          <select
+            name="selectOption"
+            v-model="servicio"
+            class="form-control"
+            id="selectOption"
+          >
+>>>>>>> bd24f00339126948aae41e89cfee7bb9b14385bd
             <option selected="true" disabled="disabled">
               {{ $t("home.formSelectDefecto") }}
             </option>
@@ -92,7 +104,7 @@
           }}</label>
           <select
             name="selectOption2"
-            v-model="disponibilidad.disponibilidad"
+            v-model="disponibilidad"
             class="form-control"
             id="exampleFormControlSelect2"
           >
@@ -115,7 +127,7 @@
           }}</label>
           <select
             name="selectOption3"
-            v-model="titulacion.titulacion"
+            v-model="titulacion"
             class="form-control"
             id="exampleFormControlSelect1"
           >
@@ -209,8 +221,6 @@ export default {
     return {
       ensena: false,
       profesiones: {},
-      disponibilidad: {},
-      titulacion: {},
       profesionHome: {},
       usuarios: {},
       showByProf: false,
@@ -219,11 +229,12 @@ export default {
   methods: {
     usuariosFiltrados() {
       let objeto = {
-        profesion: this.profesiones,
+        profesion: this.servicio,
         disponibilidad: this.disponibilidad,
         titulacion: this.titulacion,
       };
-      this.axios.post("api/usuario/userByProf", objeto).then((response) => {
+      console.log(objeto);
+      this.axios.post("api/usuario/searchByProf", objeto).then((response) => {
         this.usuarios = response.data;
         this.ensena = true;
         console.log(response.data);
@@ -289,7 +300,11 @@ export default {
       this.userProfOnly();
     }
   },
+<<<<<<< HEAD
    created() {
+=======
+  created() {
+>>>>>>> bd24f00339126948aae41e89cfee7bb9b14385bd
     this.axios.get("api/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
     });
