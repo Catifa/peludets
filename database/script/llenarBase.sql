@@ -97,11 +97,11 @@ INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (4,6);
 
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Passejador','N');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Allotjament','N');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Perruquer','N');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Perruquer','S');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Entrenador','N');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Psicòleg','N');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Ensinistrador','N');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Veterinari','N');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Psicòleg','S');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Ensinistrador','S');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Veterinari','S');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Fotograf','N');
 
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (41.5211, 2.1123,'Parc Central del Vallès, Barberà del Vallès', '');
@@ -117,6 +117,13 @@ INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (41.5
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (41.55749, 2.09126,'Veterinario Atlanta, Sabadell', 'Carrer Atlanta, 11, 08206 Sabadell, Barcelona');
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (41.52833, 2.11761,'Clínica Veterinaria Natura, Sabadell', 'Ctra. de Barcelona, 200, LOCAL, 08205 Sabadell, Barcelona');
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (41.51381, 2.12688,'Clínica Veterinària General de Barberà (Veterinario)', 'Ronda de ľEst, 40, 38, 08210 Barberà del Vallès, Barcelona');
+
+INSERT INTO `ofertas`(`id_usuario_oferta`,`lat`, `lon`, `nombre`, `descripcion`) VALUES (1, 41.5211, 2.1123,'Passejador', 'M´encanten els animals, a casa meva parella i jo els cuidem, els aviciem, els respectem i li donem molt d´amor i afecte; a part que és una cosa que no veig com un treball sinó com una cosa que m´apassiona i m´agrada molt fer-ho i més si ho faig amb la meva parella. Ens encanta jugar amb ells i fer coses divertides i sobretot que se sentin a casa. A prop de casa tenim un parc gran on ens agrada portar-los perquè passin una estona divertida, així es diverteixen amb altres gossets. I si el dia està bonic, ens agrada portar-los a la muntanya.');
+INSERT INTO `ofertas`(`id_usuario_oferta`,`lat`, `lon`, `nombre`, `descripcion`) VALUES (2, 41.52135, 2.12798,'Passejador', 'Estic disposada a fer les passejades que em digui l´amo/a per a aquest gosset, i si és molt actiu doncs jugar amb el. Si el gosset està malalt i cal donar-li pastilles o cuidar estic disposada a encarregar-me de tot això.');
+INSERT INTO `ofertas`(`id_usuario_oferta`,`lat`, `lon`, `nombre`, `descripcion`) VALUES (1, 41.5232, 2.12532,'Ensinistrador', 'Doncs sóc una barreja entre amor i fermesa, comprensió, autoritat, m´he format ensinistrat a les meves mascotes amb els consells i experiència de Cèsar Millàn, m´encanta posar les tècniques a prova i aprendre a entendre millor a les nostres mascotes, vull seguir aprenent per millorar les meves tècniques i ajudar les persones que ho necessitin.');
+INSERT INTO `ofertas`(`id_usuario_oferta`,`lat`, `lon`, `nombre`, `descripcion`) VALUES (1, 41.511, 2.11942,'Perruquer', 'El meu nom és Patrícia. Sóc de Veneçuela i tinc 29 anys. Visc a Barcelona des de 2016. M´acabo de graduar de dentista i mentre amb si treball, m´encantaria aprofitar el temps passejant i cuidant gossos, ja que els estimo.');
+INSERT INTO `ofertas`(`id_usuario_oferta`,`lat`, `lon`, `nombre`, `descripcion`) VALUES (5, 41.50679, 2.1136,'Passejador', 'Hola! Em dic Andrea i ofereixo casa refugi d´animals. Fa més de 15 anys que a la bonica tasca de rescatadora i cuidadora. També fa molts anys que faig de cangur i passejos diaris de gossos d´altra gent, sobretot de veïns de barri. Disposo de cartes de recomanació.');
+INSERT INTO `ofertas`(`id_usuario_oferta`,`lat`, `lon`, `nombre`, `descripcion`) VALUES (5, 41.51381, 2.12688,'Psicòleg', 'Sóc educadora i psicòloga canina, un gos necessita tenir totes les seves necessitats cobertes, físicament, psicològic i emocional / afectiu. Només així tindrem al nostre gos equilibrat i feliç. Durant la seva estança amb mi, com a educadora que sóc, m´asseguro que faci exercici físic, d´estimular la seva ment, els seus sentits i tot això des del mateix respecte, afecte i dedicació que tinc pels meus propis.');
 
 INSERT INTO `solicitudes`( `solicitud`, `id_usuario_solicitado`) VALUES ('Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?',1);
 INSERT INTO `solicitudes`( `solicitud`, `id_usuario_solicitado`) VALUES ('Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus sint laudantium vel, explicabo, eligendi libero voluptatum cum dolor vero perferendis nobis beatae recusandae dolorem reiciendis. Itaque voluptas incidunt voluptatem?',2);
