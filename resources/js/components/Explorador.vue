@@ -28,7 +28,11 @@
     <div class="row">
       <div class="col-lg-6 col-10 mx-auto mt-3">
         <!-- Gif Geoloc -->
-        <div id="gifCargar" class="text-center p-5 rounded" v-if="!localizacionObtenida">
+        <div
+          id="gifCargar"
+          class="text-center p-5 rounded"
+          v-if="!localizacionObtenida"
+        >
           <img
             class="rounded-circle"
             src="https://media.tenor.com/images/bf12191c6d2e5416d13860b5a137dbb8/tenor.gif"
@@ -37,7 +41,10 @@
           <h3>{{ $t("explorador.tituloExplorador") }}</h3>
         </div>
         <!-- Mapa -->
-        <mapa-exp :propLocalizaciones="sitioMapa" :propCurrentGeoLoc="currentGeoLoc"></mapa-exp>
+        <mapa-exp
+          :propLocalizaciones="sitioMapa"
+          :propCurrentGeoLoc="currentGeoLoc"
+        ></mapa-exp>
       </div>
       <!-- Sitios Interes / Trabajos Disponibles -->
       <div class="col-lg-6 col-11 mx-auto mt-5">
@@ -47,7 +54,7 @@
           <div class="col-lg-6 col-6 text-right">
             <button
               class="btn btn-azul-peludets mr-2"
-              @click="listarSitiosInteres(geoLoc)"
+              @click="mostrarSitiosInteres = !mostrarSitiosInteres"
             >
               {{ $t("explorador.buttonSitios") }}
             </button>
@@ -56,15 +63,19 @@
           <div class="col-lg-6 col-6">
             <button
               class="btn btn-azul-peludets"
-              @click="listarOfertas(geoLoc)"
+              @click="mostrarSitiosInteres = !mostrarSitiosInteres"
             >
               {{ $t("explorador.buttonTrabajos") }}
             </button>
           </div>
         </div>
         <!-- Tarjetas Sitios Interes / Trabajos Disponibles -->
-        <div id="cards-explorer" class="row mt-1">
-          <div class="col-lg-4 col-sm-6 col-12 card-explorador mb-2">
+        <div id="cards-explorer" class="row mt-1" v-if="mostrarSitiosInteres">
+          <div
+            class="col-lg-4 col-sm-6 col-12 card-explorador mb-2"
+            v-for="localizacion in sitiosInteres"
+            :key="localizacion.id"
+          >
             <div class="card">
               <img
                 class="card-img-top"
@@ -73,12 +84,39 @@
                 alt="Gato"
               />
               <div class="card-body bg-crema-peludets-suave">
-                <h5 class="card-title">Nombre</h5>
-                <p class="card-text">Texto</p>
+                <h5 class="card-title">{{ localizacion.nombre }}</h5>
+                <p class="card-text">{{ localizacion.descripcion }}</p>
                 <button
                   class="btn btn-azul-peludets"
                   type="button"
-                  @click="enviarMapa(sitio)"
+                  @click="enviarMapa(localizacion.lat, localizacion.lon)"
+                >
+                  {{ $t("explorador.buttonMostrarMapa") }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="cards-explorer" class="row mt-1" v-if="!mostrarSitiosInteres">
+          <div
+            class="col-lg-4 col-sm-6 col-12 card-explorador mb-2"
+            v-for="localizacion in trabajosDisponibles"
+            :key="localizacion.id"
+          >
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">{{ localizacion.nombre }}</h5>
+                <p class="card-text">{{ localizacion.descripcion }}</p>
+                <button
+                  class="btn btn-azul-peludets"
+                  type="button"
+                  @click="enviarMapa(localizacion.lat, localizacion.lon)"
                 >
                   {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
@@ -93,6 +131,7 @@
 
 <script>
 import MapaExplorador from "./components-subparts/Explorador_mapa.vue";
+import { latLng } from 'leaflet';
 import { utils } from "../utils";
 import Swal from "sweetalert2";
 
@@ -103,21 +142,24 @@ export default {
   data() {
     return {
       // Array donde se guardaran todos los sitios de interes
-      sitiosInteres: null,
+      sitiosInteres: undefined,
       // Array donde se guardaran todos los trabajos de interes
-      trabajosDisponibles: null,
+      trabajosDisponibles: undefined,
       // Geolocalizacion obtenida por el navegador
       currentGeoLoc: undefined,
       // Variable para controlar si se ha obtenido la localizacion (Gif gato esperando)
       localizacionObtenida: false,
-      sitioMapa: {},
-      
+      // True muestra sitios interes, False Trabajos (Por defecto muestra sitios)
+      mostrarSitiosInteres: true,
+      // Variable que se envia a el prop de mapa
+      sitioMapa: undefined,
     };
   },
   methods: {
     // Enviar objeto de la tarjeta al mapa
-    enviarMapa(obj) {
-      this.sitioMapa = obj;
+    enviarMapa(lat, lon) {
+      console.log('Latitud: ' + lat + '. Long: ' + lon);
+      this.sitioMapa = latLng(lat,lon);
     },
 
     // Obtener un Array de todos los datos de la BDD
@@ -144,11 +186,13 @@ export default {
         };
       } else {
         this.localizacionObtenida = false;
-        navigator.geolocation
-          .getCurrentPosition((position) => {
-            this.localizacionObtenida = true;
-            this.currentGeoLoc = [position.coords.latitude, position.coords.longitude];
-          });
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.localizacionObtenida = true;
+          this.currentGeoLoc = [
+            position.coords.latitude,
+            position.coords.longitude,
+          ];
+        });
       }
     },
 
@@ -180,6 +224,7 @@ export default {
         //console.log(arrSitios);
       });
     },
+
     listarOfertas(geoloc) {
       $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
@@ -212,6 +257,7 @@ export default {
         //console.log(arrOfertas);
       });
     },
+
     hideBannerInfo() {
       document.getElementById("banner-info").style.display = "none";
     },

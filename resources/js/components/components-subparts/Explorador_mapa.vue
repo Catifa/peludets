@@ -38,10 +38,10 @@ export default {
       center: latLng(0, 0),
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       currentZoom: 11.5,
-      currentCenter: undefined,
       mapOptions: {
         zoomSnap: 0.5,
       },
+      // Variables normales
     };
   },
   methods: {
