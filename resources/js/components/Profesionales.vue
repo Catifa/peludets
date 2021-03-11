@@ -72,7 +72,18 @@
     </div>
     <div class="row">
       <div class="col-md-2 ml-auto col-xs-12">
-        <div class="form-group m-2">
+        <div class="form-group">
+          <label>{{ $t("home.formTrabajos") }}</label>
+          <select class="form-control">
+            <option selected="true" disabled="disabled">
+              {{ $t("home.formSelectDefecto") }}
+            </option>
+            <option v-for="profesion in profesiones" :key="profesion.id">
+              {{ profesion.nombre_profesion }}
+            </option>
+          </select>
+        </div>
+        <!--<div class="form-group m-2">
           <label for="exampleFormControlSelect1">{{
             $t("profesionales.FormControlSelect1")
           }}</label>
@@ -92,7 +103,7 @@
               {{ $t("profesionales.selectOptionPeluquero") }}
             </option>
           </select>
-        </div>
+        </div>-->
       </div>
       <div class="col-md-2 col-xs-12">
         <div class="form-group m-2">
@@ -128,8 +139,8 @@
             class="form-control"
             id="exampleFormControlSelect1"
           >
-            <option value="Si">{{ $t("profesionales.valueSi") }}</option>
-            <option value="No">{{ $t("profesionales.valueNo") }}</option>
+            <option value="S">{{ $t("profesionales.valueSi") }}</option>
+            <option value="N">{{ $t("profesionales.valueNo") }}</option>
           </select>
         </div>
       </div>
@@ -288,15 +299,20 @@ export default {
           this.showByProf = true;
         });
     },
-    hideBannerInfo(){
-      document.getElementById('banner-info').style.display = 'none';
-    }
+    hideBannerInfo() {
+      document.getElementById("banner-info").style.display = "none";
+    },
   },
   mounted() {
     if (this.$route.params.prof != undefined) {
       this.profesionHome.nombre = this.$route.params.prof;
       this.userProfOnly();
     }
+  },
+   created() {
+    this.axios.get("api/profesiones/getAll").then((response) => {
+      this.profesiones = response.data;
+    });
   },
 };
 </script>
