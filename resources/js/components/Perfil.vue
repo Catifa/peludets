@@ -225,7 +225,40 @@
           role="tabpanel"
           aria-labelledby="valoraciones-tab"
         >
-          <div class="row">
+         
+        
+        <!--Prueba tarjeta---->
+
+ <div id="cards" v-if="showByValo" class="col-md-6 mt-4 col-xs-12">
+        <div
+          name="valoraciones"
+          class="col-md-4"
+          v-for="valoracion in valoraciones"
+          :key="valoracion"
+        >
+          <div class="card" style="width: 18rem">
+            <img class="card-img-top "/>
+            <div class="card-body">
+              <p class="card_name card_attr">{{ valoracion.id }}</p>
+              <p class="card_surname card_attr">{{ valoracion.valoracion }}</p>
+              <router-link
+                v-bind:to="'/profile/' + valoracion.id"
+                class="btn btn-azul-peludets"
+                >{{ $t("valoraciones.valoracion") }}</router-link
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!--- 
+
+ <div class="row">
+
+
+
+
+          
             <div class="rounded-pill col-md-3 mt-1 mr-1 border">
               <div class="row">
                 <div class="col-md-4 mt-1">
@@ -356,7 +389,7 @@
             </div>
           </div>
         </div>
-
+-->
         <div
           class="tab-pane fade"
           id="tareas"
@@ -380,14 +413,12 @@ import ZonaPerfil from "./templates/ZonaPerfil.vue";
 import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 import Perfil_Modal_Update_Mascotas from "./components-subparts/Perfil_Modal_Update_Mascotas";
 
-
 export default {
   components: {
     Tareas,
     ZonaPerfil,
     editorPerfil,
     modalUpdateMascota: Perfil_Modal_Update_Mascotas,
-
   },
   name: "panel",
   data() {
@@ -395,18 +426,28 @@ export default {
       mascota: {},
       img: {},
       mascotas: [],
+      showByValo: false,
     };
   },
   methods: {
+    showByValo() {
+      this.axios
+        .post("api/usuario/userByProfOnly", this.profesionHome)
+        .then((response) => {
+          this.usuarios = response.data;
+          console.log(this.usuarios);
+          this.showByProf = true;
+        });
+    },
+
     modalMascota(mascota) {
       this.mascota = mascota;
     },
-    recuperarMascota(){
+    recuperarMascota() {
       this.axios.post("/api/mascota/recuperarMascota").then((response) => {
-      this.mascotas = response.data;
-      console.log(response.data);
-    });
-
+        this.mascotas = response.data;
+        console.log(response.data);
+      });
     },
 
     deleteMascota(id) {
@@ -428,8 +469,7 @@ export default {
         .then((response) => {
           $("#form-registroMascota").modal("hide");
           Swal.fire("Registro completado", "success");
-                    this.recuperarMascota();
-
+          this.recuperarMascota();
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
