@@ -53,9 +53,9 @@ class UsuariosController extends Controller
     {
 
         return User::select('users.id', 'users.name', 'users.lastname', 'users.photo')
-        ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
-        ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-        ->where('profesiones.nombre_profesion', '=', $request->input('nombre'))->get();
+            ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
+            ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
+            ->where('profesiones.nombre_profesion', '=', $request->input('nombre'))->get();
     }
 
     /**
@@ -96,7 +96,7 @@ class UsuariosController extends Controller
         $disp = $request->disponibilidad;
         $titu = $request->titulacion;
 
-        return User::select('users.id', 'users.name', 'users.lastname','user.photo')
+        return User::select('users.id', 'users.name', 'users.lastname', 'user.photo')
             ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
             ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
             ->where('profesiones.nombre_profesion', '=', $prof)
@@ -254,7 +254,12 @@ class UsuariosController extends Controller
     }
 
 
-    
+    protected function setProfilePhotoUser(Request $request)
+    {
+        User::where('id', $request->user()->id)
+            ->update(['photo' => $request->img,]);
+    }
+
     public function updateUsuario(Request $request)
     {
 
@@ -263,17 +268,22 @@ class UsuariosController extends Controller
             'lastname' => 'required|string|max:255',
             'email' => 'required|email|unique:users|max:255',
             'dni' => 'required|string|max:9|unique:users',
-            'password' => 'required|string|min:5'
+
         ]);
 
 
-        User::where('id','=', $request->id)->update([
+        User::where('id', '=', $request->id)->update([
             'name' => $request->name,
             'lastname' => $request->lastname,
             'dni' => $request->dni,
             'email' => $request->email,
-            'password' => $request->password,
-            'photo' => $request->photo       
+
+            'photo' => $request->photo
         ]);
-        }
-    } 
+    }
+
+    public function recuperarUser(Request $request)
+    {
+        return User::where('id', '=', $request->id)->get();
+    }
+}
