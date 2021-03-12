@@ -54,7 +54,7 @@
           <div class="col-lg-6 col-6 text-right">
             <button
               class="btn btn-azul-peludets mr-2"
-              @click="mostrarSitiosInteres = !mostrarSitiosInteres"
+              @click="mostrarSitios"
             >
               {{ $t("explorador.buttonSitios") }}
             </button>
@@ -63,7 +63,7 @@
           <div class="col-lg-6 col-6">
             <button
               class="btn btn-azul-peludets"
-              @click="mostrarSitiosInteres = !mostrarSitiosInteres"
+              @click="mostrarTrabajos"
             >
               {{ $t("explorador.buttonTrabajos") }}
             </button>
@@ -89,7 +89,7 @@
                 <button
                   class="btn btn-azul-peludets"
                   type="button"
-                  @click="enviarMapa(localizacion.lat, localizacion.lon)"
+                  @click="enviarMapa(localizacion.lat, localizacion.lon, localizacion.nombre)"
                 >
                   {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
@@ -97,7 +97,7 @@
             </div>
           </div>
         </div>
-        <div id="cards-explorer" class="row mt-1" v-if="!mostrarSitiosInteres">
+        <div id="cards-explorer" class="row mt-1" v-if="mostrarTrabajosDisponibles">
           <div
             class="col-lg-4 col-sm-6 col-12 card-explorador mb-2"
             v-for="localizacion in trabajosDisponibles"
@@ -116,7 +116,7 @@
                 <button
                   class="btn btn-azul-peludets"
                   type="button"
-                  @click="enviarMapa(localizacion.lat, localizacion.lon)"
+                  @click="enviarMapa(localizacion.lat, localizacion.lon, localizacion.nombre)"
                 >
                   {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
@@ -149,17 +149,17 @@ export default {
       currentGeoLoc: undefined,
       // Variable para controlar si se ha obtenido la localizacion (Gif gato esperando)
       localizacionObtenida: false,
-      // True muestra sitios interes, False Trabajos (Por defecto muestra sitios)
       mostrarSitiosInteres: true,
+      mostrarTrabajosDisponibles: false,
       // Variable que se envia a el prop de mapa
       sitioMapa: undefined,
     };
   },
   methods: {
     // Enviar objeto de la tarjeta al mapa
-    enviarMapa(lat, lon) {
-      console.log('Latitud: ' + lat + '. Long: ' + lon);
+    enviarMapa(lat, lon, nombre) {
       this.sitioMapa = latLng(lat,lon);
+      this.sitioMapa.nombre = nombre;
     },
 
     // Obtener un Array de todos los datos de la BDD
@@ -261,6 +261,16 @@ export default {
     hideBannerInfo() {
       document.getElementById("banner-info").style.display = "none";
     },
+
+    mostrarSitios() {
+      this.mostrarTrabajosDisponibles = false;
+      this.mostrarSitiosInteres = true;
+    },
+
+    mostrarTrabajos() {
+      this.mostrarSitiosInteres = false;
+      this.mostrarTrabajosDisponibles = true;
+    }
   },
   mounted() {
     this.obtenerDatosMapa();
