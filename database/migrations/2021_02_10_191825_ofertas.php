@@ -14,7 +14,8 @@ class Ofertas extends Migration
     public function up()
     {
         Schema::create('ofertas', function (Blueprint $table) {
-            $table->integer("idUser");
+            $table->id();
+            $table->integer("id_usuario_oferta");
             $table->double("lat");
             $table->double("lon");
             $table->string("nombre");

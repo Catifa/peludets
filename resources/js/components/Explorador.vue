@@ -2,73 +2,123 @@
 @import "../../css/explorador.css";
 </style>
 <template>
-  <div class="row">
-    <div class="row container-fluid mx-auto mt-2" id="banner-info">
-      <div class="mx-auto banner-info">
-        <div align="right" class="mr-3 mt-1">
+  <div class="container-fluid">
+    <!-- Banner Info -->
+    <div id="banner-info" class="row">
+      <div class="col-lg-6 col-9 rounded banner-info mt-3 mx-auto">
+        <!-- Boton cerrar Banner -->
+        <div class="text-right">
           <i class="fas fa-times" @click="hideBannerInfo"></i>
         </div>
-        <div align="center" class="ml-4 mr-4 mb-4">
-          Benvingut a l'explorador. <br />
-          Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris i
-          molt mes! <br />
-          A més si ets un dels nostres afiliats podràs
-          trobar treballs a la teva zona aquí!
+        <!-- Texto Banner -->
+        <div class="text-center">
+          <h3>Benvingut a l'explorador!</h3>
+          <p>
+            Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris
+            i molt mes!
+          </p>
+          <p>
+            A més si ets un dels nostres afiliats podràs trobar treballs a la
+            teva zona aquí!
+          </p>
         </div>
       </div>
     </div>
-    <div class="col-md-6 mt-3 mx-auto">
-      <div id="gifCargar" v-if="!cargarCoord">
-        <img
-          class="rounded-circle"
-          src="https://media.tenor.com/images/bf12191c6d2e5416d13860b5a137dbb8/tenor.gif"
-          alt="Espera carga posicion"
-        />
-        <h3>{{ $t("explorador.tituloExplorador") }}</h3>
-      </div>
-      <mapa-exp :props="sitioMapa" :geoLoc="geoLoc"></mapa-exp>
-    </div>
-    <div class="col-md-6 mt-3 mx-auto">
-      <div class="row">
-        <button
-          class="btn btn-azul-peludets mr-2"
-          type="button"
-          @click="listarSitiosInteres(geoLoc)"
-        >
-          {{ $t("explorador.buttonSitios") }}
-        </button>
-        <button
-          class="btn btn-azul-peludets"
-          type="button"
-          @click="listarOfertas(geoLoc)"
-        >
-          {{ $t("explorador.buttonTrabajos") }}
-        </button>
-      </div>
-      <div class="row mt-3" id="cards">
+    <!-- Geoloc y Mapa -->
+    <div class="row">
+      <div class="col-lg-6 col-10 mx-auto mt-3">
+        <!-- Gif Geoloc -->
         <div
-          class="card card-explorador mb-3"
-          style="max-width: 320px"
-          v-for="obj in tarjetas"
-          :key="obj.nombre"
+          id="gifCargar"
+          class="text-center p-5 rounded"
+          v-if="!localizacionObtenida"
         >
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img v-bind:src="obj.photo" class="card-img" />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{ obj.nombre }}</h5>
-                <p class="card-text">{{ obj.descripcion }}</p>
+          <img
+            class="rounded-circle"
+            src="https://media.tenor.com/images/bf12191c6d2e5416d13860b5a137dbb8/tenor.gif"
+            alt="Espera carga posicion"
+          />
+          <h3>{{ $t("explorador.tituloExplorador") }}</h3>
+        </div>
+        <!-- Mapa -->
+        <mapa-exp
+          :propLocalizaciones="sitioMapa"
+          :propCurrentGeoLoc="currentGeoLoc"
+        ></mapa-exp>
+      </div>
+      <!-- Sitios Interes / Trabajos Disponibles -->
+      <div class="col-lg-6 col-11 mx-auto mt-5">
+        <!-- Botones Sitios Interes / Trabajos Disponibles -->
+        <div class="row">
+          <!-- Sitios Interes -->
+          <div class="col-lg-6 col-6 text-right">
+            <button
+              class="btn btn-azul-peludets mr-2"
+              @click="mostrarSitiosInteres = !mostrarSitiosInteres"
+            >
+              {{ $t("explorador.buttonSitios") }}
+            </button>
+          </div>
+          <!-- Trabajos Disponibles -->
+          <div class="col-lg-6 col-6">
+            <button
+              class="btn btn-azul-peludets"
+              @click="mostrarSitiosInteres = !mostrarSitiosInteres"
+            >
+              {{ $t("explorador.buttonTrabajos") }}
+            </button>
+          </div>
+        </div>
+        <!-- Tarjetas Sitios Interes / Trabajos Disponibles -->
+        <div id="cards-explorer" class="row mt-1" v-if="mostrarSitiosInteres">
+          <div
+            class="col-lg-4 col-sm-6 col-12 card-explorador mb-2"
+            v-for="localizacion in sitiosInteres"
+            :key="localizacion.id"
+          >
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">{{ localizacion.nombre }}</h5>
+                <p class="card-text">{{ localizacion.descripcion }}</p>
                 <button
                   class="btn btn-azul-peludets"
                   type="button"
-                  @click="enviarMapa(sitio)"
+                  @click="enviarMapa(localizacion.lat, localizacion.lon)"
                 >
                   {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
-                <button v-if="obj.idUser != undefined">
-                  {{ obj.idUser }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="cards-explorer" class="row mt-1" v-if="!mostrarSitiosInteres">
+          <div
+            class="col-lg-4 col-sm-6 col-12 card-explorador mb-2"
+            v-for="localizacion in trabajosDisponibles"
+            :key="localizacion.id"
+          >
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="../../img/tarjetas_home/adiestramiento.jpg"
+                width="100%"
+                alt="Gato"
+              />
+              <div class="card-body bg-crema-peludets-suave">
+                <h5 class="card-title">{{ localizacion.nombre }}</h5>
+                <p class="card-text">{{ localizacion.descripcion }}</p>
+                <button
+                  class="btn btn-azul-peludets"
+                  type="button"
+                  @click="enviarMapa(localizacion.lat, localizacion.lon)"
+                >
+                  {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
               </div>
             </div>
@@ -80,27 +130,72 @@
 </template>
 
 <script>
-
-import MapaExplorador from './components-subparts/Explorador_mapa.vue';
+import MapaExplorador from "./components-subparts/Explorador_mapa.vue";
+import { latLng } from 'leaflet';
 import { utils } from "../utils";
 import Swal from "sweetalert2";
 
 export default {
   components: {
-    'mapa-exp': MapaExplorador
+    "mapa-exp": MapaExplorador,
   },
   data() {
     return {
-      tarjetas: [],
-      sitioMapa: {},
-      geoLoc: [],
-      cargarCoord: true,
+      // Array donde se guardaran todos los sitios de interes
+      sitiosInteres: undefined,
+      // Array donde se guardaran todos los trabajos de interes
+      trabajosDisponibles: undefined,
+      // Geolocalizacion obtenida por el navegador
+      currentGeoLoc: undefined,
+      // Variable para controlar si se ha obtenido la localizacion (Gif gato esperando)
+      localizacionObtenida: false,
+      // True muestra sitios interes, False Trabajos (Por defecto muestra sitios)
+      mostrarSitiosInteres: true,
+      // Variable que se envia a el prop de mapa
+      sitioMapa: undefined,
     };
   },
   methods: {
-    enviarMapa(obj) {
-      this.sitioMapa = obj;
+    // Enviar objeto de la tarjeta al mapa
+    enviarMapa(lat, lon) {
+      console.log('Latitud: ' + lat + '. Long: ' + lon);
+      this.sitioMapa = latLng(lat,lon);
     },
+
+    // Obtener un Array de todos los datos de la BDD
+    obtenerDatosMapa() {
+      axios.post("/api/explorador/getSitiosInteres").then((response) => {
+        this.sitiosInteres = response.data;
+      });
+      axios.post("/api/explorador/getOfertas").then((response) => {
+        this.trabajosDisponibles = response.data;
+      });
+    },
+
+    // Obtener geolocalizacion
+    getGeoloc() {
+      if (!navigator.geolocation) {
+        Swal.fire({
+          icon: "error",
+          title:
+            "Tu navegador no soporta la geolocalizacion, pero intentaremos obtener una localizacion cercana.",
+        });
+        this.localizacionObtenida = false;
+        this.currentGeoLoc = {
+          latLng: [41.50546, 2.11775],
+        };
+      } else {
+        this.localizacionObtenida = false;
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.localizacionObtenida = true;
+          this.currentGeoLoc = [
+            position.coords.latitude,
+            position.coords.longitude,
+          ];
+        });
+      }
+    },
+
     listarSitiosInteres(geoloc) {
       $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
@@ -129,6 +224,7 @@ export default {
         //console.log(arrSitios);
       });
     },
+
     listarOfertas(geoloc) {
       $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
@@ -161,33 +257,14 @@ export default {
         //console.log(arrOfertas);
       });
     },
-    hideBannerInfo(){
-      document.getElementById('banner-info').style.display = 'none';
-    }
+
+    hideBannerInfo() {
+      document.getElementById("banner-info").style.display = "none";
+    },
   },
   mounted() {
-    if (!navigator.geolocation) {
-      Swal.fire({
-        icon: "error",
-        title:
-          "Tu navegador no soporta la geolocalizacion, pero intentaremos obtener una localizacion cercana.",
-      });
-      this.cargarCoord = false;
-      this.geoLoc = {
-        latLng: [41.50546, 2.11775],
-      };
-    } else {
-      this.cargarCoord = false;
-      navigator.geolocation
-        .getCurrentPosition((position) => {
-          this.cargarCoord = true;
-          this.geoLoc = [position.coords.latitude, position.coords.longitude];
-        })
-        .fail(() => {
-          this.cargarCoord = true;
-          this.geoLoc = [41.50546, 2.11775];
-        });
-    }
+    this.obtenerDatosMapa();
+    this.getGeoloc();
   },
 };
 </script>

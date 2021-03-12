@@ -92,7 +92,7 @@
       >
         <div class="form-group">
           <label>{{ $t("home.formTrabajos") }}</label>
-          <select class="form-control">
+          <select class="form-control" v-model="prof">
             <option selected="true" disabled="disabled">
               {{ $t("home.formSelectDefecto") }}
             </option>
@@ -113,7 +113,7 @@
     <!-- Tarjetas Info -->
     <div class="row mt-3">
       <!-- Tarjeta 1 -->
-      <div class="col-lg-3 col-md-6 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
@@ -128,7 +128,7 @@
         </div>
       </div>
       <!-- Tarjeta 2 -->
-      <div class="col-lg-3 col-md-6 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
@@ -143,7 +143,7 @@
         </div>
       </div>
       <!-- Tarjeta 3 -->
-      <div class="col-lg-3 col-md-6 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
@@ -158,7 +158,7 @@
         </div>
       </div>
       <!-- Tarjeta 4 -->
-      <div class="col-lg-3 col-md-6 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="card">
           <img
             class="card-img-top"
@@ -180,13 +180,14 @@ export default {
   data() {
     return {
       profesiones: [],
-      prof: {}
+      // Adri, perdón uwu Pero tengo que crearla para que no salga un error en consola
+      prof: undefined
     };
   },
 
   methods: {
     buscarTrabajos() {
-      let prof = this.profesion;
+      let prof = this.prof;
       this.$router.push({ name: "profesionales", params: { prof } });
     }
   },

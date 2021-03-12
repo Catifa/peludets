@@ -32,6 +32,14 @@ body {
 
 .bg-crema-peludets {
     background-color: #F2E7C9;
+
+}
+.bg-crema-peludets-suave {
+    background-color: #f2e7c999;
+}
+
+.bg-verde-peludets {
+    background-color: #7ac05c;
 }
 
 /* Colores */

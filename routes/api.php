@@ -81,7 +81,7 @@ Route::group(['prefix' => 'files'], function () {
 
 Route::group(['prefix' => 'usuario'], function () {
     Route::get('busquedaProfesionales', [UsuariosController::class, 'buscarProfesionales']);
-    Route::post('userByProf', [UsuariosController::class, 'searchByProf']);
+    Route::post('searchByProf', [UsuariosController::class, 'searchByProf']);
     Route::post('userByProfOnly', [UsuariosController::class, 'userByProfOnly']);
     Route::post('perfil', [UsuariosController::class, 'perfil']);
     Route::post('app', [UsuariosController::class, 'app']);
@@ -117,8 +117,3 @@ Route::group(['prefix' => 'valoraciones'], function(){
 });
 
 
-Route::group(['middleware' => ['cors']], function () {
-    //Rutas a las que se permitirá acceso
-
-
-});

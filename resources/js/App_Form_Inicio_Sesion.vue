@@ -1,63 +1,57 @@
 <template>
-  <div class="row">
-    <!-- Modal -->
-    <div id="form-inicioSesion" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-dialog-centered">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header bg-azul-peludets">
-            <h5 class="modal-title lila-peludets">Inicio de sesión</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              @click="
-                document.getElementById('form-inicioSesion').modal('hide')
-              "
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+  <!-- Modal -->
+  <div class="modal fade" role="dialog" v-on:keyup.enter="login">
+    <div class="modal-dialog modal-dialog-centered">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header bg-azul-peludets">
+          <h5 class="modal-title lila-peludets">Inicio de sesión</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            @click="hideLog"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
 
-          <div class="modal-body">
-            <!-- Email -->
-            <div class="form-group">
-              <label>Email</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Introduce tu email"
-                v-model="user.email"
-              />
-            </div>
-            <!-- Contraseña -->
-            <div class="form-group">
-              <label>Contraseña</label>
-              <input
-                type="password"
-                class="form-control"
-                v-model="user.password"
-              />
-            </div>
+        <div class="modal-body">
+          <!-- Email -->
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Introduce tu email"
+              v-model="user.email"
+            />
           </div>
-
-          <div class="modal-footer bg-azul-peludets">
-            <button type="submit" class="btn btn-azul-peludets" @click="login">
-              Iniciar sesión
-            </button>
-
-            <button
-              type="button"
-              class="btn btn-danger"
-              data-dismiss="modal"
-              @click="
-                document.getElementById('form-inicioSesion').modal('hide')
-              "
-            >
-              Cerrar
-            </button>
+          <!-- Contraseña -->
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input
+              type="password"
+              class="form-control"
+              v-model="user.password"
+            />
           </div>
+        </div>
+
+        <div class="modal-footer bg-azul-peludets">
+          <button type="submit" class="btn btn-azul-peludets" @click="login">
+            Iniciar sesión
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-dismiss="modal"
+            @click="hideLog"
+          >
+            Cerrar
+          </button>
         </div>
       </div>
     </div>
@@ -68,19 +62,25 @@
 import Swal from "sweetalert2";
 
 export default {
+  props: {
+    hideLog: { type: Function },
+  },
   data() {
     return {
       user: {},
     };
+  },
+  mounted() {
+    this.hideLog();
   },
   methods: {
     login() {
       this.axios
         .post("/api/auth/login", this.user)
         .then((response) => {
-          $("#form-inicioSesion").modal("hide");
+          this.hideLog();
           Swal.fire(
-            "Registro completado",
+            "Usuario correcto!",
             "Bienvenido, " + response.data.name,
             "success"
           );
