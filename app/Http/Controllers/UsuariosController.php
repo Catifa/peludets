@@ -58,7 +58,7 @@ class UsuariosController extends Controller
 
     /**
      * 
-     * Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home
+     * Busqueda de profesionales por todos los campos
      * 
      * @param Request $request
      * 
@@ -89,10 +89,11 @@ class UsuariosController extends Controller
 
     protected function searchByProf(Request $request)
     {
+    
         return User::select('users.id', 'users.name', 'users.lastname','users.photo')
             ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
             ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-            ->where('profesiones.nombre_profesion', '=', $request->profesion)
+            ->where('profesiones.nombre_profesion', '=', $request->servicio)
             ->where('usuarios_profesiones.disponibilidad', '=', $request->disponibilidad)
             ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)->get();
     }
