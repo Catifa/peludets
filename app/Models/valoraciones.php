@@ -15,7 +15,8 @@ class valoraciones extends Model
     protected $fillable = [
         'id_usuario',
         'id_usuario_remitente',
-        'valoraciones'
+        'valoraciones',
+        'puntuacion'
     ];
     
     use HasFactory;

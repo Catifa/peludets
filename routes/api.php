@@ -11,7 +11,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\MascotasController;
 use App\Http\Controllers\MensajesController;
 use App\Http\Controllers\OfertasController;
-use App\Http\Controllers\SitiosInteresController;
+use App\Http\Controllers\ValoracionesController;
 use Illuminate\Http\Request;
 
 
@@ -46,6 +46,11 @@ Route::group(['prefix' => 'mascota'], function () {
     Route::post('deleteMascota', [MascotasController::class, 'deleteMascota'])->middleware('auth');
     Route::post('updateMascota', [MascotasController::class, 'updateMascota'])->middleware('auth');
 });
+// Peticiones Valoraciones
+Route::group(['prefix' => 'valoraciones'], function () {
+    Route::post('recuperarValoraciones', [ValoracionesController::class, 'recuperarValoraciones']);
+
+});
 
 // Peticiones Especies
 Route::group(['prefix' => 'especie'], function () {
@@ -71,7 +76,6 @@ Route::group(['prefix' => 'profesiones'], function() {
 //Solitudes
 Route::group(['prefix' => 'solicitudes'], function () {
     Route::post('enviar', [SolicitudController::class, 'enviarSolicitud'])->middleware('auth');
-    Route::post('recuperar', [SolicitudController::class, 'recuperar'])->middleware('auth');
 });
 
 Route::group(['prefix' => 'files'], function () {
