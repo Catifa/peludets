@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class valoraciones extends Model
 {
     // Tabla donde se guarda el objeto Valoraciones
-    protected $table = 'solicitudes';
+    protected $table = 'valoraciones';
     
     public $timestamps = true;
 
