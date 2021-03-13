@@ -165,7 +165,7 @@ export default {
         titulacion: this.titulacion,
       };
 
-      this.Api()
+      Api()
         .post("/valoraciones/userByProf", objeto)
         .then((response) => {
           this.usuarios = response.data;
@@ -189,7 +189,7 @@ export default {
     },
     // Obtenerr contenido del perfil
     getContent() {
-      this.Api()
+      Api()
         .post("/usuario/getProfText", this.user)
         .then((response) => {
           let textVal = response.data[0];
@@ -198,7 +198,7 @@ export default {
     },
     // Enviar solicitud
     peticionSolicitud() {
-      this.Api()
+      Api()
         .post("/solicitudes/enviar", {
           nombre_trabajo: this.solicitud.nombre_trabajo,
           descripcion_trabajo: this.solicitud.descripcion_trabajo,
@@ -213,7 +213,7 @@ export default {
         .finally(() => (this.loading = false));
     },
     crearChat() {
-      this.Api()
+      Api()
         .post("/chat/hashRoom", {
           idDestinatario: this.$route.params.id,
           idRemitente: this.$root.user.id,
@@ -246,7 +246,7 @@ export default {
 
     //obtiene las valoraciones de los usuarios
 
-    this.Api()
+    Api()
       .post("/valoraciones/recuperarValoraciones")
       .then((response) => {
         this.valoraciones = response.data;
