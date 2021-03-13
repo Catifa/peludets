@@ -166,7 +166,7 @@ export default {
   methods: {
     usuariosFiltrados() {
       Api()
-        .post("api/usuario/searchByProf", this.servicioBusqueda)
+        .post("/usuario/searchByProf", this.servicioBusqueda)
         .then((response) => {
           this.usuarios = response.data;
           this.showProf = true;
@@ -193,7 +193,7 @@ export default {
     // Metodo que SOLO filtra por profesion, para la peticion que viene de HOME
     userProfOnly() {
       Api()
-        .post("api/usuario/userByProfOnly", this.servicioBusqueda)
+        .post("/usuario/userByProfOnly", this.servicioBusqueda)
         .then((response) => {
           this.usuarios = response.data;
           this.showProf = true;
@@ -210,7 +210,7 @@ export default {
     }
   },
   created() {
-    Api().get("api/profesiones/getAll").then((response) => {
+    Api().get("/profesiones/getAll").then((response) => {
       this.serviciosDisponibles = response.data;
     });
   },
