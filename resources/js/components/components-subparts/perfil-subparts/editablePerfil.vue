@@ -47,14 +47,10 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-<<<<<<< HEAD
 import Perfil_Modal_Update_User from "../Perfil_Modal_Update_User.vue";
 import Perfil_Modal_Nueva_Profesion from "../Perfil_Modal_Nueva_Profesion.vue";
-=======
-import Perfil_Modal_Update_User from "../Perfil_Modal_Update_User.vue"; 
 import Api from '../../../Api';
 
->>>>>>> 2e390d126d77df7d67fe3ef6fc66e9574888a09d
 
 export default {
   components: {
@@ -94,11 +90,7 @@ export default {
         });
     },
     getContent() {
-<<<<<<< HEAD
-      this.axios.post("api/usuario/getProfText", this.user).then((response) => {
-=======
       Api().post("/usuario/getProfText", this.user).then(response => {
->>>>>>> 2e390d126d77df7d67fe3ef6fc66e9574888a09d
         let textVal = response.data[0];
         this.text.val = textVal.textoPerfil;
         $("#textoPerfil").html(textVal.textoPerfil);
