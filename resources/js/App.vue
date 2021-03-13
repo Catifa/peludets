@@ -46,7 +46,6 @@ export default {
       Api().get("/authentication").then((res) => {
           this.getUser();
       }).catch(error => {
-        console.log(error);
         this.$root.user = null;
       });
     },
