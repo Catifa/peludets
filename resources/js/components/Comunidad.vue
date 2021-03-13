@@ -40,6 +40,7 @@
           </select>
         </div>
       </div>
+      <!-- Disponibilidad -->
       <div class="col-lg-2 col-md-4 col-12">
         <div class="form-group m-2">
           <label>
@@ -49,26 +50,24 @@
             v-model="servicioBusqueda.disponibilidad"
             class="form-control"
           >
-            <option>
+            <option value="P">
               {{ $t("comunidad.selectOptionPresencial") }}
             </option>
-            <option>
+            <option value="O">
               {{ $t("comunidad.selectOptionOnline") }}
-            </option>
-            <option>
-              {{ $t("comunidad.selectOptionPreOn") }}
             </option>
           </select>
         </div>
       </div>
+      <!-- Titulacion -->
       <div class="col-lg-2 col-md-4 col-12 mr-auto">
         <div class="form-group m-2">
           <label>
             {{ $t("comunidad.FormControlSelectTitulacion") }}
           </label>
           <select v-model="servicioBusqueda.titulacion" class="form-control">
-            <option>{{ $t("comunidad.valueSi") }}</option>
-            <option>{{ $t("comunidad.valueNo") }}</option>
+            <option value="S">{{ $t("comunidad.valueSi") }}</option>
+            <option value="N">{{ $t("comunidad.valueNo") }}</option>
           </select>
         </div>
       </div>
@@ -89,49 +88,68 @@
       </div>
     </div>
     <!-- Tarjetas comunidad -->
-    <div class="row">
-      <div v-if="showTarjetas" class="col-md-6 mt-4 col-xs-12">
-        <div
-          class="card mb-3"
-          style="max-width: 540px"
-          v-for="usuario in usuarios"
-          :key="usuario.id"
-        >
-          <div class="row no-gutters">
-            <!-- Imagen Tarjeta -->
-            <div class="col-md-4">
-              <img :src="usuario.photo" class="card-img" alt="Foto Usuario" />
-            </div>
-            <!-- Texto Tarjeta -->
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">
-                  {{ usuario.name }} {{ usuario.lastname }}
-                </h5>
-                <p class="card-text">
-                  {{ usuario.textoPerfil }}
-                </p>
-                <p class="card-text">
-                  <small class="text-muted">
-                    <router-link
-                      v-bind:to="'/profile/' + usuario.id"
-                      class="btn btn-azul-peludets"
-                    >
-                      {{ $t("comunidad.contratar") }}
-                    </router-link>
-                  </small>
-                </p>
+    <div class="row" v-if="showProf">
+      <div class="col-lg-8 col-12 mx-auto">
+        <div class="row">
+          <div
+            class="col-lg-6 col-md-6 col-12 mt-4"
+            v-for="usuario in usuarios"
+            :key="usuario.id"
+          >
+            <div class="card mb-3" style="max-width: 540px">
+              <div class="row no-gutters">
+                <!-- Imagen Tarjeta -->
+                <div class="col-md-4">
+                  <img
+                    src="http://data.pixiz.com/output/user/frame/preview/api/big/9/7/4/5/2145479_5c806.jpg"
+                    class="card-img"
+                    alt="Foto Usuario"
+                  />
+                </div>
+                <!-- Texto Tarjeta -->
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      {{ usuario.name }} {{ usuario.lastname }}
+                    </h5>
+                    <p class="card-text">
+                      {{ usuario.textoPerfil }}
+                    </p>
+                    <p class="card-text">
+                      <small class="text-muted">
+                        <router-link
+                          v-bind:to="'/profile/' + usuario.id"
+                          class="btn btn-azul-peludets"
+                        >
+                          {{ $t("comunidad.contratar") }}
+                        </router-link>
+                      </small>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Mapa servicios -->
+    <div class="row" v-if="showProf">
+        <div class="col-lg-12">
+          <mapa :propGeoloc="currentGeoLoc"></mapa>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
+
+import Mapa from './components-subparts/Comunidad_mapa.vue';
+
 export default {
+  components: {
+    'mapa': Mapa
+  },
   data() {
     return {
       showTarjetas: false,
@@ -139,18 +157,21 @@ export default {
       servicioBusqueda: {},
       // Variable con los servicios de BDD
       serviciosDisponibles: undefined,
+      // Usuarios recuperados de la consulta de busqueda
+      usuarios: undefined,
+      // Variable para mostrar las tarjetas
+      showProf: false,
       currentGeoLoc: undefined,
-      profesionHome: {},
-      usuarios: {},
-      showByProf: false,
     };
   },
   methods: {
     usuariosFiltrados() {
-      this.axios.post("api/usuario/searchByProf", this.servicioBusqueda).then((response) => {
-        this.usuarios = response.data;
-        this.ensena = true;
-      });
+      this.axios
+        .post("api/usuario/searchByProf", this.servicioBusqueda)
+        .then((response) => {
+          this.usuarios = response.data;
+          this.showProf = true;
+        });
     },
 
     getGeoloc() {
@@ -173,11 +194,10 @@ export default {
     // Metodo que SOLO filtra por profesion, para la peticion que viene de HOME
     userProfOnly() {
       this.axios
-        .post("api/usuario/userByProfOnly", this.profesionHome)
+        .post("api/usuario/userByProfOnly", this.servicioBusqueda)
         .then((response) => {
           this.usuarios = response.data;
-          console.log(this.usuarios);
-          this.showByProf = true;
+          this.showProf = true;
         });
     },
     hideBannerInfo() {
@@ -186,7 +206,7 @@ export default {
   },
   mounted() {
     if (this.$route.params.prof != undefined) {
-      this.profesionHome.nombre = this.$route.params.prof;
+      this.servicioBusqueda.nombre = this.$route.params.prof;
       this.userProfOnly();
     }
   },
