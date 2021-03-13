@@ -1,58 +1,56 @@
 {
   "app": {
     "menuExplorador": "Explorer",
-    "menuProfesionales": "Profesionals",
+    "menuProfesionales": "Community",
     "menuLogin": "Log in",
     "menuRegistro": "Register!",
     "menuDescarga": "Download the app",
     "menuPerfil" : "Profile",
     "menuDesconectar" : "Disconnect" ,
+    "tituloBannerPrivacidad": "Close privacy window",
     "footerContacto": "Contact",
-    "footerPais": "SPAIN",
+    "footerPais": "Spain",
     "footerRedesSociales": "Social networks"
   },
+
   "home": {
     "formTrabajos": "Works",
     "formTipoMascotas": "Pet type",
     "formBotonBuscar": "Search works",
-    "formSelectTrabajos1": "Accommodation",
-    "formSelectTrabajos2": "Walk",
-    "formSelectTrabajos3": "Training",
-    "formSelectTipoMascotas1": "Dog",
-    "formSelectTipoMascotas2": "Cat",
-    "formSelectTipoMascotas3": "Ferret",
-    "sliderTitulo1": "Walks like he likes",
-    "sliderTitulo2": "More than one pet?",
+    "sliderTitulo1": "Don’t be afraid to leave him alone again",
+    "sliderTitulo2": "Is your pet exotic?",
     "sliderTitulo3": "There is also a place for you, little one!",
-    "sliderDesc1": "Our community knows the best areas for your pet to enjoy a pleasant walk.",
-    "sliderDesc2": "No problem! We can take care of all of them.",
+    "sliderDesc1": "He will never be alone again! Just look for the service you need for the days you want.",
+    "sliderDesc2": "Search our community for the most qualified users to give your pet the care it needs.",
     "sliderDesc3": "Peludets! It is not just for cats or dogs. We have room for all kinds of pets.",
-    "cardBox1": "Find a place where your pet is comfortable while you enjoy your vacation!",
-    "cardBox2": "It's not just for cats and dogs only. Our community can take care of any type of pet.",
-    "cardBox3": "You can ask for how many walks and how long they are needed.",
-    "cardBox4": "We have a professional section for exotic pets with special care."
+    "cardBox1": "In our community you can find the best trainers willing to help you.",
+    "cardBox2": "Daily accommodation for your pets at your caregiver's home.",
+    "cardBox3": "It's not just for dogs and cats! Any kind of pet is welcome.",
+    "cardBox4": "You can rest easy thanks to our communication service with your caregiver."
   },
+
   "explorador": {
+    "bannerInfoBienvenida": "Welcome to the explorer!",
+    "bannerInfoTexto1": "Here you will find places of interest such as shops, parks, vets and much more.",
+    "bannerInfoTexto2": "Also if you are one of our affiliates you can find jobs in your area here!",
     "tituloExplorador": "Wait while we look for you ...",
     "buttonSitios":"Places of interest",
-    "buttonTrabajos":"Available jobs",
-    "buttonMostrarMapa": "Show map"
-    
+    "buttonTrabajos":"Available jobs"
   },
+
   "profesionales" : {
-    "tituloProfesionales" : "Search Toby, Search!",
-    "FormControlSelect1" : "Professions",
-    "selectOptionPsicologo": "Psychologist",
-    "selectOptionEntrenador": "Coach",
-    "selectOptionPeluquero": "Hairdresser",
+    "tituloProfesionales" : "Our community 🐾",
+    "bannerInfoBienvenida": "Welcome to community!",
+    "bannerInfoTexto1": "Here you will find people with all kinds of services for you and your pets!",
+    "FormControlSelect1" : "Services",
     "FormControlSelectDispo" : "Availability",
     "selectOptionPresencial": "Face-to-face",
     "selectOptionOnline": "Online",
     "selectOptionPreOn": "Face-to-face and online",
-    "FormControlSelectTitulacion" : "¿Title?",
+    "FormControlSelectTitulacion" : "Title?",
     "valueSi": "Yes",
     "valueNo": "No",
-    "buscarProfesionales" : "Find professionals",
+    "buscarProfesionales" : "Find",
     "cercaTi": "Near you",
     "verPerfil": "View profile",
     "contratar":"Contract"
