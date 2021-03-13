@@ -154,7 +154,7 @@ export default {
     },
     // Get de todas las especies en la base de datos
     getAllSpecies() {
-      this.Api().get("/especie/getAll").then((response) => {
+      Api().get("/especie/getAll").then((response) => {
         this.especies = response.data;
       });
     },
@@ -162,7 +162,7 @@ export default {
       this.solicitudTrabajo.idDestinatario = this.propUsuario.id;
       this.solicitudTrabajo.idRemitente = this.$root.user.id;
       this.solicitudTrabajo.solicitud = this.solicitud;
-      this.Api()
+      Api()
         .post("/solicitudes/enviar", this.solicitudTrabajo)
         .then(() => {
           Swal2.fire({
@@ -171,8 +171,8 @@ export default {
           });
 
           //ENVIAR CORREO
-          this.Api().get('/contactanos', this.propUsuario);
-           this.Api().get('/solicitud');
+          Api().get('/contactanos', this.propUsuario);
+           Api().get('/solicitud');
 
           $('.modal').modal('hide');
         })
