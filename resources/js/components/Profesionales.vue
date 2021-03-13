@@ -188,7 +188,7 @@ export default {
         titulacion: this.titulacion,
       };
       console.log(objeto);
-      this.Api().post("/usuario/searchByProf", objeto).then((response) => {
+      Api().post("/usuario/searchByProf", objeto).then((response) => {
         this.usuarios = response.data;
         this.ensena = true;
         console.log(response.data);
@@ -236,7 +236,7 @@ export default {
     },
     // Metodo que SOLO filtra por profesion, para la peticion que viene de HOME
     userProfOnly() {
-      this.Api()
+      Api()
         .post("/usuario/userByProfOnly", this.profesionHome)
         .then((response) => {
           this.usuarios = response.data;
@@ -255,7 +255,7 @@ export default {
     }
   },
   created() {
-    this.Api().get("/profesiones/getAll").then((response) => {
+    Api().get("/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
     });
   },

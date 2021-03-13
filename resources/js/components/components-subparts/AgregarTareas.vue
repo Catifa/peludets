@@ -40,7 +40,7 @@ export default {
   },
   methods: {},
   mounted() {
-      this.Api().post("/solicitudes/recuperar").then((response) => {
+      Api().post("/solicitudes/recuperar").then((response) => {
       this.solicitudes = response.data;      
     });
   },

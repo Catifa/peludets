@@ -52,7 +52,7 @@ export default {
         id: this.user.id
       };
 
-      this.Api()
+      Api()
         .post("/usuario/setProfText", obj)
         .then(() => {
           this.showEditor = false;
@@ -62,14 +62,14 @@ export default {
         });
     },
     getContent() {
-      this.Api().post("/usuario/getProfText", this.user).then(response => {
+      Api().post("/usuario/getProfText", this.user).then(response => {
         let textVal = response.data[0];
         this.text.val = textVal.textoPerfil;
         $("#textoPerfil").html(textVal.textoPerfil);
       });
     },
     getUserId() {
-      this.Api().get("/user").then((response) => {
+      Api().get("/user").then((response) => {
         this.user = response.data;
         this.getContent();
       })

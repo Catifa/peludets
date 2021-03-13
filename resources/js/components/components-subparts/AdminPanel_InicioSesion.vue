@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     login() {
-      this.Api()
+      Api()
         .post("/auth/adminLogin", this.user)
         .then((response) => {
           this.$root.user = response.data;

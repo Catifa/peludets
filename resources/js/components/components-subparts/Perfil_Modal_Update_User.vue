@@ -109,7 +109,7 @@ export default {
   },
   methods: {
     recuperarUser() {
-      this.Api().post("/usuario/recuperarUser").then((response) => {
+      Api().post("/usuario/recuperarUser").then((response) => {
         this.user = response.data;
         console.log(response.data);
       });
@@ -121,7 +121,7 @@ export default {
       this.user.id = id;
       console.log("aqui");
       console.log(this.user);
-      this.Api()
+      Api()
         .post("/usuario/updateUsuario", this.user)
         .then((response) => {
           Swal.fire("Usuario modificada", "success");

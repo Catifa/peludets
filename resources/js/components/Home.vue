@@ -194,7 +194,7 @@ export default {
     }
   },
   created() {
-    this.Api().get("/profesiones/getAll").then((response) => {
+    Api().get("/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
     });
   },

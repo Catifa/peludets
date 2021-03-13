@@ -126,7 +126,7 @@ export default {
   },
   methods: {
     register() {
-      this.Api()
+      Api()
         .post("/auth/register", this.user)
         .then((response) => {
 

@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     recuperarMascota() {
-      this.Api().post("/mascota/recuperarMascota").then((response) => {
+      Api().post("/mascota/recuperarMascota").then((response) => {
         this.mascotas = response.data;
         console.log(response.data);
       });
@@ -110,7 +110,7 @@ export default {
       this.mascota.img = this.img;
       this.mascota.id = id;
       console.log(this.mascota);
-      this.Api()
+      Api()
         .post("/mascota/updateMascota", this.mascota)
         .then((response) => {
           $("#form-updateMascota").modal("hide");
@@ -146,7 +146,7 @@ export default {
     },
   },
   mounted() {
-    this.Api().post("/mascota/recuperarMascota").then((response) => {
+    Api().post("/mascota/recuperarMascota").then((response) => {
       this.mascotas = response.data;
       console.log(response.data);
     });

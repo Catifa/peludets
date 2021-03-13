@@ -311,7 +311,7 @@ export default {
   },
   methods: {
     showByValo() {
-      this.Api()
+      Api()
         .post("/usuario/userByProfOnly", this.profesionHome)
         .then((response) => {
           this.usuarios = response.data;
@@ -324,7 +324,7 @@ export default {
       this.mascota = mascota;
     },
     recuperarMascota() {
-      this.Api().post("/mascota/recuperarMascota").then((response) => {
+      Api().post("/mascota/recuperarMascota").then((response) => {
         this.mascotas = response.data;
         console.log(response.data);
       });
@@ -332,7 +332,7 @@ export default {
 
     deleteMascota(id) {
       console.log(id);
-      this.Api()
+      Api()
         .post("/mascota/deleteMascota", { id })
         .then((response) => {
           Swal.fire("Mascota eliminada", "success");
@@ -344,7 +344,7 @@ export default {
     registerMascota() {
       this.mascota.userId = this.$root.user.id;
       this.mascota.img = this.img;
-      this.Api()
+      Api()
         .post("/mascota/registerMascota", this.mascota)
         .then((response) => {
           $("#form-registroMascota").modal("hide");
@@ -382,11 +382,11 @@ export default {
   },
 
   mounted() {
-    this.Api().post("/mascota/recuperarMascota").then((response) => {
+    Api().post("/mascota/recuperarMascota").then((response) => {
       this.mascotas = response.data;
       console.log(response.data);
     });
-    this.Api()
+    Api()
       .post("/valoraciones/recuperarValoraciones")
       .then((response) => {
         this.valoraciones = response.data;
