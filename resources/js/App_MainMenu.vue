@@ -29,7 +29,7 @@
           </li>
           <!-- Profesionales -->
           <li class="nav-item navLiPldts">
-            <router-link to="/profesionales" class="nav-link navItemPldts">
+            <router-link to="/comunidad" class="nav-link navItemPldts">
               {{ $t("app.menuProfesionales") }}
             </router-link>
           </li>
