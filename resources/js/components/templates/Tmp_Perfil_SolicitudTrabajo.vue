@@ -5,6 +5,7 @@
         <div class="col-md-12">
             <button class="btn btn-lila-peludets" @click="mostrarModalTrabajos">
                 Contratar a {{ $attrs.propUser.name }}
+
             </button>
         </div>
     </div>
@@ -17,6 +18,7 @@
 <script>
 
 import ModalTrabajos from './Tmp_Perfil_ModalTrabajos.vue';
+import Api from '../../Api';
 
 export default {
 
@@ -33,7 +35,7 @@ export default {
 
   methods: {
     obtenerProfesionesLista() {
-      this.axios.post('/api/profesiones/getUserProf', {id: this.$route.params.id}).then((response) => {
+      Api().post('/profesiones/getUserProf', {id: this.$route.params.id}).then((response) => {
         this.profesiones = response.data;
       });
     },

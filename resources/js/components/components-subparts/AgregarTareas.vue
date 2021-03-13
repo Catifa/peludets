@@ -25,6 +25,7 @@
 
 <script>
 import { Drag } from "vue-drag-drop";
+import Api from '../../Api';
 
 export default {
   components: {
@@ -39,7 +40,7 @@ export default {
   },
   methods: {},
   mounted() {
-      this.axios.post("/api/solicitudes/recuperar").then((response) => {
+      Api().post("/solicitudes/recuperar").then((response) => {
       this.solicitudes = response.data;      
     });
   },

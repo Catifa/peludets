@@ -173,6 +173,8 @@
   </div>
 </template>
 <script>
+import Api from '../Api';
+
 export default {
   data() {
     return {
@@ -189,7 +191,7 @@ export default {
     }
   },
   created() {
-    this.axios.get("api/profesiones/getAll").then((response) => {
+    Api().get("/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
     });
   },

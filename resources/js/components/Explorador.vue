@@ -50,19 +50,13 @@
         <div class="row">
           <!-- Sitios Interes -->
           <div class="col-lg-6 col-6 text-right">
-            <button
-              class="btn btn-azul-peludets mr-2"
-              @click="mostrarSitios"
-            >
+            <button class="btn btn-azul-peludets mr-2" @click="mostrarSitios">
               {{ $t("explorador.buttonSitios") }}
             </button>
           </div>
           <!-- Trabajos Disponibles -->
           <div class="col-lg-6 col-6">
-            <button
-              class="btn btn-azul-peludets"
-              @click="mostrarTrabajos"
-            >
+            <button class="btn btn-azul-peludets" @click="mostrarTrabajos">
               {{ $t("explorador.buttonTrabajos") }}
             </button>
           </div>
@@ -87,7 +81,13 @@
                 <button
                   class="btn btn-azul-peludets"
                   type="button"
-                  @click="enviarMapa(localizacion.lat, localizacion.lon, localizacion.nombre)"
+                  @click="
+                    enviarMapa(
+                      localizacion.lat,
+                      localizacion.lon,
+                      localizacion.nombre
+                    )
+                  "
                 >
                   {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
@@ -95,7 +95,11 @@
             </div>
           </div>
         </div>
-        <div id="cards-explorer" class="row mt-1" v-if="mostrarTrabajosDisponibles">
+        <div
+          id="cards-explorer"
+          class="row mt-1"
+          v-if="mostrarTrabajosDisponibles"
+        >
           <div
             class="col-lg-4 col-sm-6 col-12 card-explorador mb-2"
             v-for="localizacion in trabajosDisponibles"
@@ -114,7 +118,13 @@
                 <button
                   class="btn btn-azul-peludets"
                   type="button"
-                  @click="enviarMapa(localizacion.lat, localizacion.lon, localizacion.nombre)"
+                  @click="
+                    enviarMapa(
+                      localizacion.lat,
+                      localizacion.lon,
+                      localizacion.nombre
+                    )
+                  "
                 >
                   {{ $t("explorador.buttonMostrarMapa") }}
                 </button>
@@ -129,9 +139,10 @@
 
 <script>
 import MapaExplorador from "./components-subparts/Explorador_mapa.vue";
-import { latLng } from 'leaflet';
+import { latLng } from "leaflet";
 import { utils } from "../utils";
 import Swal from "sweetalert2";
+import Api from "../Api";
 
 export default {
   components: {
@@ -156,16 +167,16 @@ export default {
   methods: {
     // Enviar objeto de la tarjeta al mapa
     enviarMapa(lat, lon, nombre) {
-      this.sitioMapa = latLng(lat,lon);
+      this.sitioMapa = latLng(lat, lon);
       this.sitioMapa.nombre = nombre;
     },
 
     // Obtener un Array de todos los datos de la BDD
     obtenerDatosMapa() {
-      axios.post("/api/explorador/getSitiosInteres").then((response) => {
+      Api().post("/explorador/getSitiosInteres").then((response) => {
         this.sitiosInteres = response.data;
       });
-      axios.post("/api/explorador/getOfertas").then((response) => {
+      Api().post("/explorador/getOfertas").then((response) => {
         this.trabajosDisponibles = response.data;
       });
     },
@@ -198,7 +209,7 @@ export default {
       $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
       var arrSitios = [];
-      axios.post("/api/explorador/getSitiosInteres").then((res) => {
+      Api().post("/explorador/getSitiosInteres").then((res) => {
         //console.log(res.data);
         res.data.forEach((element) => {
           let dist = utils.calcDistancia(element, geoloc);
@@ -227,7 +238,7 @@ export default {
       $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
       var arrOfertas = [];
-      axios.post("/api/explorador/getOfertas").then((res) => {
+      Api().post("/explorador/getOfertas").then((res) => {
         //console.log(res.data);
         res.data.forEach((element) => {
           let dist = utils.calcDistancia(element, geoloc);
@@ -268,7 +279,7 @@ export default {
     mostrarTrabajos() {
       this.mostrarSitiosInteres = false;
       this.mostrarTrabajosDisponibles = true;
-    }
+    },
   },
   mounted() {
     this.obtenerDatosMapa();

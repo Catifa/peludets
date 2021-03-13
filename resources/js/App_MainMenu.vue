@@ -162,6 +162,7 @@
 <script>
 
 import ModalInbox from "./components/templates/Tmp_ModalInBox.vue";
+import Api from './Api';
 
 export default {
   components: {
@@ -180,10 +181,11 @@ export default {
   },
   methods: {
     logout() {
-      axios.post("/api/auth/logout").then((res) => {
+      Api().post("/auth/logout").then((res) => {
         this.$root.user = null;
         this.$root.photo = "sources/img/avatar.jfif";
         this.$router.push("/");
+        localStorage.removeItem('token');
       });
     },
 
