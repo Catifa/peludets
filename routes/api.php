@@ -11,6 +11,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\MascotasController;
 use App\Http\Controllers\MensajesController;
 use App\Http\Controllers\OfertasController;
+use App\Http\Controllers\SitiosInteresController;
 use App\Http\Controllers\ValoracionesController;
 use Illuminate\Http\Request;
 
