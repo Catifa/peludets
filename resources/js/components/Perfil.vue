@@ -213,11 +213,11 @@
 
         <div class="row">
           <!-- Modal -->
-          <modalUpdateMascota :propMascota="mascota" id="modalMascota"></modalUpdateMascota>
+          <modalUpdateMascota
+            :propMascota="mascota"
+            id="modalMascota"
+          ></modalUpdateMascota>
         </div>
-        
-        
-
 
         <div
           class="tab-pane fade"
@@ -379,7 +379,7 @@ import Swal from "sweetalert2";
 import ZonaPerfil from "./templates/ZonaPerfil.vue";
 import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 import Perfil_Modal_Update_Mascotas from "./components-subparts/Perfil_Modal_Update_Mascotas";
-
+import Api from '../Api';
 
 export default {
   components: {
@@ -387,7 +387,6 @@ export default {
     ZonaPerfil,
     editorPerfil,
     modalUpdateMascota: Perfil_Modal_Update_Mascotas,
-
   },
   name: "panel",
   data() {
@@ -401,12 +400,11 @@ export default {
     modalMascota(mascota) {
       this.mascota = mascota;
     },
-    recuperarMascota(){
+    recuperarMascota() {
       this.axios.post("/api/mascota/recuperarMascota").then((response) => {
-      this.mascotas = response.data;
-      console.log(response.data);
-    });
-
+        this.mascotas = response.data;
+        console.log(response.data);
+      });
     },
 
     deleteMascota(id) {
@@ -428,8 +426,7 @@ export default {
         .then((response) => {
           $("#form-registroMascota").modal("hide");
           Swal.fire("Registro completado", "success");
-                    this.recuperarMascota();
-
+          this.recuperarMascota();
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));

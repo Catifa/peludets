@@ -94,7 +94,7 @@ class MascotasController extends Controller
     }
     protected function recuperarMascota(Request $request)
     {
-        return Mascota::where('id_usuario', '=', $request->user()->id)->get();
+        return $request->user();
     }
     public function registerMascota(Request $request)
     {

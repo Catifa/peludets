@@ -31,6 +31,7 @@ import FormRegistro from "./App_Form_Registro.vue";
 import MainMenu from "./App_MainMenu.vue";
 import Footer from "./App_Footer.vue";
 import BannerPubli from "./App_Banner_Privacidad.vue";
+import Api from './Api';
 
 export default {
   components: {
@@ -42,18 +43,17 @@ export default {
   },
   methods: {
     isAuthenticated() {
-      axios.post("/api/auth/check").then((res) => {
-        if (res.data) {
+      Api().get("/authentication").then((res) => {
           this.getUser();
-        } else {
-          this.$root.user = null;
-        }
+      }).catch(error => {
+        console.log(error);
+        this.$root.user = null;
       });
     },
     getUser() {
-      axios.get("/api/user").then((res) => {
+      Api().get("/user").then((res) => {
         this.$root.user = res.data;
-        axios.post("/api/files/getProfilePhoto").then((res) => {
+        Api().post("/files/getProfilePhoto").then((res) => {
           this.$root.photo = res.data[0].photo;
         });
       });

@@ -60,6 +60,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import Api from './Api';
 
 export default {
   props: {
@@ -75,19 +76,22 @@ export default {
   },
   methods: {
     login() {
-      this.axios
-        .post("/api/auth/login", this.user)
+      Api()
+        .post("/auth/login", this.user)
         .then((response) => {
+
+          localStorage.setItem('token',response.data.token);
           this.hideLog();
           Swal.fire(
             "Usuario correcto!",
-            "Bienvenido, " + response.data.name,
+            "Bienvenido, " + response.data.user.name,
             "success"
           );
-          this.$root.user = response.data;
+          this.$root.user = response.data.user;
           axios.post("/api/files/getProfilePhoto").then((res) => {
             this.$root.photo = res.data[0].photo;
           });
+
           this.$router.push("/");
         })
         .catch((error) => console.log(error))

@@ -128,16 +128,21 @@ export default {
       this.axios
         .post("api/auth/register", this.user)
         .then((response) => {
+
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.token;
+          axios.defaults.headers.common["Accept"] = "*/*";
+
           this.hideReg();
           Swal.fire(
             "Registro completado",
-            "Bienvenido, " + response.data.name,
+            "Bienvenido, " + response.data.user.name,
             "success"
           );
 
           this.store();
 
-          this.$root.user = response.data;
+          this.$root.user = response.data.user;
 
           this.$router.push("/");
         })
