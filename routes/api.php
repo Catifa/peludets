@@ -39,7 +39,7 @@ Route::middleware('auth:sanctum')->get('/authentication', function (Request $req
 Route::group(['prefix' => 'mascota'], function () {
     Route::post('add', [MascotasController::class, 'add'])->middleware('auth:sanctum');
     Route::get('all', [MascotasController::class, 'index']);
-    Route::middleware('auth:sanctum')->post('recuperarMascota', [MascotasController::class, 'recuperarMascota']);
+    Route::post('recuperarMascota', [MascotasController::class, 'recuperarMascota'])->middleware('auth:sanctum');
     Route::post('registerMascota', [MascotasController::class, 'registerMascota'])->middleware('auth:sanctum');
     Route::post('setProfilePhotoMascota', [MascotasController::class, 'setProfilePhotoMascota'])->middleware('auth:sanctum');
     Route::post('deleteMascota', [MascotasController::class, 'deleteMascota'])->middleware('auth:sanctum');
