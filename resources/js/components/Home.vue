@@ -185,7 +185,7 @@ export default {
   methods: {
     buscarTrabajos() {
       let prof = this.prof;
-      this.$router.push({ name: "profesionales", params: { prof } });
+      this.$router.push({ name: "comunidad", params: { prof } });
     }
   },
   created() {
