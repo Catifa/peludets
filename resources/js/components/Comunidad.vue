@@ -9,10 +9,9 @@
         </div>
         <!-- Texto Banner -->
         <div class="text-center">
-          <h3>Benvingut a comunitat!</h3>
+          <h3>{{ $t("comunidad.bannerInfoBienvenida") }}</h3>
           <p>
-            Aquí trobaràs persones amb tota mena de serveis per a tu i les teves
-            mascotes!
+            {{ $t("comunidad.bannerInfoTexto1") }}
           </p>
         </div>
       </div>
@@ -135,20 +134,19 @@
     </div>
     <!-- Mapa servicios -->
     <div class="row" v-if="showProf">
-        <div class="col-lg-12">
-          <mapa :propGeoloc="currentGeoLoc"></mapa>
-        </div>
+      <div class="col-lg-12">
+        <mapa :propGeoloc="currentGeoLoc"></mapa>
       </div>
+    </div>
   </div>
 </template>
 
 <script>
-
-import Mapa from './components-subparts/Comunidad_mapa.vue';
+import Mapa from "./components-subparts/Comunidad_mapa.vue";
 
 export default {
   components: {
-    'mapa': Mapa
+    mapa: Mapa,
   },
   data() {
     return {
