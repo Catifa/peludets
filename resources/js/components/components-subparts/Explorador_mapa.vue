@@ -85,7 +85,6 @@ export default {
         iconSize: [32, 37],
         iconAnchor: [16, 37],
       }),
-      markers: [],
       // Variables normales
     };
   },
