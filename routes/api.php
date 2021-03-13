@@ -36,7 +36,7 @@ Route::middleware('auth:sanctum')->get('/authentication', function (Request $req
     return true;
 });
 
-// Peticiones Mascotas
+// Mascotas
 Route::group(['prefix' => 'mascota'], function () {
     Route::post('add', [MascotasController::class, 'add'])->middleware('auth');
     Route::get('all', [MascotasController::class, 'index']);
@@ -47,11 +47,12 @@ Route::group(['prefix' => 'mascota'], function () {
     Route::post('updateMascota', [MascotasController::class, 'updateMascota'])->middleware('auth');
 });
 
-// Peticiones Especies
+// Especies
 Route::group(['prefix' => 'especie'], function () {
     Route::get('getAll', [EspecieController::class, 'getAll']);
 });
 
+// Auth Controller
 Route::group(['prefix' => 'auth'], function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('adminRegister', [AuthController::class, 'adminRegister']);
@@ -61,24 +62,26 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('check', [AuthController::class, 'check']);
 });
 
-// Peticiones profesiones
+// Profesiones
 Route::group(['prefix' => 'profesiones'], function() {
     Route::get('getAll', [ProfesionController::class, 'getAll']);
     Route::post('getUserProf', [ProfesionController::class, 'getUserProf']);
 });
 
 
-//Solitudes
+// Solitudes
 Route::group(['prefix' => 'solicitudes'], function () {
     Route::post('enviar', [SolicitudController::class, 'enviarSolicitud'])->middleware('auth');
     Route::post('recuperar', [SolicitudController::class, 'recuperar'])->middleware('auth');
 });
 
+// Fotos
 Route::group(['prefix' => 'files'], function () {
     Route::post('setProfilePhoto', [FileController::class, 'setProfilePhoto'])->middleware('auth');
     Route::post('getProfilePhoto', [FileController::class, 'getProfilePhoto'])->middleware('auth');
 });
 
+// Usuarios
 Route::group(['prefix' => 'usuario'], function () {
     Route::get('busquedaProfesionales', [UsuariosController::class, 'buscarProfesionales']);
     Route::post('searchByProf', [UsuariosController::class, 'searchByProf']);
@@ -99,6 +102,7 @@ Route::group(['prefix' => 'explorador'], function () {
     Route::post('getOfertas', [OfertasController::class, 'getOfertas']);
 });
 
+// Chat
 Route::group(['prefix' => 'chat'], function(){
     Route::post('insert',[MensajesController::class,'insert'])->middleware('auth');
     Route::post('select',[MensajesController::class,'select'])->middleware('auth');
