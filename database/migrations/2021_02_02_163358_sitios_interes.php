@@ -14,6 +14,7 @@ class SitiosInteres extends Migration
     public function up()
     {
         Schema::create('sitios_interes', function (Blueprint $table) {
+            $table->id();
             $table->double("lat");
             $table->double("lon");
             $table->string("nombre");

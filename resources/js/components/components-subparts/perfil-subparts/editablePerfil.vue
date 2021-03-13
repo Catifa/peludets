@@ -11,28 +11,26 @@
  
  
   <button
-     
-      @click="modalUsuario(usuario)"
+      @click="modalUsuario"
       class="btn btn-verde-peludets mt-1"
     >Modificar Cuenta</button>
 
-    <div class="row">
-          <!-- Modal -->
-        
-        </div>
-
-     </div>
+    <modalUpdateUser id="modalUsuario"></modalUpdateUser>
+  </div>
     
 </template>
 
 
 <script>
 import { VueEditor } from "vue2-editor";
+import Perfil_Modal_Update_User from "../Perfil_Modal_Update_User.vue"; 
 
 
 export default {
-  components: {
+
+  components: { 
     VueEditor,
+    'modalUpdateUser' : Perfil_Modal_Update_User
    
   },
   data() {
@@ -43,8 +41,8 @@ export default {
     };
   },
   methods: {
-    modalUsuario(usuario) {
-      this.usuario = usuario;
+    modalUsuario() {
+       $('#modalUsuario').modal('show');
     },
 
     saveContent() {

@@ -5,6 +5,7 @@
         <div class="col-md-12">
             <button class="btn btn-lila-peludets" @click="mostrarModalTrabajos">
                 Contratar a {{ $attrs.propUser.name }}
+
             </button>
         </div>
     </div>

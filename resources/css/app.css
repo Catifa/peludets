@@ -116,6 +116,10 @@ body {
     background-color: #ca3d3d;
 }
 
+.h1-peludets {
+    font-size: 3.25rem;
+}
+
 .card {
     border-style: outset !important;
 }

@@ -76,7 +76,7 @@
               @click="updateMascota(propMascota.id)"
               class="btn btn-azul-peludets"
             >
-              Registrala!
+              Modificala!
             </button>
           </div>
         </div>
@@ -113,8 +113,7 @@ export default {
         .post("api/mascota/updateMascota", this.mascota)
         .then((response) => {
           $("#form-updateMascota").modal("hide");
-          Swal.fire("Mascota modificada", "success");
-          this.recuperarMascota();
+          Swal.fire("Mascota modificada");
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
@@ -145,11 +144,12 @@ export default {
       reader.readAsDataURL(f);
     },
   },
-   mounted() {
+  mounted() {
     this.axios.post("/api/mascota/recuperarMascota").then((response) => {
       this.mascotas = response.data;
       console.log(response.data);
     });
   },
+
 };
 </script>

@@ -180,12 +180,13 @@ export default {
   data() {
     return {
       profesiones: [],
+      // Adri, perdón uwu Pero tengo que crearla para que no salga un error en consola
+      prof: undefined
     };
   },
 
   methods: {
     buscarTrabajos() {
-      console.log(this.prof);
       let prof = this.prof;
       this.$router.push({ name: "profesionales", params: { prof } });
     }

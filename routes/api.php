@@ -11,7 +11,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\MascotasController;
 use App\Http\Controllers\MensajesController;
 use App\Http\Controllers\OfertasController;
-use App\Http\Controllers\SitiosInteresController;
+use App\Http\Controllers\ValoracionesController;
 use Illuminate\Http\Request;
 
 /*
@@ -44,6 +44,11 @@ Route::group(['prefix' => 'mascota'], function () {
     Route::post('setProfilePhotoMascota', [MascotasController::class, 'setProfilePhotoMascota'])->middleware('auth:sanctum');
     Route::post('deleteMascota', [MascotasController::class, 'deleteMascota'])->middleware('auth:sanctum');
     Route::post('updateMascota', [MascotasController::class, 'updateMascota'])->middleware('auth:sanctum');
+});
+// Peticiones Valoraciones
+Route::group(['prefix' => 'valoraciones'], function () {
+    Route::post('recuperarValoraciones', [ValoracionesController::class, 'recuperarValoraciones']);
+
 });
 
 // Peticiones Especies

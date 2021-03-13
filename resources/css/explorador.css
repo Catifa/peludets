@@ -26,5 +26,19 @@
 
 .card-explorador .card {
     flex: 0 0 auto;
-    
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: #63ef8ead;
+    color: #333;
+    box-shadow: 0 3px 14px rgb(0 0 0 / 40%);
+}
+
+.leaflet-popup-content {
+    margin: 0.7rem 0.7rem;
+    line-height: 1.4;
+}
+
+.card-popup-map {
+    border: none !important;
 }

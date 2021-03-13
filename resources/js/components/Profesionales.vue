@@ -1,81 +1,37 @@
 <template>
-  <div>
-    <!-------CHAT---
-
-<section id="appChat" class="hero is-fullheight">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">Peludets Chat</h1>
-                <h2 class="subtitle">Disponible solo para profesionales</a></h2>
-
-                    <div class="columns">
-                        <div class="column is-6">
-                            <div class="field has-addons">
-                                <div class="control is-expanded">
-                                    <input v-model="nick" class="input is-medium" type="text"
-                                        placeholder="Ingrese su nick">
-                                </div>
-                                <div class="control">
-                                    <a @click="signIn" class="button is-info is-medium">
-                                        Ingresar
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                  
-
-                    <div class="field has-addons">
-                        <div class="control is-expanded">
-                            <input v-model="message" class="input is-medium" type="text"
-                                placeholder="Ingrese el mensaje">
-                        </div>
-                        <div class="control">
-                            <a @click="send" class="button is-info is-medium">
-                                Enviar
-                            </a>
-                        </div>
-                    </div>
- 
-            </div>
-        </div>
-        <footer v-if="step === 'chat'" class="hero-foot">
-            <div class="container section has-text-centered">
-                <p>Conectado como <b>{{ nick }}</b></p>
-            </div>
-        </footer>
-    </section>
-------->
-
-    <!------------------------------->
-    <div class="row container-fluid mx-auto mt-2" id="banner-info">
-      <div class="mx-auto banner-info">
-        <div align="right" class="mr-3 mt-1">
+  <div class="container-fluid">
+    <!-- Banner Info -->
+    <div id="banner-info" class="row">
+      <div class="col-lg-4 col-md-8 col-12 rounded banner-info mt-3 mx-auto">
+        <!-- Boton cerrar Banner -->
+        <div class="text-right">
           <i class="fas fa-times" @click="hideBannerInfo"></i>
         </div>
-        <div align="center" class="ml-4 mr-4 mb-4">
-          Benvingut a comunitat. <br />
-          Aquí trobaràs persones amb tota mena de serveis per a tu i les teves
-          mascotes!
+        <!-- Texto Banner -->
+        <div class="text-center">
+          <h3>Benvingut a comunitat!</h3>
+          <p>
+            Aquí trobaràs persones amb tota mena de serveis per a tu i les teves
+            mascotes!
+          </p>
         </div>
       </div>
     </div>
+    <!-- Titulo Pagina -->
     <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <p
-          style="text-align: center; font-size: 60px; color: rgb(243, 174, 26)"
-        >
+      <div class="col-12 text-center mt-3">
+        <h1 class="h1-peludets lila-peludets">
           {{ $t("profesionales.tituloProfesionales") }}
-        </p>
+        </h1>
       </div>
     </div>
+    <!-- Selects  -->
     <div class="row">
-      <div class="col-md-2 ml-auto col-xs-12">
+      <div class="col-lg-2 col-md-4 col-12 ml-auto">
         <div class="form-group m-2">
-          <label for="exampleFormControlSelect1">{{
-            $t("profesionales.FormControlSelect1")
-          }}</label>
+          <label for="exampleFormControlSelect1">
+            {{ $t("profesionales.FormControlSelect1") }}
+           </label>
           <select
             name="selectOption"
             v-model="servicio"
@@ -90,9 +46,8 @@
             </option>
           </select>
         </div>
-       
       </div>
-      <div class="col-md-2 col-xs-12">
+      <div class="col-lg-2 col-md-4 col-12">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">{{
             $t("profesionales.FormControlSelectDispo")
@@ -115,7 +70,7 @@
           </select>
         </div>
       </div>
-      <div class="col-md-2 col-xs-12">
+      <div class="col-lg-2 col-md-4 col-12 mr-auto">
         <div class="form-group m-2">
           <label for="exampleFormControlSelect1">{{
             $t("profesionales.FormControlSelectTitulacion")
@@ -131,20 +86,23 @@
           </select>
         </div>
       </div>
-      <div class="col-md-2 col-xs-12">
+    </div>
+    <!-- Botones -->
+    <div class="row">
+      <div class="col-lg-2 col-md-4 col-12 ml-auto mt-4">
         <button
           id="usuariosFiltrados"
           type="submit"
-          class="btn btn-block btn-lg btn-lila-peludets mt-4"
+          class="btn btn-block btn-lg btn-lila-peludets"
           @click="usuariosFiltrados"
         >
           {{ $t("profesionales.buscarProfesionales") }}
         </button>
       </div>
-      <div class="col-md-2 mr-auto col-xs-12">
+      <div class="col-lg-2 col-md-4 col-12 mr-auto mt-4">
         <button
           type="button"
-          class="btn btn-block btn-lg btn-lila-peludets mt-4"
+          class="btn btn-lila-peludets"
           @click="geoFindMe"
         >
           {{ $t("profesionales.cercaTi") }}
@@ -295,7 +253,7 @@ export default {
       this.userProfOnly();
     }
   },
-   created() {
+  created() {
     this.axios.get("api/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
     });

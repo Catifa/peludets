@@ -1,89 +1,56 @@
 <template>
   <div id="mapa">
-    <l-map
-      v-if="showMap"
-      class="mt-3"
-      width="100%"
-      :zoom="zoom"
-      :center="center"
-      @update:zoom="updateZoom"
-      @update:center="updateCenter"
-    >
-      <l-title-layer :url="url"></l-title-layer>
-      <l-marker v-for="(marker, index) in markers" :key="marker" :lat-lng="marker" :icon="icon">
+    <l-map :zoom="zoom" :center="center" :options="mapOptions">
+      <!-- Cartel abajo derecha -->
+      <l-tile-layer :url="url" />
+      <!-- Marcadores -->
+      <l-marker
+        v-for="(marker, index) in markers"
+        :key="index"
+        :lat-lng="marker"
+        :icon="icon"
+      >
         <l-icon
           :icon-size="dynamicSize"
           :icon-anchor="dynamicAnchor"
           icon-url="https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png"
         ></l-icon>
-        <l-popup>{{ popups[index] }}</l-popup>
+        <l-popup>
+          <div class="card card-popup-map rounded" style="width: 18rem">
+            <div class="card-body">
+              <h5 class="card-title">{{ marker.nombre }}</h5>
+            </div>
+          </div>
+        </l-popup>
       </l-marker>
     </l-map>
   </div>
 </template>
 
 <script>
-import L from "leaflet";
+import { latLng } from "leaflet";
 import {
   LMap,
   LTileLayer,
   LMarker,
   LPopup,
   LTooltip,
-  LIcon
+  LIcon,
 } from "vue2-leaflet";
 
 export default {
-  name: "MapaExplorador",
-  components: {
-    LMap,
-    LTileLayer,
-    LMarker,
-    LPopup,
-    LTooltip,
-    LIcon
-  },
-  props: ["props", "geoLoc"],
+  props: ["propCurrentGeoLoc", "propLocalizaciones"],
   watch: {
-    props: {
+    propCurrentGeoLoc: {
       handler(val) {
-        this.updateMarker();
-      } 
+        this.centerUpdate(val);
+      },
     },
-    geoLoc: {
+    propLocalizaciones: {
       handler(val) {
-        this.updateCenter(val);
-      }
-    }
-  },
-  data() {
-    return {
-      // Ajustes Mapa
-      zoom: 16,
-      center: [35.997, 139.834],
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      markers: [
-        L.latLng(41.50677, 2.11371),
-        L.latLng(41.50601, 2.12021),
-        L.latLng(41.50755, 2.11537),
-        L.latLng(41.5095, 2.11505)
-      ],
-      popups: [
-        "Parque para perros 1",
-        "Parque para perros 2",
-        "Parque para perros 3",
-        "Parque para perros 4"
-      ],
-      icon: L.icon({
-        iconUrl:
-          "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png",
-        iconSize: [32, 37],
-        iconAnchor: [16, 37]
-      }),
-      showMap: true,
-      // Variables Vista
-      texto: "Ocultar Mapa"
-    };
+        this.mapMarkerUpdate(val);
+      },
+    },
   },
   computed: {
     dynamicSize() {
@@ -91,28 +58,44 @@ export default {
     },
     dynamicAnchor() {
       return [this.iconSize / 2, this.iconSize * 1.15];
-    }
+    },
+  },
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LPopup,
+    LTooltip,
+    LIcon,
+  },
+  data() {
+    return {
+      // Cosa del mapa
+      zoom: 13,
+      center: latLng(0, 0),
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      currentZoom: 11.5,
+      mapOptions: {
+        zoomSnap: 0.5,
+      },
+      markers: [],
+      icon: L.icon({
+        iconUrl:
+          "https://newtonvet.com/wp-content/uploads/2017/05/paw-icon.png",
+        iconSize: [32, 37],
+        iconAnchor: [16, 37],
+      }),
+      markers: [],
+      // Variables normales
+    };
   },
   methods: {
-    updateZoom(zoom) {
-      this.zoom = zoom;
-    },
-    updateCenter(center) {
+    centerUpdate(center) {
       this.center = center;
     },
-    mostrarMapa() {
-      this.showMap = !this.showMap;
-      if (this.showMap) {
-        this.texto = "Ocultar Mapa";
-      } else {
-        this.texto = " Mostrar Mapa";
-      }
+    mapMarkerUpdate(localizacion) {
+      this.markers.push(localizacion);
     },
-    updateMarker() {
-      if (this.props.latLng != undefined) {
-        this.markers.push(this.props.latLng);
-      }
-    }
-  }
+  },
 };
 </script>
