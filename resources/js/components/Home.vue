@@ -93,9 +93,6 @@
         <div class="form-group">
           <label>{{ $t("home.formTrabajos") }}</label>
           <select class="form-control" v-model="prof">
-            <option selected="true" disabled="disabled">
-              {{ $t("home.formSelectDefecto") }}
-            </option>
             <option v-for="profesion in profesiones" :key="profesion.id">
               {{ profesion.nombre_profesion }}
             </option>
