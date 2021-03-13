@@ -143,6 +143,7 @@
 
 <script>
 import Mapa from "./components-subparts/Comunidad_mapa.vue";
+import Api from "../Api";
 
 export default {
   components: {
@@ -164,7 +165,7 @@ export default {
   },
   methods: {
     usuariosFiltrados() {
-      this.axios
+      Api()
         .post("api/usuario/searchByProf", this.servicioBusqueda)
         .then((response) => {
           this.usuarios = response.data;
@@ -191,7 +192,7 @@ export default {
 
     // Metodo que SOLO filtra por profesion, para la peticion que viene de HOME
     userProfOnly() {
-      this.axios
+      Api()
         .post("api/usuario/userByProfOnly", this.servicioBusqueda)
         .then((response) => {
           this.usuarios = response.data;
@@ -209,7 +210,7 @@ export default {
     }
   },
   created() {
-    this.axios.get("api/profesiones/getAll").then((response) => {
+    Api().get("api/profesiones/getAll").then((response) => {
       this.serviciosDisponibles = response.data;
     });
   },
