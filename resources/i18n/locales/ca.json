@@ -36,9 +36,9 @@
     
 
   },
-  "profesionales" : {
-    "tituloProfesionales" : "Nuestra comunidad 🐾",
-    "FormControlSelect1" : "Professions",
+  "comunidad" : {
+    "tituloComunidad" : "La nostre comunitat 🐾",
+    "FormControlSelect1" : "Serveis",
     "selectOptionPsicologo": "Psicoleg",
     "selectOptionEntrenador": "Entrenador",
     "selectOptionPeluquero": "Perruquer",
@@ -49,7 +49,7 @@
     "FormControlSelectTitulacion" : "¿Titulació?",
     "valueSi": "Si",
     "valueNo": "No",
-    "buscarProfesionales" : "Buscar Profesionals",
+    "buscarProfesionales" : "Buscar",
     "cercaTi": "A prop teu",
     "verPerfil": "Veure perfil ",
     "contratar":"Contratar"
