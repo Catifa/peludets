@@ -109,6 +109,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import Api from './Api';
 
 export default {
   props: {
@@ -125,19 +126,20 @@ export default {
   },
   methods: {
     register() {
-      this.axios
-        .post("api/auth/register", this.user)
+      Api()
+        .post("/auth/register", this.user)
         .then((response) => {
+
           this.hideReg();
           Swal.fire(
             "Registro completado",
-            "Bienvenido, " + response.data.name,
+            "Bienvenido, " + response.data.user.name,
             "success"
           );
 
           this.store();
 
-          this.$root.user = response.data;
+          this.$root.user = response.data.user;
 
           this.$router.push("/");
         })
@@ -171,14 +173,14 @@ export default {
     },
     store() {
       //console.log(this.img);
-      axios
-        .post("/api/files/setProfilePhoto", { img: this.img })
+      Api()
+        .post("/files/setProfilePhoto", { img: this.img })
         .then((res) => {
           this.getPhoto();
         });
     },
     getPhoto() {
-      axios.post("/api/files/getProfilePhoto").then((res) => {
+      Api().post("/files/getProfilePhoto").then((res) => {
         this.$root.photo = res.data[0].photo;
       });
     }

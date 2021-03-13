@@ -18,6 +18,7 @@
 <script>
 
 import ModalTrabajos from './Tmp_Perfil_ModalTrabajos.vue';
+import Api from '../../Api';
 
 export default {
 
@@ -34,7 +35,7 @@ export default {
 
   methods: {
     obtenerProfesionesLista() {
-      this.axios.post('/api/profesiones/getUserProf', {id: this.$route.params.id}).then((response) => {
+      Api().post('/profesiones/getUserProf', {id: this.$route.params.id}).then((response) => {
         this.profesiones = response.data;
       });
     },

@@ -131,6 +131,7 @@ import Swal from "sweetalert2";
 import Chat from "../Chat.vue";
 import SolicitudTrabajo from "./Tmp_Perfil_SolicitudTrabajo.vue";
 import Tmp_Calendario from "./Tmp_Calendario.vue";
+import Api from '../../Api';
 
 export default {
   components: {
@@ -164,8 +165,8 @@ export default {
         titulacion: this.titulacion,
       };
 
-      this.axios
-        .post("api/valoraciones/userByProf", objeto)
+      this.Api()
+        .post("/valoraciones/userByProf", objeto)
         .then((response) => {
           this.usuarios = response.data;
           this.ensena = true;
@@ -174,8 +175,8 @@ export default {
     },
 
     getUser() {
-      axios
-        .post("/api/usuario/perfil", { id: this.$route.params.id })
+      Api()
+        .post("/usuario/perfil", { id: this.$route.params.id })
         .then((res) => {
           if (jQuery.isEmptyObject(res.data)) {
             this.$router.push("/");
@@ -188,8 +189,8 @@ export default {
     },
     // Obtenerr contenido del perfil
     getContent() {
-      this.axios
-        .post("/api/usuario/getProfText", this.user)
+      this.Api()
+        .post("/usuario/getProfText", this.user)
         .then((response) => {
           let textVal = response.data[0];
           $("#contenidoPerfil").html(textVal.textoPerfil);
@@ -197,8 +198,8 @@ export default {
     },
     // Enviar solicitud
     peticionSolicitud() {
-      this.axios
-        .post("/api/solicitudes/enviar", {
+      this.Api()
+        .post("/solicitudes/enviar", {
           nombre_trabajo: this.solicitud.nombre_trabajo,
           descripcion_trabajo: this.solicitud.descripcion_trabajo,
           id_remitente: this.$root.user.id,
@@ -212,8 +213,8 @@ export default {
         .finally(() => (this.loading = false));
     },
     crearChat() {
-      this.axios
-        .post("/api/chat/hashRoom", {
+      this.Api()
+        .post("/chat/hashRoom", {
           idDestinatario: this.$route.params.id,
           idRemitente: this.$root.user.id,
         })
@@ -245,8 +246,8 @@ export default {
 
     //obtiene las valoraciones de los usuarios
 
-    this.axios
-      .post("/api/valoraciones/recuperarValoraciones")
+    this.Api()
+      .post("/valoraciones/recuperarValoraciones")
       .then((response) => {
         this.valoraciones = response.data;
         console.log(response.data);

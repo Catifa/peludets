@@ -292,6 +292,7 @@ import Swal from "sweetalert2";
 import ZonaPerfil from "./templates/ZonaPerfil.vue";
 import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
 import Perfil_Modal_Update_Mascotas from "./components-subparts/Perfil_Modal_Update_Mascotas";
+import Api from '../Api';
 
 export default {
   components: {
@@ -311,8 +312,8 @@ export default {
   },
   methods: {
     showByValo() {
-      this.axios
-        .post("api/usuario/userByProfOnly", this.profesionHome)
+      Api()
+        .post("/usuario/userByProfOnly", this.profesionHome)
         .then((response) => {
           this.usuarios = response.data;
           console.log(this.usuarios);
@@ -324,7 +325,7 @@ export default {
       this.mascota = mascota;
     },
     recuperarMascota() {
-      this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+      Api().post("/mascota/recuperarMascota").then((response) => {
         this.mascotas = response.data;
         console.log(response.data);
       });
@@ -332,8 +333,8 @@ export default {
 
     deleteMascota(id) {
       console.log(id);
-      this.axios
-        .post("api/mascota/deleteMascota", { id })
+      Api()
+        .post("/mascota/deleteMascota", { id })
         .then((response) => {
           Swal.fire("Mascota eliminada", "success");
           this.recuperarMascota();
@@ -344,8 +345,8 @@ export default {
     registerMascota() {
       this.mascota.userId = this.$root.user.id;
       this.mascota.img = this.img;
-      this.axios
-        .post("api/mascota/registerMascota", this.mascota)
+      Api()
+        .post("/mascota/registerMascota", this.mascota)
         .then((response) => {
           $("#form-registroMascota").modal("hide");
           Swal.fire("Registro completado", "success");
@@ -382,12 +383,12 @@ export default {
   },
 
   mounted() {
-    this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+    Api().post("/mascota/recuperarMascota").then((response) => {
       this.mascotas = response.data;
       console.log(response.data);
     });
-    this.axios
-      .post("/api/valoraciones/recuperarValoraciones")
+    Api()
+      .post("/valoraciones/recuperarValoraciones")
       .then((response) => {
         this.valoraciones = response.data;
         console.log(response.data);
