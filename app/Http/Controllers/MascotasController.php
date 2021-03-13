@@ -94,12 +94,12 @@ class MascotasController extends Controller
     }
     protected function recuperarMascota(Request $request)
     {
-        return $request->user();
+        return Mascota::where('id_usuario', '=', $request->user()->id)->get();
     }
     public function registerMascota(Request $request)
     {
         Mascota::create([
-            'id_usuario'=>$request->userId,
+            'id_usuario' => $request->userId,
             'nombre' => $request->nombre,
             'especie' => $request->especie,
             'raza' => $request->raza,
@@ -107,31 +107,27 @@ class MascotasController extends Controller
             'peso' => $request->peso,
             'photo' => $request->img
         ]);
-        
-        
     }
-    
+
     public function deleteMascota(Request $request)
     {
         echo $request->id;
-        Mascota::where('id','=', $request->id)->delete();        
-        
+        Mascota::where('id', '=', $request->id)->delete();
     }
 
     public function updateMascota(Request $request)
     {
-        Mascota::where('id','=', $request->id)->update([
+        Mascota::where('id', '=', $request->id)->update([
             'nombre' => $request->nombre,
             'especie' => $request->especie,
             'raza' => $request->raza,
             'edad' => $request->edad,
             'peso' => $request->peso,
             'photo' => $request->img
-            ]);        
-        
+        ]);
     }
-    
-    
+
+
     protected function setProfilePhotoMascota(Request $request)
     {
         Mascota::where('id', $request->mascota()->id)
