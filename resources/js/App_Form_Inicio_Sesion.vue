@@ -88,7 +88,7 @@ export default {
             "success"
           );
           this.$root.user = response.data.user;
-          axios.post("/api/files/getProfilePhoto").then((res) => {
+          Api().post("/files/getProfilePhoto").then((res) => {
             this.$root.photo = res.data[0].photo;
           });
 

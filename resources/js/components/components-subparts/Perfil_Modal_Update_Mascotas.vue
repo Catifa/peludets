@@ -86,6 +86,7 @@
 </template>
 <script>
 import Swal from "sweetalert2";
+import Api from '../../Api';
 
 export default {
   props: ["propMascota"],
@@ -98,7 +99,7 @@ export default {
   },
   methods: {
     recuperarMascota() {
-      this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+      this.Api().post("/mascota/recuperarMascota").then((response) => {
         this.mascotas = response.data;
         console.log(response.data);
       });
@@ -109,8 +110,8 @@ export default {
       this.mascota.img = this.img;
       this.mascota.id = id;
       console.log(this.mascota);
-      this.axios
-        .post("api/mascota/updateMascota", this.mascota)
+      this.Api()
+        .post("/mascota/updateMascota", this.mascota)
         .then((response) => {
           $("#form-updateMascota").modal("hide");
           Swal.fire("Mascota modificada");
@@ -145,7 +146,7 @@ export default {
     },
   },
   mounted() {
-    this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+    this.Api().post("/mascota/recuperarMascota").then((response) => {
       this.mascotas = response.data;
       console.log(response.data);
     });

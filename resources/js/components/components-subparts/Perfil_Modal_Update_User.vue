@@ -97,6 +97,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import Api from '../../Api';
 
 export default {
   props: ["updateUser"],
@@ -108,7 +109,7 @@ export default {
   },
   methods: {
     recuperarUser() {
-      this.axios.post("api/usuario/recuperarUser").then((response) => {
+      this.Api().post("/usuario/recuperarUser").then((response) => {
         this.user = response.data;
         console.log(response.data);
       });
@@ -120,8 +121,8 @@ export default {
       this.user.id = id;
       console.log("aqui");
       console.log(this.user);
-      this.axios
-        .post("api/usuario/updateUsuario", this.user)
+      this.Api()
+        .post("/usuario/updateUsuario", this.user)
         .then((response) => {
           Swal.fire("Usuario modificada", "success");
           this.recuperarMascota();

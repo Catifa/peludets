@@ -311,8 +311,8 @@ export default {
   },
   methods: {
     showByValo() {
-      this.axios
-        .post("api/usuario/userByProfOnly", this.profesionHome)
+      this.Api()
+        .post("/usuario/userByProfOnly", this.profesionHome)
         .then((response) => {
           this.usuarios = response.data;
           console.log(this.usuarios);
@@ -324,7 +324,7 @@ export default {
       this.mascota = mascota;
     },
     recuperarMascota() {
-      this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+      this.Api().post("/mascota/recuperarMascota").then((response) => {
         this.mascotas = response.data;
         console.log(response.data);
       });
@@ -332,8 +332,8 @@ export default {
 
     deleteMascota(id) {
       console.log(id);
-      this.axios
-        .post("api/mascota/deleteMascota", { id })
+      this.Api()
+        .post("/mascota/deleteMascota", { id })
         .then((response) => {
           Swal.fire("Mascota eliminada", "success");
           this.recuperarMascota();
@@ -344,8 +344,8 @@ export default {
     registerMascota() {
       this.mascota.userId = this.$root.user.id;
       this.mascota.img = this.img;
-      this.axios
-        .post("api/mascota/registerMascota", this.mascota)
+      this.Api()
+        .post("/mascota/registerMascota", this.mascota)
         .then((response) => {
           $("#form-registroMascota").modal("hide");
           Swal.fire("Registro completado", "success");
@@ -382,12 +382,12 @@ export default {
   },
 
   mounted() {
-    this.axios.post("/api/mascota/recuperarMascota").then((response) => {
+    this.Api().post("/mascota/recuperarMascota").then((response) => {
       this.mascotas = response.data;
       console.log(response.data);
     });
-    this.axios
-      .post("/api/valoraciones/recuperarValoraciones")
+    this.Api()
+      .post("/valoraciones/recuperarValoraciones")
       .then((response) => {
         this.valoraciones = response.data;
         console.log(response.data);

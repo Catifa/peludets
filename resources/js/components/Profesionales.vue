@@ -169,6 +169,7 @@
 
 
 <script>
+import Api from '../Api';
 export default {
   data() {
     return {
@@ -187,7 +188,7 @@ export default {
         titulacion: this.titulacion,
       };
       console.log(objeto);
-      this.axios.post("api/usuario/searchByProf", objeto).then((response) => {
+      this.Api().post("/usuario/searchByProf", objeto).then((response) => {
         this.usuarios = response.data;
         this.ensena = true;
         console.log(response.data);
@@ -235,8 +236,8 @@ export default {
     },
     // Metodo que SOLO filtra por profesion, para la peticion que viene de HOME
     userProfOnly() {
-      this.axios
-        .post("api/usuario/userByProfOnly", this.profesionHome)
+      this.Api()
+        .post("/usuario/userByProfOnly", this.profesionHome)
         .then((response) => {
           this.usuarios = response.data;
           console.log(this.usuarios);
@@ -254,7 +255,7 @@ export default {
     }
   },
   created() {
-    this.axios.get("api/profesiones/getAll").then((response) => {
+    this.Api().get("/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
     });
   },

@@ -109,6 +109,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import Api from './Api';
 
 export default {
   props: {
@@ -125,13 +126,9 @@ export default {
   },
   methods: {
     register() {
-      this.axios
-        .post("api/auth/register", this.user)
+      this.Api()
+        .post("/auth/register", this.user)
         .then((response) => {
-
-          axios.defaults.headers.common["Authorization"] =
-            "Bearer " + response.data.token;
-          axios.defaults.headers.common["Accept"] = "*/*";
 
           this.hideReg();
           Swal.fire(
@@ -176,14 +173,14 @@ export default {
     },
     store() {
       //console.log(this.img);
-      axios
-        .post("/api/files/setProfilePhoto", { img: this.img })
+      Api()
+        .post("/files/setProfilePhoto", { img: this.img })
         .then((res) => {
           this.getPhoto();
         });
     },
     getPhoto() {
-      axios.post("/api/files/getProfilePhoto").then((res) => {
+      Api().post("/files/getProfilePhoto").then((res) => {
         this.$root.photo = res.data[0].photo;
       });
     }

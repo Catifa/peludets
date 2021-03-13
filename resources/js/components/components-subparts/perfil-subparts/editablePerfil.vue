@@ -24,6 +24,7 @@
 <script>
 import { VueEditor } from "vue2-editor";
 import Perfil_Modal_Update_User from "../Perfil_Modal_Update_User.vue"; 
+import Api from '../../../Api';
 
 
 export default {
@@ -51,8 +52,8 @@ export default {
         id: this.user.id
       };
 
-      this.axios
-        .post("api/usuario/setProfText", obj)
+      this.Api()
+        .post("/usuario/setProfText", obj)
         .then(() => {
           this.showEditor = false;
         })
@@ -61,14 +62,14 @@ export default {
         });
     },
     getContent() {
-      this.axios.post("api/usuario/getProfText", this.user).then(response => {
+      this.Api().post("/usuario/getProfText", this.user).then(response => {
         let textVal = response.data[0];
         this.text.val = textVal.textoPerfil;
         $("#textoPerfil").html(textVal.textoPerfil);
       });
     },
     getUserId() {
-      this.axios.get("api/user").then((response) => {
+      this.Api().get("/user").then((response) => {
         this.user = response.data;
         this.getContent();
       })
