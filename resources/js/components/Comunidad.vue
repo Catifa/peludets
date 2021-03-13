@@ -100,7 +100,7 @@
                 <!-- Imagen Tarjeta -->
                 <div class="col-md-4">
                   <img
-                    src="http://data.pixiz.com/output/user/frame/preview/api/big/9/7/4/5/2145479_5c806.jpg"
+                    :src="usuario.photo"
                     class="card-img"
                     alt="Foto Usuario"
                   />
