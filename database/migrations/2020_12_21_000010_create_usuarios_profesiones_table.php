@@ -14,9 +14,10 @@ class CreateUsuariosProfesionesTable extends Migration
     public function up()
     {
         Schema::create('usuarios_profesiones', function (Blueprint $table) {
+            $table->id();
             $table->integer('id_usuario');
             $table->integer('id_profesion');
-            $table->boolean('titulacion');
+            $table->text('titulacion');
             $table->text('disponibilidad');
             $table->timestamps();
         });

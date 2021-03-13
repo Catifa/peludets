@@ -14,6 +14,7 @@ class CreateUsuariosAnunciosTable extends Migration
     public function up()
     {
         Schema::create('usuarios_anuncios', function (Blueprint $table) {
+            $table->id();
             $table->integer('id_usuario');
             $table->integer('id_anuncio');
             $table->timestamps();

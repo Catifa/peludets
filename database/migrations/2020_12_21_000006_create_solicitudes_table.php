@@ -14,7 +14,7 @@ class CreateSolicitudesTable extends Migration
     public function up()
     {
         Schema::create('solicitudes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->json('solicitud');
             $table->integer('id_usuario_solicitado');
             $table->timestamps();

@@ -14,7 +14,7 @@ class CreateTrabajosTable extends Migration
     public function up()
     {
         Schema::create('trabajos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->integer('id_responsable');
             $table->string('acuerdo');
             $table->string('check_responsable');
