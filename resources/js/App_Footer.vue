@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row mt-auto">
     <footer class="container-fluid font-small bg-azul-peludets pt-4 mt-3">
       <div class="text-center text-md-left">
         <div class="row">

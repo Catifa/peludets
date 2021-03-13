@@ -5,7 +5,7 @@
 </style>
  
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid d-flex flex-column h-100">
     <!--Formulario registro -->
     <form_registro v-if="this.$root.user == null" id="formRegistro" :hideReg="closeRegModal"></form_registro>
     <!--Formulario inicio sesion -->
