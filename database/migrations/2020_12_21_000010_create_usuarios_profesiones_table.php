@@ -16,7 +16,7 @@ class CreateUsuariosProfesionesTable extends Migration
         Schema::create('usuarios_profesiones', function (Blueprint $table) {
             $table->integer('id_usuario');
             $table->integer('id_profesion');
-            $table->boolean('titulacion');
+            $table->text('titulacion');
             $table->text('disponibilidad');
             $table->timestamps();
         });

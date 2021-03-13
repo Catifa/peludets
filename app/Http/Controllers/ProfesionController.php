@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Profesion;
 use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 
 /**
@@ -61,4 +63,11 @@ class ProfesionController extends Controller
         ->join('usuarios_profesiones', 'id_profesion', '=', 'profesiones.id')
         ->where('usuarios_profesiones.id_usuario', '=', $request->id)->get();
     }
+
+    protected function insertProf(Request $request){
+        DB::insert('insert into usuarios_profesiones (id_usuario, id_profesion,titulacion,disponibilidad) values (?, ?,?,?)', [200, 400, 'S', 'presencial']);
+
+    }
+
+
 }

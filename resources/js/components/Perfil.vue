@@ -248,6 +248,7 @@
                   <div class="card-body">
                     <h5 class="card-title">
                       {{ valoracion.id_usuario_remitente }}
+                      {{valoracion}}
                     </h5>
                     <p class="card-text">{{ valoracion.valoraciones }}</p>
                     <p class="card-text">

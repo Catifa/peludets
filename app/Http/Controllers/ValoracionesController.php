@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\DB;
 
 class ValoracionesController extends Controller
 {
+
+    protected function recuperarValoraciones1(Request $request)
+    {
+      //  select u2.id, u1.name, u1.lastname, u1.photo, v.valoraciones from users u1 join valoraciones v on (u1.id = v.id_usuario_remitente) join users u2 on (u2.id = v.id_usuario)
+ 
+   }
+
     protected function recuperarValoraciones(Request $request)
     {
 
