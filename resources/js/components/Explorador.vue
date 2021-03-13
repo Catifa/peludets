@@ -12,14 +12,12 @@
         </div>
         <!-- Texto Banner -->
         <div class="text-center">
-          <h3>Benvingut a l'explorador!</h3>
+          <h3>{{ $t("explorador.bannerInfoBienvenida") }}</h3>
           <p>
-            Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris
-            i molt mes!
+            {{ $t("explorador.bannerInfoTexto1") }}
           </p>
           <p>
-            A més si ets un dels nostres afiliats podràs trobar treballs a la
-            teva zona aquí!
+           {{ $t("explorador.bannerInfoTexto2") }}
           </p>
         </div>
       </div>
