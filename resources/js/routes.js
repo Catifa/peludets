@@ -1,6 +1,6 @@
 import Home from './components/Home.vue';
 import Explorador from './components/Explorador.vue';
-import Profesionales from './components/Profesionales.vue';
+import Comunidad from './components/Comunidad.vue';
 import myProfile from './components/Perfil.vue';
 import Profile from './components/templates/tmp_perfil.vue';
 import Chat from './components/Chat.vue';
@@ -30,9 +30,9 @@ export const routes = [
         component: Explorador
     },
     {
-        name: 'profesionales',
-        path: '/profesionales',
-        component: Profesionales
+        name: 'comunidad',
+        path: '/comunidad',
+        component: Comunidad
     },
     {
         path: '*',
