@@ -151,11 +151,5 @@ export default {
     });
   },
 
-  beforeUpdate() {
-    this.axios.post("/api/mascota/recuperarMascota").then((response) => {
-      this.mascotas = response.data;
-      console.log(response.data);
-    });
-  },
 };
 </script>
