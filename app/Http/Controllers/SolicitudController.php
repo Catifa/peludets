@@ -149,10 +149,6 @@ class SolicitudController extends Controller
      * )
      */
 
-    protected function recuperar(Request $request)
-    {
-        return Solicitud::select('nombre_trabajo', 'descripcion_trabajo')
-            ->where('id_destinatario', '=', $request->user()->id)->get();
-    }
+
 }
 //si la primera solicitud no sale bien que la segunda no se faci

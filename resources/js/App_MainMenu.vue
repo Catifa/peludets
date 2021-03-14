@@ -29,7 +29,7 @@
           </li>
           <!-- Profesionales -->
           <li class="nav-item navLiPldts">
-            <router-link to="/profesionales" class="nav-link navItemPldts">
+            <router-link to="/comunidad" class="nav-link navItemPldts">
               {{ $t("app.menuProfesionales") }}
             </router-link>
           </li>
@@ -162,6 +162,7 @@
 <script>
 
 import ModalInbox from "./components/templates/Tmp_ModalInBox.vue";
+import Api from './Api';
 
 export default {
   components: {
@@ -180,10 +181,11 @@ export default {
   },
   methods: {
     logout() {
-      axios.post("/api/auth/logout").then((res) => {
+      Api().post("/auth/logout").then((res) => {
         this.$root.user = null;
         this.$root.photo = "sources/img/avatar.jfif";
         this.$router.push("/");
+        localStorage.removeItem('token');
       });
     },
 

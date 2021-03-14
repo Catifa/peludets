@@ -13,14 +13,13 @@
     "politicasEnlace": "entra en este enlace",
     "footerContacto": "Contacto",
     "footerPais": "España",
-    "footerRedesSociales": "Redes Sociales"
+    "footerRedesSociales": "Redes sociales"
   },
 
   "home": {
-    "formTrabajos": "Servicios Disponibles",
+    "formTrabajos": "Servicios",
     "formTipoMascotas": "Tipo de mascota",
     "formBotonBuscar": "Buscar",
-    "formSelectDefecto" : "-- Selecciona un servicio --",
     "sliderTitulo1": "No vuelvas a temer por dejarle solo",
     "sliderTitulo2": "¿Tu mascota es exótica?",
     "sliderTitulo3": "También hay sitio para ti, chiquitín!",
@@ -35,20 +34,28 @@
   },
 
   "explorador":{
+    "bannerInfoBienvenida": "Bienvenido al explorador!",
+    "bannerInfoTexto1": "Aquí podrás encontrar lugares como tiendas, parques, veterinarios y mucho más.",
+    "bannerInfoTexto2": "Además si eres uno de nuestros afiliados podrás encontrar trabajos en tu zona aquí!",
     "tituloExplorador": "Espera mientras te buscamos...",
+    "buttonMostrarMapa": "Mostrar en el mapa",
     "buttonSitios": "Sitios de interés",
-    "buttonTrabajos":"Trabajos disponibles",
-    "buttonMostrarMapa": "Mostrar en el mapa"
+    "buttonTrabajos":"Trabajos disponibles"
     
   },
 
   "profesionales" : {
     "tituloProfesionales" : "Nuestra comunidad 🐾",
+    "bannerInfoBienvenida": "Bienvenido a comunidad!",
+    "bannerInfoTexto1": "Aquí encontrarás personas con todo tipo de servicios para ti y tus mascotas!",
     "FormControlSelect1" : "Servicios",
     "FormControlSelectDispo" : "Disponibilidad",
     "selectOptionPresencial": "Presencial",
     "selectOptionOnline": "Online",
     "selectOptionPreOn": "Presencial y Online",
+    "FormControlSelectTitulacion" : "¿Titulación?",
+    "valueSi": "Sí",
+    "valueNo": "No",
     "buscarProfesionales" : "Buscar",
     "cercaTi": "Cerca de ti",
     "verPerfil": "Ver Perfil",

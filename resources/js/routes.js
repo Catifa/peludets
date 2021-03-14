@@ -1,12 +1,12 @@
 import Home from './components/Home.vue';
 import Explorador from './components/Explorador.vue';
-import Profesionales from './components/Profesionales.vue';
+import Comunidad from './components/Comunidad.vue';
 import myProfile from './components/Perfil.vue';
 import Profile from './components/templates/tmp_perfil.vue';
 import Chat from './components/Chat.vue';
-import VueRouter from 'vue-router';
 import AdminPanel from './components/AdminPanel.vue';
-import axios from 'axios';
+import VueRouter from 'vue-router';
+import Api from './Api';
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -30,9 +30,9 @@ export const routes = [
         component: Explorador
     },
     {
-        name: 'profesionales',
-        path: '/profesionales',
-        component: Profesionales
+        name: 'comunidad',
+        path: '/comunidad',
+        component: Comunidad
     },
     {
         path: '*',
@@ -43,7 +43,7 @@ export const routes = [
         path: '/myProfile',
         component: myProfile,
         beforeEnter: (to, form, next) => {
-            axios.get('/api/authentication').then(() => {
+            Api().get('/authentication').then(() => {
                 next();
             }).catch(() => {
                 return next({ name: 'home' })

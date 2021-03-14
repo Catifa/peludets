@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class valoraciones extends Model
 {
     // Tabla donde se guarda el objeto Valoraciones
-    protected $table = 'solicitudes';
+    protected $table = 'valoraciones';
     
     public $timestamps = true;
 
     protected $fillable = [
         'id_usuario',
         'id_usuario_remitente',
-        'valoraciones'
+        'nombre_usuario_remitente',
+        'valoraciones',
+        'puntuacion'
     ];
     
     use HasFactory;

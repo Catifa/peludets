@@ -111,6 +111,7 @@ import SolicitudAlojamiento from "./Tmp_Perfil_ModalTrabajos_Alojamiento.vue";
 import SolicitudPeluqueria from "./Tmp_Perfil_ModalTrabajos_Peluqueria.vue";
 import SolicitudEntrenador from "./Tmp_Perfil_ModalTrabajos_Entrenador.vue";
 import SolicitudPsicologo from "./Tmp_Perfil_ModalTrabajos_Psicologo.vue";
+import Api from '../../Api';
 
 export default {
   components: {
@@ -153,7 +154,7 @@ export default {
     },
     // Get de todas las especies en la base de datos
     getAllSpecies() {
-      this.axios.get("/api/especie/getAll").then((response) => {
+      Api().get("/especie/getAll").then((response) => {
         this.especies = response.data;
       });
     },
@@ -161,8 +162,8 @@ export default {
       this.solicitudTrabajo.idDestinatario = this.propUsuario.id;
       this.solicitudTrabajo.idRemitente = this.$root.user.id;
       this.solicitudTrabajo.solicitud = this.solicitud;
-      this.axios
-        .post("/api/solicitudes/enviar", this.solicitudTrabajo)
+      Api()
+        .post("/solicitudes/enviar", this.solicitudTrabajo)
         .then(() => {
           Swal2.fire({
             text: "Solicitud enviada correctamente",
@@ -170,8 +171,8 @@ export default {
           });
 
           //ENVIAR CORREO
-          this.axios.get('/api/contactanos', this.propUsuario);
-           this.axios.get('/api/solicitud');
+          Api().get('/contactanos', this.propUsuario);
+           Api().get('/solicitud');
 
           $('.modal').modal('hide');
         })

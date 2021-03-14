@@ -14,6 +14,7 @@ class CreateMascotasTrabajosTable extends Migration
     public function up()
     {
         Schema::create('mascotas_trabajos', function (Blueprint $table) {
+            $table->id();
             $table->integer('id_mascota');
             $table->integer('id_trabajo');
             $table->timestamps();

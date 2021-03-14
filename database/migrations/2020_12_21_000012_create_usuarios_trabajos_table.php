@@ -14,6 +14,7 @@ class CreateUsuariosTrabajosTable extends Migration
     public function up()
     {
         Schema::create('usuarios_trabajos', function (Blueprint $table) {
+            $table->id();
             $table->integer('id_usuario');
             $table->integer('id_trabajo');
             $table->timestamps();

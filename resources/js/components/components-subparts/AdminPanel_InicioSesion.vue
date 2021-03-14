@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import Api from '../../Api';
+
 export default {
   data() {
     return {
@@ -30,11 +32,11 @@ export default {
   },
   methods: {
     login() {
-      this.axios
-        .post("/api/auth/adminLogin", this.user)
+      Api()
+        .post("/auth/adminLogin", this.user)
         .then((response) => {
           this.$root.user = response.data;
-          axios.post("/api/files/getProfilePhoto").then((res) => {
+          Api().post("/files/getProfilePhoto").then((res) => {
             
             this.$root.photo = res.data[0].photo;
           });

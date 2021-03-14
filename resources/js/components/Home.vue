@@ -93,9 +93,6 @@
         <div class="form-group">
           <label>{{ $t("home.formTrabajos") }}</label>
           <select class="form-control" v-model="prof">
-            <option selected="true" disabled="disabled">
-              {{ $t("home.formSelectDefecto") }}
-            </option>
             <option v-for="profesion in profesiones" :key="profesion.id">
               {{ profesion.nombre_profesion }}
             </option>
@@ -176,6 +173,8 @@
   </div>
 </template>
 <script>
+import Api from '../Api';
+
 export default {
   data() {
     return {
@@ -188,11 +187,11 @@ export default {
   methods: {
     buscarTrabajos() {
       let prof = this.prof;
-      this.$router.push({ name: "profesionales", params: { prof } });
+      this.$router.push({ name: "comunidad", params: { prof } });
     }
   },
   created() {
-    this.axios.get("api/profesiones/getAll").then((response) => {
+    Api().get("/profesiones/getAll").then((response) => {
       this.profesiones = response.data;
     });
   },

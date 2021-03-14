@@ -2,7 +2,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import App from './App.vue';
-import MapaProfesionales from './components/components-subparts/Profesionales_mapa.vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
@@ -31,10 +30,7 @@ Vue.use(VueAxios, axios);
 Vue.component('l-map', LMap);
 Vue.component('l-title-layer', LTileLayer);
 Vue.component('l-maker', LMarker);
-
-// Mapa Profesionales
-Vue.component('mapa-prof', MapaProfesionales);
-  
+ 
 const router = new VueRouter({
     mode: 'history',
     routes: routes

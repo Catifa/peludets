@@ -14,6 +14,7 @@ class CreateInbox extends Migration
     public function up()
     {
         Schema::create('inbox', function (Blueprint $table) {
+            $table->id();
             $table->integer('idUser');
             $table->text('category');
             $table->text('data');

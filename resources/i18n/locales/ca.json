@@ -13,8 +13,9 @@
     "politicasEnlace": "entra al enllaç",
     "footerContacto": "Contacte",
     "footerPais": "Espanya",
-    "footerRedesSociales": "Xarxes Socials"
+    "footerRedesSociales": "Xarxes socials"
   },
+
   "home": {
     "formTrabajos": "Serveis",
     "formTipoMascotas": "Tipus de mascota",
@@ -32,28 +33,30 @@
     "cardBox4": "Pots estar tranquil gràcies al nostre servei de comunicació amb el teu cuidador.",
     "colaboradores": "COL·LABORADORS DE LA WEB"
   },
-  "explorador":{
-    "tituloExplorador": "Espera mentre et busquem ...",
-    "buttonSitios": "Llocs d'interès",
-    "buttonTrabajos": "Treballs disponibles",
-    "buttonMostrarMapa": "Mostra el mapa"
-    
 
+  "explorador":{
+    "bannerInfoBienvenida": "Benvingut a l'explorador!",
+    "bannerInfoTexto1": "Aquí podràs trobar llocs d'interès com botigues, parcs, veterinaris i molt més.",
+    "bannerInfoTexto2": "A més si ets un dels nostres afiliats podràs trobar treballs a la teva zona aquí!",
+    "tituloExplorador": "Espera mentre et busquem ...",
+    "buttonMostrarMapa": "Mostrar en el mapa",
+    "buttonSitios": "Llocs d'interès",
+    "buttonTrabajos": "Treballs disponibles"
   },
-  "profesionales" : {
-    "tituloProfesionales" : "La nostra comunitat 🐾",
-    "FormControlSelect1" : "Professions",
-    "selectOptionPsicologo": "Psicoleg",
-    "selectOptionEntrenador": "Entrenador",
-    "selectOptionPeluquero": "Perruquer",
+
+  "comunidad" : {
+    "tituloComunidad" : "La nostra comunitat 🐾",
+    "bannerInfoBienvenida": "Benvingut a comunitat!",
+    "bannerInfoTexto1": "Aquí trobaràs persones amb tota mena de serveis per a tu i les teves mascotes!",
+    "FormControlSelect1" : "Serveis",
     "FormControlSelectDispo" : "Disponibilitat",
     "selectOptionPresencial": "Presencial",
     "selectOptionOnline": "Online",
     "selectOptionPreOn": "Presencial y Online",
-    "FormControlSelectTitulacion" : "¿Titulació?",
+    "FormControlSelectTitulacion" : "Titulació?",
     "valueSi": "Si",
     "valueNo": "No",
-    "buscarProfesionales" : "Buscar Profesionals",
+    "buscarProfesionales" : "Cerca",
     "cercaTi": "A prop teu",
     "verPerfil": "Veure perfil ",
     "contratar":"Contratar"
