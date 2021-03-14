@@ -63,6 +63,10 @@
 
   "perfil" : {
     "mascotas": {
+    "submenuPerfil": "Profile",
+    "submenuMascotas": "Pets",
+    "submenuValoraciones": "Ratings",
+    "submenuTareas": "Duties",
       "btnAnadirMascota": "Add pet"
     }
   }

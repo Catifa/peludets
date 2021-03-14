@@ -63,6 +63,25 @@
   },
 
   "perfil" : {
+    "submenuPerfil": "Perfil",
+    "submenuMascotas": "Mascotes",
+    "submenuValoraciones": "Valoracions",
+    "submenuTareas": "Tasques",
+    "perfilEditable": {
+      "btnGuardarPerfil": "Guardar els canvis",
+      "btnEditarPerfil": "Editar Perfil",
+      "btnModificarPerfil": "Modificar dades del compte",
+      "modalUpdateUser": {
+        "tituloModal": "Inserta les noves dades del perfil",
+        "nombreModal": "Nom:",
+        "apellidoModal": "Cognom:",
+        "segundoApellidoModal": "Segon cognom:",
+        "correoModal": "Correu:",
+        "fotoModal": "Foto de perfil:",
+        "guardarModal": "Guardar els canvis",
+        "cerrarModal": "Tancar"
+      }
+    },
     "mascotas": {
       "btnAnadirMascota": "Afegir mascota"
     }
