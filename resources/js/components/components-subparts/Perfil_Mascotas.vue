@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import { u } from "../utils";
+import { u } from "../../utils";
 
 export default {
   data: {},

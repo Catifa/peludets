@@ -5,8 +5,10 @@
 
 <template>
   <div class="row mt-4">
-    <div class="col-9 mt-2">
+    <!-- Submenu -->
+    <div class="col-lg-9 col-md-7 col-12">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <!-- Submenu Perfil Editable -->
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -16,9 +18,11 @@
             role="tab"
             aria-controls="perfilUsuario"
             aria-selected="true"
-            >Perfil</a
           >
+            {{ $t("perfil.submenuPerfil") }}
+          </a>
         </li>
+        <!-- Submenu Mascotas -->
         <li class="nav-item">
           <a
             class="nav-link"
@@ -28,9 +32,11 @@
             role="tab"
             aria-controls="mascota"
             aria-selected="false"
-            >Mascotas</a
           >
+            {{ $t("perfil.submenuMascotas") }}
+          </a>
         </li>
+        <!-- Submenu Valoraciones -->
         <li class="nav-item">
           <a
             class="nav-link"
@@ -40,10 +46,11 @@
             role="tab"
             aria-controls="valoraciones"
             aria-selected="false"
-            >Valoraciones</a
           >
+            {{ $t("perfil.submenuValoraciones") }}
+          </a>
         </li>
-
+        <!-- Submenu Tareas -->
         <li class="nav-item">
           <a
             class="nav-link"
@@ -53,11 +60,14 @@
             role="tab"
             aria-controls="tareas"
             aria-selected="false"
-            >Tareas</a
-          >
+            >
+            {{ $t("perfil.submenuTareas") }}
+            </a>
         </li>
       </ul>
+      <!-- Zona renderizado submenu -->
       <div class="tab-content" id="myTabContent">
+        <!-- Zona renderizado Perfil -->
         <div
           class="tab-pane fade show active"
           id="perfilUsuario"
@@ -65,9 +75,10 @@
           aria-labelledby="perfilUsuario-tab"
         >
           <div class="row">
-            <editorPerfil></editorPerfil>
+            <perfil-editable></perfil-editable>
           </div>
         </div>
+        <!-- Zona renderizado Mascota -->
         <div
           class="tab-pane fade"
           id="mascota"
@@ -210,7 +221,6 @@
             </div>
           </div>
         </div>
-
         <div class="row">
           <!-- Modal -->
           <modalUpdateMascota
@@ -218,8 +228,7 @@
             id="modalMascota"
           ></modalUpdateMascota>
         </div>
-        <!--/////////////////////////////////////////////////////////////////////////////////////////-->
-        <!--Valoraciones-->
+        <!-- Zona renderizado Valoraciones -->
         <div
           class="tab-pane fade"
           id="valoraciones"
@@ -247,7 +256,7 @@
                 <div class="col-md-9">
                   <div class="card-body">
                     <h5 class="card-title">
-                    {{ valoracion.nombre_usuario_remitente }}
+                      {{ valoracion.nombre_usuario_remitente }}
                     </h5>
                     <p class="card-text">{{ valoracion.valoraciones }}</p>
                     <p class="card-text">
@@ -267,8 +276,7 @@
             </div>
           </div>
         </div>
-        <!--/////////////////////////////////////////////////////////////////////////////////////////-->
-
+        <!-- Zona renderizado Tareas -->
         <div
           class="tab-pane fade"
           id="tareas"
@@ -279,25 +287,27 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 mt-5 ml-5">
-      <ZonaPerfil></ZonaPerfil>
+    <!-- Zona datos perfil -->
+    <div class="col-lg-3 col-md-5 col-12">
+      <datos-usuario></datos-usuario>
     </div>
   </div>
 </template>
 
 <script>
-import Tareas from "./Tareas";
+
 import Swal from "sweetalert2";
-import ZonaPerfil from "./templates/ZonaPerfil.vue";
-import editorPerfil from "./components-subparts/perfil-subparts/editablePerfil";
+import Perfil_PerfilEditable from "./components-subparts/Perfil_PerfilEditable.vue";
+import Tareas from "./Tareas";
+import DatosUsuario from "./components-subparts/Perfil_DatosUsuario.vue";
 import Perfil_Modal_Update_Mascotas from "./components-subparts/Perfil_Modal_Update_Mascotas";
-import Api from '../Api';
+import Api from "../Api";
 
 export default {
   components: {
+    'perfil-editable': Perfil_PerfilEditable,
     Tareas,
-    ZonaPerfil,
-    editorPerfil,
+    'datos-usuario': DatosUsuario,
     modalUpdateMascota: Perfil_Modal_Update_Mascotas,
   },
   name: "panel",
@@ -324,10 +334,12 @@ export default {
       this.mascota = mascota;
     },
     recuperarMascota() {
-      Api().post("/mascota/recuperarMascota").then((response) => {
-        this.mascotas = response.data;
-        console.log(response.data);
-      });
+      Api()
+        .post("/mascota/recuperarMascota")
+        .then((response) => {
+          this.mascotas = response.data;
+          console.log(response.data);
+        });
     },
 
     deleteMascota(id) {
@@ -382,15 +394,15 @@ export default {
   },
 
   mounted() {
-    Api().post("/mascota/recuperarMascota").then((response) => {
-      this.mascotas = response.data;
-      console.log(response.data);
-    });
+    Api()
+      .post("/mascota/recuperarMascota")
+      .then((response) => {
+        this.mascotas = response.data;
+      });
     Api()
       .post("/valoraciones/recuperarValoraciones")
       .then((response) => {
         this.valoraciones = response.data;
-        console.log(response.data);
       });
   },
 };

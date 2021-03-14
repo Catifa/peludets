@@ -2,8 +2,11 @@
   <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+        <!-- Titulo Modal -->
+        <div class="modal-header bg-azul-peludets">
+          <h5 class="modal-title lila-peludets">
+            {{ $t("perfil.perfilEditable.modalUpdateUser.tituloModal") }}
+          </h5>
           <button
             type="button"
             class="close"
@@ -13,10 +16,14 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <!-- Body Modal -->
         <div class="modal-body">
           <form action method="post" enctype="multipart/form-data">
+            <!-- Nombre -->
             <div class="mb-3">
-              <label for="email">nombre</label>
+              <label>
+                {{ $t("perfil.perfilEditable.modalUpdateUser.nombreModal") }}
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -24,8 +31,11 @@
                 :placeholder="$root.user.name"
               />
             </div>
+            <!-- Apellido -->
             <div class="mb-3">
-              <label for="apellido">Apellido</label>
+              <label>
+                {{ $t("perfil.perfilEditable.modalUpdateUser.apellidoModal") }}
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -33,8 +43,11 @@
                 :placeholder="$root.user.lastname"
               />
             </div>
+            <!-- Segundo Apellido -->
             <div class="mb-3">
-              <label for="apellido">Apellido</label>
+              <label for="apellido">
+                {{ $t("perfil.perfilEditable.modalUpdateUser.segundoApellidoModal") }}
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -42,8 +55,11 @@
                 :placeholder="$root.user.secondlastname"
               />
             </div>
+            <!-- Correo -->
             <div class="mb-3">
-              <label for="apellido">Correo</label>
+              <label>
+                {{ $t("perfil.perfilEditable.modalUpdateUser.correoModal") }}
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -51,8 +67,11 @@
                 :placeholder="$root.user.email"
               />
             </div>
+            <!-- DNI -->
             <div class="mb-3">
-              <label for="dni">DNI</label>
+              <label>
+                DNI
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -60,34 +79,37 @@
                 :placeholder="$root.user.dni"
               />
             </div>
+            <!-- Foto -->
             <div id="divFileMascota" class="mb-3 btn btn-azul-peludets">
-              <label for="foto">Foto de Perfil (opcional)</label>
+              <label>
+                 {{ $t("perfil.perfilEditable.modalUpdateUser.fotoModal") }}
+              </label>
               <input
                 type="file"
                 class="form-control-file"
                 id="file"
-                @change="file($event)"
+                @change="updateImg($event)"
               />
             </div>
           </form>
         </div>
-        <div class="modal-footer">
+        <!-- Footer Modal -->
+        <div class="modal-footer bg-azul-peludets">
+          <!-- Guardar cambios -->
           <button
-            id="updateUser"
             @click="updateUsuario($root.user.id)"
             type="button"
-            class="btn btn-primary"
+            class="btn btn-azul-peludets"
           >
-            Save changes
+            {{ $t("perfil.perfilEditable.modalUpdateUser.guardarModal") }}
           </button>
+          <!-- Cerrar -->
           <button
-            id="recuperarUser"
-            @click="recuperarUser($root.user.id)"
             type="button"
-            class="btn btn-secondary"
+            class="btn btn-danger"
             data-dismiss="modal"
           >
-            Close
+            {{ $t("perfil.perfilEditable.modalUpdateUser.cerrarModal") }}
           </button>
         </div>
       </div>
@@ -96,21 +118,25 @@
 </template>
 
 <script>
+
 import Swal from "sweetalert2";
 import Api from '../../Api';
+import { utils } from '../../utils';
 
 export default {
   props: ["updateUser"],
   data() {
     return {
-      user: {},
+      user: undefined,
       img: {},
     };
   },
   methods: {
     recuperarUser() {
-      Api().post("/usuario/recuperarUser").then((response) => {
+      Api().get("/user").then((response) => {
         this.user = response.data;
+        this.$root.user = response.data;
+        this.$root.photo = response.data.photo;
         console.log(response.data);
       });
     },
@@ -119,42 +145,17 @@ export default {
       this.user.userId = this.$root.user.id;
       this.user.img = this.img;
       this.user.id = id;
-      console.log("aqui");
-      console.log(this.user);
       Api()
         .post("/usuario/updateUsuario", this.user)
-        .then((response) => {
+        .then(() => {
           Swal.fire("Usuario modificada", "success");
-          this.recuperarMascota();
-        })
-        .catch((error) => console.log(error))
-        .finally(() => (this.loading = false));
+          this.recuperarUser()
+        });
     },
-    file(e) {
-      var formData = new FormData();
-      var file = e.target.files[0];
-      formData.append("Filedata", file);
-      var t = file.type.split("/").pop().toLowerCase();
-      if (t != "jpeg" && t != "jpg" && t != "png") {
-        alert("Seleccione un formato de imágen válido: (jpeg, jpg, png)");
-        document.getElementById("file").value = "";
-        return false;
-      }
-      if (file.size > 1024000) {
-        alert("Tamaño de imágen máximo (1MB)");
-        document.getElementById("file").value = "";
-        return false;
-      }
 
-      let f = e.target.files[0];
-      let reader = new FileReader();
-
-      reader.onloadend = () => {
-        this.img = reader.result;
-      };
-
-      reader.readAsDataURL(f);
-    },
-  },
+    updateImg(e) {
+      utils.imgUpload(e);
+    }
+  }
 };
 </script>
