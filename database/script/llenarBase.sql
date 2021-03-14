@@ -98,9 +98,8 @@ INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (4,6);
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Passejador','N');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Allotjament','N');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Perruquer','S');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Entrenador','N');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Psicòleg','S');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Ensinistrador','S');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Ensinistrador','N');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Veterinari','S');
 INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Fotograf','N');
 
