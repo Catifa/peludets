@@ -46,12 +46,15 @@
               {{ $t("app.menuDescarga") }}
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownDescargas">
-              <a class="dropdown-item" href="/bin/mac.zip" download="">Mac</a>
+              <a class="dropdown-item" href="/bin/mac.zip" download="">Mac&nbsp;&nbsp;<i class="fab fa-apple"></i></a>
               <a class="dropdown-item" href="/bin/win.7z" download=""
-                >Windows</a
+                >Windows&nbsp;&nbsp;<i class="fab fa-windows"></i></a
               >
               <a class="dropdown-item" href="/bin/linux.tar.gz" download=""
-                >Linux</a
+                >Linux&nbsp;&nbsp;<i class="fab fa-linux"></i></a
+              >
+              <a class="dropdown-item" href="" download=""
+                >Android &nbsp;&nbsp; <i class="fab fa-android"></i></a
               >
             </div>
           </li>
