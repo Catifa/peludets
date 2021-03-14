@@ -68,12 +68,14 @@ class ProfesionController extends Controller
             ->where('usuarios_profesiones.id_usuario', '=', $request->id)->get();
     }
 
+    /**
+     *  Insertar un usuario en la tabla intermedia de usuarios_profesiones
+     */
     protected function insertProf(Request $request)
     {
-        switch ($request->profesion) {
-            case 'Paseador':$id_profesion= 1;break;case 'Alojamiento':$id_profesion= 2;break;case 'Peluquero':$id_profesion= 3;break;case 'Entrenador':$id_profesion= 4;break;case 'Psicologo':$id_profesion= 5;break;case 'Adiestrador':$id_profesion= 6;break;case 'Veterinario':$id_profesion= 7;break;case 'Fotografo':$id_profesion= 8;break;case 'Agility':$id_profesion= 9;break;case 'Etologo':$id_profesion= 10;break;case 'Passejador':$id_profesion= 11;break;case 'Allotjament':$id_profesion= 12;break;case 'Perruquer':$id_profesion= 13;break;case 'Piscòleg':$id_profesion= 15;break;
-        }
+       
+        $id_profesion = Profesion::where('nombre_profesion', '=', $request->profesion)->value('id');
 
-        DB::insert('insert into usuarios_profesiones (id_usuario, id_profesion,titulacion,disponibilidad) values (?, ?,?,?)', [$request->userId, $id_profesion, $request->titulacion, $request->disponibilidad]);
+        DB::table('usuarios_profesiones')->insert([['id_usuario' => $request->userId, 'id_profesion' => $id_profesion, 'titulacion' => $request->titulacion, 'disponibilidad' => $request->disponibilidad]]);
     }
 }
