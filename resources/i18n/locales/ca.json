@@ -7,7 +7,10 @@
     "menuDescarga": "Descarrega l'app",
     "menuPerfil" : "Perfil",
     "menuDesconectar" : "Desconnectar" ,
-    "tituloBannerPrivacidad": "Tancar finestra de privacitat",
+    "tituloBannerPrivacidad": "Tancar Finestra de Privacitat",
+    "bannerSubtitulo": "Privacitat i Cookies",
+    "bannerText1": "Aquesta app utilitza coockies, en utilitzar-la acceptes els termes de privacitat de ©Peludets. Entra en el següent enllaç si vols saber mes",
+    "politicasEnlace": "entra al enllaç",
     "footerContacto": "Contacte",
     "footerPais": "Espanya",
     "footerRedesSociales": "Xarxes socials"
@@ -17,16 +20,18 @@
     "formTrabajos": "Serveis",
     "formTipoMascotas": "Tipus de mascota",
     "formBotonBuscar": "Cerca",
-    "sliderTitulo1": "No tornis a témer per deixar-lo sol",
+    "formSelectDefecto" : "-- Selecciona un servei --",
+    "sliderTitulo1": "No tornis a patir per deixar-lo sol",
     "sliderTitulo2": "La teva mascota és exòtica?",
     "sliderTitulo3": "També hi ha lloc per a tu, petitó!",
     "sliderDesc1": "Mai més estarà sol! Només has de buscar el servei que necessitis per als dies que vulguis.",
     "sliderDesc2": "Cerca entre la nostra comunitat als usuaris més qualificats perquè li donin a la teva mascota la cura que necessita.",
     "sliderDesc3": "Peludets! no és només per a gossos o gats. Tenim lloc per a tot tipus de mascotes.",
     "cardBox1": "A la nostra comunitat podràs trobar als millors ensinistradors disposats a ajudar-te.",
-    "cardBox2": "Allotjament diari per les teves mascotes a la casa del teu cuidador.",
+    "cardBox2": "Allotjament diari per les teves mascotes a casa del teu cuidador.",
     "cardBox3": "No és només per a gossos i gats! Qualsevol tipus de mascota és benvinguda.",
-    "cardBox4": "Pots estar tranquil gràcies al nostre servei de comunicació amb el teu cuidador."
+    "cardBox4": "Pots estar tranquil gràcies al nostre servei de comunicació amb el teu cuidador.",
+    "colaboradores": "COL·LABORADORS DE LA WEB"
   },
 
   "explorador":{
@@ -55,5 +60,15 @@
     "cercaTi": "A prop teu",
     "verPerfil": "Veure perfil ",
     "contratar":"Contratar"
+  },
+
+  "Menu" : {
+    "inicio" : "Iniciar sessió",
+    "registro" : "Registra't"
+  },
+
+  "MiPerfil" : {
+    "Titulo" : "Disponibilidad"
   }
+
 }

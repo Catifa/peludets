@@ -7,7 +7,10 @@
     "menuDescarga": "Download the app",
     "menuPerfil" : "Profile",
     "menuDesconectar" : "Disconnect" ,
-    "tituloBannerPrivacidad": "Close privacy window",
+    "tituloBannerPrivacidad": "Close Privacy Window",
+    "bannerSubtitulo": "Privacy and Cookies",
+    "bannerText1": "This app uses cookies, by using it you accept © Peludets privacy terms. Enter the following link if you want to know more",
+    "politicasEnlace": "enter this link",
     "footerContacto": "Contact",
     "footerPais": "Spain",
     "footerRedesSociales": "Social networks"
@@ -23,10 +26,11 @@
     "sliderDesc1": "He will never be alone again! Just look for the service you need for the days you want.",
     "sliderDesc2": "Search our community for the most qualified users to give your pet the care it needs.",
     "sliderDesc3": "Peludets! It is not just for cats or dogs. We have room for all kinds of pets.",
-    "cardBox1": "In our community you can find the best trainers willing to help you.",
-    "cardBox2": "Daily accommodation for your pets at your caregiver's home.",
-    "cardBox3": "It's not just for dogs and cats! Any kind of pet is welcome.",
-    "cardBox4": "You can rest easy thanks to our communication service with your caregiver."
+    "cardBox1": "Find a place where your pet is comfortable while you enjoy your vacation!",
+    "cardBox2": "It's not just for cats and dogs only. Our community can take care of any type of pet.",
+    "cardBox3": "You can ask for how many walks and how long they are needed.",
+    "cardBox4": "We have a professional section for exotic pets with special care.",
+    "colaboradores": "WEB COLLABORATORS"
   },
 
   "explorador": {
@@ -55,5 +59,11 @@
     "cercaTi": "Near you",
     "verPerfil": "View profile",
     "contratar":"Contract"
+  },
+
+  "Menu" : {
+    "inicio" : "Log in",
+    "registro" : "Sign up"
   }
+
 }
