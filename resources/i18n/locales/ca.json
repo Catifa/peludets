@@ -71,6 +71,7 @@
       "btnGuardarPerfil": "Guardar els canvis",
       "btnEditarPerfil": "Editar Perfil",
       "btnModificarPerfil": "Modificar dades del compte",
+      "btnAltaSercicio": "Vols donar serveis?",
       "modalUpdateUser": {
         "tituloModal": "Inserta les noves dades del perfil",
         "nombreModal": "Nom:",
@@ -80,10 +81,48 @@
         "fotoModal": "Foto de perfil:",
         "guardarModal": "Guardar els canvis",
         "cerrarModal": "Tancar"
+      },
+      "modalNuevaProfesion": {
+        "tituloModal": "Quin servei pots oferir?",
+        "selectProfesionModal": "Serveis:",
+        "selecnSnModal": "Tens titulació?",
+        "siModal": "Si",
+        "noModal": "No",
+        "disponibilidadModal": "Disponibilitat",
+        "presencialModal": "Presencial",
+        "onlineModal": "Online",
+        "presencialOnlineModal": "Presencial i online",
+        "guardarModal": "Guardar els canvis",
+        "cerrarModal": "Tancar"
       }
     },
     "mascotas": {
-      "btnAnadirMascota": "Afegir mascota"
+      "btnAnadirMascota": "Afegir mascota",
+      "cardEspecie": "Espècie",
+      "cardRaza": "Raça",
+      "cardPeso": "Pes",
+      "modalAnadirMascotas": {
+        "tituloModal": "Afegeix la teva mascota",
+        "nombreModal": "Nom:",
+        "especieModal": "Especie:",
+        "razaModal": "Raça:",
+        "edadModal": "Edat",
+        "pesoModal": "Pes",
+        "fotoModal": "Afegeix una foto de la teva mascota",
+        "guardarModal": "Registrar",
+        "cerrarModal": "Tancar"
+      },
+      "modalModificarMascotas": {
+        "tituloModal": "Modifica la teva mascota",
+        "nombreModal": "Nom:",
+        "especieModal": "Especie:",
+        "razaModal": "Raça:",
+        "edadModal": "Edat",
+        "pesoModal": "Pes",
+        "fotoModal": "Afegeix una foto de la teva mascota",
+        "guardarModal": "Modificar",
+        "cerrarModal": "Tancar"
+      }
     }
   }
 
