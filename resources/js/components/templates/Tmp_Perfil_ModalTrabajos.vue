@@ -39,7 +39,7 @@
           <!-- Sección Solicitudes -->
           <div class="row mt-3">
             <solicitud-paseo
-              v-if="solicitud == 'Paseador'"
+              v-if="solicitud == 'Passejador'"
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
@@ -47,7 +47,7 @@
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-paseo>
             <solicitud-alojamiento
-              v-if="solicitud == 'Alojamiento'"
+              v-if="solicitud == 'Allotjament'"
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
@@ -55,7 +55,7 @@
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-alojamiento>
             <solicitud-peluqueria
-              v-if="solicitud == 'Peluquero'"
+              v-if="solicitud == 'Perruquer'"
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
@@ -71,7 +71,7 @@
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-entrenador>
             <solicitud-psicologo
-              v-if="solicitud == 'Psicologo'"
+              v-if="solicitud == 'Psicòleg'"
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
