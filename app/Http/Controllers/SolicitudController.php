@@ -129,7 +129,7 @@ class SolicitudController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/solicitudes/recuperar",
+     *     path="/api/solicitudes/getAll",
      *     summary="Almacena solicitudes de los usuarios",
      *     @OA\Parameter(
      *          name="",
@@ -149,6 +149,10 @@ class SolicitudController extends Controller
      * )
      */
 
+     protected function getAll(Request $request)
+     {
+        return Solicitud::where('idDestinatario',$request->user()->id)->get();
+     }
 
 }
 //si la primera solicitud no sale bien que la segunda no se faci

@@ -17,6 +17,7 @@ class Chats extends Migration
             $table->id();
             $table->text('roomName');
             $table->integer('idDestinatario');
+            $table->integer('idRemitente');
             $table->longText('mensaje');
             $table->boolean('leido');
             $table->timestamps();

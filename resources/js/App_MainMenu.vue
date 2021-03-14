@@ -46,16 +46,18 @@
               {{ $t("app.menuDescarga") }}
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownDescargas">
-              <a class="dropdown-item" href="/bin/mac.zip" download="">Mac&nbsp;&nbsp;<i class="fab fa-apple"></i></a>
+              <a class="dropdown-item" href="/bin/mac.zip" download=""
+                >Mac&nbsp;&nbsp;<i class="fab fa-apple"></i
+              ></a>
               <a class="dropdown-item" href="/bin/win.7z" download=""
-                >Windows&nbsp;&nbsp;<i class="fab fa-windows"></i></a
-              >
+                >Windows&nbsp;&nbsp;<i class="fab fa-windows"></i
+              ></a>
               <a class="dropdown-item" href="/bin/linux.tar.gz" download=""
-                >Linux&nbsp;&nbsp;<i class="fab fa-linux"></i></a
-              >
+                >Linux&nbsp;&nbsp;<i class="fab fa-linux"></i
+              ></a>
               <a class="dropdown-item" href="" download=""
-                >Android &nbsp;&nbsp; <i class="fab fa-android"></i></a
-              >
+                >Android &nbsp;&nbsp; <i class="fab fa-android"></i
+              ></a>
             </div>
           </li>
         </ul>
@@ -76,7 +78,7 @@
               class="btn btn-lila-peludets btn-sm mr-2"
               @click="showLog"
             >
-             {{ $t("Menu.inicio") }}
+              {{ $t("Menu.inicio") }}
             </button>
           </li>
           <!-- Registro -->
@@ -138,11 +140,13 @@
               <!-- Divisor -->
               <div class="dropdown-divider" />
               <!-- Boton Inbox -->
-              <i
-                class="far fa-envelope inbox-icon"
-                @click="mostrarModalInBox"
-              />
-              <div class="dropdown-divider" />
+              <div @click="mostrarModalInBox">
+                <i class="far fa-envelope inbox-icon" />
+                Notificacions
+                <!-- TRADUCIR -->
+                <div class="dropdown-divider" />
+              </div>
+
               <!-- Desconectar -->
               <span class="dropdown-item-text">
                 <button
@@ -163,9 +167,8 @@
 </template>
 
 <script>
-
 import ModalInbox from "./components/templates/Tmp_ModalInBox.vue";
-import Api from './Api';
+import Api from "./Api";
 
 export default {
   components: {
@@ -184,12 +187,14 @@ export default {
   },
   methods: {
     logout() {
-      Api().post("/auth/logout").then((res) => {
-        this.$root.user = null;
-        this.$root.photo = "sources/img/avatar.jfif";
-        this.$router.push("/");
-        localStorage.removeItem('token');
-      });
+      Api()
+        .post("/auth/logout")
+        .then((res) => {
+          this.$root.user = null;
+          this.$root.photo = "sources/img/avatar.jfif";
+          this.$router.push("/");
+          localStorage.removeItem("token");
+        });
     },
 
     // Funcion para controlar el tamaño de la pantalla
@@ -208,7 +213,6 @@ export default {
     },
 
     mostrarModalInBox() {
-      console.log("hola");
       $("#modal-inbox").modal("show");
     },
   },
