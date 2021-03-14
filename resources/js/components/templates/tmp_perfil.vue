@@ -1,8 +1,8 @@
-<template>
+  <template>
   <div class="row mt-4">
     <div class="col-xs-12 col-md-2">
       <solicitud-trabajo :propUser="user"></solicitud-trabajo>
-      <h3 class="crema-peludets mt-5">Disponibilidad</h3>
+      <h3 class="crema-peludets mt-5"> {{ $t("MiPerfil.Titulo") }} </h3>
       <div class="mt-3">
         <vc-calendar></vc-calendar>
       </div>
@@ -92,7 +92,7 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">
-                          {{ valoracion.id_usuario_remitente }}
+                          {{ valoracion.nombre_usuario_remitente }}
                         </h5>
                         <p class="card-text">{{ valoracion.valoraciones }}</p>
                         <p class="card-text">
@@ -131,7 +131,7 @@ import Swal from "sweetalert2";
 import Chat from "../Chat.vue";
 import SolicitudTrabajo from "./Tmp_Perfil_SolicitudTrabajo.vue";
 import Tmp_Calendario from "./Tmp_Calendario.vue";
-import Api from '../../Api';
+import Api from "../../Api";
 
 export default {
   components: {
