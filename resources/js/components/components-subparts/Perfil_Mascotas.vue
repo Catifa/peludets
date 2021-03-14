@@ -1,102 +1,140 @@
 <template>
-  <div class="container-fluid">
-    <!-- Boton añadir mascotas -->
-    <div class="row mt-3">
-      <div class="col-lg-2">
-        <button
-          type="button"
-          class="btn btn-azul-peludets"
-          @click="anadirMascotaModal"
-        >
-          {{ $t("perfil.mascotas.btnAnadirMascota") }}
-        </button>
-      </div>
-    </div>
-
-    <!-- Boton añadir mascotas -->
+  <div class="container-fluid mt-2">
+    <!-- Boton añadir mascota -->
     <div class="row">
-      <div class="col-md-3 mt-3" v-for="mascota in mascotas" :key="mascota.id">
-        <div class="card" style="width: 18rem" name="mascotas">
+      <button
+        type="button"
+        class="btn btn-azul-peludets"
+        @click="showAnadirMascotaModal"
+      >
+        {{ $t("perfil.mascotas.btnAnadirMascota") }}
+      </button>
+    </div>
+    <!-- Tarjetas Mascotas -->
+    <div id="cards-mascotas" class="row mt-2">
+      <div
+        class="col-lg-3 col-md-6 col-12 mt-2 card-mascotas"
+        v-for="mascota in propMascotas"
+        :key="mascota.id"
+      >
+        <div class="card" style="max-width: 540px">
+          <!-- Imagen -->
           <img
             v-bind:src="mascota.photo"
             class="card-img-top"
-            width="286px"
-            height="286px"
-            alt="..."
+            alt="Imatge Mascota"
           />
+          <!-- Nombre -->
+          <div class="card-body text-center bg-crema-peludets">
+            <h5 class="card-title lila-peludets">
+              {{ mascota.nombre }}
+            </h5>
+          </div>
+          <!-- Datos Mascota -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-crema-peludets-suave">
+              {{ $t("perfil.mascotas.cardEspecie") }}: {{ mascota.especie }}
+            </li>
+            <li class="list-group-item bg-crema-peludets-suave">
+              {{ $t("perfil.mascotas.cardRaza") }}: {{ mascota.raza }}
+            </li>
+            <li class="list-group-item bg-crema-peludets-suave">
+              {{ $t("perfil.mascotas.cardPeso") }}: {{ mascota.peso }} Kg
+            </li>
+          </ul>
+          <!-- Botones -->
           <div class="card-body bg-crema-peludets">
-            <h5 class="card-title">{{ mascota.nombre }}</h5>
-            <ul>
-              <li>{{ mascota.especie }}</li>
-              <li>{{ mascota.raza }}</li>
-              <li>{{ mascota.edad }}</li>
-              <li>{{ mascota.peso }}</li>
-            </ul>
-            <a
-              href="javascript:void(0)"
-              id=""
-              class="fas fa-cog"
-              aria-hidden="true"
-              data-toggle="modal"
-              data-target="#form-updateMascota"
-              @click="modalMascota(mascota)"
-            ></a>
-            <a
-              href="javascript:void(0)"
-              id=""
-              class="fas fa-trash ml-3"
-              aria-hidden="true"
+            <!-- Boton Editar -->
+            <button
+              class="btn btn-lila-peludets btn-sm"
+              @click="showUpdateMascotaModal(mascota)"
+            >
+              <i class="fas fa-cog"></i>
+            </button>
+            <!-- Boton Eliminar -->
+            <button
+              class="btn btn-lila-peludets btn-sm"
               @click="deleteMascota(mascota.id)"
-            ></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal registro mascotas-->
-    <div id="registroMascota" class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-azul-peludets">
-            <h5 class="modal-title lila-peludets">Modal title</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
             >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer bg-azul-peludets">
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
+              <i class="fas fa-trash"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
+    <!-- Modal añadir mascota -->
+    <modalAnadirMascota
+      id="anadirMascota"
+      :propHideModal="hideAnadirMascotaModal"
+      :propEspecies="especies"
+      :propMascotas="propMascotas"
+    ></modalAnadirMascota>
+    <!-- Modal editar mascota -->
+    <modalUpdateMascota 
+      id="updateMascota"
+      :propHideModal="hideUpdateMascotaModal"
+      :propEspecies="especies"
+      :propMascota="mascota"
+      :propMascotas="propMascotas"
+    ></modalUpdateMascota>
   </div>
 </template>
 
 <script>
-import { u } from "../../utils";
+import Swal from "sweetalert2";
+import Api from "../../Api";
+import Mascotas_AnadirModal from "./Perfil_Mascotas_Modal_AnadirMascota.vue";
+import Mascotas_UpdateModal from "./Perfil_Mascotas_Modal_Update_Mascotas.vue";
 
 export default {
-  data: {},
+  components: {
+    modalAnadirMascota: Mascotas_AnadirModal,
+    modalUpdateMascota: Mascotas_UpdateModal,
+  },
+  props: ["propMascotas"],
+  data() {
+    return {
+      especies: undefined,
+      // Variable que se le pasara al modal con la mascota
+      mascota: {}
+    };
+  },
   methods: {
-    anadirMascotaModal() {
-      $("#registroMascota").modal("show");
+    showAnadirMascotaModal() {
+      $("#anadirMascota").modal("show");
     },
+    hideAnadirMascotaModal() {
+      $("#anadirMascota").modal("hide");
+    },
+    showUpdateMascotaModal(mascota) {
+      this.mascota = mascota;
+      $("#updateMascota").modal("show");
+    },
+    hideUpdateMascotaModal() {
+      $("#updateMascota").modal("hide");
+    },
+    deleteMascota(id) {
+      Api()
+        .post("/mascota/deleteMascota", { id })
+        .then(() => {
+          // Eliminar el objeto mascota seleccionado
+          this.propMascotas.splice(
+            this.propMascotas.findIndex((i) => {
+              return i.id === id;
+            }),
+            1
+          );
+          Swal.fire("Mascota eliminada", "", "success");
+        })
+        .catch((error) => console.log(error));
+    },
+  },
+  mounted() {
+    Api()
+      .get("/especie/getAll")
+      .then((response) => {
+        this.especies = response.data;
+      });
   },
 };
 </script>
-
