@@ -10,6 +10,7 @@ use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\MascotasController;
 use App\Http\Controllers\MensajesController;
+use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\SitiosInteresController;
 use App\Http\Controllers\ValoracionesController;
@@ -77,7 +78,7 @@ Route::group(['prefix' => 'profesiones'], function () {
 // Solitudes
 Route::group(['prefix' => 'solicitudes'], function () {
     Route::post('enviar', [SolicitudController::class, 'enviarSolicitud'])->middleware('auth:sanctum');
-    Route::post('recuperar', [SolicitudController::class, 'recuperar'])->middleware('auth:sanctum');
+    Route::post('getAll', [SolicitudController::class, 'getAll'])->middleware('auth:sanctum');
 });
 
 // Fotos
@@ -120,4 +121,9 @@ Route::group(['prefix' => 'valoraciones'], function () {
     /*  Route::post('insert',[MensajesController::class,'insert']);
     Route::post('select',[MensajesController::class,'select']);
     Route::post('hashRoom', [MensajesController::class, 'hashRoom']); */
+});
+
+Route::group(['prefix' => 'notificaciones'], function () {
+    Route::post('add',[NotificacionesController::class,'add'])->middleware('auth:sanctum');
+    Route::post('getAllNotificaciones',[NotificacionesController::class,'getAll'])->middleware('auth:sanctum');
 });

@@ -6,7 +6,19 @@
   <div id="app" class="container mt-5">
     <div class="row">
       <div class="col-md-4 col-xs-12">
+        <div class="card" style="width: 18rem" v-for="solicitud in Solicitudes" :key="solicitud.id">
+          {{getContenidoSolicitud(solicitud.solicitud)}}
+          <div class="card-body">
+            <h5 class="card-title">Sol·licitut de {{solicitud.idRemitente}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <p class="card-text">
+              {{contenidoSolicitud}}
+            </p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
         </div>
+      </div>
 
       <div class="col-md-8 col-xs-12 mt-5">
         <vue-scheduler
@@ -48,6 +60,7 @@
 import AgregarTareas from "./components-subparts/AgregarTareas";
 import DragArea from "./components-subparts/DragArea";
 import DropArea from "./components-subparts/DropArea";
+import Api from "../Api";
 
 export default {
   components: {
@@ -57,6 +70,8 @@ export default {
   },
   data() {
     return {
+      Solicitudes: [],
+      contenidoSolicitud: {},
       titulo2: "Recordatorios",
       dialogConfig: {
         title: "Tarea",
@@ -67,7 +82,6 @@ export default {
             name: "name",
             label: "Tarea",
           },
-
           {
             name: "Comentarios",
             type: "textarea",
@@ -76,6 +90,21 @@ export default {
         ],
       },
     };
+  },
+  methods: {
+    getSolicitudes() {
+      Api()
+        .post("/solicitudes/getAll")
+        .then((r) => {
+          this.Solicitudes = r.data;
+        });
+    },
+    getContenidoSolicitud(s){
+      this.contenidoSolicitud = JSON.parse(s);
+    }
+  },
+  mounted() {
+    this.getSolicitudes();
   },
 };
 </script>

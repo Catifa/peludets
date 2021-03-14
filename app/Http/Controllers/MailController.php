@@ -11,7 +11,7 @@ class MailController extends Controller
     {
         $correo = [
             'title' => 'Tienes una nueva solicitud',
-            'body' => 'PAYASO'
+            'body' => 'body'
         ];
         Mail::to($request->email)->send(new \App\Mail\ContactanosMailable($correo));
       

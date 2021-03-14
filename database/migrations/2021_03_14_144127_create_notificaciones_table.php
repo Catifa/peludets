@@ -19,6 +19,7 @@ class CreateNotificacionesTable extends Migration
             $table->integer('idRemitente');
             $table->text('categoria');
             $table->text('contenido');
+            $table->boolean('archivado')->default(false);
             $table->timestamps();
         });
     }

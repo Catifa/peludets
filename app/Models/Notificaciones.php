@@ -10,4 +10,16 @@ class Notificaciones extends Model
     use HasFactory;
 
     protected $table = 'notificaciones';
+    
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'idDestinatario',
+        'idRemitente',
+        'categoria',
+        'contenido'
+    ];
 }
