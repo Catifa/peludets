@@ -1,10 +1,10 @@
-<template>
+  <template>
   <div class="row">
     <footer class="container-fluid font-small bg-azul-peludets pt-4 mt-3">
       <div class="text-center text-md-left">
         <div class="row">
           <div class="col-md-6 mt-md-0 mt-3">
-            <h5 class="text-uppercase">Colaboradores de la web</h5>
+            <h5 class="text-uppercase">{{ $t("home.colaboradores") }}</h5>
             <img id="logo" src="../img/DinaHosting.png" alt="a" />
             <img id="logo" src="../img/DonDominio.png" alt="a" />
             <img id="logo" src="../img/wapps_logo.png" alt="a" />
@@ -14,13 +14,13 @@
             <h5 class="text-uppercase">{{ $t("app.footerContacto") }}</h5>
             <ul class="list-unstyled">
               <li>
-                <p>Badia del valles, 08214</p>
+                <p>info@peludets.cat</p>
               </li>
               <li>
-                <p>Hoña uwu</p>
+                <p>677677266</p>
               </li>
               <li>
-                <p>Barcelona, {{ $t("app.footerPais") }}</p>
+                <p>Badia del Valles, Barcelona, {{ $t("app.footerPais") }}</p>
               </li>
             </ul>
           </div>

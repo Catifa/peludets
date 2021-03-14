@@ -6,8 +6,11 @@
     "menuRegistro": "Registrate!",
     "menuDescarga": "Descargas",
     "menuPerfil" : "Perfil",
-    "menuDesconectar" : "Desconectar" ,
+    "menuDesconectar" : "Desconectar",
     "tituloBannerPrivacidad": "Cerrar Ventana de Privacidad",
+    "bannerSubtitulo": "Privacidad y Cookies",
+    "bannerText1": "Esta app utiliza coockies, al utilizarla aceptas los terminos de privacidad de ©Peludets. Entra en el siguiente enlace si quieres saber mas",
+    "politicasEnlace": "entra en este enlace",
     "footerContacto": "Contacto",
     "footerPais": "España",
     "footerRedesSociales": "Redes Sociales"
@@ -27,7 +30,8 @@
     "cardBox1": "En nuestra comunidad podrás encontrar a los mejores adiestradores dispuestos a ayudarte.",
     "cardBox2": "Alojamiento diario para tus mascotas en la casa de tu cuidador.",
     "cardBox3": "No es solo para perros y gatos! Cualquier tipo de mascota es bienvenida.",
-    "cardBox4": "Puedes estar tranquilo gracias a nuestro servicio de comunicación con tu cuidador."
+    "cardBox4": "Puedes estar tranquilo gracias a nuestro servicio de comunicación con tu cuidador.",
+    "colaboradores": "COLABORADORES DE LA WEB"
   },
 
   "explorador":{
@@ -49,5 +53,10 @@
     "cercaTi": "Cerca de ti",
     "verPerfil": "Ver Perfil",
     "contratar":"Contratar"
+  },
+
+  "Menu" : {
+    "inicio" : "Iniciar sesión",
+    "registro" : "Regístrate"
   }
 }

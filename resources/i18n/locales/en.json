@@ -7,6 +7,10 @@
     "menuDescarga": "Download the app",
     "menuPerfil" : "Profile",
     "menuDesconectar" : "Disconnect" ,
+    "tituloBannerPrivacidad": "Close Privacy Window",
+    "bannerSubtitulo": "Privacy and Cookies",
+    "bannerText1": "This app uses cookies, by using it you accept © Peludets privacy terms. Enter the following link if you want to know more",
+    "politicasEnlace": "enter this link",
     "footerContacto": "Contact",
     "footerPais": "SPAIN",
     "footerRedesSociales": "Social networks"
@@ -30,7 +34,8 @@
     "cardBox1": "Find a place where your pet is comfortable while you enjoy your vacation!",
     "cardBox2": "It's not just for cats and dogs only. Our community can take care of any type of pet.",
     "cardBox3": "You can ask for how many walks and how long they are needed.",
-    "cardBox4": "We have a professional section for exotic pets with special care."
+    "cardBox4": "We have a professional section for exotic pets with special care.",
+    "colaboradores": "WEB COLLABORATORS"
   },
   "explorador": {
     "tituloExplorador": "Wait while we look for you ...",
@@ -40,7 +45,7 @@
     
   },
   "profesionales" : {
-    "tituloProfesionales" : "Search Toby, Search!",
+    "tituloProfesionales" : "Our community!",
     "FormControlSelect1" : "Professions",
     "selectOptionPsicologo": "Psychologist",
     "selectOptionEntrenador": "Coach",
@@ -56,5 +61,11 @@
     "cercaTi": "Near you",
     "verPerfil": "View profile",
     "contratar":"Contract"
+  },
+
+  "Menu" : {
+    "inicio" : "Log in",
+    "registro" : "Sign up"
   }
+
 }

@@ -73,7 +73,7 @@
               class="btn btn-lila-peludets btn-sm mr-2"
               @click="showLog"
             >
-              Iniciar session
+             {{ $t("Menu.inicio") }}
             </button>
           </li>
           <!-- Registro -->
@@ -86,7 +86,7 @@
               class="btn btn-lila-peludets btn-sm"
               @click="showReg"
             >
-              Registrate!
+              {{ $t("Menu.registro") }}
             </button>
           </li>
         </ul>
