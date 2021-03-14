@@ -15,6 +15,7 @@ class valoraciones extends Model
     protected $fillable = [
         'id_usuario',
         'id_usuario_remitente',
+        'nombre_usuario_remitente',
         'valoraciones',
         'puntuacion'
     ];

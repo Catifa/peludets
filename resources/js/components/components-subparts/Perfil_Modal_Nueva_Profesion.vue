@@ -22,7 +22,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <select class="form-control" v-model="prof">
+          <select class="form-control" v-model="profesion.profesion" name="profesion" id="profesion">
             <option v-for="profesion in profesiones" :key="profesion.id">
               {{ profesion.nombre_profesion }}
             </option>
@@ -30,7 +30,12 @@
 
           <div class="form-group">
             <label for=""></label>
-            <select class="form-control" name="titulacion" id="titulacion">
+            <select
+              v-model="profesion.titulacion"
+              class="form-control"
+              name="titulacion"
+              id="titulacion"
+            >
               <option value="S">Si</option>
               <option value="N">No</option>
             </select>
@@ -38,7 +43,12 @@
 
           <div class="form-group">
             <label for=""></label>
-            <select class="form-control" name="disponibilidad" id="disponibilidad">
+            <select
+            v-model="profesion.disponibilidad"
+              class="form-control"
+              name="disponibilidad"
+              id="disponibilidad"
+            >
               <option value="presencial">Presencial</option>
               <option value="online">Online</option>
               <option value="presencial y online">Presencial y Online</option>
@@ -49,7 +59,14 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Tanca
           </button>
-          <button id="insertProf" @click="insertProf()" type="button" class="btn btn-primary">Guarda</button>
+          <button
+            id="insertProf"
+            @click="insertProf()"
+            type="button"
+            class="btn btn-primary"
+          >
+            Guarda
+          </button>
         </div>
       </div>
     </div>
@@ -58,32 +75,37 @@
 
 <script>
 import Swal from "sweetalert2";
+import Api from "../../Api";
 
 export default {
   data() {
     return {
       profesiones: [],
+      profesion:{},
       // Adri, perdón uwu Pero tengo que crearla para que no salga un error en consola
       prof: undefined,
     };
   },
   methods: {
-      insertProf() {
-      this.axios
-        .post("api/profesiones/insertProf")
+    insertProf() {
+            this.profesion.userId = this.$root.user.id;
+
+      Api()
+        .post("/profesiones/insertProf", this.profesion)
         .then((response) => {
           Swal.fire("Registro completado", "success");
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
     },
+  },
 
   created() {
-    this.axios.get("api/profesiones/getAll").then((response) => {
-      this.profesiones = response.data;
-    });
+    Api()
+      .get("/profesiones/getAll")
+      .then((response) => {
+        this.profesiones = response.data;
+      });
   },
-  }
-
 };
 </script>

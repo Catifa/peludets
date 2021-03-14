@@ -247,8 +247,7 @@
                 <div class="col-md-9">
                   <div class="card-body">
                     <h5 class="card-title">
-                      {{ valoracion.id_usuario_remitente }}
-                      {{valoracion}}
+                    {{ valoracion.nombre_usuario_remitente }}
                     </h5>
                     <p class="card-text">{{ valoracion.valoraciones }}</p>
                     <p class="card-text">

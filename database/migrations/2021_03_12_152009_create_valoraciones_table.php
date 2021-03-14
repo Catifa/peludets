@@ -16,7 +16,8 @@ class CreateValoracionesTable extends Migration
         Schema::create('valoraciones', function (Blueprint $table) {
             $table->id();
             $table->integer('id_usuario');
-            $table->integer('id_usuario_remitente');            
+            $table->integer('id_usuario_remitente'); 
+            $table->text('nombre_id_usuario');
             $table->longText('valoraciones');
             $table->integer('puntuacion');
             $table->timestamps();
