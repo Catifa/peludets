@@ -6,7 +6,7 @@
       v-model="text.val"
       v-if="showEditor"
       useCustomImageHandler
-      @imageAdded="subirImagen"
+      @imageAdded="subirImagen($event)"
     ></vue-editor>
     <!-- Boton guardar perfil -->
     <button
@@ -40,12 +40,12 @@
       type="button"
       class="btn btn-azul-peludets mt-1"
     >
-      <i class="fas fa-paw"></i>
+      {{ $t("perfil.perfilEditable.btnAltaSercicio") }}
     </button>
 
     <!-- Modales-->
-    <modal-updateUser id="modalModificarUsuario"></modal-updateUser>
-    <modal-nuevaProfesion id="modalNuevaProfesion"></modal-nuevaProfesion>
+    <modal-updateUser id="modalModificarUsuario" :propHideModal="hideModalModificarUsuario"></modal-updateUser>
+    <modal-nuevaProfesion id="modalNuevaProfesion" :propHideModal="hideModalAnadirProfesion"></modal-nuevaProfesion>
 
   </div>
 </template>
@@ -55,7 +55,6 @@
 import { VueEditor } from "vue2-editor";
 import Perfil_Modal_Update_User from "./Perfil_Modal_Update_User.vue";
 import Perfil_Modal_Nueva_Profesion from "./Perfil_Modal_Nueva_Profesion.vue";
-import { u } from "../../utils";
 import Api from "../../Api";
 
 export default {
@@ -76,8 +75,16 @@ export default {
       $("#modalModificarUsuario").modal("show");
     },
 
+    hideModalModificarUsuario() {
+      $("#modalModificarUsuario").modal("hide");
+    },
+
     showModalAnadirProfesion() {
       $("#modalNuevaProfesion").modal("show");
+    },
+
+    hideModalAnadirProfesion() {
+      $("#modalNuevaProfesion").modal("hide");
     },
 
     saveContent() {
@@ -96,7 +103,31 @@ export default {
         });
     },
 
-    subirImagen() {},
+    updateImg(e) {
+      var formData = new FormData();
+        var file = e.target.files[0];
+        formData.append("Filedata", file);
+        var t = file.type.split("/").pop().toLowerCase();
+        if (t != "jpeg" && t != "jpg" && t != "png") {
+            alert("Seleccione un formato de imágen válido: (jpeg, jpg, png)");
+            document.getElementById("file").value = "";
+            return false;
+        }
+        if (file.size > 1024000) {
+            alert("Tamaño de imágen máximo (1MB)");
+            document.getElementById("file").value = "";
+            return false;
+        }
+
+        let f = e.target.files[0];
+        let reader = new FileReader();
+
+        reader.onloadend = () => {
+            this.img = reader.result;
+        };
+
+        reader.readAsDataURL(f);
+    },
 
     getContent() {
       Api()
