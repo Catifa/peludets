@@ -97,6 +97,7 @@ Route::group(['prefix' => 'usuario'], function () {
     Route::post('getProfText', [UsuariosController::class, 'getProfText'])->middleware('auth:sanctum');
     Route::post('setProfText', [UsuariosController::class, 'setProfText'])->middleware('auth:sanctum');
     Route::post('updateUsuario', [UsuariosController::class, 'updateUsuario'])->middleware('auth:sanctum');
+    Route::post('setProfilePhotoUser', [UsuariosController::class, 'setProfilePhotoUser'])->middleware('auth:sanctum');
 });
 
 Route::group(['prefix' => 'explorador'], function () {
