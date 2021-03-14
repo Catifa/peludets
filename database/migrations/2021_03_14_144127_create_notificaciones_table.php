@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Chats extends Migration
+class CreateNotificacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class Chats extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
+        Schema::create('notificaciones', function (Blueprint $table) {
             $table->id();
-            $table->text('roomName');
             $table->integer('idDestinatario');
             $table->integer('idRemitente');
-            $table->longText('mensaje');
-            $table->boolean('leido');
+            $table->text('categoria');
+            $table->text('contenido');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class Chats extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chats');
+        Schema::dropIfExists('notificaciones');
     }
 }
