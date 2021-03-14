@@ -55,5 +55,11 @@
     "cercaTi": "A prop teu",
     "verPerfil": "Veure perfil ",
     "contratar":"Contratar"
+  },
+
+  "perfil" : {
+    "mascotas": {
+      "btnAnadirMascota": "Afegir mascota"
+    }
   }
 }

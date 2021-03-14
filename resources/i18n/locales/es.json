@@ -56,5 +56,11 @@
     "cercaTi": "Cerca de ti",
     "verPerfil": "Ver Perfil",
     "contratar":"Contratar"
+  },
+
+  "perfil" : {
+    "mascotas": {
+      "btnAnadirMascota": "Add pet"
+    }
   }
 }

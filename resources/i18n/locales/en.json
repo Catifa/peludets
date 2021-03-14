@@ -55,5 +55,11 @@
     "cercaTi": "Near you",
     "verPerfil": "View profile",
     "contratar":"Contract"
+  },
+
+  "perfil" : {
+    "mascotas": {
+      "btnAnadirMascota": "Añadir mascota"
+    }
   }
 }
