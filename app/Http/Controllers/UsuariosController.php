@@ -260,9 +260,8 @@ class UsuariosController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
-            'email' => 'required|email|unique:users|max:255',
-            'dni' => 'required|string|max:9|unique:users',
-
+            'email' => 'required|email|max:255',
+            'dni' => 'required|string|max:9',
         ]);
 
 
@@ -271,8 +270,7 @@ class UsuariosController extends Controller
             'lastname' => $request->lastname,
             'dni' => $request->dni,
             'email' => $request->email,
-
-            'photo' => $request->photo
+            'photo' => $request->img
         ]);
     }
 

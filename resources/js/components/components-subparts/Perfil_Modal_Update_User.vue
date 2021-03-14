@@ -119,7 +119,6 @@ export default {
       this.user.userId = this.$root.user.id;
       this.user.img = this.img;
       this.user.id = id;
-      console.log("aqui");
       console.log(this.user);
       Api()
         .post("/usuario/updateUsuario", this.user)
