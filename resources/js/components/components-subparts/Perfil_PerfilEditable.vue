@@ -53,8 +53,8 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-import Perfil_Modal_Update_User from "./Perfil_Modal_Update_User.vue";
-import Perfil_Modal_Nueva_Profesion from "./Perfil_Modal_Nueva_Profesion.vue";
+import Perfil_Modal_Update_User from "./Perfil_PerfilEditable_Modal_Update_User.vue";
+import Perfil_Modal_Nueva_Profesion from "./Perfil_PerfilEditable_Modal_Nueva_Profesion.vue";
 import Api from "../../Api";
 
 export default {
