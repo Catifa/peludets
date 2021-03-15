@@ -20,7 +20,7 @@
         <div class="card" style="max-width: 18rem">
           <!-- Imagen -->
           <img
-            style="max-width:286px; max-width:px"
+            style="max-width:286px; max-height: 180px"
             v-bind:src="mascota.photo"
             class="card-img-top"
             alt="Imatge Mascota"
