@@ -17,9 +17,10 @@
         v-for="mascota in propMascotas"
         :key="mascota.id"
       >
-        <div class="card" style="max-width: 540px">
+        <div class="card" style="max-width: 18rem">
           <!-- Imagen -->
           <img
+            style="max-width:286px; max-width:px"
             v-bind:src="mascota.photo"
             class="card-img-top"
             alt="Imatge Mascota"
