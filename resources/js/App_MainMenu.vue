@@ -78,7 +78,7 @@
               class="btn btn-lila-peludets btn-sm mr-2"
               @click="showLog"
             >
-              {{ $t("Menu.inicio") }}
+              {{ $t("app.menuLogin") }}
             </button>
           </li>
           <!-- Registro -->
@@ -91,7 +91,7 @@
               class="btn btn-lila-peludets btn-sm"
               @click="showReg"
             >
-              {{ $t("Menu.registro") }}
+              {{ $t("app.menuRegistro") }}
             </button>
           </li>
         </ul>

@@ -14,6 +14,7 @@
     "footerContacto": "Contacte",
     "footerPais": "Espanya",
     "footerRedesSociales": "Xarxes socials"
+ 
   },
 
   "home": {
@@ -31,7 +32,9 @@
     "cardBox2": "Allotjament diari per les teves mascotes a casa del teu cuidador.",
     "cardBox3": "No és només per a gossos i gats! Qualsevol tipus de mascota és benvinguda.",
     "cardBox4": "Pots estar tranquil gràcies al nostre servei de comunicació amb el teu cuidador.",
-    "colaboradores": "COL·LABORADORS DE LA WEB"
+    "colaboradores": "COL·LABORADORS DE LA WEB",
+    "SlohanH1": "BENVINGUT A PELUDETS",
+    "SlohanH2": "El segon millor amic de la teva mascota"
   },
 
   "explorador":{
