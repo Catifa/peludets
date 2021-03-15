@@ -101,8 +101,5 @@ export default {
       return "fas " + logo + " mr-2";
     },
   },
-  mounted() {
-    this.getNotificaciones();
-  },
 };
 </script>

@@ -46,16 +46,16 @@
               {{ $t("app.menuDescarga") }}
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownDescargas">
-              <a class="dropdown-item" href="/bin/mac.zip" download=""
+              <a class="dropdown-item" href="/bin/mac.zip"
                 >Mac&nbsp;&nbsp;<i class="fab fa-apple"></i
               ></a>
-              <a class="dropdown-item" href="/bin/win.7z" download=""
+              <a class="dropdown-item" href="/bin/win.7z"
                 >Windows&nbsp;&nbsp;<i class="fab fa-windows"></i
               ></a>
-              <a class="dropdown-item" href="/bin/linux.tar.gz" download=""
+              <a class="dropdown-item" href="/bin/linux.tar.gz"
                 >Linux&nbsp;&nbsp;<i class="fab fa-linux"></i
               ></a>
-              <a class="dropdown-item" href="" download=""
+              <a class="dropdown-item" href="/bin/android.apk"
                 >Android &nbsp;&nbsp; <i class="fab fa-android"></i
               ></a>
             </div>
@@ -162,7 +162,7 @@
         </ul>
       </div>
     </nav>
-    <modal-inbox id="modal-inbox"></modal-inbox>
+    <modal-inbox  ref="inbox" id="modal-inbox"></modal-inbox>
   </div>
 </template>
 
@@ -214,7 +214,7 @@ export default {
 
     mostrarModalInBox() {
       $("#modal-inbox").modal("show");
-      this.notificaciones = null;
+      this.$refs.inbox.getNotificaciones();
     },
   },
 };
