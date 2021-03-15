@@ -7,6 +7,7 @@
         :key="valoracion.id"
       >
         <div class="row no-gutters">
+          <!-- Imagen -->
           <div class="col-md-3">
             <img
               :src="valoracion.photo"
@@ -15,21 +16,25 @@
               width="100%"
             />
           </div>
+          <!-- Datos valoracion -->
           <div class="col-md-9">
             <div class="card-body">
+              <!-- Nombre -->
               <h5 class="card-title">
                 {{ valoracion.name }} {{ valoracion.lastname }}
               </h5>
+              <!-- Texto Valoracion -->
               <p class="card-text">
                 {{ valoracion.valoraciones }}
               </p>
+              <!-- Puntuacion -->
               <p class="card-text">
                 <small class="text-muted">
                   <div
                     class="ml-4"
                     style="float: left"
-                    v-for="i in valoracion.puntuacion"
-                    :key="i"
+                    v-for="valoracion in valoracion.puntuacion"
+                    :key="valoracion"
                   >
                     <i class="fas fa-star"></i></div
                 ></small>

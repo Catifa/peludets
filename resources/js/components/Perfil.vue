@@ -94,7 +94,9 @@
           role="tabpanel"
           aria-labelledby="valoraciones-tab"
         >
-          <perfil-valoraciones :propValoraciones="valoraciones"></perfil-valoraciones>
+          <perfil-valoraciones
+            :propValoraciones="valoraciones"
+          ></perfil-valoraciones>
         </div>
         <!-- Zona renderizado Tareas -->
         <div
@@ -159,13 +161,17 @@ export default {
 
   mounted() {
     // Recuperar Mascotas
-    Api().post("/mascota/recuperarMascota").then((response) => {
+    Api()
+      .post("/mascota/recuperarMascota")
+      .then((response) => {
         this.mascotas = response.data;
       });
     // Recuperar Valoraciones
-    Api().post("/valoraciones/recuperarValoraciones").then((response) => {
-        this.valoraciones = response.data;
-      });
+    setTimeout(() => {
+      Api().post("/valoraciones/recuperarValoraciones", { id: this.$root.user.id }).then((response) => {
+          this.valoraciones = response.data;
+        });
+    }, 1000);
   },
 };
 </script>
