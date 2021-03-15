@@ -85,26 +85,35 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <!-- Formulario -->
-      <div
-        id="formTrabajos"
-        class="col-lg-3 col-md-6 col-10 mt-4 mx-auto align-self-center rounded"
-      >
-        <div class="form-group">
-          <label>{{ $t("home.formTrabajos") }}</label>
-          <select class="form-control" v-model="prof">
-            <option v-for="profesion in profesiones" :key="profesion.id">
-              {{ profesion.nombre_profesion }}
-            </option>
-          </select>
+      <div class="col-lg-3 col-md-6 col-10 mt-5 ml-5">
+        <!--Slogan-->
+        <div class="row mt-5 ">
+          <h1 class="Slogan lila-peludets" >BENVINGUT A PELUDETS</h1>
+          <h3 class="Slogan">El segon millor amic de la teva mascota</h3>
         </div>
-        <button
-          type="submit"
-          class="btn btn-lila-peludets"
-          @click="buscarTrabajos"
-        >
-          {{ $t("home.formBotonBuscar") }}
-        </button>
+        <div class="row mt-5">
+          <!-- Formulario -->
+          <div
+            id="formTrabajos"
+            class="container-fluid mt-5 mx-auto align-self-center rounded"
+          >
+            <div class="form-group">
+              <label>{{ $t("home.formTrabajos") }}</label>
+              <select class="form-control" v-model="prof">
+                <option v-for="profesion in profesiones" :key="profesion.id">
+                  {{ profesion.nombre_profesion }}
+                </option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-lila-peludets"
+              @click="buscarTrabajos"
+            >
+              {{ $t("home.formBotonBuscar") }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Tarjetas Info -->
@@ -173,14 +182,14 @@
   </div>
 </template>
 <script>
-import Api from '../Api';
+import Api from "../Api";
 
 export default {
   data() {
     return {
       profesiones: [],
       // Adri, perdón uwu Pero tengo que crearla para que no salga un error en consola
-      prof: undefined
+      prof: undefined,
     };
   },
 
@@ -188,12 +197,14 @@ export default {
     buscarTrabajos() {
       let prof = this.prof;
       this.$router.push({ name: "comunidad", params: { prof } });
-    }
+    },
   },
   created() {
-    Api().get("/profesiones/getAll").then((response) => {
-      this.profesiones = response.data;
-    });
+    Api()
+      .get("/profesiones/getAll")
+      .then((response) => {
+        this.profesiones = response.data;
+      });
   },
 };
 </script>
