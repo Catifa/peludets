@@ -5,7 +5,7 @@
 <template>
   <div class="container-fluid">
     <!-- Carousel y Formulario -->
-    <div class="row">
+    <div class="row mt-4">
       <!-- Carousel -->
       <div
         id="carouselCentralPldts"
