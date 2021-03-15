@@ -50,7 +50,6 @@ Route::group(['prefix' => 'mascota'], function () {
 // Peticiones Valoraciones
 Route::group(['prefix' => 'valoraciones'], function () {
     Route::post('recuperarValoraciones', [ValoracionesController::class, 'recuperarValoraciones']);
-
 });
 
 // Especies

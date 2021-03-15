@@ -11,23 +11,17 @@ use Illuminate\Support\Facades\DB;
 
 class ValoracionesController extends Controller
 {
-
-    protected function recuperarValoraciones1(Request $request)
-    {
-
-      DB::select('select u2.id, u1.name, u1.lastname, u1.photo, v.valoraciones v.puntuacion from users u1 join valoraciones v on (u1.id = v.id_usuario_remitente) join users u2 on (u2.id = v.id_usuario)');
- 
-   }
-
+    /**
+     * Recuperar las valoraciones que tiene un usuario
+     * 
+     * @return Array
+     */
     protected function recuperarValoraciones(Request $request)
     {
-        return User::select('*')
-        ->join ('valoraciones',  'users.id', '=', 'valoraciones.id_usuario')
-        ->get(); 
+      return valoraciones::select('u2.id', 'u1.name', 'u1.lastname', 'u1.photo', 'valoraciones.valoraciones', 'valoraciones.puntuacion')
+      ->join('users AS u1', 'valoraciones.id_usuario_remitente','=', 'u1.id')
+      ->join('users AS u2', 'valoraciones.id_usuario','=', 'u2.id')
+      ->where('u2.id', '=', $request->id)->get();  
    }
 
-    protected function recuperarValoraciones2(Request $request)
-    {
-        return valoraciones::get();
-    }
 }
