@@ -47,4 +47,9 @@ class NotificacionesController extends Controller
     {
         return Notificaciones::where('idDestinatario',$request->user()->id)->get();
     }
+
+    protected function delete(Request $request)
+    {
+        Notificaciones::where('idDestinatario',$request->user()->id)->where('id',$request->id)->delete();
+    }
 }

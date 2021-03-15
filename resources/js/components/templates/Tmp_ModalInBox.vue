@@ -27,14 +27,12 @@
               <i :class="logo(notificacion.categoria)"></i>
               <strong class="mr-auto">{{ notificacion.categoria }}</strong>
               <small>{{ time(notificacion.created_at) }}</small>
-              <!-- Boton archivar -->
-              <i
-                class="fas fa-archive ml-1"
-                title="Arxicar notificació"
-                v-if="notificacion.categoria != 'Chat'"
-              ></i>
               <!-- Boton borrar -->
-              <i class="fas fa-trash ml-1" title="Eliminar notificació"></i>
+              <i
+                class="fas fa-trash ml-2"
+                title="Eliminar notificació"
+                @click="deleteNot(notificacion.id)"
+              ></i>
             </div>
             <div class="tostada-body">
               {{ notificacion.contenido }}
@@ -48,12 +46,8 @@
             title="Filtrar per solicituts d'amistat"
           ></i>
           <i
-            class="fas fas fa-paper-plane fa-1x"
+            class="fas fas fa-paper-plane fa-1x mr-auto"
             title="Filtrar per solicituts de serveis"
-          ></i>
-          <i
-            class="fas fa-1x fa-archive ml-auto"
-            title="Notificacions arxivades"
           ></i>
         </div>
       </div>
@@ -74,10 +68,17 @@ export default {
   methods: {
     getNotificaciones() {
       Api()
-        .post("/notificaciones/getAllNotificaciones")
+        .post("/notificaciones/getAll")
         .then((res) => {
           this.notificaciones = res.data;
           console.log(res.data);
+        });
+    },
+    deleteNot(id) {
+      Api()
+        .post("/notificaciones/delete", {id})
+        .then(() => {
+          this.getNotificaciones();
         });
     },
     time(t) {

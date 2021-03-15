@@ -124,5 +124,6 @@ Route::group(['prefix' => 'valoraciones'], function () {
 
 Route::group(['prefix' => 'notificaciones'], function () {
     Route::post('add',[NotificacionesController::class,'add'])->middleware('auth:sanctum');
-    Route::post('getAllNotificaciones',[NotificacionesController::class,'getAll'])->middleware('auth:sanctum');
+    Route::post('getAll',[NotificacionesController::class,'getAll'])->middleware('auth:sanctum');
+    Route::post('delete',[NotificacionesController::class,'delete'])->middleware('auth:sanctum');
 });

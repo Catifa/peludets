@@ -214,6 +214,7 @@ export default {
 
     mostrarModalInBox() {
       $("#modal-inbox").modal("show");
+      this.notificaciones = null;
     },
   },
 };
