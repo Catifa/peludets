@@ -5,7 +5,7 @@
 <template>
   <div class="container-fluid">
     <!-- Carousel y Formulario -->
-    <div class="row mt-4">
+    <div class="row">
       <!-- Carousel -->
       <div
         id="carouselCentralPldts"
@@ -85,34 +85,32 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <div class="col-lg-3 col-md-6 col-10 mt-5 ml-5">
-        <!--Slogan-->
-        <div class="row mt-5 ">
-          <h1 class="Slogan lila-peludets" >{{$t("home.SlohanH1")}}</h1>
-          <h3 class="Slogan">{{$t("home.SlohanH2")}}</h3>
-        </div>
-        <div class="row mt-5">
-          <!-- Formulario -->
-          <div
-            id="formTrabajos"
-            class="container-fluid mt-5 mx-auto align-self-center rounded"
-          >
-            <div class="form-group">
-              <label>{{ $t("home.formTrabajos") }}</label>
-              <select class="form-control" v-model="prof">
-                <option v-for="profesion in profesiones" :key="profesion.id">
-                  {{ profesion.nombre_profesion }}
-                </option>
-              </select>
-            </div>
-            <button
-              type="submit"
-              class="btn btn-lila-peludets"
-              @click="buscarTrabajos"
-            >
-              {{ $t("home.formBotonBuscar") }}
-            </button>
+
+      <!-- Formulario -->
+
+      <div class="col-lg-3 col-md-6 col-10 mt-4 mx-auto align-self-center rounded">
+        <h1 class="Slogan lila-peludets">{{ $t("home.SlohanH1") }}</h1>
+        <h3 class="Slogan mb-5 ">{{ $t("home.SlohanH2") }}</h3>
+        <div
+          id="formTrabajos"
+          class="mt-5"
+         
+        >
+          <div class="form-group">
+            <label>{{ $t("home.formTrabajos") }}</label>
+            <select class="form-control" v-model="prof">
+              <option v-for="profesion in profesiones" :key="profesion.id">
+                {{ profesion.nombre_profesion }}
+              </option>
+            </select>
           </div>
+          <button
+            type="submit"
+            class="btn btn-lila-peludets"
+            @click="buscarTrabajos"
+          >
+            {{ $t("home.formBotonBuscar") }}
+          </button>
         </div>
       </div>
     </div>
