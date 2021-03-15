@@ -17,9 +17,6 @@
                 <p>info@peludets.cat</p>
               </li>
               <li>
-                <p>677677266</p>
-              </li>
-              <li>
                 <p>Badia del Valles, Barcelona, {{ $t("app.footerPais") }}</p>
               </li>
             </ul>
