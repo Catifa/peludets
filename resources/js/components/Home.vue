@@ -87,9 +87,9 @@
       </div>
       <div class="col-lg-3 col-md-6 col-10 mt-5 ml-5">
         <!--Slogan-->
-        <div class="row mt-5">
-          <h1>BENVINGUT A PELUDETS</h1>
-          <h3>El segon millor amic de la teva mascota</h3>
+        <div class="row mt-5 ">
+          <h1 class="Slogan" >BENVINGUT A PELUDETS</h1>
+          <h3 class="Slogan">El segon millor amic de la teva mascota</h3>
         </div>
         <div class="row mt-5">
           <!-- Formulario -->
