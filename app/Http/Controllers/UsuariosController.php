@@ -16,9 +16,6 @@ use App\Models\User;
 class UsuariosController extends Controller
 {
 
-
-
-
     /**
      * 
      * Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home
@@ -27,8 +24,6 @@ class UsuariosController extends Controller
      * 
      * @return \App\Models\UserUser
      */
-
-
 
 
     /**
@@ -55,15 +50,15 @@ class UsuariosController extends Controller
     protected function userByProfOnly(Request $request)
     {
 
-        return User::select('users.id', 'users.name', 'users.lastname')
-        ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
-        ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-        ->where('profesiones.nombre_profesion', '=', $request->input('nombre'))->get();
+        return User::select('users.id', 'users.name', 'users.lastname', 'users.photo')
+            ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
+            ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
+            ->where('profesiones.nombre_profesion', '=', $request->input('nombre'))->get();
     }
 
     /**
      * 
-     * Busqueda de profesionales solo por profesion, cuando vienen por el formulario del Home
+     * Busqueda de profesionales por todos los campos
      * 
      * @param Request $request
      * 
@@ -94,17 +89,13 @@ class UsuariosController extends Controller
 
     protected function searchByProf(Request $request)
     {
-
-        $prof = $request->profesion;
-        $disp = $request->disponibilidad;
-        $titu = $request->titulacion;
-
-        return User::select('users.id', 'users.name', 'users.lastname','user.photo')
+    
+        return User::select('users.id', 'users.name', 'users.lastname','users.photo')
             ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
             ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
-            ->where('profesiones.nombre_profesion', '=', $prof)
-            ->where('usuarios_profesiones.disponibilidad', '=', $disp)
-            ->where('usuarios_profesiones.titulacion', '=', $titu)->get();
+            ->where('profesiones.nombre_profesion', '=', $request->servicio)
+            ->where('usuarios_profesiones.disponibilidad', '=', $request->disponibilidad)
+            ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)->get();
     }
 
     /**
@@ -254,5 +245,37 @@ class UsuariosController extends Controller
         $texto = $request->val;
 
         User::where('id', $id)->update(['textoPerfil' => $texto]);
+    }
+
+
+    protected function setProfilePhotoUser(Request $request)
+    {
+        User::where('id', $request->user()->id)
+            ->update(['photo' => $request->img,]);
+    }
+
+    public function updateUsuario(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'dni' => 'required|string|max:9',
+        ]);
+
+
+        User::where('id', '=', $request->id)->update([
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'dni' => $request->dni,
+            'email' => $request->email,
+            'photo' => $request->img
+        ]);
+    }
+
+    public function recuperarUser(Request $request)
+    {
+        return User::where('id', '=', $request->id)->get();
     }
 }

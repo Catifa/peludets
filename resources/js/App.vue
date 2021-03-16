@@ -4,63 +4,83 @@
 </style>
  
 <template>
-  <div>
-    <mainmenu></mainmenu>
+  <div class="container-fluid d-flex flex-column h-100">
+    <!--Formulario registro -->
+    <form_registro v-if="this.$root.user == null" id="formRegistro" :hideReg="closeRegModal"></form_registro>
+    <!--Formulario inicio sesion -->
+    <form_inicio_sesion v-if="this.$root.user == null" id="formInicioSesion" :hideLog="closeLogModal"></form_inicio_sesion>
 
+    <!-- Main Menu -->
+    <main_menu :showReg="showRegModal" :showLog="showLogModal"></main_menu>
+
+    <!-- Zona renderizado componentes -->
     <router-view></router-view>
+
+    <!-- Footer -->
+    <footer-pldts></footer-pldts>
+
+    <!-- Banner Publi -->
+    <banner_publi></banner_publi>
   </div>
 </template>
 
 <script>
-
-import MainMenu from "./components/MainMenu";
+import FormInicioSesion from "./App_Form_Inicio_Sesion.vue";
+import FormRegistro from "./App_Form_Registro.vue";
+import MainMenu from "./App_MainMenu.vue";
+import Footer from "./App_Footer.vue";
+import BannerPubli from "./App_Banner_Privacidad.vue";
+import Api from './Api';
 
 export default {
-  name: "local-changer",
   components: {
-    mainmenu: MainMenu,
-  },
-  data() {
-    return {
-      langs: ["es", "ca", "en"],
-    };
+    form_inicio_sesion: FormInicioSesion,
+    form_registro: FormRegistro,
+    footerPldts: Footer,
+    main_menu: MainMenu,
+    banner_publi: BannerPubli,
   },
   methods: {
     isAuthenticated() {
-      axios.post("/api/auth/check").then((res) => {
-        //console.log(res.data);
-        if (res.data) {
+      Api().get("/authentication").then((res) => {
           this.getUser();
-        } else {
-          this.$root.user = null;
-        }
-
-        //console.log(res.data);
-      });
-    },
-    setLocale(locale) {
-      this.$i18n.locale = locale;
-    },
-    logout() {
-      axios.post("/api/auth/logout").then((res) => {
-        //console.log(res.data);
+      }).catch(error => {
         this.$root.user = null;
-        this.$root.photo = "sources/img/avatar.jfif";
-        this.$router.push("/");
       });
     },
     getUser() {
-      axios.get("/api/user").then((res) => {
-        //console.log(res.data);
+      Api().get("/user").then((res) => {
         this.$root.user = res.data;
-        axios.post("/api/files/getProfilePhoto").then((res) => {
+        Api().post("/files/getProfilePhoto").then((res) => {
           this.$root.photo = res.data[0].photo;
         });
       });
     },
+    // Modal Registro
+    showRegModal() {
+      $('#formRegistro').modal('show');
+    },
+    closeRegModal() {
+      $('#formRegistro').modal('hide');
+    },
+    // Modal Inicio Sesion
+    showLogModal() {
+      $('#formInicioSesion').modal('show');
+    },
+    closeLogModal() {
+      $('#formInicioSesion').modal('hide');
+    },
   },
   mounted() {
     this.isAuthenticated();
+    if (
+      this.$route.path == "/device" ||
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      this.$root.device = true;
+    }
   },
 };
 </script>

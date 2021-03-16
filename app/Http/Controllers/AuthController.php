@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +51,7 @@ class AuthController extends Controller
             'password' => 'required|string|min:5'
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'lastname' => $request->lastname,
             'dni' => $request->dni,
@@ -59,13 +60,35 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(Auth::user(), 200);
+
+            return response()->json(['user' => Auth::user(), 'token' => $user->createToken('api_token')->plainTextToken], 200);
         }
         
         return response()->json(Auth::user(), 200);
         
     }
 
+    public function adminRegister(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|string|min:5'
+        ]);
+
+        Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return response()->json(Auth::guard('admin')->user(), 200);
+        }
+        
+        return response()->json(Auth::guard('admin')->user(), 200);
+        
+    }
 
                      /**
      * @OA\Post(
@@ -92,13 +115,31 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+    
+        $user = User::where('email', $request->email)->first();
+    
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+    
+        return response()->json(['user' => $user, 'token' => $user->createToken('api_token')->plainTextToken], 200);
+    }
+
+    public function adminLogin(Request $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(Auth::user(), 200);
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
+            return response()->json(Auth::guard('admin')->user(), 200);
         }
         throw ValidationException::withMessages([
             'email' => ['The provided credentials are incorect.']
@@ -128,36 +169,8 @@ class AuthController extends Controller
      * )
      */
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
-    }
-
-
-                     /**
-     * @OA\Post(
-     *     path="/api/auth/check",
-     *     summary="MEtodo de comprovacion de usuarios",
-
-     *     @OA\Parameter(
-     *          name="",
-     *          in="path",
-     * 
-     *     @OA\Schema(
-     *         type="id",
-     *     )),      
-     *     @OA\Response(
-     *         response=200,
-     *         description="MEtodo de comprovacion de usuarios"
-     *     ),
-     *     @OA\Response(
-     *         response="default",
-     *         description="Ha ocurrido un error."
-     *     )
-     * )
-     */
-    public function check()
-    {
-        return Auth::check();
+        return $request->user()->tokens()->delete();
     }
 }

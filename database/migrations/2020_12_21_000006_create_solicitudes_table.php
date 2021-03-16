@@ -14,11 +14,10 @@ class CreateSolicitudesTable extends Migration
     public function up()
     {
         Schema::create('solicitudes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('id_remitente');
-            $table->integer('id_destinatario');
-            $table->string('nombre_trabajo');
-            $table->string('descripcion_trabajo');
+            $table->id();
+            $table->json('solicitud');
+            $table->integer('idDestinatario');
+            $table->integer('idRemitente');
             $table->timestamps();
         });
     }

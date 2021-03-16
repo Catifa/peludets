@@ -14,12 +14,14 @@ class CreateMascotasTable extends Migration
     public function up()
     {
         Schema::create('mascotas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
+            $table->integer('id_usuario');
             $table->string('nombre');
             $table->string('especie');
             $table->string('raza');
             $table->integer('edad');
             $table->integer('peso');
+            $table->longText('photo')->nullable();
             $table->timestamps();
         });
     }

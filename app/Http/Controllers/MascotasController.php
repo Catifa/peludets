@@ -20,7 +20,7 @@ class MascotasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-             /**
+    /**
      * @OA\Get(
      *     path="/api/mascotas/index",
      *     summary="Devuelve todos los registros de mascotas",
@@ -56,7 +56,7 @@ class MascotasController extends Controller
      */
 
 
-                  /**
+    /**
      * @OA\Post(
      *     path="/api/mascotas/add",
      *     summary="Añadir Mascotas",
@@ -80,7 +80,7 @@ class MascotasController extends Controller
      */
 
 
-     
+
     public function add(Request $request)
     {
         $mascota = new Mascota([
@@ -92,6 +92,48 @@ class MascotasController extends Controller
         ]);
         $mascota->save();
     }
+    protected function recuperarMascota(Request $request)
+    {
+        return Mascota::where('id_usuario', '=', $request->user()->id)->get();
+    }
+    public function registerMascota(Request $request)
+    {
+        Mascota::create([
+            'id_usuario' => $request->userId,
+            'nombre' => $request->nombre,
+            'especie' => $request->especie,
+            'raza' => $request->raza,
+            'edad' => $request->edad,
+            'peso' => $request->peso,
+            'photo' => $request->photo
+        ]);
+    }
+
+    public function deleteMascota(Request $request)
+    {
+        echo $request->id;
+        Mascota::where('id', '=', $request->id)->delete();
+    }
+
+    public function updateMascota(Request $request)
+    {
+        Mascota::where('id', '=', $request->id)->update([
+            'nombre' => $request->nombre,
+            'especie' => $request->especie,
+            'raza' => $request->raza,
+            'edad' => $request->edad,
+            'peso' => $request->peso,
+            'photo' => $request->img
+        ]);
+    }
+
+
+    protected function setProfilePhotoMascota(Request $request)
+    {
+        Mascota::where('id', $request->mascota()->id)
+            ->update(['photo' => $request->img,]);
+    }
+
 
     /**
      * Store a newly created resource in storage.

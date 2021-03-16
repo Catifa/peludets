@@ -7,7 +7,7 @@
     <meta name="csrf-token" value="{{ csrf_token() }}"/>
     <title>Peludets!</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/215bc124ef.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
 </head>
 <body>

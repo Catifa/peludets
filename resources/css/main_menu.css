@@ -27,3 +27,104 @@
 .icono-usuario {
     color: #ffd2ad
 }
+
+#logo {
+    width: 245px;
+    height: 60px;
+}
+
+.navItemPldts {
+    color: rgb(64, 49, 114);
+    text-shadow: 0.5px 0.7px #E4F0C4;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.navItemPldts:hover{
+    color: rgb(64, 49, 114);
+}
+
+.navLiPldts :after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.navLiPldts :hover:after {
+    width: 100%;
+    border-bottom: #ffffff solid 2px;
+}
+
+#img-perfil {
+    width: 60px;
+    height: 60px;
+}
+
+#fotoDesplegable {
+    width: 75px !important;
+    height: 75px !important;
+}
+
+.ulNoPaddingMenu {
+    padding-left: 0 !important;
+}
+
+.inbox-icon {
+    font-size: 1rem;
+}
+
+
+.tostada {
+    -ms-flex-preferred-size: 350px;
+    flex-basis: 350px;
+    font-size: 0.875rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    width: 100%;
+  }
+  
+  .tostada:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+  
+  .tostada.showing {
+    opacity: 1;
+  }
+  
+  .tostada.show {
+    display: block;
+    opacity: 1;
+  }
+  
+  .tostada-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    color: #6c757d;
+    background-clip: padding-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+  }
+  
+  .tostada-body {
+    padding: 0.75rem;
+  }
+
+  #contenedor-notificaciones {
+    overflow-y: scroll;
+    height: 40rem;
+  }
+
+.contenedor-notificaciones .tostada {
+    flex: 0 0 auto;
+}

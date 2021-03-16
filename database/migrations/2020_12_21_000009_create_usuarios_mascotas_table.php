@@ -14,6 +14,7 @@ class CreateUsuariosMascotasTable extends Migration
     public function up()
     {
         Schema::create('usuarios_mascotas', function (Blueprint $table) {
+            $table->id();
             $table->integer('id_usuario');
             $table->integer('id_mascota');
             $table->timestamps();
