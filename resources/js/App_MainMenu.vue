@@ -34,7 +34,7 @@
             </router-link>
           </li>
           <!-- Descargas -->
-          <li class="nav-item navLiPldts dropdown">
+          <li class="nav-item navLiPldts dropdown" v-if="this.$root.device != true">
             <a
               class="nav-link dropdown-toggle navItemPldts"
               href="#"

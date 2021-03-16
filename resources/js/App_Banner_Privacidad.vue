@@ -46,6 +46,7 @@ export default {
 
     ocultarBanner() {
       $("#banner").hide();
+      localStorage.setItem("BannerPrivacidad",true);
     },
   },
 };
