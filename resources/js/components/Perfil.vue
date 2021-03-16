@@ -85,7 +85,7 @@
           role="tabpanel"
           aria-labelledby="mascota-tab"
         >
-          <perfil-mascotas :propMascotas="mascotas"></perfil-mascotas>
+          <perfil-mascotas></perfil-mascotas>
         </div>
         <!-- Zona renderizado Valoraciones -->
         <div
@@ -117,7 +117,7 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
+
 import Perfil_PerfilEditable from "./components-subparts/Perfil_PerfilEditable.vue";
 import Perfil_Mascotas from "./components-subparts/Perfil_Mascotas.vue";
 import Perfil_Valoraciones from "./components-subparts/Perfil_Valoraciones.vue";
@@ -135,7 +135,6 @@ export default {
   },
   data() {
     return {
-      mascotas: [],
       valoraciones: [],
     };
   },
@@ -147,14 +146,6 @@ export default {
           this.usuarios = response.data;
           console.log(this.usuarios);
           this.showByProf = true;
-        });
-    },
-
-    recuperarMascota() {
-      Api()
-        .post("/mascota/recuperarMascota")
-        .then((response) => {
-          this.mascotas = response.data;
         });
     },
   },
