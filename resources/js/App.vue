@@ -21,7 +21,7 @@
     <footer-pldts></footer-pldts>
 
     <!-- Banner Publi -->
-    <banner_publi></banner_publi>
+    <banner_publi v-if="banner() == false"></banner_publi>
   </div>
 </template>
 
@@ -71,6 +71,10 @@ export default {
     closeLogModal() {
       $('#formInicioSesion').modal('hide');
     },
+    banner() {
+      if (localStorage.getItem("BannerPrivacidad") == "true") return true;
+      return false;
+    },
   },
   mounted() {
     this.isAuthenticated();
@@ -81,6 +85,7 @@ export default {
       )
     ) {
       this.$root.device = true;
+      localStorage.setItem('BannerPrivacidad',true);
     }
   },
 };
