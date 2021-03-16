@@ -2,7 +2,7 @@
 @import "../../css/main_menu.css";
 </style>
 <template>
-  <div class="mainmenu-peludets container-fluid bg-azul-peludets">
+  <div class="mainmenu-peludets container-fluid bg-azul-peludets sticky-top">
     <!-- CABECERA -->
     <div class="row">
       <!-- LOGO -->
@@ -132,7 +132,7 @@ export default {
   methods: {
     scrollMenu() {
       if(document.body.scrollTop > 80 ||  document.documentElement.scrollTop > 80) {
-        $('#mainmenu-peludets').style.width = "70%";
+        $('#mainmenu-peludets').style.width = "20px";
       }
     },
   },
