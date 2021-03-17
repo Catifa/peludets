@@ -76,7 +76,7 @@ export default {
         id: "",
       },
       typing: false,
-      //socketIO: this.propSocket,
+      socketIO: this.propSocket,
       selectedDevice: undefined, // Dispositivos encontrados
     };
   },
