@@ -24,11 +24,7 @@
             <label class="form-label">
               {{ $t("perfil.mascotas.modalModificarMascotas.nombreModal") }}
             </label>
-            <input
-              type="text"
-              v-model="mascota.nombre"
-              class="form-control"
-            />
+            <input type="text" v-model="mascota.nombre" class="form-control" />
           </div>
           <!-- Especie -->
           <div class="form-group">
@@ -46,33 +42,21 @@
             <label class="form-label">
               {{ $t("perfil.mascotas.modalModificarMascotas.razaModal") }}
             </label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="mascota.raza"
-            />
+            <input type="text" class="form-control" v-model="mascota.raza" />
           </div>
           <!-- Edad -->
           <div class="form-group">
             <label class="form-label">
               {{ $t("perfil.mascotas.modalModificarMascotas.edadModal") }}
             </label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="mascota.edad"
-            />
+            <input type="text" class="form-control" v-model="mascota.edad" />
           </div>
           <!-- Peso -->
           <div class="form-group">
             <label class="form-label">
               {{ $t("perfil.mascotas.modalModificarMascotas.pesoModal") }}
             </label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="mascota.peso"
-            />
+            <input type="text" class="form-control" v-model="mascota.peso" />
           </div>
           <!-- Foto -->
           <div class="form-group">
@@ -115,33 +99,37 @@ export default {
     propHideModal: { type: Function },
     propMascota: { type: Object },
     propEspecies: { type: Array },
-    propRecuperarEspecies: { type: Function },
+    propRecuperarMascotas: { type: Function },
   },
   watch: {
     propMascota: {
       handler(val) {
-        this.mascota = val;
-      } 
-    }
+        this.mascota = Object.assign({}, val);
+      },
+    },
   },
   data() {
     return {
       mascota: {},
-      mascotaModal: {},
-      img: {}
+      img: null,
     };
   },
   methods: {
     updateMascota(id) {
       this.mascota.userId = this.$root.user.id;
-      this.mascota.photo = this.img;
+
+      if (this.img != null) {
+        this.mascota.photo = this.img;
+      }
+
       this.mascota.id = id;
       Api().post("/mascota/updateMascota", this.mascota).then(() => {
-          this.propRecuperarEspecies();
+          this.propRecuperarMascotas();
           this.propHideModal();
           Swal.fire("Mascota modificada", "", "success");
         }).catch((error) => console.log(error));
     },
+
     imgUpload(e) {
       var formData = new FormData();
       var file = e.target.files[0];
@@ -167,6 +155,13 @@ export default {
 
       reader.readAsDataURL(f);
     },
+
+    recuperarMascota() {
+      this.mascota = this.propMascota;
+    },
+  },
+  mounted() {
+    this.recuperarMascota();
   },
 };
 </script>

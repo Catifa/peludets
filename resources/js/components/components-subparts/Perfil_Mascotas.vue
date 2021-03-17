@@ -68,7 +68,7 @@
       id="anadirMascota"
       :propHideModal="hideAnadirMascotaModal"
       :propEspecies="especies"
-      :arrayMascotas="arrayMascotas"
+      :propRecuperarMascotas="recuperarMascota"
     ></modalAnadirMascota>
     <!-- Modal editar mascota -->
     <modalUpdateMascota
@@ -76,7 +76,7 @@
       :propHideModal="hideUpdateMascotaModal"
       :propEspecies="especies"
       :propMascota="mascota"
-      :propRecuperarEspecies="recuperarEspecies"
+      :propRecuperarMascotas="recuperarMascota"
     ></modalUpdateMascota>
   </div>
 </template>
