@@ -28,7 +28,6 @@
               type="text"
               v-model="mascota.nombre"
               class="form-control"
-              :placeholder="propMascota.nombre"
             />
           </div>
           <!-- Especie -->
@@ -51,7 +50,6 @@
               type="text"
               class="form-control"
               v-model="mascota.raza"
-              :placeholder="propMascota.raza"
             />
           </div>
           <!-- Edad -->
@@ -63,8 +61,6 @@
               type="text"
               class="form-control"
               v-model="mascota.edad"
-              aria-describedby="emailHelp"
-              :placeholder="propMascota.edad"
             />
           </div>
           <!-- Peso -->
@@ -76,8 +72,6 @@
               type="text"
               class="form-control"
               v-model="mascota.peso"
-              aria-describedby="emailHelp"
-              :placeholder="propMascota.peso"
             />
           </div>
           <!-- Foto -->
@@ -111,6 +105,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import Swal from "sweetalert2";
 import Api from "../../Api";
@@ -119,13 +114,21 @@ export default {
   props: {
     propHideModal: { type: Function },
     propMascota: { type: Object },
-    propEspecies: { type: Array }
+    propEspecies: { type: Array },
+    propRecuperarEspecies: { type: Function },
+  },
+  watch: {
+    propMascota: {
+      handler(val) {
+        this.mascota = val;
+      } 
+    }
   },
   data() {
     return {
       mascota: {},
-      img: {},
-      mascotas: [],
+      mascotaModal: {},
+      img: {}
     };
   },
   methods: {
@@ -133,14 +136,11 @@ export default {
       this.mascota.userId = this.$root.user.id;
       this.mascota.photo = this.img;
       this.mascota.id = id;
-      Api()
-        .post("/mascota/updateMascota", this.mascota)
-        .then(() => {
+      Api().post("/mascota/updateMascota", this.mascota).then(() => {
+          this.propRecuperarEspecies();
           this.propHideModal();
           Swal.fire("Mascota modificada", "", "success");
-        })
-        .catch((error) => console.log(error))
-        .finally(() => (this.loading = false));
+        }).catch((error) => console.log(error));
     },
     imgUpload(e) {
       var formData = new FormData();
