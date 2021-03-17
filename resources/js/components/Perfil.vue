@@ -94,9 +94,7 @@
           role="tabpanel"
           aria-labelledby="valoraciones-tab"
         >
-          <perfil-valoraciones
-            :propValoraciones="valoraciones"
-          ></perfil-valoraciones>
+          <perfil-valoraciones></perfil-valoraciones>
         </div>
         <!-- Zona renderizado Tareas -->
         <div
@@ -117,7 +115,6 @@
 </template>
 
 <script>
-
 import Perfil_PerfilEditable from "./components-subparts/Perfil_PerfilEditable.vue";
 import Perfil_Mascotas from "./components-subparts/Perfil_Mascotas.vue";
 import Perfil_Valoraciones from "./components-subparts/Perfil_Valoraciones.vue";
@@ -157,12 +154,6 @@ export default {
       .then((response) => {
         this.mascotas = response.data;
       });
-    // Recuperar Valoraciones
-    setTimeout(() => {
-      Api().post("/valoraciones/recuperarValoraciones", { id: this.$root.user.id }).then((response) => {
-          this.valoraciones = response.data;
-        });
-    }, 1000);
-  },
+  }
 };
 </script>
