@@ -103,7 +103,7 @@
           role="tabpanel"
           aria-labelledby="edita-tab"
         >
-          <Tareas></Tareas>
+          <perfil-tareas></perfil-tareas>
         </div>
       </div>
     </div>
@@ -118,6 +118,7 @@
 import Perfil_PerfilEditable from "./components-subparts/Perfil_PerfilEditable.vue";
 import Perfil_Mascotas from "./components-subparts/Perfil_Mascotas.vue";
 import Perfil_Valoraciones from "./components-subparts/Perfil_Valoraciones.vue";
+import Perfil_Tareas from "./components-subparts/Perfil_Tareas.vue";
 import Tareas from "./Tareas";
 import DatosUsuario from "./components-subparts/Perfil_DatosUsuario.vue";
 import Api from "../Api";
@@ -127,6 +128,7 @@ export default {
     "perfil-editable": Perfil_PerfilEditable,
     "perfil-mascotas": Perfil_Mascotas,
     "perfil-valoraciones": Perfil_Valoraciones,
+    "perfil-tareas": Perfil_Tareas,
     Tareas,
     "datos-usuario": DatosUsuario,
   },
