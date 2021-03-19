@@ -93,8 +93,7 @@
         <h3 class="Slogan mb-5 ">{{ $t("home.SlohanH2") }}</h3>
         <div
           id="formTrabajos"
-          class="mt-5"
-         
+          class="mt-5 p-3 rounded"
         >
           <div class="form-group">
             <label>{{ $t("home.formTrabajos") }}</label>
