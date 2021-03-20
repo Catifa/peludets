@@ -5,9 +5,15 @@
         <div class="row">
           <div class="col-md-6 mt-md-0 mt-3">
             <h5 class="text-uppercase">{{ $t("home.colaboradores") }}</h5>
-            <a href="https://es.dinahosting.com/"><img id="logo" src="../img/DinaHosting.png" alt="a" /></a>
-            <a href="https://www.dondominio.com/"><img id="logo" src="../img/DonDominio.png" alt="a" /></a>
-            <a href="https://wapps.cat/"><img id="logo" src="../img/wapps_logo.png" alt="a" /></a>
+            <a href="https://es.dinahosting.com/"
+              ><img id="logo" src="../img/DinaHosting.png" alt="a"
+            /></a>
+            <a href="https://www.dondominio.com/"
+              ><img id="logo" src="../img/DonDominio.png" alt="a"
+            /></a>
+            <a href="https://wapps.cat/"
+              ><img id="logo" src="../img/wapps_logo.png" alt="a"
+            /></a>
           </div>
           <hr class="clearfix w-100 d-md-none pb-3" />
           <div class="col-md-3 mb-md-0 mb-3">
@@ -55,11 +61,19 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="container-fluid footer-copyright text-center py-3">
-          © 2020 Peludets!
+      <div class="row justify-content-center footer-copyright">
+          <table class="justify-content-center">
+            <tr>
+              <td>© 2020 Peludets!</td>
+              <td>
+                <!--Privacidad-->
+                <router-link to="/privacidad" class="nav-link navItemPldts">
+                  <i class="fas fa-info-circle"></i>
+                </router-link>
+              </td>
+            </tr>
+          </table>
         </div>
-      </div>
     </footer>
   </div>
 </template>

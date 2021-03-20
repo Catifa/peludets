@@ -61,12 +61,7 @@
               ></a>
             </div>
           </li>
-          <!--Privacidad-->
-          <li class="nav-item navLiPldts">
-            <router-link to="/privacidad" class="nav-link navItemPldts">
-              <i class="fas fa-info-circle"></i>
-            </router-link>
-          </li>
+
         </ul>
         <!-- Seccion usuario/registro -->
         <!-- Sin registro -->
