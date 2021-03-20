@@ -126,6 +126,15 @@
         "guardarModal": "Modificar",
         "cerrarModal": "Tancar"
       }
+    },
+    "tareas": {
+      "hora": "Hora:",
+      "nombre": "Nom de la mascota:",
+      "especie": "Espècie:",
+      "cp": "Codi postal:",
+      "solicitud": "Sol·licitud:",
+      "btnAceptar": "Acceptar",
+      "btnRechazar": "Rebutjar"
     }
   }
 

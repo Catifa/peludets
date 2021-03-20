@@ -95,7 +95,8 @@ export default {
   props: {
     propHideModal: { type: Function },
     propMascotas: { type: Array },
-    propEspecies: { type: Array }
+    propEspecies: { type: Array },
+    propRecuperarMascotas: { type: Function }
   },
   data() {
     return {
@@ -132,14 +133,11 @@ export default {
     registerMascota() {
       this.mascota.userId = this.$root.user.id;
       this.mascota.photo = this.img;
-      Api()
-        .post("/mascota/registerMascota", this.mascota)
-        .then(() => {
-          this.propMascotas.push(this.mascota);
+      Api().post("/mascota/registerMascota", this.mascota).then(() => {
+          this.propRecuperarMascotas();
           this.propHideModal();
           Swal.fire("Registro completado", "", "success");
-        })
-        .catch((error) => console.log(error));
+        }).catch((error) => console.log(error));
     },
   }
 };

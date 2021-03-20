@@ -4,7 +4,7 @@
 <template>
   <div class="container-fluid">
     <!-- Banner Info -->
-    <div id="banner-info" class="row">
+    <div id="banner-info" class="row" v-if="banner() == false">
       <div class="col-lg-6 col-9 rounded banner-info mt-3 mx-auto">
         <!-- Boton cerrar Banner -->
         <div class="text-right">
@@ -17,7 +17,7 @@
             {{ $t("explorador.bannerInfoTexto1") }}
           </p>
           <p>
-           {{ $t("explorador.bannerInfoTexto2") }}
+            {{ $t("explorador.bannerInfoTexto2") }}
           </p>
         </div>
       </div>
@@ -173,12 +173,16 @@ export default {
 
     // Obtener un Array de todos los datos de la BDD
     obtenerDatosMapa() {
-      Api().post("/explorador/getSitiosInteres").then((response) => {
-        this.sitiosInteres = response.data;
-      });
-      Api().post("/explorador/getOfertas").then((response) => {
-        this.trabajosDisponibles = response.data;
-      });
+      Api()
+        .post("/explorador/getSitiosInteres")
+        .then((response) => {
+          this.sitiosInteres = response.data;
+        });
+      Api()
+        .post("/explorador/getOfertas")
+        .then((response) => {
+          this.trabajosDisponibles = response.data;
+        });
     },
 
     // Obtener geolocalizacion
@@ -209,66 +213,74 @@ export default {
       $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
       var arrSitios = [];
-      Api().post("/explorador/getSitiosInteres").then((res) => {
-        //console.log(res.data);
-        res.data.forEach((element) => {
-          let dist = utils.calcDistancia(element, geoloc);
-          let obj = {
-            sitioObject: element,
-            distancia: dist,
-          };
-          arrSitios.push(obj);
-        });
-        arrSitios.sort((a, b) => (a.distancia > b.distancia ? 1 : -1));
+      Api()
+        .post("/explorador/getSitiosInteres")
+        .then((res) => {
+          //console.log(res.data);
+          res.data.forEach((element) => {
+            let dist = utils.calcDistancia(element, geoloc);
+            let obj = {
+              sitioObject: element,
+              distancia: dist,
+            };
+            arrSitios.push(obj);
+          });
+          arrSitios.sort((a, b) => (a.distancia > b.distancia ? 1 : -1));
 
-        arrSitios.forEach((element) => {
-          let obj = {
-            nombre: element.sitioObject.nombre,
-            descripcion: element.sitioObject.descripcion,
-            photo: element.sitioObject.photo,
-            latLng: L.latLng(element.sitioObject.lat, element.sitioObject.lon),
-          };
-          this.tarjetas.push(obj);
+          arrSitios.forEach((element) => {
+            let obj = {
+              nombre: element.sitioObject.nombre,
+              descripcion: element.sitioObject.descripcion,
+              photo: element.sitioObject.photo,
+              latLng: L.latLng(
+                element.sitioObject.lat,
+                element.sitioObject.lon
+              ),
+            };
+            this.tarjetas.push(obj);
+          });
+          //console.log(arrSitios);
         });
-        //console.log(arrSitios);
-      });
     },
 
     listarOfertas(geoloc) {
       $("#cards").html("");
       //geoloc es la posicion del usuario en el mapa
       var arrOfertas = [];
-      Api().post("/explorador/getOfertas").then((res) => {
-        //console.log(res.data);
-        res.data.forEach((element) => {
-          let dist = utils.calcDistancia(element, geoloc);
-          let obj = {
-            ofertaObject: element,
-            distancia: dist,
-          };
-          arrOfertas.push(obj);
-        });
-        arrOfertas.sort((a, b) => (a.distancia > b.distancia ? 1 : -1));
+      Api()
+        .post("/explorador/getOfertas")
+        .then((res) => {
+          //console.log(res.data);
+          res.data.forEach((element) => {
+            let dist = utils.calcDistancia(element, geoloc);
+            let obj = {
+              ofertaObject: element,
+              distancia: dist,
+            };
+            arrOfertas.push(obj);
+          });
+          arrOfertas.sort((a, b) => (a.distancia > b.distancia ? 1 : -1));
 
-        arrOfertas.forEach((element) => {
-          let obj = {
-            idUser: element.ofertaObject.idUser,
-            nombre: element.ofertaObject.nombre,
-            descripcion: element.ofertaObject.descripcion,
-            photo: element.ofertaObject.photo,
-            latLng: L.latLng(
-              element.ofertaObject.lat,
-              element.ofertaObject.lon
-            ),
-          };
-          this.tarjetas.push(obj);
+          arrOfertas.forEach((element) => {
+            let obj = {
+              idUser: element.ofertaObject.idUser,
+              nombre: element.ofertaObject.nombre,
+              descripcion: element.ofertaObject.descripcion,
+              photo: element.ofertaObject.photo,
+              latLng: L.latLng(
+                element.ofertaObject.lat,
+                element.ofertaObject.lon
+              ),
+            };
+            this.tarjetas.push(obj);
+          });
+          //console.log(arrOfertas);
         });
-        //console.log(arrOfertas);
-      });
     },
 
     hideBannerInfo() {
       document.getElementById("banner-info").style.display = "none";
+      localStorage.setItem("BannerExplorer", true);
     },
 
     mostrarSitios() {
@@ -279,6 +291,10 @@ export default {
     mostrarTrabajos() {
       this.mostrarSitiosInteres = false;
       this.mostrarTrabajosDisponibles = true;
+    },
+    banner() {
+      if (localStorage.getItem("BannerExplorer") == "true") return true;
+      return false;
     },
   },
   mounted() {

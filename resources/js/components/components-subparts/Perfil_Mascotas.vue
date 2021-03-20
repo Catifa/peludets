@@ -14,13 +14,13 @@
     <div id="cards-mascotas" class="row mt-2">
       <div
         class="col-lg-3 col-md-6 col-12 mt-2 card-mascotas"
-        v-for="mascota in propMascotas"
+        v-for="mascota in arrayMascotas"
         :key="mascota.id"
       >
         <div class="card" style="max-width: 18rem">
           <!-- Imagen -->
           <img
-            style="max-width:286px; max-height: 180px"
+            style="max-width: 286px; max-height: 180px"
             v-bind:src="mascota.photo"
             class="card-img-top"
             alt="Imatge Mascota"
@@ -68,15 +68,15 @@
       id="anadirMascota"
       :propHideModal="hideAnadirMascotaModal"
       :propEspecies="especies"
-      :propMascotas="propMascotas"
+      :propRecuperarMascotas="recuperarMascota"
     ></modalAnadirMascota>
     <!-- Modal editar mascota -->
-    <modalUpdateMascota 
+    <modalUpdateMascota
       id="updateMascota"
       :propHideModal="hideUpdateMascotaModal"
       :propEspecies="especies"
       :propMascota="mascota"
-      :propMascotas="propMascotas"
+      :propRecuperarMascotas="recuperarMascota"
     ></modalUpdateMascota>
   </div>
 </template>
@@ -92,12 +92,13 @@ export default {
     modalAnadirMascota: Mascotas_AnadirModal,
     modalUpdateMascota: Mascotas_UpdateModal,
   },
-  props: ["propMascotas"],
   data() {
     return {
       especies: undefined,
       // Variable que se le pasara al modal con la mascota
-      mascota: {}
+      mascota: {},
+      // Variable que guarda las mascotas recuperada de la base de datos
+      arrayMascotas: [],
     };
   },
   methods: {
@@ -115,12 +116,10 @@ export default {
       $("#updateMascota").modal("hide");
     },
     deleteMascota(id) {
-      Api()
-        .post("/mascota/deleteMascota", { id })
-        .then(() => {
+      Api().post("/mascota/deleteMascota", { id }).then(() => {
           // Eliminar el objeto mascota seleccionado
-          this.propMascotas.splice(
-            this.propMascotas.findIndex((i) => {
+          this.arrayMascotas.splice(
+            this.arrayMascotas.findIndex((i) => {
               return i.id === id;
             }),
             1
@@ -129,13 +128,20 @@ export default {
         })
         .catch((error) => console.log(error));
     },
+    recuperarMascota() {
+      Api().post("/mascota/recuperarMascota").then((response) => {
+          this.arrayMascotas = response.data;
+        });
+    },
+    recuperarEspecies() {
+      Api().get("/especie/getAll").then((response) => {
+          this.especies = response.data;
+        });
+    },
   },
   mounted() {
-    Api()
-      .get("/especie/getAll")
-      .then((response) => {
-        this.especies = response.data;
-      });
+    this.recuperarEspecies();
+    this.recuperarMascota();
   },
 };
 </script>

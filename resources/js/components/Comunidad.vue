@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <!-- Banner Info -->
-    <div id="banner-info" class="row">
+    <div id="banner-info" class="row" v-if="banner() == false">
       <div class="col-lg-4 col-md-8 col-12 rounded banner-info mt-3 mx-auto">
         <!-- Boton cerrar Banner -->
         <div class="text-right">
@@ -201,6 +201,11 @@ export default {
     },
     hideBannerInfo() {
       document.getElementById("banner-info").style.display = "none";
+      localStorage.setItem("BannerComunidad", true);
+    },
+    banner() {
+      if (localStorage.getItem("BannerComunidad") == "true") return true;
+      return false;
     },
   },
   mounted() {
@@ -210,9 +215,11 @@ export default {
     }
   },
   created() {
-    Api().get("/profesiones/getAll").then((response) => {
-      this.serviciosDisponibles = response.data;
-    });
+    Api()
+      .get("/profesiones/getAll")
+      .then((response) => {
+        this.serviciosDisponibles = response.data;
+      });
   },
 };
 </script>

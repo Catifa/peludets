@@ -144,7 +144,7 @@ export default {
       user: {},
       solicitud: {},
       showChat: false,
-      socketIO: socket("http://peludets.ddns.net:1337"),
+      socketIO: socket("https://peludets.ddns.net:1337"),
       room: {},
       valoraciones: [],
     };

@@ -39,7 +39,11 @@ class SolicitudController extends Controller
      * )
      */
 
-
+    /**
+     * Enviar solicitud a un usuario
+     * 
+     * @return Array
+     */
     protected function enviarSolicitud(Request $request)
     {
         switch ($request->solicitud) {
@@ -148,7 +152,12 @@ class SolicitudController extends Controller
      *     )
      * )
      */
-
+    
+     /**
+     * Recuperar lista de solicitudes de un usuario
+     * 
+     * @return Array
+     */
      protected function getAll(Request $request)
      {
         return Solicitud::where('idDestinatario',$request->user()->id)->get();

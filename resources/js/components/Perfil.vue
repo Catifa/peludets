@@ -85,7 +85,7 @@
           role="tabpanel"
           aria-labelledby="mascota-tab"
         >
-          <perfil-mascotas :propMascotas="mascotas"></perfil-mascotas>
+          <perfil-mascotas></perfil-mascotas>
         </div>
         <!-- Zona renderizado Valoraciones -->
         <div
@@ -94,9 +94,7 @@
           role="tabpanel"
           aria-labelledby="valoraciones-tab"
         >
-          <perfil-valoraciones
-            :propValoraciones="valoraciones"
-          ></perfil-valoraciones>
+          <perfil-valoraciones></perfil-valoraciones>
         </div>
         <!-- Zona renderizado Tareas -->
         <div
@@ -105,7 +103,7 @@
           role="tabpanel"
           aria-labelledby="edita-tab"
         >
-          <Tareas></Tareas>
+          <perfil-tareas></perfil-tareas>
         </div>
       </div>
     </div>
@@ -117,10 +115,10 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
 import Perfil_PerfilEditable from "./components-subparts/Perfil_PerfilEditable.vue";
 import Perfil_Mascotas from "./components-subparts/Perfil_Mascotas.vue";
 import Perfil_Valoraciones from "./components-subparts/Perfil_Valoraciones.vue";
+import Perfil_Tareas from "./components-subparts/Perfil_Tareas.vue";
 import Tareas from "./Tareas";
 import DatosUsuario from "./components-subparts/Perfil_DatosUsuario.vue";
 import Api from "../Api";
@@ -130,12 +128,12 @@ export default {
     "perfil-editable": Perfil_PerfilEditable,
     "perfil-mascotas": Perfil_Mascotas,
     "perfil-valoraciones": Perfil_Valoraciones,
+    "perfil-tareas": Perfil_Tareas,
     Tareas,
     "datos-usuario": DatosUsuario,
   },
   data() {
     return {
-      mascotas: [],
       valoraciones: [],
     };
   },
@@ -149,14 +147,6 @@ export default {
           this.showByProf = true;
         });
     },
-
-    recuperarMascota() {
-      Api()
-        .post("/mascota/recuperarMascota")
-        .then((response) => {
-          this.mascotas = response.data;
-        });
-    },
   },
 
   mounted() {
@@ -166,12 +156,6 @@ export default {
       .then((response) => {
         this.mascotas = response.data;
       });
-    // Recuperar Valoraciones
-    setTimeout(() => {
-      Api().post("/valoraciones/recuperarValoraciones", { id: this.$root.user.id }).then((response) => {
-          this.valoraciones = response.data;
-        });
-    }, 1000);
-  },
+  }
 };
 </script>

@@ -24,12 +24,7 @@
             <label class="form-label">
               {{ $t("perfil.mascotas.modalModificarMascotas.nombreModal") }}
             </label>
-            <input
-              type="text"
-              v-model="mascota.nombre"
-              class="form-control"
-              :placeholder="propMascota.nombre"
-            />
+            <input type="text" v-model="mascota.nombre" class="form-control" />
           </div>
           <!-- Especie -->
           <div class="form-group">
@@ -47,38 +42,21 @@
             <label class="form-label">
               {{ $t("perfil.mascotas.modalModificarMascotas.razaModal") }}
             </label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="mascota.raza"
-              :placeholder="propMascota.raza"
-            />
+            <input type="text" class="form-control" v-model="mascota.raza" />
           </div>
           <!-- Edad -->
           <div class="form-group">
             <label class="form-label">
               {{ $t("perfil.mascotas.modalModificarMascotas.edadModal") }}
             </label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="mascota.edad"
-              aria-describedby="emailHelp"
-              :placeholder="propMascota.edad"
-            />
+            <input type="text" class="form-control" v-model="mascota.edad" />
           </div>
           <!-- Peso -->
           <div class="form-group">
             <label class="form-label">
               {{ $t("perfil.mascotas.modalModificarMascotas.pesoModal") }}
             </label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="mascota.peso"
-              aria-describedby="emailHelp"
-              :placeholder="propMascota.peso"
-            />
+            <input type="text" class="form-control" v-model="mascota.peso" />
           </div>
           <!-- Foto -->
           <div class="form-group">
@@ -111,6 +89,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import Swal from "sweetalert2";
 import Api from "../../Api";
@@ -119,29 +98,38 @@ export default {
   props: {
     propHideModal: { type: Function },
     propMascota: { type: Object },
-    propEspecies: { type: Array }
+    propEspecies: { type: Array },
+    propRecuperarMascotas: { type: Function },
+  },
+  watch: {
+    propMascota: {
+      handler(val) {
+        this.mascota = Object.assign({}, val);
+      },
+    },
   },
   data() {
     return {
       mascota: {},
-      img: {},
-      mascotas: [],
+      img: null,
     };
   },
   methods: {
     updateMascota(id) {
       this.mascota.userId = this.$root.user.id;
-      this.mascota.photo = this.img;
+
+      if (this.img != null) {
+        this.mascota.photo = this.img;
+      }
+
       this.mascota.id = id;
-      Api()
-        .post("/mascota/updateMascota", this.mascota)
-        .then(() => {
+      Api().post("/mascota/updateMascota", this.mascota).then(() => {
+          this.propRecuperarMascotas();
           this.propHideModal();
           Swal.fire("Mascota modificada", "", "success");
-        })
-        .catch((error) => console.log(error))
-        .finally(() => (this.loading = false));
+        }).catch((error) => console.log(error));
     },
+
     imgUpload(e) {
       var formData = new FormData();
       var file = e.target.files[0];
@@ -167,6 +155,13 @@ export default {
 
       reader.readAsDataURL(f);
     },
+
+    recuperarMascota() {
+      this.mascota = this.propMascota;
+    },
+  },
+  mounted() {
+    this.recuperarMascota();
   },
 };
 </script>
