@@ -7,6 +7,7 @@ import Chat from './components/Chat.vue';
 import AdminPanel from './components/AdminPanel.vue';
 import VueRouter from 'vue-router';
 import Api from './Api';
+import Privacidad from './components/Privacidad.vue';
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -33,6 +34,11 @@ export const routes = [
         name: 'comunidad',
         path: '/comunidad',
         component: Comunidad
+    },
+    {
+        name: 'privacidad',
+        path: '/privacidad',
+        component: Privacidad
     },
     {
         path: '*',

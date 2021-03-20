@@ -33,6 +33,7 @@
               {{ $t("app.menuProfesionales") }}
             </router-link>
           </li>
+
           <!-- Descargas -->
           <li class="nav-item navLiPldts dropdown">
             <a
@@ -59,6 +60,12 @@
                 >Android &nbsp;&nbsp; <i class="fab fa-android"></i
               ></a>
             </div>
+          </li>
+          <!--Privacidad-->
+          <li class="nav-item navLiPldts">
+            <router-link to="/privacidad" class="nav-link navItemPldts">
+              <i class="fas fa-info-circle"></i>
+            </router-link>
           </li>
         </ul>
         <!-- Seccion usuario/registro -->
@@ -162,7 +169,7 @@
         </ul>
       </div>
     </nav>
-    <modal-inbox  ref="inbox" id="modal-inbox"></modal-inbox>
+    <modal-inbox ref="inbox" id="modal-inbox"></modal-inbox>
   </div>
 </template>
 
