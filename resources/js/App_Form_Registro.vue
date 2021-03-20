@@ -81,12 +81,37 @@
               v-model="user.password"
             />
           </div>
+          <!-- Privacidad -->
+          <div class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  name=""
+                  id=""
+                  value="checkedValue"
+                  @click="mostrarBoton()"
+                />
+                He llegit i accepto la Política de Privacitat i les Normes de
+                Conducta
+                <router-link to="/privacidad" class="nav-link navItemPldts">
+                  Politiques de privacitat
+                </router-link>
+                <router-link to="/conducta" class="nav-link navItemPldts">
+                  Normes de conducta
+                </router-link>
+              </label>
+            </div>
+          </div>
         </div>
 
         <div class="modal-footer bg-azul-peludets">
           <button
+            id="botonRegistro"
             type="submit"
             class="btn btn-azul-peludets"
+            style="display: none"
             @click="register()"
           >
             Registrate!
@@ -127,7 +152,6 @@ export default {
       Api()
         .post("/auth/register", this.user)
         .then((response) => {
-
           localStorage.setItem("token", response.data.token);
           this.hideReg();
           Swal.fire(
@@ -144,6 +168,9 @@ export default {
         })
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
+    },
+    mostrarBoton() {
+      document.getElementById("botonRegistro").style.display = "block";
     },
     file(e) {
       var formData = new FormData();

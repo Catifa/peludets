@@ -8,6 +8,8 @@ import AdminPanel from './components/AdminPanel.vue';
 import VueRouter from 'vue-router';
 import Api from './Api';
 import Privacidad from './components/Privacidad.vue';
+import Conducta from './components/Conducta.vue';
+
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -39,6 +41,11 @@ export const routes = [
         name: 'privacidad',
         path: '/privacidad',
         component: Privacidad
+    },
+    {
+        name: 'conducta',
+        path: '/conducta',
+        component: Conducta
     },
     {
         path: '*',
