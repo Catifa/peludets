@@ -98,7 +98,7 @@
                 <a href="/privacidad" class="nav-link navItemPldts" target="_blank">
                   Politiques de privacitat
                 </a>
-                <a href=="/conducta" class="nav-link navItemPldts" target="_blank">
+                <a href="/conducta" class="nav-link navItemPldts" target="_blank">
                   Normes de conducta
                 </a>
               </label>
