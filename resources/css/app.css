@@ -17,8 +17,8 @@ body {
 }
 
 /************************************************************
-  *                     Estilos Peludets                      *
-  *************************************************************/
+*                     Estilos Peludets                      *
+*************************************************************/
 
 /* Backgrounds colors */
 
@@ -128,3 +128,25 @@ body {
     background-color: #f2e7c9;
     border-radius: 15px;
 }
+
+/************************************************************
+*                           Chat                            *
+*************************************************************/
+.chat-popup {
+    z-index: 9;
+    bottom: 1rem;
+    height: 25rem;
+}
+
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateY(10px);
+    opacity: 0;
+}
+

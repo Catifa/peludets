@@ -22,6 +22,9 @@
 
     <!-- Banner Publi -->
     <banner_publi v-if="banner() == false"></banner_publi>
+
+    <!-- Chat -->
+    <chat></chat>
   </div>
 </template>
 
@@ -31,6 +34,7 @@ import FormRegistro from "./App_Form_Registro.vue";
 import MainMenu from "./App_MainMenu.vue";
 import Footer from "./App_Footer.vue";
 import BannerPubli from "./App_Banner_Privacidad.vue";
+import Chat from "./App_Chat.vue";
 import Api from './Api';
 
 export default {
@@ -40,6 +44,7 @@ export default {
     footerPldts: Footer,
     main_menu: MainMenu,
     banner_publi: BannerPubli,
+    chat: Chat
   },
   methods: {
     isAuthenticated() {
