@@ -87,7 +87,8 @@ class UsuariosController extends Controller
      * )
      */
 
-    protected function searchByProf(Request $request)
+    
+     protected function searchByProf(Request $request)
     {
     
         return User::select('users.id', 'users.name', 'users.lastname','users.photo')
@@ -197,7 +198,13 @@ class UsuariosController extends Controller
      * )
      */
 
-    protected function getProfText(Request $request)
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
+     protected function getProfText(Request $request)
     {
 
         $id = $request->id;
@@ -238,7 +245,13 @@ class UsuariosController extends Controller
      *     )
      * )
      */
-    protected function setProfText(Request $request)
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
+     protected function setProfText(Request $request)
     {
 
         $id = $request->id;
@@ -248,12 +261,24 @@ class UsuariosController extends Controller
     }
 
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     protected function setProfilePhotoUser(Request $request)
     {
         User::where('id', $request->user()->id)
             ->update(['photo' => $request->img,]);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function updateUsuario(Request $request)
     {
 
@@ -274,6 +299,12 @@ class UsuariosController extends Controller
         ]);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function recuperarUser(Request $request)
     {
         return User::where('id', '=', $request->id)->get();

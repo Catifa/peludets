@@ -10,6 +10,16 @@ class Admin extends Authenticatable
 {
     use Notifiable;
 
+    /**
+     * Undocumented variable
+     *
+     * @var string
+     */
     protected $table = 'admins';
+    /**
+     * Undocumented variable
+     *
+     * @var array
+     */
     protected $guarded = array();
 }

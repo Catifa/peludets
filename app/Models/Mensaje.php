@@ -9,8 +9,18 @@ class Mensaje extends Model
 {
     use HasFactory;
 
+    /**
+     * Undocumented variable
+     *
+     * @var string
+     */
     protected $table = 'chats';
 
+    /**
+     * Undocumented variable
+     *
+     * @var array
+     */
     protected $fillable = [
         'idEmisor',
         'idRemitente',

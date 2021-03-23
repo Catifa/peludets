@@ -9,6 +9,11 @@ class Notificaciones extends Model
 {
     use HasFactory;
 
+    /**
+     * Undocumented variable
+     *
+     * @var string
+     */
     protected $table = 'notificaciones';
     
     /**
