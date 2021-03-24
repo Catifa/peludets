@@ -2,84 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Trabajo;
 use App\Models\Trabajos;
 use Illuminate\Http\Request;
 
 class TrabajosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected function get(Request $request)    //Get trabajos por remitente
     {
-        //
+        return Trabajo::where('id_remitente', $request->user()->id)->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    protected function getByDestinatario(Request $request)  //Get trabajos por destinatario
     {
-        //
+        return Trabajo::where('id_destinatario', $request->user()->id)->get();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    protected function set(Request $request)    //Set trabajo desde destinatario
     {
-        //
+        return  Trabajo::insert([
+            'id_remitente' =>  $request->idRemitente,
+            'id_destinatario' => $request->user()->id,
+            'solicitud' => $request->solicitud,
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Trabajos  $trabajos
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Trabajos $trabajos)
+    protected function updateRemitente(Request $request)    //Update por remitente
     {
-        //
+        return Trabajo::where('id_remitente', $request->user()->id)->update([
+            'check_remitente' => 'S'
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Trabajos  $trabajos
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Trabajos $trabajos)
+    protected function updateDestinatario(Request $request)    //Update por destinatario
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Trabajos  $trabajos
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Trabajos $trabajos)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Trabajos  $trabajos
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Trabajos $trabajos)
-    {
-        //
+        return Trabajo::where('id_destinatario', $request->user()->id)->update([
+            'check_desitnatario' => 'S'
+        ]);
     }
 }
