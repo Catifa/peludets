@@ -17,8 +17,6 @@ class Trabajo extends Model
     protected $table = 'trabajos';
 
     protected $fillable = [
-
-        
     'id_remitente',
     'id_destinatario',
     'solicitud',
