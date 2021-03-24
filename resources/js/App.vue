@@ -24,7 +24,7 @@
     <banner_publi v-if="banner() == false"></banner_publi>
 
     <!-- Chat -->
-    <chat></chat>
+    <chat v-if="this.$root.user != null"></chat>
   </div>
 </template>
 
@@ -50,8 +50,10 @@ export default {
     isAuthenticated() {
       Api().get("/authentication").then((res) => {
           this.getUser();
+          return true;
       }).catch(error => {
         this.$root.user = null;
+        return false;
       });
     },
     getUser() {
