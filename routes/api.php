@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\EspecieController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\MailController;
@@ -126,4 +127,11 @@ Route::group(['prefix' => 'notificaciones'], function () {
     Route::post('add',[NotificacionesController::class,'add'])->middleware('auth:sanctum');
     Route::post('getAll',[NotificacionesController::class,'getAll'])->middleware('auth:sanctum');
     Route::post('delete',[NotificacionesController::class,'delete'])->middleware('auth:sanctum');
+});
+
+// Contactos
+Route::group(['prefix' => 'contactos'], function () {
+    Route::post('get', [ContactosController::class, 'get'])->middleware('auth:sanctum');
+    Route::post('set', [ContactosController::class, 'set'])->middleware('auth:sanctum');
+    Route::post('remove', [ContactosController::class, 'remove'])->middleware('auth:sanctum');
 });
