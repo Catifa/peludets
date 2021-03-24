@@ -8,8 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class InBox extends Model
 {
     use HasFactory;
+    /**
+     * Undocumented variable
+     *
+     * @var string
+     */
     protected $table = 'inbox';
 
+    /**
+     * Undocumented variable
+     *
+     * @var array
+     */
     protected $fillable = [
             'idUser',
             'category',

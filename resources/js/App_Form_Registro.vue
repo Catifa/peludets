@@ -95,12 +95,12 @@
                 />
                 He llegit i accepto la Política de Privacitat i les Normes de
                 Conducta
-                <router-link to="/privacidad" class="nav-link navItemPldts">
+                <a href="/privacidad" class="nav-link navItemPldts" target="_blank">
                   Politiques de privacitat
-                </router-link>
-                <router-link to="/conducta" class="nav-link navItemPldts">
+                </a>
+                <a href="/conducta" class="nav-link navItemPldts" target="_blank">
                   Normes de conducta
-                </router-link>
+                </a>
               </label>
             </div>
           </div>

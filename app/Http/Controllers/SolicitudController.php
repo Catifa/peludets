@@ -39,11 +39,13 @@ class SolicitudController extends Controller
      * )
      */
 
-    /**
-     * Enviar solicitud a un usuario
-     * 
-     * @return Array
-     */
+
+     /**
+      * Enviar solicitud a un usuario
+      *
+      * @param Request $request
+      * @return void
+      */
     protected function enviarSolicitud(Request $request)
     {
         switch ($request->solicitud) {

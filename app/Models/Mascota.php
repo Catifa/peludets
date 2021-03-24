@@ -8,10 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Mascota extends Model
 {
     // Tabla donde se guarda el objeto Mascota
-    protected $table = 'mascotas';
+    /**
+     * Undocumented variable
+     *
+     * @var string
+     */
+    /**
+     * Undocumented variable
+     *
+     * @var string
+     */
+     protected $table = 'mascotas';
 
     use HasFactory;
     
+    /**
+     * Undocumented variable
+     *
+     * @var array
+     */
     protected $fillable = [
         'id_usuario',
         'nombre',
