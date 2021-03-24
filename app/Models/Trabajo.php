@@ -15,6 +15,18 @@ class Trabajo extends Model
      * @var string
      */
     protected $table = 'trabajos';
+
+    protected $fillable = [
+
+        
+    'id_remitente',
+    'id_destinatario',
+    'solicitud',
+    'check_remitente',
+    'check_desitnatario'
+    ];
+
+
     
     use HasFactory;
 }

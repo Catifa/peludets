@@ -14,10 +14,13 @@ class CreateTrabajosTable extends Migration
     public function up()
     {
         Schema::create('trabajos', function (Blueprint $table) {
+
             $table->id();
-            $table->integer('id_responsable');
-            $table->string('acuerdo');
-            $table->string('check_responsable');
+            $table->integer('id_remitente');
+            $table->integer('id_destinatario');
+            $table->json('solicitud');
+            $table->string('check_remitente');
+            $table->string('check_desitnatario');
             $table->timestamps();
         });
     }
