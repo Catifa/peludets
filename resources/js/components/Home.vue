@@ -206,7 +206,7 @@ export default {
           icon: "info",
           html:
             
-            '<a class="btn btn-lila-peludets" href="https://play.google.com/store/apps/details?id=com.peludets.com&gl=ES"><img src="https://play-lh.googleusercontent.com/oJzG9hgUlaOs0kY7xIifTQCA41zp23KmSD0BVfk-N62cVQGoKD14tvy_hDTXzq6I5w=s180-rw" alt="Peludets" width="50%"></a><br> ',
+            '<a class="btn btn-lila-peludets" href="https://play.google.com/store/apps/details?id=com.peludets.com&gl=ES"><img src="https://www.gstatic.com/android/market_images/web/play_prism_hlock_2x.png" alt="Peludets" width="50%"></a><br> ',
           showCloseButton: true,
           showConfirmButton: false,
 
