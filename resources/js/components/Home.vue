@@ -202,7 +202,7 @@ export default {
       .then((response) => {
         this.profesiones = response.data;
         Swal.fire({
-          title: "<strong>Descarrega't gratis Peludets des de la play store</strong>",
+          title: "<strong>Descarrega't l'app de Peludets des de la play store</strong>",
           icon: "info",
           html:
             
