@@ -88,13 +88,12 @@
 
       <!-- Formulario -->
 
-      <div class="col-lg-3 col-md-6 col-10 mt-4 mx-auto align-self-center rounded">
+      <div
+        class="col-lg-3 col-md-6 col-10 mt-4 mx-auto align-self-center rounded"
+      >
         <h1 class="Slogan lila-peludets">{{ $t("home.SlohanH1") }}</h1>
-        <h3 class="Slogan mb-5 ">{{ $t("home.SlohanH2") }}</h3>
-        <div
-          id="formTrabajos"
-          class="mt-5 p-3 rounded"
-        >
+        <h3 class="Slogan mb-5">{{ $t("home.SlohanH2") }}</h3>
+        <div id="formTrabajos" class="mt-5 p-3 rounded">
           <div class="form-group">
             <label>{{ $t("home.formTrabajos") }}</label>
             <select class="form-control" v-model="prof">
@@ -180,6 +179,7 @@
 </template>
 <script>
 import Api from "../Api";
+import Swal from "sweetalert2";
 
 export default {
   data() {
@@ -201,6 +201,16 @@ export default {
       .get("/profesiones/getAll")
       .then((response) => {
         this.profesiones = response.data;
+        Swal.fire({
+          title: "<strong>Descarrega't l'app de Peludets des de la play store</strong>",
+          icon: "info",
+          html:
+            
+            '<a class="btn btn-lila-peludets" href="https://play.google.com/store/apps/details?id=com.peludets.com&gl=ES"><img src="https://www.gstatic.com/android/market_images/web/play_prism_hlock_2x.png" alt="Peludets" width="50%"></a><br> ',
+          showCloseButton: true,
+          showConfirmButton: false,
+
+        });
       });
   },
 };
