@@ -32,7 +32,7 @@
             </li>
           </ul>
           <div class="card-body text-center">
-            <button class="btn btn-azul-peludets btn-sm mr-3">
+            <button class="btn btn-azul-peludets btn-sm mr-3" @click="anadirEvento(solicitud); eliminarEvento(solicitud)">
               {{ $t("perfil.tareas.btnAceptar") }}
             </button>
             <button class="btn btn-danger btn-sm">
@@ -41,18 +41,35 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-8"></div>
+      <!-- Calendario -->
+      <div class="col-lg-8">
+        <full-calendar :options="calendarOptions" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Api from "../../Api";
+import FullCalendar from "@fullcalendar/vue";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import caLocale from "@fullcalendar/core/locales/ca";
 
 export default {
+  components: {
+    FullCalendar,
+  },
   data() {
     return {
       arraySolicitud: [],
+      calendarOptions: {
+        plugins: [dayGridPlugin, interactionPlugin],
+        initialView: "dayGridMonth",
+        locale: caLocale,
+        dateClick: this.handleDateClick,
+        events: []
+      },
     };
   },
   methods: {
@@ -66,6 +83,34 @@ export default {
           });
         });
     },
+
+    anadirEvento(solicitud) {
+      this.calendarOptions.events.push(
+        {
+          title: solicitud.solicitud,
+          date: solicitud.fecha,
+          extendedProps: {
+            hora: solicitud.hora,
+            nombre: solicitud.nombre,
+            especia: solicitud.especie,
+            peso: solicitud.peso,
+            cp: solicitud.cp,
+            entregaMascota: solicitud.entregaMascota
+          }
+
+        });
+    },
+
+    handleDateClick(args) {
+      let fechaDia = args.dateStr;
+      console.log(fechaDia);
+      this.calendarOptions.events.forEach(element => {
+        console.log(element.date);
+        if(fechaDia == element.date) {
+          console.log(element);
+        }
+      });
+    }
   },
   mounted() {
     this.getSolicitudes();
