@@ -63,7 +63,8 @@ class SolicitudController extends Controller
 
                 Solicitud::create([
                     'solicitud' => $request->getContent(),
-                    'id_usuario_solicitado' => $request->idDestinatario
+                    'idDestinatario' => $request->idDestinatario,
+                    'idRemitente' => $request->user()->id
                 ]);
             break;
 
@@ -84,7 +85,8 @@ class SolicitudController extends Controller
 
                 Solicitud::create([
                     'solicitud' => $request->getContent(),
-                    'id_usuario_solicitado' => $request->idDestinatario
+                    'idDestinatario' => $request->idDestinatario,
+                    'idRemitente' => $request->user()->id
                 ]);
             break;
 
@@ -103,7 +105,8 @@ class SolicitudController extends Controller
 
                 Solicitud::create([
                     'solicitud' => $request->getContent(),
-                    'id_usuario_solicitado' => $request->idDestinatario
+                    'idDestinatario' => $request->idDestinatario,
+                    'idRemitente' => $request->user()->id
                 ]);
             break;
 
@@ -123,7 +126,8 @@ class SolicitudController extends Controller
 
                 Solicitud::create([
                     'solicitud' => $request->getContent(),
-                    'id_usuario_solicitado' => $request->idDestinatario
+                    'idDestinatario' => $request->idDestinatario,
+                    'idRemitente' => $request->user()->id
                 ]);
             break;
 
