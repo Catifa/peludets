@@ -95,7 +95,7 @@
                 />
                 He llegit i accepto la Política de Privacitat i les Normes de
                 Conducta
-                <a href="/privacidat" class="nav-link navItemPldts" target="_blank">
+                <a href="/privacitat" class="nav-link navItemPldts" target="_blank">
                   Politiques de privacitat
                 </a>
                 <a href="/conducta" class="nav-link navItemPldts" target="_blank">
