@@ -7,7 +7,7 @@ import Chat from './components/Chat.vue';
 import AdminPanel from './components/AdminPanel.vue';
 import VueRouter from 'vue-router';
 import Api from './Api';
-import Privacidad from './components/Privacidad.vue';
+import Privacitat from './components/Privacitat.vue';
 import Conducta from './components/Conducta.vue';
 
 
@@ -38,9 +38,9 @@ export const routes = [
         component: Comunidad
     },
     {
-        name: 'privacidat',
-        path: '/privacidat',
-        component: Privacidat
+        name: 'privacitat',
+        path: '/privacitat',
+        component: Privacitat
     },
     {
         name: 'conducta',
