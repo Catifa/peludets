@@ -32,7 +32,7 @@
             </li>
           </ul>
           <div class="card-body text-center">
-            <button class="btn btn-azul-peludets btn-sm mr-3" @click="anadirEvento(solicitud); eliminarEvento(solicitud)">
+            <button class="btn btn-azul-peludets btn-sm mr-3" @click="anadirEvento(solicitud)">
               {{ $t("perfil.tareas.btnAceptar") }}
             </button>
             <button class="btn btn-danger btn-sm">
@@ -46,11 +46,15 @@
         <full-calendar :options="calendarOptions" />
       </div>
     </div>
+    <!-- Modal consulta trabajo -->
+    <trabajos-modal id="modalListaTrabajos" :propConsultaSol="arrayConsultaSolicitudes"></trabajos-modal>
   </div>
 </template>
 
 <script>
+
 import Api from "../../Api";
+import Trabajos_Modal from './Perfil_Tareas_TrabajosModal';
 import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -59,6 +63,7 @@ import caLocale from "@fullcalendar/core/locales/ca";
 export default {
   components: {
     FullCalendar,
+    'trabajos-modal': Trabajos_Modal
   },
   data() {
     return {
@@ -70,6 +75,7 @@ export default {
         dateClick: this.handleDateClick,
         events: []
       },
+      arrayConsultaSolicitudes: []
     };
   },
   methods: {
@@ -105,9 +111,11 @@ export default {
       let fechaDia = args.dateStr;
       console.log(fechaDia);
       this.calendarOptions.events.forEach(element => {
-        console.log(element.date);
         if(fechaDia == element.date) {
+          console.log(element.date);
           console.log(element);
+          this.arrayConsultaSolicitudes.push(element);
+          $('#modalListaTrabajos').modal('show');
         }
       });
     }
