@@ -67,7 +67,7 @@
               <td>© 2020 Peludets!</td>
               <td>
                 <!--Privacidad-->
-                <router-link to="/privacidad" class="nav-link navItemPldts">
+                <router-link to="/privacitat" class="nav-link navItemPldts">
                   <i class="fas fa-info-circle"></i>
                 </router-link>
               </td>
