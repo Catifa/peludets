@@ -134,7 +134,10 @@
       "cp": "Codi postal:",
       "solicitud": "Sol·licitud:",
       "btnAceptar": "Acceptar",
-      "btnRechazar": "Rebutjar"
+      "btnRechazar": "Rebutjar",
+      "modalSolicitudes": {
+        "tituloModal": "Treballs del dia "
+      }
     }
   }
 
