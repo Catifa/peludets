@@ -38,9 +38,9 @@ export const routes = [
         component: Comunidad
     },
     {
-        name: 'privacidad',
-        path: '/privacidad',
-        component: Privacidad
+        name: 'privacidat',
+        path: '/privacidat',
+        component: Privacidat
     },
     {
         name: 'conducta',
