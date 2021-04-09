@@ -112,8 +112,6 @@ export default {
       console.log(fechaDia);
       this.calendarOptions.events.forEach(element => {
         if(fechaDia == element.date) {
-          console.log(element.date);
-          console.log(element);
           this.arrayConsultaSolicitudes.push(element);
           $('#modalListaTrabajos').modal('show');
         }
