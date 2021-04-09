@@ -136,8 +136,13 @@
       "btnAceptar": "Acceptar",
       "btnRechazar": "Rebutjar",
       "modalSolicitudes": {
-        "tituloModal": "Treballs del dia "
-      }
+        "tituloModal": "Treballs del dia",
+        "nombreModal": "Nom:",
+        "especieModal": "Especie:",
+        "pesoModal": "Pes",
+        "entregaraMascota": "El propietari portarà la mascota?"
+      },
+      "btnFinalizarTrabajo": "Finalitzar treball"
     }
   }
 
