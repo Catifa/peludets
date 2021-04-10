@@ -13,12 +13,14 @@
             class="close"
             data-dismiss="modal"
             aria-label="Close"
+            @click="removeArray()"
           >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <!-- Modal Body -->
         <div class="modal-body">
-          <!-- Contenido solicitudes -->
+          <!-- Recorrido solicitudes -->
           <div
             class="form-group"
             v-for="solicitud in solicitudes"
@@ -76,15 +78,16 @@
               data-dismiss="modal"
               @click="finalizarTrabajo(solicitud[0])"
             >
-              {{ $t("perfil.tareas.btnFinalizarTrabajo") }}
+              {{ $t("perfil.tareas.modalSolicitudes.btnFinalizarTrabajo") }}
             </button>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
+        <!-- Modal Footer -->
+        <div class="modal-footer bg-azul-peludets">
+          <!-- Cerrar -->
+          <button type="button" class="btn btn-danger" data-dismiss="modal" @click="removeArray()">
+            {{ $t("perfil.tareas.modalSolicitudes.cerrarModal") }}
           </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -98,6 +101,7 @@ import Api from '../../Api';
 export default {
   props: {
     propConsultaSol: { type: Array },
+    propEliminarEvento: { type: Function }
   },
   watch: {
     propConsultaSol: {
@@ -108,7 +112,12 @@ export default {
   },
   methods: {
     finalizarTrabajo(sol) {
-      Api().post("eliminarSolicitud", sol);
+      Api().post("/solicitudes/eliminarSolicitud", sol);
+      this.removeArray();
+      this.propEliminarEvento(sol);
+    },
+    removeArray() {
+      this.solicitudes = [];
     }
   },
   data() {

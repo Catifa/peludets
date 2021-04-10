@@ -47,7 +47,7 @@
       </div>
     </div>
     <!-- Modal consulta trabajo -->
-    <trabajos-modal id="modalListaTrabajos" :propConsultaSol="arrayConsultaSolicitudes"></trabajos-modal>
+    <trabajos-modal id="modalListaTrabajos" :propConsultaSol="arrayConsultaSolicitudes" :propEliminarEvento="eliminarEvento"></trabajos-modal>
   </div>
 </template>
 
@@ -85,7 +85,9 @@ export default {
         .then((response) => {
           let data = response.data;
           data.forEach((element) => {
-            this.arraySolicitud.push(JSON.parse(element.solicitud));
+            let datos = JSON.parse(element.solicitud);
+            datos.id = element.id;
+            this.arraySolicitud.push(datos);
           });
         });
     },
@@ -93,6 +95,7 @@ export default {
     anadirEvento(solicitud) {
       this.calendarOptions.events.push(
         {
+          id: solicitud.id,
           title: solicitud.solicitud,
           date: solicitud.fecha,
           extendedProps: {
@@ -109,13 +112,24 @@ export default {
 
     handleDateClick(args) {
       let fechaDia = args.dateStr;
-      console.log(fechaDia);
       this.calendarOptions.events.forEach(element => {
         if(fechaDia == element.date) {
           this.arrayConsultaSolicitudes.push(element);
           $('#modalListaTrabajos').modal('show');
         }
       });
+    },
+
+    eliminarEvento(solicitud) {
+      this.arrayConsultaSolicitudes.forEach((element, index) => {
+        if(solicitud.date == element.date && solicitud.id == element.id) {
+          this.arrayConsultaSolicitudes.splice(index, 1);
+        }
+      });
+
+      let calendar = this.$parent.$parent.$refs.calsession.getApi();
+
+      calendar.refetchEvents();
     }
   },
   mounted() {
