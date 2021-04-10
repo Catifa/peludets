@@ -140,9 +140,10 @@
         "nombreModal": "Nom:",
         "especieModal": "Especie:",
         "pesoModal": "Pes",
-        "entregaraMascota": "El propietari portarà la mascota?"
-      },
-      "btnFinalizarTrabajo": "Finalitzar treball"
+        "entregaraMascota": "El propietari portarà la mascota?",
+        "btnFinalizarTrabajo": "Finalitzar treball",
+        "cerrarModal": "Tancar"
+      }
     }
   }
 
