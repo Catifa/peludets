@@ -172,9 +172,9 @@ class SolicitudController extends Controller
      /**
       * Eliminar Trabajo
       */
-      protected function eliminarSolicitud(Reques $request)
+      protected function eliminarSolicitud(Request $request)
       {
-          Solicitud::where('solicitud', '=', $request->getContent())->delete();
+          Solicitud::where('id', '=', $request->id)->delete();
       }
 
 }
