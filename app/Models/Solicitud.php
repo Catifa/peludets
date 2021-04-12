@@ -31,7 +31,10 @@ class Solicitud extends Model
     protected $fillable = [
         'solicitud',
         'idDestinatario',
-        'idRemitente'
+        'idRemitente',
+        'aceptado',
+        'check_final_destinatario',
+        'check_final_remitente'
     ];
     
     use HasFactory;
