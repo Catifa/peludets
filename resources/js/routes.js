@@ -9,6 +9,7 @@ import VueRouter from 'vue-router';
 import Api from './Api';
 import Privacitat from './components/Privacitat.vue';
 import Conducta from './components/Conducta.vue';
+import Canvas from './components/Canvas.vue';
 
 
 const originalPush = VueRouter.prototype.push;
@@ -77,5 +78,10 @@ export const routes = [
         name: 'admin',
         path: '/admin',
         component: AdminPanel
+    },
+    {
+        name: 'canvas',
+        path: '/canvas',
+        component: Canvas
     },
 ];
