@@ -78,4 +78,13 @@ class ProfesionController extends Controller
 
         DB::table('usuarios_profesiones')->insert([['id_usuario' => $request->userId, 'id_profesion' => $id_profesion, 'titulacion' => $request->titulacion, 'disponibilidad' => $request->disponibilidad]]);
     }
+
+    protected function getDisponibilidad(Request $request)
+    {
+        $disponibilidad = Profesion::where('nombre_profesion',$request->profesion)->value('disponibilidad');
+
+        if ($disponibilidad === 'PO') 
+            return json_encode(true);
+        return json_encode(false);
+    }
 }

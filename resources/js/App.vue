@@ -7,9 +7,17 @@
 <template>
   <div class="container-fluid d-flex flex-column h-100">
     <!--Formulario registro -->
-    <form_registro v-if="this.$root.user == null" id="formRegistro" :hideReg="closeRegModal"></form_registro>
+    <form_registro
+      v-if="this.$root.user == null"
+      id="formRegistro"
+      :hideReg="closeRegModal"
+    ></form_registro>
     <!--Formulario inicio sesion -->
-    <form_inicio_sesion v-if="this.$root.user == null" id="formInicioSesion" :hideLog="closeLogModal"></form_inicio_sesion>
+    <form_inicio_sesion
+      v-if="this.$root.user == null"
+      id="formInicioSesion"
+      :hideLog="closeLogModal"
+    ></form_inicio_sesion>
 
     <!-- Main Menu -->
     <main_menu :showReg="showRegModal" :showLog="showLogModal"></main_menu>
@@ -35,7 +43,8 @@ import MainMenu from "./App_MainMenu.vue";
 import Footer from "./App_Footer.vue";
 import BannerPubli from "./App_Banner_Privacidad.vue";
 import Chat from "./App_Chat.vue";
-import Api from './Api';
+import Api from "./Api";
+import Swal from "sweetalert2";
 
 export default {
   components: {
@@ -44,39 +53,46 @@ export default {
     footerPldts: Footer,
     main_menu: MainMenu,
     banner_publi: BannerPubli,
-    chat: Chat
+    chat: Chat,
   },
   methods: {
     isAuthenticated() {
-      Api().get("/authentication").then((res) => {
+      Api()
+        .get("/authentication")
+        .then((res) => {
           this.getUser();
           return true;
-      }).catch(error => {
-        this.$root.user = null;
-        return false;
-      });
+        })
+        .catch((error) => {
+          this.$root.user = null;
+          return false;
+        });
     },
     getUser() {
-      Api().get("/user").then((res) => {
-        this.$root.user = res.data;
-        Api().post("/files/getProfilePhoto").then((res) => {
-          this.$root.photo = res.data[0].photo;
+      Api()
+        .get("/user")
+        .then((res) => {
+          this.$root.user = res.data;
+          Api()
+            .post("/files/getProfilePhoto")
+            .then((res) => {
+              this.$root.photo = res.data[0].photo;
+            });
         });
-      });
     },
     // Modal Registro
     showRegModal() {
-      $('#formRegistro').modal('show');
+      $("#formRegistro").modal("show");
     },
     closeRegModal() {
-      $('#formRegistro').modal('hide');
+      $("#formRegistro").modal("hide");
     },
     // Modal Inicio Sesion
     showLogModal() {
-      $('#formInicioSesion').modal('show');
+      $("#formInicioSesion").modal("show");
     },
     closeLogModal() {
-      $('#formInicioSesion').modal('hide');
+      $("#formInicioSesion").modal("hide");
     },
     banner() {
       if (localStorage.getItem("BannerPrivacidad") == "true") return true;
@@ -92,8 +108,18 @@ export default {
       )
     ) {
       this.$root.device = true;
-      localStorage.setItem('BannerPrivacidad',true);
+      localStorage.setItem("BannerPrivacidad", true);
     }
+    
+    Swal.fire({
+      title:
+        "<strong>Descarrega't l'app de Peludets des de la play store</strong>",
+      icon: "info",
+      html:
+        '<a class="btn btn-lila-peludets" href="https://play.google.com/store/apps/details?id=com.peludets.com&gl=ES"><img src="https://www.gstatic.com/android/market_images/web/play_prism_hlock_2x.png" alt="Peludets" width="50%"></a><br> ',
+      showCloseButton: true,
+      showConfirmButton: false,
+    });
   },
 };
 </script>

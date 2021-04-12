@@ -72,6 +72,7 @@ Route::group(['prefix' => 'profesiones'], function () {
     Route::get('getAll', [ProfesionController::class, 'getAll']);
     Route::post('getUserProf', [ProfesionController::class, 'getUserProf']);
     Route::post('insertProf', [ProfesionController::class, 'insertProf']);
+    Route::post('getDisponibilidad', [ProfesionController::class, 'getDisponibilidad']);
 });
 
 

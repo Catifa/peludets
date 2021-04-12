@@ -9,14 +9,14 @@
           background-color: #f2e7c9;
           background-image: url('../img/logo/logo.png');
         "
-        v-if="showChat"
+        v-if="contactos"
       >
         <div class="col-12 p-0">
           <ul class="list-group">
             <li
               class="list-group-item d-flex justify-content-between align-items-center"
-              @click="mensajear = !mensajear"
-              v-for="c in contactos"
+              @click="contactosToChat()"
+              v-for="c in contactosArray"
               :key="c.id"
             >
               <div>
@@ -29,11 +29,7 @@
         </div>
       </div>
       <!-- Zona Mensajes -->
-      <div
-        class="chat-popup col-lg-2 fixed-bottom ml-auto mr-3 p-0 rounded"
-        style="background-color: yellow"
-        v-if="mensajear"
-      ></div>
+      <chat v-if="chat"></chat>
     </transition>
     <!-- Barra chat nombre -->
     <div
@@ -43,7 +39,7 @@
       <div
         class="row"
         @click="
-          showChat = !showChat;
+          hideShowContactos();
           getContactos();
         "
       >
@@ -63,27 +59,66 @@
 </template>
 
 <script>
+import socket from "./socket.io";
 import Api from "./Api";
+import Chat from "./components/Chat";
 
 export default {
+  components: {
+    chat: Chat,
+  },
   data() {
     return {
-      showChat: false,
-      mensajear: false,
-      contactos: [],
+      //socketIO: socket("https://peludets.ddns.net:1337"),
+      room: {},
+      contactos: false,
+      chat: false,
+      contactosArray: [],
     };
   },
   methods: {
     getContactos() {
-      if (this.showChat) {
+      if (this.contactos) {
         Api()
           .post("/contactos/get")
           .then((r) => {
-            this.contactos = r.data;
-            console.log(this.contactos);
+            this.contactosArray = r.data;
+            console.log(this.contactosArray);
           });
       }
     },
+    contactosToChat() {
+      this.chat = true;
+      this.contactos = false;
+      this.socketIO.emit("room", this.room);
+    },
+    hideShowContactos() {
+      if (this.chat === true || this.contactos === true) this.contactos = false;
+      else if (this.contactos === false && this.chat === false)
+        this.contactos = true;
+      this.chat = false;
+    },
+    crearChat(contactoID) {
+      Api()
+        .post("/chat/hashRoom", {
+          idDestinatario: contactoID,
+          idRemitente: this.$root.user.id,
+        })
+        .then((response) => {
+          this.room = {
+            roomName: response.data,
+            idRemitente: String(this.$root.user.id),
+            idDestinatario: String(this.$route.params.id),
+          };
+        });
+    },
+  },
+  created() {
+    // Comprobar si alguien le intenta meter en una room
+    this.socketIO.on("invite room", (roomNode) => {
+      this.room = roomNode;
+      this.socketIO.emit("room", roomNode);
+    });
   },
 };
 </script>

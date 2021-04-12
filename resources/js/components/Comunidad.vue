@@ -32,7 +32,7 @@
           <label>
             {{ $t("comunidad.FormControlSelect1") }}
           </label>
-          <select v-model="servicioBusqueda.servicio" class="form-control">
+          <select v-model="servicioBusqueda.servicio" class="form-control" @change="serviciosChange">
             <option v-for="servicio in serviciosDisponibles" :key="servicio.id">
               {{ servicio.nombre_profesion }}
             </option>
@@ -40,7 +40,8 @@
         </div>
       </div>
       <!-- Disponibilidad -->
-      <div class="col-lg-2 col-md-4 col-12">
+      <div class="col-lg-2 col-md-4 col-12" 
+            v-if="disponibilidad == true">
         <div class="form-group m-2">
           <label>
             {{ $t("comunidad.FormControlSelectDispo") }}
@@ -161,6 +162,7 @@ export default {
       // Variable para mostrar las tarjetas
       showProf: false,
       currentGeoLoc: undefined,
+      disponibilidad: true,
     };
   },
   methods: {
@@ -189,7 +191,6 @@ export default {
         });
       }
     },
-
     // Metodo que SOLO filtra por profesion, para la peticion que viene de HOME
     userProfOnly() {
       Api()
@@ -207,6 +208,9 @@ export default {
       if (localStorage.getItem("BannerComunidad") == "true") return true;
       return false;
     },
+    serviciosChange(){
+      this.disponibilidad = false;
+    }
   },
   mounted() {
     if (this.$route.params.prof != undefined) {

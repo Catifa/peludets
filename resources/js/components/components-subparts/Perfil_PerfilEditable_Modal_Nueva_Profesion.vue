@@ -33,6 +33,7 @@
               v-model="profesion.profesion"
               name="profesion"
               id="profesion"
+              @change="serviciosOnChange"
             >
               <option v-for="profesion in profesiones" :key="profesion.id">
                 {{ profesion.nombre_profesion }}
@@ -70,6 +71,7 @@
               }}
             </label>
             <select
+              v-if="d == true"
               v-model="profesion.disponibilidad"
               class="form-control"
               name="disponibilidad"
@@ -130,6 +132,7 @@ export default {
       profesiones: [],
       profesion: {},
       prof: undefined,
+      d: true,
     };
   },
   methods: {
@@ -141,6 +144,12 @@ export default {
           this.propHideModal();
         }).catch((error) => console.log(error));
     },
+    serviciosOnChange(){
+      console.log("hola");
+      /* Api().post('/profesiones/getDisponibilidad',this.profesion).then((res) => {
+        this.disponibilidad = res.data;
+      }) */
+    }
   },
 
   created() {
