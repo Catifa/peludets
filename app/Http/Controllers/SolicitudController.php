@@ -177,5 +177,22 @@ class SolicitudController extends Controller
           Solicitud::where('id', '=', $request->id)->delete();
       }
 
+      /**
+       * Cambiar estado solicitud a aceptado
+       */
+      protected function aceptarSolicitud(Request $request) 
+      {
+        Solicitud::where('id', '=', $request->id)
+        ->update(['aceptado' => 'S']);
+      }
+
+      /**
+       * Cambiar estado solicitud a rechazado
+       */
+      protected function rechazarSolicitud(Request $request)
+      {
+        Solicitud::where('id', '=', $request->id)
+        ->update(['aceptado' => 'N']);
+      }
+
 }
-//si la primera solicitud no sale bien que la segunda no se faci
