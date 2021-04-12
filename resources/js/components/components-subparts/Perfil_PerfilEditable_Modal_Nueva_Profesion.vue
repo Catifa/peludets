@@ -62,7 +62,7 @@
             </select>
           </div>
           <!-- Select disponibilidad -->
-          <div class="form-group">
+          <div class="form-group" v-if="disponibilidad == true">
             <label>
               {{
                 $t(
@@ -71,7 +71,6 @@
               }}
             </label>
             <select
-              v-if="d == true"
               v-model="profesion.disponibilidad"
               class="form-control"
               name="disponibilidad"
@@ -125,31 +124,35 @@ import Api from "../../Api";
 
 export default {
   props: {
-    propHideModal: { type: Function }
+    propHideModal: { type: Function },
   },
   data() {
     return {
       profesiones: [],
       profesion: {},
       prof: undefined,
-      d: true,
+      disponibilidad: true,
     };
   },
   methods: {
     insertProf() {
-      this.profesion.userId = this.$root.user.id;
-
-      Api().post("/profesiones/insertProf", this.profesion).then(() => {
+      //console.log(this.profesion);
+      Api()
+        .post("/profesiones/insertProf", this.profesion)
+        .then(() => {
           Swal.fire("Registro completado", "", "success");
           this.propHideModal();
-        }).catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
     },
-    serviciosOnChange(){
-      console.log("hola");
-      /* Api().post('/profesiones/getDisponibilidad',this.profesion).then((res) => {
-        this.disponibilidad = res.data;
-      }) */
-    }
+    serviciosOnChange() {
+      Api()
+        .post("/profesiones/getDisponibilidad", this.profesion)
+        .then((res) => {
+          this.disponibilidad = res.data;
+          if (res.data === false) this.profesion.disponibilidad = "P";
+        });
+    },
   },
 
   created() {

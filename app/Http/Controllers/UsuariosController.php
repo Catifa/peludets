@@ -87,16 +87,41 @@ class UsuariosController extends Controller
      * )
      */
 
-    
-     protected function searchByProf(Request $request)
+
+    protected function searchByProf(Request $request)
     {
-    
-        return User::select('users.id', 'users.name', 'users.lastname','users.photo')
+        if ($request->disponibilidad === "P" || $request->disponibilidad === "O") {
+            return User::select('users.id', 'users.name', 'users.lastname', 'users.photo')
+                ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
+                ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
+                ->where('profesiones.nombre_profesion', '=', $request->servicio)
+                ->where('usuarios_profesiones.disponibilidad', '=', $request->disponibilidad)
+                ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)
+                ->orWhere(function ($query) use ($request) {
+                    $query->where('usuarios_profesiones.disponibilidad', '=', "PO")
+                        ->where('profesiones.nombre_profesion', '=', $request->servicio)
+                        ->where('usuarios_profesiones.titulacion', '=', $request->titulacion);
+                })
+                ->get();
+        }
+
+        return User::select('users.id', 'users.name', 'users.lastname', 'users.photo')
             ->join('usuarios_profesiones', 'id_usuario', '=', 'users.id')
             ->join('profesiones', 'profesiones.id', '=', 'usuarios_profesiones.id_profesion')
             ->where('profesiones.nombre_profesion', '=', $request->servicio)
-            ->where('usuarios_profesiones.disponibilidad', '=', $request->disponibilidad)
-            ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)->get();
+            ->where('usuarios_profesiones.disponibilidad', '=', "PO")
+            ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)
+            ->orWhere(function ($query) use ($request) {
+                $query->where('usuarios_profesiones.disponibilidad', '=', "P")
+                    ->where('profesiones.nombre_profesion', '=', $request->servicio)
+                    ->where('usuarios_profesiones.titulacion', '=', $request->titulacion);
+            })
+            ->orWhere(function ($query) use ($request) {
+                $query->where('usuarios_profesiones.disponibilidad', '=', "O")
+                    ->where('profesiones.nombre_profesion', '=', $request->servicio)
+                    ->where('usuarios_profesiones.titulacion', '=', $request->titulacion);
+            })
+            ->get();
     }
 
     /**
@@ -204,7 +229,7 @@ class UsuariosController extends Controller
      * @param Request $request
      * @return void
      */
-     protected function getProfText(Request $request)
+    protected function getProfText(Request $request)
     {
 
         $id = $request->id;
@@ -251,7 +276,7 @@ class UsuariosController extends Controller
      * @param Request $request
      * @return void
      */
-     protected function setProfText(Request $request)
+    protected function setProfText(Request $request)
     {
 
         $id = $request->id;

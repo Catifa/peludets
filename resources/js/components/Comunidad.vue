@@ -32,7 +32,11 @@
           <label>
             {{ $t("comunidad.FormControlSelect1") }}
           </label>
-          <select v-model="servicioBusqueda.servicio" class="form-control" @change="serviciosChange">
+          <select
+            v-model="servicioBusqueda.servicio"
+            class="form-control"
+            @change="serviciosChange"
+          >
             <option v-for="servicio in serviciosDisponibles" :key="servicio.id">
               {{ servicio.nombre_profesion }}
             </option>
@@ -40,8 +44,7 @@
         </div>
       </div>
       <!-- Disponibilidad -->
-      <div class="col-lg-2 col-md-4 col-12" 
-            v-if="disponibilidad == true">
+      <div class="col-lg-2 col-md-4 col-12" v-if="disponibilidad == true">
         <div class="form-group m-2">
           <label>
             {{ $t("comunidad.FormControlSelectDispo") }}
@@ -51,11 +54,24 @@
             class="form-control"
           >
             <option value="P">
-              {{ $t("comunidad.selectOptionPresencial") }}
-            </option>
-            <option value="O">
-              {{ $t("comunidad.selectOptionOnline") }}
-            </option>
+                {{
+                  $t(
+                    "perfil.perfilEditable.modalNuevaProfesion.presencialModal"
+                  )
+                }}
+              </option>
+              <option value="O">
+                {{
+                  $t("perfil.perfilEditable.modalNuevaProfesion.onlineModal")
+                }}
+              </option>
+              <option value="PO">
+                {{
+                  $t(
+                    "perfil.perfilEditable.modalNuevaProfesion.presencialOnlineModal"
+                  )
+                }}
+              </option>
           </select>
         </div>
       </div>
@@ -167,6 +183,7 @@ export default {
   },
   methods: {
     usuariosFiltrados() {
+      console.log(this.servicioBusqueda);
       Api()
         .post("/usuario/searchByProf", this.servicioBusqueda)
         .then((response) => {
@@ -208,9 +225,16 @@ export default {
       if (localStorage.getItem("BannerComunidad") == "true") return true;
       return false;
     },
-    serviciosChange(){
-      this.disponibilidad = false;
-    }
+    serviciosChange() {
+      Api()
+        .post("/profesiones/getDisponibilidad", {
+          profesion: this.servicioBusqueda.servicio,
+        })
+        .then((res) => {
+          this.disponibilidad = res.data;
+          if (res.data === false) this.servicioBusqueda.disponibilidad = "P";
+        });
+    },
   },
   mounted() {
     if (this.$route.params.prof != undefined) {
