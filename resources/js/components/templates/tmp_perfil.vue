@@ -187,7 +187,7 @@ export default {
           this.getContent();
         });
     },
-    // Obtenerr contenido del perfil
+    // Obtener contenido del perfil
     getContent() {
       Api()
         .post("/usuario/getProfText", this.user)
@@ -255,5 +255,3 @@ export default {
   },
 };
 </script>
-<style>
-</style>

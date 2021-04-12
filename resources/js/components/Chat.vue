@@ -63,8 +63,6 @@
 </template>
 
 <script>
-
-import swal from "sweetalert2";
 import getusermedia from 'getusermedia';
 
 export default {

@@ -1,0 +1,13 @@
+#cartas-trabajos {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: 40rem;
+}
+
+#cartas-trabajos::-webkit-scrollbar {
+    display: none;
+  }
+
+.card-trabajos .card {
+    flex: 0 0 auto;
+}

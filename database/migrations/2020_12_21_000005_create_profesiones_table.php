@@ -17,6 +17,7 @@ class CreateProfesionesTable extends Migration
             $table->id();
             $table->string('nombre_profesion')->unique();
             $table->string('restricciones_titulacion');
+            $table->string('disponibilidad')->default('P'); //P presencial, PO presencial u online
             $table->timestamps();
         });
     }
