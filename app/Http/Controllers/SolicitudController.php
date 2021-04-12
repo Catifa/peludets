@@ -169,5 +169,13 @@ class SolicitudController extends Controller
         return Solicitud::where('idDestinatario',$request->user()->id)->get();
      }
 
+     /**
+      * Eliminar Trabajo
+      */
+      protected function eliminarSolicitud(Request $request)
+      {
+          Solicitud::where('id', '=', $request->id)->delete();
+      }
+
 }
 //si la primera solicitud no sale bien que la segunda no se faci

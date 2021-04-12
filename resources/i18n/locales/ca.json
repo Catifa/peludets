@@ -134,7 +134,16 @@
       "cp": "Codi postal:",
       "solicitud": "Sol·licitud:",
       "btnAceptar": "Acceptar",
-      "btnRechazar": "Rebutjar"
+      "btnRechazar": "Rebutjar",
+      "modalSolicitudes": {
+        "tituloModal": "Treballs del dia",
+        "nombreModal": "Nom:",
+        "especieModal": "Especie:",
+        "pesoModal": "Pes",
+        "entregaraMascota": "El propietari portarà la mascota?",
+        "btnFinalizarTrabajo": "Finalitzar treball",
+        "cerrarModal": "Tancar"
+      }
     }
   }
 

@@ -80,6 +80,7 @@ Route::group(['prefix' => 'profesiones'], function () {
 Route::group(['prefix' => 'solicitudes'], function () {
     Route::post('enviar', [SolicitudController::class, 'enviarSolicitud'])->middleware('auth:sanctum');
     Route::post('getAll', [SolicitudController::class, 'getAll'])->middleware('auth:sanctum');
+    Route::post('eliminarSolicitud', [SolicitudController::class, 'eliminarSolicitud'])->middleware('auth:sanctum');
 });
 
 // Fotos
