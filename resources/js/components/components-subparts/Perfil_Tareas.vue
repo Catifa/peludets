@@ -107,7 +107,8 @@ export default {
             let datos = JSON.parse(element.solicitud);
             datos.id = element.id;
             // Se comprueba que si la solicitud ha sido aceptada. En el caso de serlo, se añade a los eventos del calendario.
-            if (element.aceptado == "S") {
+            if (element.aceptado == "S" && element.check_final_destinatario != "S") {
+              console.log(element);
               this.calendarOptions.events.push({
                 id: datos.id,
                 remitente: datos.idRemitente,
@@ -123,7 +124,7 @@ export default {
                 },
               });
               // Si no ha sido aceptada se añade al arraySolicitud.
-            } else if (element.aceptado != "N") {
+            } else if (element.aceptado == "N") {
               this.arraySolicitud.push(datos);
             }
           });
