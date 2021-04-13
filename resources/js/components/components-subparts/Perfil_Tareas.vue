@@ -92,8 +92,7 @@ export default {
         initialView: "dayGridMonth",
         locale: caLocale,
         dateClick: this.handleDateClick,
-        events: [],
-        height: 650
+        events: []
       },
       arrayConsultaSolicitudes: [],
     };
@@ -186,6 +185,10 @@ export default {
   },
   mounted() {
     this.getSolicitudes();
+    // Controlar cierre modal para poder poner a 0 el array
+    $('#modalListaTrabajos').on('hidden.bs.modal', () => {
+      this.arrayConsultaSolicitudes = [];
+    });
   },
 };
 </script>
