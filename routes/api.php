@@ -82,6 +82,7 @@ Route::group(['prefix' => 'solicitudes'], function () {
     Route::post('getAll', [SolicitudController::class, 'getAll'])->middleware('auth:sanctum');
     Route::post('aceptarSolicitud', [SolicitudController::class, 'aceptarSolicitud'])->middleware('auth:sanctum');
     Route::post('rechazarSolicitud', [SolicitudController::class, 'rechazarSolicitud'])->middleware('auth:sanctum');
+    Route::post('finalizarTrabajoProf', [SolicitudController::class, 'finalizarTrabajoProf'])->middleware('auth:sanctum');
 });
 
 // Fotos
