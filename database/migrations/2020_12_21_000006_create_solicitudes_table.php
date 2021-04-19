@@ -18,9 +18,9 @@ class CreateSolicitudesTable extends Migration
             $table->json('solicitud');
             $table->integer('idDestinatario');
             $table->integer('idRemitente');
-            $table->string('aceptado');
-            $table->string('check_final_destinatario');
-            $table->string('check_final_remitente');
+            $table->string('aceptado')->nullable();;
+            $table->string('check_final_destinatario')->nullable();;
+            $table->string('check_final_remitente')->nullable();;
             $table->timestamps();
         });
     }

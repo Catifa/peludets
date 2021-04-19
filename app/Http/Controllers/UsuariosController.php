@@ -97,11 +97,11 @@ class UsuariosController extends Controller
                 ->where('profesiones.nombre_profesion', '=', $request->servicio)
                 ->where('usuarios_profesiones.disponibilidad', '=', $request->disponibilidad)
                 ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)
-                ->orWhere(function ($query) use ($request) {
+                ->orWhere(fn($query) =>
                     $query->where('usuarios_profesiones.disponibilidad', '=', "PO")
                         ->where('profesiones.nombre_profesion', '=', $request->servicio)
-                        ->where('usuarios_profesiones.titulacion', '=', $request->titulacion);
-                })
+                        ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)
+                )
                 ->get();
         }
 
@@ -111,16 +111,16 @@ class UsuariosController extends Controller
             ->where('profesiones.nombre_profesion', '=', $request->servicio)
             ->where('usuarios_profesiones.disponibilidad', '=', "PO")
             ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)
-            ->orWhere(function ($query) use ($request) {
+            ->orWhere(fn($query) => 
                 $query->where('usuarios_profesiones.disponibilidad', '=', "P")
                     ->where('profesiones.nombre_profesion', '=', $request->servicio)
-                    ->where('usuarios_profesiones.titulacion', '=', $request->titulacion);
-            })
-            ->orWhere(function ($query) use ($request) {
+                    ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)
+            )
+            ->orWhere(fn($query) => 
                 $query->where('usuarios_profesiones.disponibilidad', '=', "O")
                     ->where('profesiones.nombre_profesion', '=', $request->servicio)
-                    ->where('usuarios_profesiones.titulacion', '=', $request->titulacion);
-            })
+                    ->where('usuarios_profesiones.titulacion', '=', $request->titulacion)
+            )
             ->get();
     }
 
