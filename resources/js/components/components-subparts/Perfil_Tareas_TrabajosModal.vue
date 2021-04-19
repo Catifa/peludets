@@ -112,7 +112,11 @@ export default {
   },
   methods: {
     finalizarTrabajo(sol) {
-      Api().post("/solicitudes/finalizarTrabajoProf", sol);
+      sol.categoria = 'Solicitud';
+      sol.extendedProps.is = sol.id;
+      Api().post("/solicitudes/finalizarTrabajoProf", sol).then(() => {
+        Api().post("/notificaciones/add", sol);
+      });
       this.propEliminarEvento(sol);
     }
   }

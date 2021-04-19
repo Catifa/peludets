@@ -35,7 +35,14 @@
               ></i>
             </div>
             <div class="tostada-body">
-              {{ notificacion.contenido }}
+              {{ notificacion.contenido.nombre }}
+              <button
+                v-if="notificacion.categoria == 'Solicitud'"
+                class="btn btn-verde-peludets"
+                @click="finalizarTrabajoCli(notificacion)"
+              >
+                Finalizar Trabajo
+              </button>
             </div>
           </div>
         </div>
@@ -71,12 +78,15 @@ export default {
         .post("/notificaciones/getAll")
         .then((res) => {
           this.notificaciones = res.data;
+          this.notificaciones.forEach((element) => {
+            element.contenido = JSON.parse(element.contenido);
+          });
           console.log(res.data);
         });
     },
     deleteNot(id) {
       Api()
-        .post("/notificaciones/delete", {id})
+        .post("/notificaciones/delete", { id })
         .then(() => {
           this.getNotificaciones();
         });
@@ -99,6 +109,13 @@ export default {
       }
 
       return "fas " + logo + " mr-2";
+    },
+    finalizarTrabajoCli(sol) {
+      Api()
+        .post("/solicitudes/finalizarTrabajoCli", sol)
+        .then(() => {
+          this.deleteNot(sol.id);
+        });
     },
   },
 };
