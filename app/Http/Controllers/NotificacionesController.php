@@ -10,7 +10,7 @@ class NotificacionesController extends Controller
 {
     protected function add(Request $request)
     {
-        $request->validate([
+        /* $request->validate([
             'idDestinatario' => 'required',
             'categoria' => 'required',
             'contenido' => 'required',
@@ -18,7 +18,7 @@ class NotificacionesController extends Controller
 
         throw ValidationException::withMessages([
             'email' => ['The provided credentials are incorrect.'],
-        ]);
+        ]); */
 
         switch ($request->categoria) {
             case 'Chat':
@@ -32,9 +32,9 @@ class NotificacionesController extends Controller
             case 'Solicitud':
                 Notificaciones::create([
                     'idRemitente' => $request->user()->id,
-                    'idDestinatario' => $request->idDestinatario,
+                    'idDestinatario' => $request->remitente,
                     'categoria' => 'Solicitud',
-                    'contenido' => $request->contenido,
+                    'contenido' => json_encode($request->extendedProps),
                 ]);
                 break;
             default:
