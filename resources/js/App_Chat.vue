@@ -9,13 +9,16 @@
           background-color: #f2e7c9;
           background-image: url('../img/logo/logo.png');
         "
-        v-if="contactos"
+        v-if="ventanaChat"
       >
-        <div class="col-12 p-0">
+        <div class="col-12 p-0" v-if="contactos">
           <ul class="list-group">
             <li
               class="list-group-item d-flex justify-content-between align-items-center"
-              @click="contactosToChat()"
+              @click="
+                contactosToChat();
+                crearChat(c.id);
+              "
               v-for="c in contactosArray"
               :key="c.id"
             >
@@ -27,22 +30,16 @@
             </li>
           </ul>
         </div>
+        <!-- Zona Mensajes -->
+        <chat v-if="chat"></chat>
       </div>
-      <!-- Zona Mensajes -->
-      <chat v-if="chat"></chat>
     </transition>
     <!-- Barra chat nombre -->
     <div
       class="col-lg-2 fixed-bottom ml-auto mr-3"
       style="background-color: red"
     >
-      <div
-        class="row"
-        @click="
-          hideShowContactos();
-          getContactos();
-        "
-      >
+      <div class="row" @click="ventanaChat = !ventanaChat; ventanaChatFn()">
         <div class="col-lg-6">
           <span class="align-middle">
             {{ this.$root.user.name }} {{ this.$root.user.lastname }}</span
@@ -69,34 +66,36 @@ export default {
   },
   data() {
     return {
-      //socketIO: socket("https://peludets.ddns.net:1337"),
+      socketIO: socket("http://peludets.ddns.net:1337"),
       room: {},
       contactos: false,
       chat: false,
+      ventanaChat: false,
       contactosArray: [],
     };
   },
   methods: {
+    ventanaChatFn() {
+      if (this.ventanaChat) {
+        this.contactos = true;
+        this.chat = false;
+      }
+      this.getContactos;
+      this.getContactos();
+    },
     getContactos() {
       if (this.contactos) {
         Api()
           .post("/contactos/get")
           .then((r) => {
             this.contactosArray = r.data;
-            console.log(this.contactosArray);
+            //console.log(this.contactosArray);
           });
       }
     },
     contactosToChat() {
       this.chat = true;
       this.contactos = false;
-      this.socketIO.emit("room", this.room);
-    },
-    hideShowContactos() {
-      if (this.chat === true || this.contactos === true) this.contactos = false;
-      else if (this.contactos === false && this.chat === false)
-        this.contactos = true;
-      this.chat = false;
     },
     crearChat(contactoID) {
       Api()
@@ -108,8 +107,9 @@ export default {
           this.room = {
             roomName: response.data,
             idRemitente: String(this.$root.user.id),
-            idDestinatario: String(this.$route.params.id),
+            idDestinatario: String(contactoID),
           };
+          this.socketIO.emit("room", this.room);
         });
     },
   },
