@@ -183,7 +183,7 @@ class SolicitudController extends Controller
       protected function aceptarSolicitud(Request $request) 
       {
         Solicitud::where('id', '=', $request->id)
-        ->update(['aceptado' => 'S']);
+            ->update(['aceptado' => 'S']);
       }
 
       /**
@@ -192,7 +192,7 @@ class SolicitudController extends Controller
       protected function rechazarSolicitud(Request $request)
       {
         Solicitud::where('id', '=', $request->id)
-        ->update(['aceptado' => 'N']);
+            ->update(['aceptado' => 'N']);
       }
 
       /**
@@ -201,7 +201,7 @@ class SolicitudController extends Controller
       protected function finalizarTrabajoProf(Request $request)
       {
         Solicitud::where('id', '=', $request->id)
-        ->update(['check_final_destinatario' => 'S']);
+            ->update(['check_final_destinatario' => 'S']);
       }
 
       /**
@@ -210,7 +210,7 @@ class SolicitudController extends Controller
       protected function finalizarTrabajoCli(Request $request)
       {
         Solicitud::where('id', '=', $request->id)
-        ->update(['check_final_remitente' => 'S']);
+            ->update(['check_final_remitente' => 'S']);
       }
 
 }
