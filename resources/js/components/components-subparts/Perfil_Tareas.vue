@@ -92,8 +92,7 @@ export default {
         initialView: "dayGridMonth",
         locale: caLocale,
         dateClick: this.handleDateClick,
-        events: [],
-        height: 650
+        events: []
       },
       arrayConsultaSolicitudes: [],
     };
@@ -103,12 +102,11 @@ export default {
       Api()
         .post("/solicitudes/getAll")
         .then((response) => {
-          let data = response.data;
-          data.forEach((element) => {
+          response.data.forEach((element) => {
             let datos = JSON.parse(element.solicitud);
             datos.id = element.id;
             // Se comprueba que si la solicitud ha sido aceptada. En el caso de serlo, se añade a los eventos del calendario.
-            if (element.aceptado == "S") {
+            if (element.aceptado == "S" && element.check_final_destinatario != "S") {
               this.calendarOptions.events.push({
                 id: datos.id,
                 remitente: datos.idRemitente,
@@ -124,7 +122,7 @@ export default {
                 },
               });
               // Si no ha sido aceptada se añade al arraySolicitud.
-            } else if (element.aceptado != "N") {
+            } else if (element.aceptado == "N" || element.aceptado == null) {
               this.arraySolicitud.push(datos);
             }
           });
@@ -186,6 +184,10 @@ export default {
   },
   mounted() {
     this.getSolicitudes();
+    // Controlar cierre modal para poder poner a 0 el array
+    $('#modalListaTrabajos').on('hidden.bs.modal', () => {
+      this.arrayConsultaSolicitudes = [];
+    });
   },
 };
 </script>

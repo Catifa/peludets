@@ -23,7 +23,7 @@
           <!-- Recorrido solicitudes -->
           <div
             class="form-group"
-            v-for="solicitud in solicitudes"
+            v-for="solicitud in propConsultaSol"
             :key="solicitud.id"
           >
             <!-- Nombre -->
@@ -35,7 +35,7 @@
                 type="text"
                 class="form-control"
                 readonly
-                :value="solicitud[0].extendedProps.nombre"
+                :value="solicitud.extendedProps.nombre"
               />
             </div>
             <!-- Especie -->
@@ -47,7 +47,7 @@
                 type="text"
                 class="form-control"
                 readonly
-                :value="solicitud[0].extendedProps.especia"
+                :value="solicitud.extendedProps.especia"
               />
             </div>
             <!-- Peso -->
@@ -59,7 +59,7 @@
                 type="text"
                 class="form-control"
                 readonly
-                :value="solicitud[0].extendedProps.peso"
+                :value="solicitud.extendedProps.peso"
               />
             </div>
             <!-- CP -->
@@ -69,14 +69,14 @@
                 type="text"
                 class="form-control"
                 readonly
-                :value="solicitud[0].extendedProps.cp"
+                :value="solicitud.extendedProps.cp"
               />
             </div>
             <button
               type="button"
               class="btn btn-verde-peludets"
               data-dismiss="modal"
-              @click="finalizarTrabajo(solicitud[0])"
+              @click="finalizarTrabajo(solicitud)"
             >
               {{ $t("perfil.tareas.modalSolicitudes.btnFinalizarTrabajo") }}
             </button>
@@ -112,18 +112,13 @@ export default {
   },
   methods: {
     finalizarTrabajo(sol) {
-      Api().post("/solicitudes/eliminarSolicitud", sol);
-      this.removeArray();
+      sol.categoria = 'Solicitud';
+      sol.extendedProps.is = sol.id;
+      Api().post("/solicitudes/finalizarTrabajoProf", sol).then(() => {
+        Api().post("/notificaciones/add", sol);
+      });
       this.propEliminarEvento(sol);
-    },
-    removeArray() {
-      this.solicitudes = [];
     }
-  },
-  data() {
-    return {
-      solicitudes: [],
-    };
-  },
+  }
 };
 </script>

@@ -82,6 +82,8 @@ Route::group(['prefix' => 'solicitudes'], function () {
     Route::post('getAll', [SolicitudController::class, 'getAll'])->middleware('auth:sanctum');
     Route::post('aceptarSolicitud', [SolicitudController::class, 'aceptarSolicitud'])->middleware('auth:sanctum');
     Route::post('rechazarSolicitud', [SolicitudController::class, 'rechazarSolicitud'])->middleware('auth:sanctum');
+    Route::post('finalizarTrabajoProf', [SolicitudController::class, 'finalizarTrabajoProf'])->middleware('auth:sanctum');
+    Route::post('finalizarTrabajoCli', [SolicitudController::class, 'finalizarTrabajoCli'])->middleware('auth:sanctum');
 });
 
 // Fotos
@@ -126,6 +128,7 @@ Route::group(['prefix' => 'valoraciones'], function () {
     Route::post('hashRoom', [MensajesController::class, 'hashRoom']); */
 });
 
+// Notificaciones
 Route::group(['prefix' => 'notificaciones'], function () {
     Route::post('add',[NotificacionesController::class,'add'])->middleware('auth:sanctum');
     Route::post('getAll',[NotificacionesController::class,'getAll'])->middleware('auth:sanctum');

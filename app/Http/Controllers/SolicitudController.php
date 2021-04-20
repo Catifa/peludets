@@ -195,4 +195,22 @@ class SolicitudController extends Controller
         ->update(['aceptado' => 'N']);
       }
 
+      /**
+       * Finalizar solicitud (Parte Profesional)
+       */
+      protected function finalizarTrabajoProf(Request $request)
+      {
+        Solicitud::where('id', '=', $request->id)
+        ->update(['check_final_destinatario' => 'S']);
+      }
+
+      /**
+       * Finalizar solicitud (Parte Cliente)
+       */
+      protected function finalizarTrabajoCli(Request $request)
+      {
+        Solicitud::where('id', '=', $request->id)
+        ->update(['check_final_remitente' => 'S']);
+      }
+
 }
