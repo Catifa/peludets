@@ -23,9 +23,12 @@
             v-for="notificacion in notificaciones"
             :key="notificacion.id"
           >
+            <!-- Header notificacion -->
             <div class="tostada-header bg-azul-peludets">
+              <!-- Icono y tipo notificacion -->
               <i :class="logo(notificacion.categoria)"></i>
               <strong class="mr-auto">{{ notificacion.categoria }}</strong>
+              <!-- Hora creacion -->
               <small>{{ time(notificacion.created_at) }}</small>
               <!-- Boton borrar -->
               <i
@@ -34,15 +37,23 @@
                 @click="deleteNot(notificacion.id)"
               ></i>
             </div>
+            <!-- Body notificacion -->
             <div class="tostada-body">
-              {{ notificacion.contenido.nombre }}
-              <button
-                v-if="notificacion.categoria == 'Solicitud'"
-                class="btn btn-verde-peludets"
-                @click="finalizarTrabajoCli(notificacion)"
-              >
-                Finalizar Trabajo
-              </button>
+              <div class="row">
+                <div class="col-lg-6">
+                  {{ notificacion.contenido.title }} - per a
+                  {{ notificacion.contenido.nombre }}
+                </div>
+                <div class="col-lg-6 text-right">
+                  <button
+                    v-if="notificacion.categoria == 'Solicitud'"
+                    class="btn btn-sm btn-verde-peludets"
+                    @click="finalizarTrabajoCli(notificacion)"
+                  >
+                    Finalizar Trabajo
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -65,6 +76,7 @@
 <script>
 import Api from "../../Api";
 import "bootstrap";
+import Swal from "sweetalert2";
 
 export default {
   data() {
@@ -112,9 +124,16 @@ export default {
     },
     finalizarTrabajoCli(sol) {
       Api()
-        .post("/solicitudes/finalizarTrabajoCli", sol)
+        .post("/solicitudes/finalizarTrabajoCli", sol.contenido)
         .then(() => {
           this.deleteNot(sol.id);
+          Swal.fire({
+            inputLabel: "Vols valorar a aquest usuari?",
+            confirmButtonText: "Enviar valoració",
+            showCancelButton: true,
+            cancelButtonText: "Cancel·là",
+            input: "textarea"
+          });
         });
     },
   },

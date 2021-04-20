@@ -113,7 +113,8 @@ export default {
   methods: {
     finalizarTrabajo(sol) {
       sol.categoria = 'Solicitud';
-      sol.extendedProps.is = sol.id;
+      sol.extendedProps.id = sol.id;
+      sol.extendedProps.title = sol.title;
       Api().post("/solicitudes/finalizarTrabajoProf", sol).then(() => {
         Api().post("/notificaciones/add", sol);
       });
