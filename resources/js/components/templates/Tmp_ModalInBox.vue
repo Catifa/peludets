@@ -122,19 +122,32 @@ export default {
 
       return "fas " + logo + " mr-2";
     },
-    finalizarTrabajoCli(sol) {
+    async finalizarTrabajoCli(sol) {
       Api()
         .post("/solicitudes/finalizarTrabajoCli", sol.contenido)
         .then(() => {
           this.deleteNot(sol.id);
+        });
+
+      $("#modal-inbox").modal("hide");
+
+      const { value: text } = await Swal.fire({
+        inputLabel: "Vols valorar a aquest usuari?",
+        confirmButtonText: "Enviar valoració",
+        showCancelButton: true,
+        cancelButtonText: "Cancel·là",
+        input: "textarea",
+      });
+
+      if (text) {
+        Api().post('/valoraciones/insert', {texto: text, solicitud: sol.idDestinatario}).then(() => {
           Swal.fire({
-            inputLabel: "Vols valorar a aquest usuari?",
-            confirmButtonText: "Enviar valoració",
-            showCancelButton: true,
-            cancelButtonText: "Cancel·là",
-            input: "textarea"
+            icon: 'success',
+            confirmButtonText: 'De res',
+            text: 'Gràcies per la teva valoració!'
           });
         });
+      }
     },
   },
 };

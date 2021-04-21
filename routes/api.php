@@ -123,9 +123,9 @@ Route::group(['prefix' => 'mail'], function () {
 });
 
 Route::group(['prefix' => 'valoraciones'], function () {
-    /*  Route::post('insert',[MensajesController::class,'insert']);
-    Route::post('select',[MensajesController::class,'select']);
-    Route::post('hashRoom', [MensajesController::class, 'hashRoom']); */
+    Route::post('insert',[ValoracionesController::class,'insert'])->middleware('auth:sanctum');
+    Route::post('select',[ValoracionesController::class,'select'])->middleware('auth:sanctum');
+    Route::post('hashRoom', [ValoracionesController::class, 'hashRoom'])->middleware('auth:sanctum');
 });
 
 // Notificaciones

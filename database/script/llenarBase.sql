@@ -95,13 +95,13 @@ INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (4,3);
 INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (4,5);
 INSERT INTO `mascotas_trabajos`(`id_mascota`, `id_trabajo`) VALUES (4,6);
 
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Passejador','N');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Allotjament','N');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Perruquer','S');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Psicòleg','S');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Ensinistrador','N');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Veterinari','S');
-INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`) VALUES ('Fotograf','N');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`, `disponibilidad`) VALUES ('Passejador','N', 'P');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`, `disponibilidad`) VALUES ('Allotjament','N', 'P');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`, `disponibilidad`) VALUES ('Perruquer','S', 'P');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`, `disponibilidad`) VALUES ('Psicòleg','S', 'PO');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`, `disponibilidad`) VALUES ('Ensinistrador','N', 'PO');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`, `disponibilidad`) VALUES ('Veterinari','S', 'PO');
+INSERT INTO `profesiones`(`nombre_profesion`, `restricciones_titulacion`, `disponibilidad`) VALUES ('Fotograf','N', 'P');
 
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (41.5211, 2.1123,'Parc Central del Vallès, Barberà del Vallès', '');
 INSERT INTO `sitios_interes`(`lat`, `lon`, `nombre`, `descripcion`) VALUES (41.52135, 2.12798,'Parc Europa, Barberà del Vallès', '');

@@ -26,4 +26,18 @@ class ValoracionesController extends Controller
       ->where('u2.id', '=', $request->id)->get();  
    }
 
+   /**
+    * Insertar Valoración
+    */
+    protected function insert(Request $request)
+    {
+       Valoraciones::create([
+          'id_usuario' => 1,
+          'id_usuario_remitente' => $request->user()->id,
+          'nombre_id_usuario' => $request->user()->name,
+          'valoraciones' => $request->texto,
+          'puntuacion' => 5
+       ]);
+    }
+
 }
