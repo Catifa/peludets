@@ -146,6 +146,15 @@
         "cerrarModal": "Tancar"
       }
     }
+  },
+
+  "tmpPerfil" : {
+    "perfil": "Perfil",
+    "valoraciones": "Valoracions",
+    "solicitud": {
+      "contratar": "Contractar a "
+    },
+    "tituloCalendario": "Disponibilitat"
   }
 
 }
