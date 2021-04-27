@@ -167,7 +167,7 @@ export default {
         .then(() => {
           Swal2.fire({
             text: "Solicitud enviada correctamente",
-            icon: "succes",
+            icon: "success",
           });
 
           //ENVIAR CORREO
