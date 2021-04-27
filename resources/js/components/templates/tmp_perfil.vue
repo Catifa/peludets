@@ -1,11 +1,9 @@
   <template>
-  <div class="row mt-4">
+  <div class="row mt-2">
     <!-- Seccion contratacion / calendario -->
     <div class="col-xs-12 col-md-2">
-      <!-- Boton contratacion -->
-      <solicitud-trabajo :propUser="user"></solicitud-trabajo>
       <!-- Titulo calendario -->
-      <h3 class="crema-peludets mt-5">
+      <h3 class="crema-peludets mt-2">
         {{ $t("tmpPerfil.tituloCalendario") }}
       </h3>
       <!-- Calendario -->
@@ -17,18 +15,34 @@
     <div class="col-xs-12 col-md-7">
       <div class="row">
         <!-- Imagen -->
-        <div class="col-xs-6 col-md-4 mt-5 ml-auto">
+        <div class="col-xs-6 col-lg-4 mt-5 mr-auto text-center">
           <img
             v-bind:src="user.photo"
-            class="rounded-circle"
-            alt="Peludets"
-            width="200px"
-            height="200px"
+            class="rounded"
+            alt="Imagen usuario"
+            width="300px"
           />
         </div>
-        <!-- Nombre -->
-        <div class="col-xs-6 col-md-7 mt-2">
-          <h1 class="mt-5">{{ user.name }} {{ user.lastname }}</h1>
+        <!-- Datos Personales -->
+        <div class="col-xs-6 col-lg-8 mt-2">
+          <!-- Nombre -->
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="mt-5 lila-peludets">{{ user.name }} {{ user.lastname }}</h1>
+            </div>
+          </div>
+          <!-- Email -->
+          <div class="row">
+            <div class="col-lg-3">
+              <h4 class="lila-peludets">
+                {{ user.email }}
+              </h4>
+            </div>
+          </div>
+          <div class="row">
+            <!-- Boton contratacion -->
+      <solicitud-trabajo :propUser="user"></solicitud-trabajo>
+          </div>
         </div>
         <!-- Seccion SubMenu usuario -->
         <div class="col-xs-12 col-md-12 mt-5">
@@ -86,9 +100,7 @@
                 v-for="valoracion in valoracionesArray"
                 :key="valoracion.id"
               >
-                <div
-                  class="card mb-3"
-                >
+                <div class="card mb-3">
                   <div class="row no-gutters">
                     <div class="col-md-4">
                       <img
@@ -210,7 +222,9 @@ export default {
 
     //obtiene las valoraciones de los usuarios
     setTimeout(() => {
-      Api().post("/valoraciones/recuperarValoraciones", { id: this.$root.user.id }).then((response) => {
+      Api()
+        .post("/valoraciones/recuperarValoraciones", { id: this.$root.user.id })
+        .then((response) => {
           this.valoracionesArray = response.data;
         });
     }, 1000);

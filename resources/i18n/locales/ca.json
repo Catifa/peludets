@@ -152,7 +152,36 @@
     "perfil": "Perfil",
     "valoraciones": "Valoracions",
     "solicitud": {
-      "contratar": "Contractar a "
+      "contratar": "Contractar a ",
+      "tituloModal": "Sol·licitud de treball",
+      "solicitar": "Sol·licitar",
+      "cancelar": "Cancel·lar",
+      "labels": {
+        "fechaInicio": "Data d'inici",
+        "fechaFinal": "Data final",
+        "fecha": "Data",
+        "hora": "Hora",
+        "nombre": "Nom de la teva mascota",
+        "raza": "Raça de la teva mascota",
+        "peso": "Pes",
+        "datosAdicionales": "Dades addicionals que hauria de saber",
+        "datosProblema": "Descriu breument el problema que té la teva mascota",
+        "horarios": {
+          "titulo": "Horaris per fer les passejades",
+          "manana": "Matí",
+          "mediodia": "Migdia",
+          "noche": "Nit"
+        },
+        "entrenamiento": {
+          "titulo": "Selecciona el tipus d'ensinistrament",
+          "obedienciaBasica": "Obediència bàsica",
+          "habilidad": "Habilitat",
+          "agility": "Agility",
+          "trabajo": "Treball"
+        },
+        "cp": "Codi postal",
+        "entregaMascota": "Portaràs a la teva mascota?"
+      }
     },
     "tituloCalendario": "Disponibilitat"
   }
