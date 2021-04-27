@@ -18,7 +18,7 @@ class CreateNotificacionesTable extends Migration
             $table->integer('idDestinatario');
             $table->integer('idRemitente');
             $table->text('categoria');
-            $table->text('contenido');
+            $table->longText('contenido');
             $table->timestamps();
         });
     }

@@ -37,3 +37,6 @@
 input:nth-child(1) {
     margin-bottom: 10px;
 }
+.fondo{
+    background-color: #f2e7c9;
+}
