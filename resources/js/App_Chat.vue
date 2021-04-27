@@ -31,7 +31,7 @@
           </ul>
         </div>
         <!-- Zona Mensajes -->
-        <chat v-if="chat"></chat>
+        <chat v-if="chat" :propRoom="room" :propSocket="socketIO"></chat>
       </div>
     </transition>
     <!-- Barra chat nombre -->
@@ -39,7 +39,13 @@
       class="col-lg-2 fixed-bottom ml-auto mr-3"
       style="background-color: red"
     >
-      <div class="row" @click="ventanaChat = !ventanaChat; ventanaChatFn()">
+      <div
+        class="row"
+        @click="
+          ventanaChat = !ventanaChat;
+          ventanaChatFn();
+        "
+      >
         <div class="col-lg-6">
           <span class="align-middle">
             {{ this.$root.user.name }} {{ this.$root.user.lastname }}</span
@@ -66,7 +72,7 @@ export default {
   },
   data() {
     return {
-      socketIO: socket("http://peludets.ddns.net:1337"),
+      socketIO: socket("http://peludets.ddns.net:3000"),
       room: {},
       contactos: false,
       chat: false,
@@ -116,9 +122,22 @@ export default {
   created() {
     // Comprobar si alguien le intenta meter en una room
     this.socketIO.on("invite room", (roomNode) => {
+      console.log(roomNode);
       this.room = roomNode;
       this.socketIO.emit("room", roomNode);
     });
+
+    Api()
+      .get("/user")
+      .then((res) => {
+        console.log(res.data);
+        this.socketIO.emit("add user", {
+          id: String(res.data.id),
+          name: res.data.name,
+          lastName: res.data.lastname,
+        });
+        this.crearChat();
+      });
   },
 };
 </script>
