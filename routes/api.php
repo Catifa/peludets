@@ -47,6 +47,7 @@ Route::group(['prefix' => 'mascota'], function () {
     Route::post('setProfilePhotoMascota', [MascotasController::class, 'setProfilePhotoMascota'])->middleware('auth:sanctum');
     Route::post('deleteMascota', [MascotasController::class, 'deleteMascota'])->middleware('auth:sanctum');
     Route::post('updateMascota', [MascotasController::class, 'updateMascota'])->middleware('auth:sanctum');
+    Route::post('updateFotoPaseo', [MascotasController::class, 'updateFotoPaseo'])->middleware('auth:sanctum');
 });
 // Peticiones Valoraciones
 Route::group(['prefix' => 'valoraciones'], function () {

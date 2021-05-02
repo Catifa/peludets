@@ -24,22 +24,22 @@
         :propCurrentGeoLoc="currentGeoLoc"
       ></mapa>
     </div>
-
-    <div
-      class="col-md-12 col-xs-12 mt-5 fondo"
-      v-for="mascota in arrayMascotas"
-      :key="mascota.id"
-      
-    >
-      <h5 class="card-title lila-peludets">
-        Els passejos de {{ mascota.nombre }}
-      </h5>
-
-      <img
-        style="max-width: 286px; max-height: 180px"
-        v-bind:src="mascota.photo_paseo"
-        class="card-img-top"
-      />
+    <div class="col-md-12 col-xs-12 mt-5">
+      <div class="row">
+        <h5>Aquí pots veure el passeig de les teves mascotes</h5>
+      </div>
+      <div class="row">
+        <div
+          class="col-md-4 col-xs-12 mt-5"
+          v-for="mascota in arrayMascotas"
+          :key="mascota.id"
+        >
+          <img
+            style="max-width: 286px; max-height: 180px"
+            v-bind:src="mascota.photo_paseo"
+          />
+        </div>
+      </div>
     </div>
 
     <div
@@ -90,7 +90,13 @@
           </div>
           <!-- Footer Modal -->
           <div class="modal-footer bg-azul-peludets">
-            <button type="button" class="btn btn-lila-peludets">Enviar</button>
+            <button
+              type="button"
+              class="btn btn-lila-peludets"
+              @click="updateFotoPaseo()"
+            >
+              Enviar
+            </button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">
               Tancar
             </button>
@@ -105,12 +111,19 @@
 <script>
 import MapaExplorador from "./components-subparts/Explorador_mapa.vue";
 import Api from "../Api";
+import Swal from "sweetalert2";
 
 import { latLng } from "leaflet";
 
 export default {
   components: {
     mapa: MapaExplorador,
+  },
+  props: {
+    propHideModal: { type: Function },
+    propMascotas: { type: Array },
+    propEspecies: { type: Array },
+    propRecuperarMascotas: { type: Function },
   },
   data() {
     return {
@@ -124,6 +137,7 @@ export default {
       sitioMapa: undefined,
       // Variable que guarda las mascotas recuperada de la base de datos
       arrayMascotas: [],
+      img: {},
     };
   },
   methods: {
@@ -133,6 +147,19 @@ export default {
         .then((response) => {
           this.arrayMascotas = response.data;
         });
+    },
+
+    updateFotoPaseo() {
+      this.arrayMascotas.userId = this.$root.user.id;
+      this.arrayMascotas.photo_paseo = this.img;
+      Api()
+        .post("/mascota/updateFotoPaseo", { img: this.img })
+        .then(() => {
+          Swal.fire("Foto afegida", "", "success");
+          $("#modal").modal("hide");
+          this.recuperarMascota();
+        })
+        .catch((error) => console.log(error));
     },
     imgUpload(e) {
       var formData = new FormData();
@@ -189,6 +216,34 @@ export default {
       this.sitioMapa = latLng(lat, lon);
       this.sitioMapa.nombre = nombre;
     },
+    registerMascota() {
+      this.mascota.userId = this.$root.user.id;
+      this.mascota.photo = this.img;
+      Api()
+        .post("/mascota/registerMascota", this.mascota)
+        .then(() => {
+          this.propRecuperarMascotas();
+          this.propHideModal();
+          Swal.fire("Registro completado", "", "success");
+        })
+        .catch((error) => console.log(error));
+    },
+  },
+
+  store() {
+    //console.log(this.img);
+    Api()
+      .post("/files/setProfilePhoto", { img: this.img })
+      .then((res) => {
+        this.getPhoto();
+      });
+  },
+  getPhoto() {
+    Api()
+      .post("/files/getProfilePhoto")
+      .then((res) => {
+        this.$root.photo = res.data[0].photo;
+      });
   },
   mounted() {
     this.getGeoloc();

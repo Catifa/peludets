@@ -34,6 +34,7 @@ class Mascota extends Model
         'raza',
         'edad',
         'peso',
-        'photo'
+        'photo',
+        'photo_paseo'
     ];
 }
