@@ -13,16 +13,49 @@
           class="btn btn-lila-peludets ml-5"
           href="#"
           role="button"
-          @click="mostrarModal"
+          @click="mostrarModal()"
           >+</a
         >
       </div>
     </div>
     <div class="col-md-12 col-xs-12 mt-5">
-      <mapa
-        :propLocalizaciones="sitioMapa"
-        :propCurrentGeoLoc="currentGeoLoc"
-      ></mapa>
+      <div class="row mt-2">
+        <a
+          name=""
+          id=""
+          class="btn btn-lila-peludets"
+          href="#"
+          role="button"
+          @click="mostrarMapa()"
+          >Mostar Mapa</a
+        >
+        <button class="btn btn-lila-peludets ml-5" @click="clickBtn()">
+          Rectangle
+        </button>
+        <button class="btn btn-lila-peludets ml-5" @click="clickBtn2()">
+          Cercle
+        </button>
+        <button class="btn btn-lila-peludets ml-5" @click="clickBtn3()">
+          Linea
+        </button>
+      </div>
+      <l-map
+        id="mapa"
+        :zoom="zoom"
+        :center="center"
+        style="height: 500px; width: 100%"
+        class="mt-2"
+      >
+        <l-tile-layer :url="url" :attribution="attribution" />
+        <l-circle
+          :lat-lng="circle.center"
+          :radius="circle.radius"
+          :l-style="circle.style"
+        />
+        <l-rectangle :bounds="rectangle.bounds" :l-style="rectangle.style" />
+        <l-polygon :lat-lngs="polygon.latlngs" :color="polygon.color" />
+        <l-polyline :lat-lngs="polyline.latlngs" :l-style="polyline.style" />
+      </l-map>
     </div>
     <div class="col-md-12 col-xs-12 mt-5">
       <div class="row">
@@ -109,15 +142,33 @@
 
 
 <script>
-import MapaExplorador from "./components-subparts/Explorador_mapa.vue";
 import Api from "../Api";
 import Swal from "sweetalert2";
+
+import {
+  LMap,
+  LTileLayer,
+  LCircle,
+  LRectangle,
+  LPolygon,
+  LPolyline,
+  LPopup,
+  LTooltip,
+} from "vue2-leaflet";
 
 import { latLng } from "leaflet";
 
 export default {
+  name: "PopupGeometryTest",
   components: {
-    mapa: MapaExplorador,
+    LMap,
+    LTileLayer,
+    LCircle,
+    LRectangle,
+    LPolygon,
+    LPolyline,
+    LPopup,
+    LTooltip,
   },
   props: {
     propHideModal: { type: Function },
@@ -138,15 +189,87 @@ export default {
       // Variable que guarda las mascotas recuperada de la base de datos
       arrayMascotas: [],
       img: {},
+      zoom: 11,
+      center: [41.50546, 2.11775],
+      circle: {
+        center: latLng(41.50546, 2.11775),
+        radius: 4500,
+        style: { color: "red", weight: 5 },
+      },
+      rectangle: {
+        bounds: [
+          [41.50546, 2.11775],
+          [41.60546, 2.31775],
+        ],
+        style: { color: "red", weight: 5 },
+      },
+      polygon: {
+        latlngs: [
+          [41.5263299, 2.1222],
+          [41.51024000000001, 2.1270065],
+          [41.5969447, 2.1136169],
+          [41.58527929999999, 2.1143036],
+          [41.5794457, 2.1098404],
+          [41.5775788, 2.1985107],
+          [41.5676598, 2.1753365],
+          [41.5593731, 2.1521622],
+          [41.5593731, 2.1319061],
+          [41.5722111, 2.1143967],
+          [41.5960115, 2.1841843],
+          [41.5095404, 2.1848709],
+          [41.5291277, 2.1683914],
+          [41.5533687, 2.1116501],
+          [41.5577961, 2.1531921],
+          [41.56828069, 2.1621185],
+          [41.5657179, 2.189241],
+          [41.5589612, 2.1204834],
+          [41.537287, 2.1266632],
+          [41.5263299, 2.1222],
+        ],
+        color: "#ff00ff",
+      },
+      polyline: {
+        latlngs: [
+          [41.534852, 2.509485],
+          [41.542596, 2.328731],
+          [41.541487, 2.190568],
+          [41.534787, 2.358337],
+        ],
+         style: { color: "rgb(0,0,0,0)" },
+      },
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     };
   },
   methods: {
+    clickBtn() {
+      this.rectangle.style.weight++;
+      this.rectangle.style.color =
+        this.rectangle.style.weight % 2 === 0 ? "blue" : "green";
+    },
+    clickBtn2() {
+      this.circle.style.weight++;
+      this.circle.style.color =
+        this.circle.style.weight % 2 === 0 ? "rgb(0,0,0,0)" : "green";
+    },
+    clickBtn3() {
+      this.polyline.style.color = "green";
+    },
     recuperarMascota() {
       Api()
         .post("/mascota/recuperarMascota")
         .then((response) => {
           this.arrayMascotas = response.data;
         });
+    },
+    mostrarMapa() {
+      var x = document.getElementById("mapa");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
     },
 
     updateFotoPaseo() {
