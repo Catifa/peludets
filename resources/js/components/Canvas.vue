@@ -5,6 +5,9 @@
 <template>
   <div class="container-fluid mt-5">
     <div class="col-md-12 col-xs-12 mt-5">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="col-md-12 col-xs-12 mt-5">
       <div class="row justify-content-center">
         <h4>Afegeix fotos dels passejos amb les mascotes dels teus clients</h4>
         <a
@@ -191,6 +194,7 @@ export default {
       img: {},
       zoom: 11,
       center: [41.50546, 2.11775],
+
       circle: {
         center: latLng(41.50546, 2.11775),
         radius: 4500,
@@ -235,7 +239,7 @@ export default {
           [41.541487, 2.190568],
           [41.534787, 2.358337],
         ],
-         style: { color: "rgb(0,0,0,0)" },
+        style: { color: "rgb(0,0,0,0)" },
       },
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:
@@ -371,6 +375,47 @@ export default {
   mounted() {
     this.getGeoloc();
     this.recuperarMascota();
+
+    const ALTURA_CANVAS = 200,
+      ANCHURA_CANVAS = 400;
+
+    // Obtener el elemento del DOM
+    const canvas = document.querySelector("#canvas");
+    canvas.width = ANCHURA_CANVAS;
+    canvas.height = ALTURA_CANVAS;
+    // Del canvas, obtener el contexto para poder dibujar
+    const contexto = canvas.getContext("2d");
+    // Comenzar
+    contexto.beginPath();
+    // Grosor de línea
+    contexto.lineWidth = 3;
+    // Color de línea
+    contexto.strokeStyle = "blue";
+    // Comenzamos en 0, 0
+    contexto.moveTo(0, 0);
+    // Hacemos una línea hasta 48, 48
+    contexto.lineTo(48, 48);
+    contexto.stroke(); // "Guardar" cambios
+
+    setTimeout(() => {
+      // Otra línea
+      contexto.beginPath();
+      contexto.strokeStyle = "yellow";
+      contexto.moveTo(0, 100);
+      contexto.lineTo(48, 52);
+      contexto.stroke();
+    }, 10000);
+
+    setTimeout(() => {
+          // Otra línea
+    contexto.beginPath();
+    contexto.strokeStyle = "green";
+    contexto.moveTo(100, 100);
+    contexto.lineTo(52, 52);
+    contexto.stroke();
+    }, 20000);
+
+
   },
 };
 </script>
