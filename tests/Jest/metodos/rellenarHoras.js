@@ -1,16 +1,14 @@
-num1 = 5;
-num2 = 24;
-horas = [];
-
-function rellenarHoras(num1, num2) {
-    for (let i = num1; i < num2; i++) {
+function rellenarHoras() {
+    let horas = [];
+    for (let i = 5; i <= 24; i++) {
         if (i == 24) {
-            this.horas.push(i + ":00");
+            horas.push(i + ":00");
         } else {
-            this.horas.push(i + ":00");
-            this.horas.push(i + ":30");
+            horas.push(i + ":00");
+            horas.push(i + ":30");
         }
     }
+    return horas.length;
 }
 
 module.exports = rellenarHoras;
