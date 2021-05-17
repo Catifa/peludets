@@ -139,7 +139,7 @@ export default {
   methods: {
     // Bucle para rellenar todas las horas con franja de media hora
     rellenarHoras() {
-      for (let i = 5; i < 24; i++) {
+      for (let i = 5; i <= 24; i++) {
         if (i == 24) {
           this.horas.push(i + ":00");
         } else {
