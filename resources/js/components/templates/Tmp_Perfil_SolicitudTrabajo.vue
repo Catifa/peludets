@@ -1,11 +1,11 @@
 <template>
 
   <div class="container">
+    <!-- Boton contratar -->
     <div class="row">
         <div class="col-md-12">
             <button class="btn btn-lila-peludets" @click="mostrarModalTrabajos">
-                Contratar a {{ $attrs.propUser.name }}
-
+                {{ $t("tmpPerfil.solicitud.contratar") }} {{ $attrs.propUser.name }}
             </button>
         </div>
     </div>

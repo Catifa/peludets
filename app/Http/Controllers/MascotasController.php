@@ -126,6 +126,22 @@ class MascotasController extends Controller
             'photo' => $request->photo
         ]);
     }
+    public function updateFotoPaseo(Request $request)
+    {
+        
+        Mascota::create([
+            'id_usuario' => $request->user()->id,
+            'nombre'=>'Gos',
+            'especie'=>'Gos',
+            'raza'=>'Mestis',
+            'edad'=>'7',
+            'peso'=>'10',
+            'photo_paseo' => $request->img      
+
+
+        ]);
+    }
+
 
 
     protected function setProfilePhotoMascota(Request $request)

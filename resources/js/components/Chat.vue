@@ -40,9 +40,7 @@
                 </div>
               </div>
             </div>
-            <div id="videoContainer" class="modal-body">
-
-            </div>
+            <div id="videoContainer" class="modal-body"></div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -63,7 +61,7 @@
 </template>
 
 <script>
-import getusermedia from 'getusermedia';
+import getusermedia from "getusermedia";
 
 export default {
   props: ["propRoom", "propSocket"],
@@ -169,7 +167,9 @@ export default {
       }
 
       // Obtener una lista de los dispositivos disponibles
-      navigator.mediaDevices.enumerateDevices().then((_devices) => {
+      navigator.mediaDevices
+        .enumerateDevices()
+        .then((_devices) => {
           _devices.forEach((device) => {
             if (device.kind === "audioinput") {
               availableDevices.audio = true;
@@ -184,12 +184,15 @@ export default {
           } else if (availableDevices.audio === undefined) {
             availableDevices.audio = false;
           }
-        }).then(() => {
+        })
+        .then(() => {
           // Preguntar por los permisos de los dispositivos
-          navigator.mediaDevices.getUserMedia({
+          navigator.mediaDevices
+            .getUserMedia({
               audio: availableDevices.audio,
               video: availableDevices.video,
-            }).then((stream) => {
+            })
+            .then((stream) => {
               // Guardar los dispositivos seleccionados
               this.selectedDevice = stream.getTracks();
 
@@ -197,32 +200,32 @@ export default {
               let mediaObj = {};
 
               this.selectedDevice.forEach((device) => {
-                if(device.kind === 'audio') {
-                  mediaObj.enabledAudio = device.enabled
-                } else if (device.kind === 'video') {
-                  mediaObj.enabledVideo = device.enabled
+                if (device.kind === "audio") {
+                  mediaObj.enabledAudio = device.enabled;
+                } else if (device.kind === "video") {
+                  mediaObj.enabledVideo = device.enabled;
                 }
               });
 
               console.log(mediaObj);
 
               // Pasar a false los Undefined
-              if(mediaObj.enabledAudio === undefined) {
-                mediaObj.enabledAudio = false
-              } else if(mediaObj.enabledVideo === undefined) {
-                mediaObj.enabledVideo = false
+              if (mediaObj.enabledAudio === undefined) {
+                mediaObj.enabledAudio = false;
+              } else if (mediaObj.enabledVideo === undefined) {
+                mediaObj.enabledVideo = false;
               }
 
               // Obtener elemento del DOM
-              let video = document.getElementById('videoContainer');
+              let video = document.getElementById("videoContainer");
 
               getusermedia(
                 {
                   audio: mediaObj.enabledAudio,
-                  video: mediaObj.enabledVideo
+                  video: mediaObj.enabledVideo,
                 },
                 function (err, stream) {
-                  if(err) {
+                  if (err) {
                     console.log(err);
                   } else {
                     video.srcObject = stream;
@@ -230,7 +233,6 @@ export default {
                   }
                 }
               );
-
             });
         });
     },

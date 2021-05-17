@@ -6,14 +6,18 @@
       <!-- Seleccion de la fecha -->
       <div class="col-md-6">
         <div class="form-group">
-          <label for="fechaSolicitud">Fecha</label>
+          <label for="fechaSolicitud">
+            {{ $t("tmpPerfil.solicitud.labels.fecha") }}
+          </label>
           <input type="date" class="form-control" v-model="propTrabajo.fecha" :class="{ 'border-danger': propErrores.fecha !=null }" />
         </div>
       </div>
       <!-- Seleccion de la hora -->
       <div class="col-md-6">
         <div class="form-group">
-          <label for="horaSolicitud">Hora</label>
+          <label for="horaSolicitud">
+            {{ $t("tmpPerfil.solicitud.labels.hora") }}
+          </label>
           <select class="form-control" v-model="propTrabajo.hora" :class="{ 'border-danger': propErrores.hora !=null }" >
             <option v-for="hora in horas" :key="hora">
               {{ hora }}
@@ -27,15 +31,19 @@
       <!-- Nombre Mascota -->
       <div class="col-md-6">
         <div class="form-group">
-          <label for="nombreMascotaSolicitud"> Nombre de la mascota </label>
-          <input type="text" class="form-control" placeholder="Nombre..." v-model="propTrabajo.nombre" :class="{ 'border-danger': propErrores.nombre !=null }" />
+          <label for="nombreMascotaSolicitud"> 
+            {{ $t("tmpPerfil.solicitud.labels.nombre") }}
+          </label>
+          <input type="text" class="form-control" v-model="propTrabajo.nombre" :class="{ 'border-danger': propErrores.nombre !=null }" />
         </div>
       </div>
       <!-- Raza Mascota -->
       <div class="col-md-6">
         <div class="form-group">
-          <label for="razaMascota"> Raza de la mascota </label>
-          <select class="form-control" v-model="propTrabajo.especie" :class="{ 'border-danger': propErrores.especie !=null }">
+          <label for="razaMascota"> 
+            {{ $t("tmpPerfil.solicitud.labels.raza") }}
+          </label>
+          <select class="form-control" v-model="propTrabajo.especie" :class="{ 'border-danger': propErrores.especie !=null }" >
             <option v-for="especie in especies" :key="especie.id">
               {{ especie.nombre }}
             </option>
@@ -44,7 +52,9 @@
       </div>
       <!-- Peso Mascota -->
       <div class="col-md-12">
-        <label for="pesoMascota"> Peso </label>
+        <label for="pesoMascota"> 
+          {{ $t("tmpPerfil.solicitud.labels.peso") }}
+        </label>
         <div class="row">
           <div class="col-md-3 ml-auto">
             <button
@@ -81,8 +91,10 @@
       <!-- Código Postal -->
       <div class="col-md-6">
         <div class="form-group">
-          <label for="codigoPostal">Codigo Postal</label>
-          <input type="text" class="form-control" placeholder="CP..." v-model="propTrabajo.cp" :class="{ 'border-danger': propErrores.cp !=null }" />
+          <label for="codigoPostal">
+            {{ $t("tmpPerfil.solicitud.labels.cp") }}
+          </label>
+          <input type="text" class="form-control" v-model="propTrabajo.cp" :class="{ 'border-danger': propErrores.cp !=null }" />
         </div>
       </div>
       <!-- Recoger o entregar Mascota -->
@@ -96,7 +108,7 @@
               v-model="propTrabajo.entregaMascota"
             />
             <label class="custom-control-label" for="switchEntrega">
-              El cliente entregará la mascota
+              {{ $t("tmpPerfil.solicitud.labels.entregaMascota") }}
             </label>
           </div>
         </div>

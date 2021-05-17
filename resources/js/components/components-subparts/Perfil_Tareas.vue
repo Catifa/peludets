@@ -90,6 +90,11 @@ export default {
       calendarOptions: {
         plugins: [dayGridPlugin, interactionPlugin],
         initialView: "dayGridMonth",
+        headerToolbar: {
+          left: 'prev',
+          center: 'title',
+          right: 'next'
+        },
         locale: caLocale,
         dateClick: this.handleDateClick,
         events: []

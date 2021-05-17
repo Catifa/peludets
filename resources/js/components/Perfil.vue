@@ -64,6 +64,20 @@
             {{ $t("perfil.submenuTareas") }}
           </a>
         </li>
+                <!-- Submenu Canvas -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="edita-tab"
+            data-toggle="tab"
+            href="#paseos"
+            role="tab"
+            aria-controls="paseos"
+            aria-selected="false"
+          >
+            Passejos
+          </a>
+        </li>
       </ul>
       <!-- Zona renderizado submenu -->
       <div class="tab-content" id="myTabContent">
@@ -105,6 +119,15 @@
         >
           <perfil-tareas></perfil-tareas>
         </div>
+         <!-- Zona renderizado Canvas -->
+        <div
+          class="tab-pane fade"
+          id="paseos"
+          role="tabpanel"
+          aria-labelledby="edita-tab"
+        >
+          <paseos></paseos>
+        </div>
       </div>
     </div>
     <!-- Zona datos perfil -->
@@ -122,6 +145,9 @@ import Perfil_Tareas from "./components-subparts/Perfil_Tareas.vue";
 import Tareas from "./Tareas";
 import DatosUsuario from "./components-subparts/Perfil_DatosUsuario.vue";
 import Api from "../Api";
+import Canvas from "../components/Canvas.vue";
+import { latLng } from "leaflet";
+
 
 export default {
   components: {
@@ -131,6 +157,7 @@ export default {
     "perfil-tareas": Perfil_Tareas,
     Tareas,
     "datos-usuario": DatosUsuario,
+    "paseos" : Canvas,
   },
   data() {
     return {

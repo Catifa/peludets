@@ -93,7 +93,6 @@ export default {
           this.notificaciones.forEach((element) => {
             element.contenido = JSON.parse(element.contenido);
           });
-          console.log(res.data);
         });
     },
     deleteNot(id) {

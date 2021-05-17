@@ -19,6 +19,7 @@
     "express": "^4.16.3",
     "getusermedia": "^2.0.1",
     "leaflet": "^1.7.1",
+    "leaflet-routing-machine": "^3.2.12",
     "simple-peer": "^9.9.3",
     "socket.io": "^3.1.2",
     "sweetalert2": "^10.12.6",

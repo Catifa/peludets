@@ -183,7 +183,6 @@ export default {
   },
   methods: {
     usuariosFiltrados() {
-      console.log(this.servicioBusqueda);
       Api()
         .post("/usuario/searchByProf", this.servicioBusqueda)
         .then((response) => {

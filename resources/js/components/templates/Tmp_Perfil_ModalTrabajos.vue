@@ -4,7 +4,7 @@
       <div class="modal-content">
         <!-- Header Modal -->
         <div class="modal-header bg-azul-peludets">
-          <h5 class="modal-title lila-peludets">Solicitud de contrato</h5>
+          <h5 class="modal-title lila-peludets">{{ $t("tmpPerfil.solicitud.tituloModal") }}</h5>
           <button
             type="button"
             class="close"
@@ -63,7 +63,7 @@
               @solicitudRellena="solicitudTrabajo"
             ></solicitud-peluqueria>
             <solicitud-entrenador
-              v-if="solicitud == 'Entrenador'"
+              v-if="solicitud == 'Ensinistrador'"
               :propHora="horas"
               :propEspecies="especies"
               :propTrabajo="solicitudTrabajo"
@@ -87,7 +87,7 @@
             class="btn btn-lila-peludets"
             @click="enviarSolicitud()"
           >
-            Solicitar
+            {{ $t("tmpPerfil.solicitud.solicitar") }}
           </button>
           <button
             type="button"
@@ -95,7 +95,7 @@
             data-dismiss="modal"
             @click="reiniciarModal()"
           >
-            Cerrar
+            {{ $t("tmpPerfil.solicitud.cancelar") }}
           </button>
         </div>
       </div>
@@ -167,7 +167,7 @@ export default {
         .then(() => {
           Swal2.fire({
             text: "Solicitud enviada correctamente",
-            icon: "succes",
+            icon: "success",
           });
 
           //ENVIAR CORREO
