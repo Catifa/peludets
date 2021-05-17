@@ -1,18 +1,11 @@
-loading = false;
-llamadaLogin = {
-    id: 1
-};
-user = {
-    id: 1
-};
+function loginTesteo(data) {
 
-function login() {
-    if ((llamadaLogin = user)) {
-        "Registro completado", "Bienvenido, ", "success";
-        this.loading = true;
-    } else {
-        console.log(error);
-        this.loading = false;
-    }
+    const axiosMock = jest.fn();
+
+    axiosMock.mockReturnValueOnce({email: 'c@c.com', password: '33333'});
+
+    let testAxios = axiosMock();
+
+    return (data.email == testAxios.email && data.password == testAxios.password)
 }
-module.exports = login;
+module.exports = loginTesteo;
